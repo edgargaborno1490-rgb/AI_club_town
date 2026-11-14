@@ -2,7 +2,7 @@
   "day": 1,
   "goal": 1000,
   "balance": 0,
-  "updated": "2026-11-14T06:25:45.298Z",
+  "updated": "2026-11-14T06:25:51.162Z",
   "agents": {
     "chief": {
       "status": "done",
@@ -13,8 +13,8 @@
       "task": ""
     },
     "howitworks": {
-      "status": "working",
-      "task": "Explaining: how a credit score works"
+      "status": "done",
+      "task": ""
     },
     "news": {
       "status": "idle",
@@ -49,6 +49,10 @@
     {
       "time": "20:25",
       "text": "How It Works started: Explaining: how a credit score works"
+    },
+    {
+      "time": "20:25",
+      "text": "How It Works: Script ready: How Does a Credit Score Actually Work?"
     }
   ],
   "lastRunDate": "2026-11-13"
