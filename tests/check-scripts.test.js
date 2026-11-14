@@ -83,3 +83,10 @@ test('village scripts need an "as of" date but no web links', () => {
   const noDate = script({ type: 'village', facts: '- Scripts written: 7 (village/topics.md)' });
   assert.ok(checkScript(noDate).some(p => /as of/.test(p)));
 });
+
+test('village videos may be longer and use their own ending', () => {
+  const s = script({ type: 'village', narration: 225, end: 'See you next Sunday.', facts: '- Six workers (.claude/skills), as of Nov 14, 2026.' });
+  assert.deepEqual(checkScript(s), []);
+  const tooLong = script({ type: 'village', narration: 260, end: 'See you next Sunday.', facts: '- x, as of Nov 14, 2026.' });
+  assert.ok(checkScript(tooLong).some(p => /Narration has/.test(p)));
+});

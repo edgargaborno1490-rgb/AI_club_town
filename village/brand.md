@@ -13,6 +13,9 @@ before writing.
   Mon/Wed/Fri How It Works · Tue/Sat What If · Thu/Sun World News.
   Plus **AI Village · Week N** every Saturday from Nov 21 (posted Sunday), hosted by the
   **village host** voice (ElevenLabs, the owner picks and records it; not Mark, Puck or George).
+  AI Village videos introduce the bucket guy as WhiteBucket (the owner), may run to ~90 s
+  (170–240 words), and end with their own line (the weekly update: "See you next Sunday.")
+  instead of "Comment NEXT".
   | Series | Desk | Topic type | Voice |
   |---|---|---|---|
   | What If | What If Studio (`whatif`) | science | **Puck** (Kokoro `am_puck`, free; the studio makes it) |

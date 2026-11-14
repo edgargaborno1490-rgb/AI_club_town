@@ -20,11 +20,12 @@ Chief, after today's regular script is written and fact-checked.
    - `# WhiteBucket Explains: AI Village · Week N`
    - `Topic type: village`
    - Format line: `voice: Village host (ElevenLabs, the owner picks and records it)` and
-     `about 60–70 s` (narration 170–190 words).
+     `about 60–90 s`.
    - Narration, in this order: a hook with the week's most interesting number; what the
      village made (scripts written, videos finished, with their titles); the best moment;
      what went wrong; **money earned this week and in total, even if it's $0**; one thing
-     changing next week; the locked-in ending.
+     changing next week; end with "See you next Sunday." (AI Village videos don't use
+     "Comment NEXT"). Narration 170–240 words (up to ~90 s).
    - Section plan: the 3D town (the owner screen-records the town page, or the studio
      records a local copy), the scoreboard of scripts and videos, the money bar, the
      bucket guy reacting. Paper-line style for the cards.

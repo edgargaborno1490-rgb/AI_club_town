@@ -45,8 +45,10 @@ function checkScript(text) {
 
   if (s.Narration) {
     const n = s.Narration.split(/\s+/).filter(Boolean).length;
-    if (n < 170 || n > 210) problems.push(`Narration has ${n} words (needs about 180-200, at most 170-210)`);
-    if (!s.Narration.trim().endsWith(ENDING)) problems.push(`Narration must end with exactly "${ENDING}"`);
+    // AI Village videos (intro, weekly updates) may run to ~90 s and use their own ending.
+    const [lo, hi] = type === 'village' ? [170, 240] : [170, 210];
+    if (n < lo || n > hi) problems.push(`Narration has ${n} words (needs ${lo}-${hi})`);
+    if (type !== 'village' && !s.Narration.trim().endsWith(ENDING)) problems.push(`Narration must end with exactly "${ENDING}"`);
   }
   if (s['Section plan']) {
     const rows = s['Section plan'].split('\n').filter(l => /^\|/.test(l.trim()) && !/^\|\s*#\s*\|/.test(l.trim()) && !/^\|[\s|:-]+\|$/.test(l.trim()));
