@@ -101,3 +101,13 @@ test('a push that hits a conflict stops loudly and leaves the repo clean', () =>
   assert.equal(fs.existsSync(path.join(a, '.git', 'rebase-merge')) || fs.existsSync(path.join(a, '.git', 'rebase-apply')), false);
   assert.doesNotMatch(fs.readFileSync(path.join(a, 'town.json'), 'utf8'), /<<<<<<</);
 });
+
+test('followers are set from a whole number and survive a new day', () => {
+  const t = ops.setFollowers({ day: 1 }, '1,250');
+  assert.equal(t.followers, 1250);
+  assert.equal(ops.newDay(t, '2026-11-20').followers, 1250);
+  assert.equal(ops.setFollowers({}, 10).followers, 10);
+  assert.throws(() => ops.setFollowers({}, 'lots'), /Not a follower count/);
+  assert.throws(() => ops.setFollowers({}, '-4'), /Not a follower count/);
+  assert.throws(() => ops.setFollowers({}, '2.5'), /Not a follower count/);
+});

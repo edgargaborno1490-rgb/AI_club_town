@@ -33,3 +33,8 @@ test('a new day resets agents and log but keeps the money', () => {
 test('every demo state is valid town data', () => {
   for (let n = 0; n < 15; n++) assert.equal(parseTown(stateAt(n)).ok, true);
 });
+
+test('the sample town has birds that grow each day', () => {
+  assert.ok(stateAt(0).followers > 0);
+  assert.ok(stateAt(STEPS.length).followers > stateAt(0).followers);
+});

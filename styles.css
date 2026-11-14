@@ -35,6 +35,7 @@ body{background:var(--sky-bottom);color:var(--ink);font:14px/1.4 var(--font-body
 .money small{font-size:14px;color:var(--muted);font-weight:500}
 .bar{height:12px;border-radius:999px;background:#eef3f7;border:2px solid var(--ink);overflow:hidden}
 .bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .8s ease}
+.flock{font-size:12.5px;font-weight:600;color:var(--ink)}
 .note{font-size:11.5px;color:var(--muted);line-height:1.4}
 .badge{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:#fff4d6;color:#7a5600;border:1px solid #f2d27a;border-radius:6px;padding:1px 6px;margin-right:4px}
 .btns{display:flex;gap:8px}

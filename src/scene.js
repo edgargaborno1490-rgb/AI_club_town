@@ -41,6 +41,8 @@
     sun.position.set(22, 38, 18);
     sun.castShadow = true;
     sun.shadow.mapSize.set(2048, 2048);
+    sun.shadow.bias = -0.0005;
+    sun.shadow.normalBias = 0.05;
     Object.assign(sun.shadow.camera, { left: -28, right: 28, top: 28, bottom: -28, near: 1, far: 90 });
     scene.add(sun);
 
@@ -66,17 +68,60 @@
     const pool = mesh(new THREE.CylinderGeometry(1.5, 1.5, 0.1, 20), mat(0x6fd3f5), 0, 0.72, 0); scene.add(pool);
     scene.add(mesh(new THREE.CylinderGeometry(0.25, 0.35, 1.6, 10), mat(0xdfe6ee), 0, 1.3, 0));
 
-    // Building kit
+    // Bucket kit: every building is a white bucket with its job on it (WhiteBucket's village).
     function box(w, h, d, c, x, y, z) { return mesh(new THREE.BoxGeometry(w, h, d), typeof c === 'number' ? mat(c) : c, x, y, z); }
-    function roof(w, d, h, c, y) {
-      const r = mesh(new THREE.ConeGeometry(Math.SQRT1_2, h, 4), mat(c), 0, y + h / 2, 0);
-      r.rotation.y = Math.PI / 4; r.scale.set(w, 1, d); return r;
+    const BH = 4.2, RB = 2, RT = 2.6;
+    const rAt = y => RB + (RT - RB) * y / BH;
+    function bucket(g, stripe, fill) {
+      const white = mat(0xf7f6f1);
+      g.add(mesh(new THREE.CylinderGeometry(RT, RB, BH, 36, 1, true), mat(0xf7f6f1, { side: THREE.DoubleSide }), 0, BH / 2, 0));
+      g.add(mesh(new THREE.CylinderGeometry(RB, RB, 0.12, 36), white, 0, 0.06, 0));
+      g.add(mesh(new THREE.CylinderGeometry(RT - 0.1, RT - 0.1, 0.1, 36), mat(fill || 0xdfe3e8), 0, BH - 0.45, 0));
+      const rim = mesh(new THREE.TorusGeometry(RT, 0.14, 8, 44), white, 0, BH, 0); rim.rotation.x = Math.PI / 2; g.add(rim);
+      g.add(mesh(new THREE.CylinderGeometry(rAt(3.85) + 0.03, rAt(3.45) + 0.03, 0.4, 36, 1, true), mat(stripe), 0, 3.65, 0));
+      g.add(mesh(new THREE.CylinderGeometry(rAt(0.3) + 0.03, RB + 0.03, 0.3, 36, 1, true), mat(0xe2e2dc), 0, 0.15, 0));
+      const handle = mesh(new THREE.TorusGeometry(RT + 0.12, 0.08, 6, 30, Math.PI), mat(0xaab3be), 0, BH - 0.35, 0);
+      handle.rotation.x = -0.75; g.add(handle);
+      for (const s of [-1, 1]) g.add(box(0.18, 0.4, 0.4, 0xaab3be, s * (RT + 0.05), BH - 0.35, 0));
+      g.add(box(0.95, 1.25, 0.2, 0x8a5a33, 0, 0.63, rAt(0.6) + 0.02));
+      g.add(mesh(new THREE.SphereGeometry(0.06, 6, 4), mat(0xf2b10c), 0.28, 0.65, rAt(0.6) + 0.14));
     }
-    function windows(g, glow, w, h, depth, cols, y) {
-      for (let i = 0; i < cols; i++) {
-        const x = (i - (cols - 1) / 2) * (w / cols);
-        g.add(box(0.6, 0.75, 0.08, glow, x, y, depth / 2 + 0.03));
+    // A painted label wrapped around the front of the bucket. It glows while the worker is busy.
+    function label(g, draw) {
+      const W = 640, H = 256, c = document.createElement('canvas');
+      c.width = W; c.height = H;
+      const ctx = c.getContext('2d');
+      draw(ctx, W, H);
+      const tex = new THREE.CanvasTexture(c);
+      tex.anisotropy = 4;
+      const m = new THREE.MeshLambertMaterial({ map: tex, transparent: true, emissive: 0xffffff, emissiveMap: tex, emissiveIntensity: 0 });
+      // Front and back, so the job reads from any side of the island.
+      const y0 = 1.4, y1 = 3.35, L = 2.1;
+      for (const start of [-L / 2, Math.PI - L / 2]) {
+        const o = new THREE.Mesh(new THREE.CylinderGeometry(rAt(y1) + 0.03, rAt(y0) + 0.03, y1 - y0, 24, 1, true, start, L), m);
+        o.position.y = (y0 + y1) / 2; g.add(o);
       }
+      return m;
+    }
+    function patch(ctx, W, H, color) {
+      const r = 46;
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(r, 8); ctx.arcTo(W - 8, 8, W - 8, H - 8, r); ctx.arcTo(W - 8, H - 8, 8, H - 8, r);
+      ctx.arcTo(8, H - 8, 8, 8, r); ctx.arcTo(8, 8, W - 8, 8, r); ctx.closePath(); ctx.fill();
+    }
+    function words(ctx, text, x, y, size, color, font) {
+      ctx.fillStyle = color; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.font = `${font || '700'} ${size}px "Fredoka", "Trebuchet MS", sans-serif`;
+      ctx.fillText(text, x, y);
+    }
+    function star(ctx, cx, cy, r, color) {
+      ctx.fillStyle = color; ctx.beginPath();
+      for (let i = 0; i < 10; i++) {
+        const a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? r * 0.45 : r;
+        ctx.lineTo(cx + Math.cos(a) * rr, cy + Math.sin(a) * rr);
+      }
+      ctx.closePath(); ctx.fill();
     }
     function gear(r, n, c) {
       const g = new THREE.Group(); const m = mat(c);
@@ -89,84 +134,91 @@
       const hub = mesh(new THREE.CylinderGeometry(r * 0.35, r * 0.35, 0.36, 10), mat(0x3c4652)); hub.rotation.x = Math.PI / 2; g.add(hub);
       return g;
     }
-    const glowMat = c => mat(c, { emissive: c, emissiveIntensity: 0 });
+    function bitSprite(ch) {
+      const c = document.createElement('canvas'); c.width = c.height = 64;
+      const ctx = c.getContext('2d');
+      ctx.fillStyle = '#39e4ff'; ctx.font = '700 52px ui-monospace, Menlo, monospace';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(ch, 32, 34);
+      const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(c), transparent: true, depthWrite: false }));
+      s.scale.setScalar(1); return s;
+    }
 
     const builders = {
-      hall(g) { // Town Hall: Chief of Staff
-        const glow = glowMat(0xffe08a);
-        g.add(box(6.2, 0.4, 5, 0xc9ced6, 0, 0.2, 0));
-        g.add(box(5.4, 3.2, 4, 0xf6f2e8, 0, 2, 0));
-        for (let i = 0; i < 4; i++) g.add(mesh(new THREE.CylinderGeometry(0.22, 0.26, 2.8, 8), mat(0xffffff), -2 + i * 1.33, 1.8, 2.45));
-        g.add(box(5.8, 0.4, 1.4, 0xf6f2e8, 0, 3.4, 2.1));
-        windows(g, glow, 5.4, 3.2, 4, 3, 2.2);
-        g.add(roof(5.8, 4.4, 2.2, 0xe5533d, 3.6));
-        g.add(mesh(new THREE.CylinderGeometry(0.06, 0.06, 2.4, 6), mat(0x55606e), 0, 6.8, 0));
-        const flag = box(1.1, 0.6, 0.06, 0x2f80ed, 0.55, 7.6, 0); g.add(flag);
-        return { glow: [glow], spin: [{ o: flag, wave: true }], top: 8.6 };
+      hall(g) { // Chief of Staff: a bucket with a star badge and the town flag
+        bucket(g, 0xe5533d);
+        const glow = label(g, (ctx, W, H) => { patch(ctx, W, H, '#e5533d'); star(ctx, W / 2, 98, 70, '#fff'); words(ctx, 'CHIEF', W / 2, 208, 54, '#fff'); });
+        g.add(mesh(new THREE.CylinderGeometry(0.07, 0.07, 3.2, 6), mat(0x55606e), -0.8, BH + 1, -0.6));
+        const flag = box(1.3, 0.75, 0.06, 0x2f80ed, -0.15, BH + 2.2, -0.6); g.add(flag);
+        return { glow: [glow], spin: [{ o: flag, wave: true }], top: BH + 3 };
       },
-      workshop(g) { // Programmer
-        const glow = glowMat(0x39e4ff);
-        g.add(box(4.6, 2.8, 4.2, 0x2e3d5a, 0, 1.4, 0));
-        g.add(box(5, 0.35, 4.6, 0x46587c, 0, 2.95, 0));
-        g.add(box(3, 1.5, 0.1, glow, 0, 1.7, 2.12));
-        g.add(box(1, 0.18, 0.12, 0x2e3d5a, -0.6, 1.95, 2.2));
-        g.add(box(0.7, 0.18, 0.12, 0x2e3d5a, 0.3, 1.55, 2.2));
-        g.add(mesh(new THREE.CylinderGeometry(0.08, 0.08, 1.2, 6), mat(0x9aa7b6), 1.4, 3.7, -1));
-        const dish = mesh(new THREE.CylinderGeometry(0.9, 0.15, 0.35, 14), mat(0xe8edf2), 1.4, 4.4, -1);
-        dish.rotation.z = 0.6; g.add(dish);
-        return { glow: [glow], spin: [{ o: dish, axis: 'y', speed: 1.2 }], top: 5.6 };
+      whatif(g) { // What If: a bucket with a big question mark and a telescope
+        bucket(g, 0x7656d1, 0x3b2f73);
+        const glow = label(g, (ctx, W, H) => { patch(ctx, W, H, '#7656d1'); words(ctx, '?', W / 2, 100, 150, '#fff'); words(ctx, 'WHAT IF', W / 2, 212, 50, '#fff'); });
+        const scope = mesh(new THREE.CylinderGeometry(0.3, 0.42, 2.6, 10), mat(0x5b6474), 0.5, BH + 0.6, -0.3);
+        scope.rotation.z = -0.8; g.add(scope);
+        const orbit = new THREE.Group(); orbit.position.set(0, BH + 2.6, 0);
+        const planet = mesh(new THREE.SphereGeometry(0.5, 14, 10), mat(0xff9a3c), 1.8, 0, 0);
+        const ring = mesh(new THREE.TorusGeometry(0.8, 0.07, 6, 24), mat(0xffd36b), 1.8, 0, 0); ring.rotation.x = 1.2;
+        orbit.add(planet, ring); g.add(orbit);
+        return { glow: [glow], spin: [{ o: orbit, axis: 'y', speed: 1.6, always: 0.25 }], top: BH + 3.4 };
       },
-      bank(g) { // Banker
-        const glow = glowMat(0xffe7a3);
-        g.add(box(5, 0.35, 4.2, 0xc9ced6, 0, 0.18, 0));
-        g.add(box(4.6, 2.8, 3.6, 0xfff1d2, 0, 1.75, 0));
-        windows(g, glow, 4.6, 2.8, 3.6, 2, 1.9);
-        g.add(box(1, 1.5, 0.1, 0x7a4b2a, 0, 1.1, 1.83));
-        g.add(roof(5, 4, 1.4, 0x3f9f6b, 3.15));
+      howitworks(g) { // How It Works: a bucket with gears on the front and one turning on top
+        bucket(g, 0xee8434, 0x9aa7b6);
+        const glow = label(g, (ctx, W, H) => { patch(ctx, W, H, '#ee8434'); words(ctx, 'HOW IT WORKS', W / 2, 222, 40, '#fff'); });
+        const z = rAt(2.5) + 0.2;
+        const g1 = gear(0.75, 10, 0xe8edf2); g1.position.set(-0.35, 2.55, z); g.add(g1);
+        const g2 = gear(0.45, 7, 0xc4ccd6); g2.position.set(0.82, 2.95, z - 0.05); g.add(g2);
+        const big = gear(1.25, 12, 0xc4ccd6); big.position.set(0, BH + 0.6, -0.2); g.add(big);
+        return { glow: [glow], spin: [{ o: g1, axis: 'z', speed: 1.3 }, { o: g2, axis: 'z', speed: -2.1 }, { o: big, axis: 'z', speed: 0.8, always: 0.15 }], top: BH + 2.2 };
+      },
+      bank(g) { // Banker: a bucket full of gold coins with a big dollar sign
+        bucket(g, 0x3f9f6b, 0xf2b10c);
+        const glow = label(g, (ctx, W, H) => { patch(ctx, W, H, '#3f9f6b'); words(ctx, '$', W / 2, 110, 150, '#ffe07a'); words(ctx, 'BANK', W / 2, 212, 50, '#fff'); });
+        for (let i = 0; i < 9; i++) {
+          const a = i * 2.4, r = 0.5 + (i % 3) * 0.55;
+          const c = mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.12, 14), mat(0xf2b10c), Math.cos(a) * r, BH - 0.3 + (i % 2) * 0.1, Math.sin(a) * r);
+          c.rotation.set(0.3 * (i % 3), 0, 0.25 * ((i + 1) % 3)); g.add(c);
+        }
         const coin = new THREE.Group();
         const face = mesh(new THREE.CylinderGeometry(1, 1, 0.26, 28), mat(0xf2b10c, { emissive: 0xf2b10c, emissiveIntensity: 0.15 }));
         face.rotation.x = Math.PI / 2; coin.add(face);
         coin.add(box(0.22, 1.1, 0.3, 0xb07e00, 0, 0, 0));
-        coin.position.set(0, 5.6, 0); g.add(coin);
-        return { glow: [glow], spin: [{ o: coin, axis: 'y', speed: 1.4, always: 0.4 }], top: 7.2 };
+        coin.position.set(0, BH + 2, 0); g.add(coin);
+        return { glow: [glow], spin: [{ o: coin, axis: 'y', speed: 1.4, always: 0.4 }], top: BH + 3.2 };
       },
-      whatif(g) { // What If studio: an observatory
-        const glow = glowMat(0xc8b6ff);
-        g.add(box(4.4, 2.6, 4.4, 0x7656d1, 0, 1.3, 0));
-        windows(g, glow, 4.4, 2.6, 4.4, 2, 1.4);
-        g.add(mesh(new THREE.SphereGeometry(2, 18, 10, 0, Math.PI * 2, 0, Math.PI / 2), mat(0xe9e3ff), 0, 2.6, 0));
-        const scope = mesh(new THREE.CylinderGeometry(0.28, 0.4, 2.4, 10), mat(0x5b6474), 0.9, 4.2, 0.4);
-        scope.rotation.z = -0.9; g.add(scope);
-        const orbit = new THREE.Group(); orbit.position.set(0, 6.4, 0);
-        const planet = mesh(new THREE.SphereGeometry(0.5, 14, 10), mat(0xff9a3c), 1.8, 0, 0);
-        const ring = mesh(new THREE.TorusGeometry(0.8, 0.07, 6, 24), mat(0xffd36b), 1.8, 0, 0); ring.rotation.x = 1.2;
-        orbit.add(planet, ring); g.add(orbit);
-        return { glow: [glow], spin: [{ o: orbit, axis: 'y', speed: 1.6, always: 0.25 }], top: 7.4 };
+      workshop(g) { // Programmer: a bucket with a code screen, ones and zeros floating out
+        bucket(g, 0x2e3d5a, 0x1c2836);
+        const rows = ['10110 01', '0 101101', '1101 010', '01 10011'];
+        const glow = label(g, (ctx, W, H) => {
+          patch(ctx, W, H, '#1c2836');
+          ctx.fillStyle = '#39e4ff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.font = '700 50px ui-monospace, Menlo, monospace';
+          rows.forEach((r, i) => ctx.fillText(r, W / 2, 46 + i * 55));
+        });
+        const bits = [];
+        for (let i = 0; i < 8; i++) {
+          const s = bitSprite(i % 3 ? '1' : '0');
+          s.position.set((i % 4 - 1.5) * 0.7, BH, ((i * 5) % 3 - 1) * 0.6);
+          s.userData.off = i / 8; g.add(s); bits.push(s);
+        }
+        return { glow: [glow], bits, spin: [], top: BH + 2.8 };
       },
-      howitworks(g) { // How It Works studio: a gear factory
-        const glow = glowMat(0xffd0a0);
-        g.add(box(4.8, 2.8, 3.8, 0xee8434, 0, 1.4, 0));
-        for (let i = 0; i < 3; i++) { const t = roof(1.6, 3.8, 1, 0xb85e1e, 2.8); t.position.x = -1.6 + i * 1.6; g.add(t); }
-        windows(g, glow, 4.8, 2.8, 3.8, 2, 1.2);
-        g.add(mesh(new THREE.CylinderGeometry(0.35, 0.4, 2.2, 10), mat(0x7a8592), 1.7, 4.1, -1.1));
-        const g1 = gear(0.9, 10, 0xc4ccd6); g1.position.set(-1, 2.2, 2.15); g.add(g1);
-        const g2 = gear(0.55, 7, 0x9aa7b6); g2.position.set(0.45, 2.85, 2.15); g.add(g2);
-        return { glow: [glow], spin: [{ o: g1, axis: 'z', speed: 1.3 }, { o: g2, axis: 'z', speed: -2.1 }], top: 5.8 };
-      },
-      news(g) { // World News tower
-        const glow = glowMat(0xa8d4ff), onair = glowMat(0xff3b3b);
-        g.add(box(3.4, 5.2, 3.4, 0x2f6fd6, 0, 2.6, 0));
-        for (let r = 0; r < 3; r++) windows(g, glow, 3.4, 5.2, 3.4, 2, 1.3 + r * 1.4);
-        g.add(box(3.8, 0.35, 3.8, 0x1f4ea0, 0, 5.35, 0));
-        g.add(box(1.8, 0.5, 0.1, onair, 0, 4.9, 1.75));
-        g.add(mesh(new THREE.CylinderGeometry(0.07, 0.12, 2.6, 6), mat(0xe8edf2), 0, 6.8, 0));
-        const beacon = mesh(new THREE.SphereGeometry(0.22, 10, 8), mat(0xff3b3b, { emissive: 0xff3b3b, emissiveIntensity: 0.6 }), 0, 8.2, 0);
+      news(g) { // World News: a bucket with an ON AIR sign, an antenna and a globe
+        bucket(g, 0x2f6fd6, 0x1f4ea0);
+        const glow = label(g, (ctx, W, H) => {
+          patch(ctx, W, H, '#2f6fd6'); words(ctx, 'NEWS', W / 2, 96, 96, '#fff');
+          ctx.fillStyle = '#ff3b3b'; ctx.beginPath(); ctx.arc(W / 2 - 112, 204, 16, 0, Math.PI * 2); ctx.fill();
+          words(ctx, 'ON AIR', W / 2 + 18, 206, 46, '#fff');
+        });
+        g.add(mesh(new THREE.CylinderGeometry(0.07, 0.12, 3.6, 6), mat(0xe8edf2), 0.9, BH + 1.4, -0.6));
+        const beacon = mesh(new THREE.SphereGeometry(0.24, 10, 8), mat(0xff3b3b, { emissive: 0xff3b3b, emissiveIntensity: 0.6 }), 0.9, BH + 3.3, -0.6);
         g.add(beacon);
-        const globe = new THREE.Group(); globe.position.set(-1.3, 6.2, 0.9);
-        globe.add(mesh(new THREE.SphereGeometry(0.6, 14, 10), mat(0x3fa7e8)));
-        globe.add(mesh(new THREE.SphereGeometry(0.62, 6, 4, 0, 2), mat(0x6fcf6a)));
+        const globe = new THREE.Group(); globe.position.set(-0.6, BH + 0.9, 0.1);
+        globe.add(mesh(new THREE.SphereGeometry(1, 16, 12), mat(0x3fa7e8)));
+        globe.add(mesh(new THREE.SphereGeometry(1.03, 7, 5, 0, 2), mat(0x6fcf6a)));
+        globe.add(mesh(new THREE.SphereGeometry(1.03, 6, 4, 3, 1.4, 0.6, 1.2), mat(0x6fcf6a)));
         g.add(globe);
-        return { glow: [glow, onair], spin: [{ o: globe, axis: 'y', speed: 1.5, always: 0.3 }], blink: beacon, top: 9 };
+        return { glow: [glow], spin: [{ o: globe, axis: 'y', speed: 1.5, always: 0.3 }], blink: beacon, top: BH + 3.8 };
       },
     };
 
@@ -232,6 +284,41 @@
       c.userData.v = 0.6 + rand() * 0.8; scene.add(c); clouds.push(c);
     }
 
+    // Birds: one for each follower (up to MAX_BIRDS), circling the island.
+    const MAX_BIRDS = 60;
+    const BIRD_COLORS = [0xffffff, 0xffffff, 0x2f80ed, 0xe5533d, 0xf2b10c, 0x7656d1, 0x1c2836];
+    const birds = [];
+    function bird(i) {
+      let bs = 1013 + i * 7919;
+      const br = () => (bs = (bs * 16807) % 2147483647) / 2147483647;
+      const color = BIRD_COLORS[i % BIRD_COLORS.length], m = mat(color);
+      const g = new THREE.Group();
+      const body = mesh(new THREE.SphereGeometry(0.3, 8, 6), m); body.scale.set(0.9, 0.75, 1.6); g.add(body);
+      g.add(mesh(new THREE.SphereGeometry(0.21, 8, 6), m, 0, 0.14, 0.45));
+      const beak = mesh(new THREE.ConeGeometry(0.07, 0.22, 5), mat(0xffa21a), 0, 0.12, 0.7); beak.rotation.x = Math.PI / 2; g.add(beak);
+      const wings = [-1, 1].map(side => {
+        const pivot = new THREE.Group(); pivot.position.set(side * 0.18, 0.08, 0);
+        pivot.add(box(0.8, 0.05, 0.38, color === 0xffffff ? 0xdfe6ee : color, side * 0.42, 0, 0));
+        g.add(pivot); return pivot;
+      });
+      g.traverse(o => { o.castShadow = false; });
+      const b = { g, wings, r: 9 + br() * 20, h: 8 + br() * 7, w: (0.18 + br() * 0.25) * (br() < 0.5 ? -1 : 1), p: br() * Math.PI * 2 };
+      scene.add(g);
+      return b;
+    }
+    function placeBird(b, t) {
+      const a = b.p + b.w * t;
+      b.g.position.set(Math.cos(a) * b.r, b.h + Math.sin(t * 0.8 + b.p) * 0.6, Math.sin(a) * b.r);
+      b.g.rotation.y = Math.atan2(-Math.sin(a) * b.w, Math.cos(a) * b.w);
+      const flap = reduced ? 0.2 : Math.sin(t * 9 + b.p * 3) * 0.6;
+      b.wings[0].rotation.z = -flap; b.wings[1].rotation.z = flap;
+    }
+    function setBirds(n) {
+      const want = Math.min(Math.max(0, n | 0), MAX_BIRDS);
+      while (birds.length < want) { const b = bird(birds.length); placeBird(b, 0); birds.push(b); }
+      birds.forEach((b, i) => { b.g.visible = i < want; });
+    }
+
     const v = new THREE.Vector3();
     const clock = new THREE.Clock();
     function frame() {
@@ -247,6 +334,11 @@
           const sp = working ? s.speed : (s.always || 0);
           if (!reduced) s.o.rotation[s.axis] += sp * dt;
         }
+        if (a.bits && !reduced) a.bits.forEach(b => {
+          const k = (t * (working ? 0.45 : 0.12) + b.userData.off) % 1;
+          b.position.y = BH + k * 3.2;
+          b.material.opacity = Math.sin(k * Math.PI);
+        });
         if (a.blink) a.blink.material.emissiveIntensity = working ? (Math.sin(t * 8) > 0 ? 1 : 0.1) : 0.4;
 
         v.copy(a.anchor).project(camera);
@@ -258,6 +350,7 @@
         a.tag.style.transform = `translate(${x}px, ${y}px) translate(-50%, -100%)`;
         a.tag.style.zIndex = String(Math.round((1 - v.z) * 1000));
       }
+      if (!reduced) birds.forEach(b => { if (b.g.visible) placeBird(b, t); });
       if (!reduced) clouds.forEach(c => { c.position.x += c.userData.v * dt; if (c.position.x > 70) c.position.x = -70; });
       pool.material.color.setHSL(0.54, 0.8, 0.68 + Math.sin(t * 2) * 0.03);
       controls.update();
@@ -280,9 +373,10 @@
           a.btext.textContent = s.task;
           a.btext.parentNode.hidden = !s.task;
         }
+        setBirds(state.followers || 0);
       },
     };
   }
 
-  root.TownScene = { create };
+  root.TownScene = { create, MAX_BIRDS: 60 };
 })(this);

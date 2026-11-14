@@ -22,6 +22,9 @@
     target = state.balance;
     $('day').textContent = 'Day ' + state.day;
     $('goal').textContent = 'of ' + fmt(state.goal).replace(/\.00$/, '');
+    const n = state.followers, max = window.TownScene.MAX_BIRDS;
+    $('flock').textContent = n === 0 ? 'No birds yet: every TikTok follower becomes a bird.'
+      : `${n.toLocaleString('en-US')} ${n === 1 ? 'bird' : 'birds'}: one for each TikTok follower` + (n > max ? ` (${max} flying)` : '');
     $('bar').style.width = Math.min(100, state.balance / state.goal * 100) + '%';
     const feed = $('feed');
     feed.textContent = '';

@@ -37,6 +37,7 @@
     const balance = num(r.balance);
     const goal = num(r.goal);
     const day = num(r.day);
+    const followers = num(r.followers);
     const log = (Array.isArray(r.log) ? r.log : [])
       .filter(isObj)
       .map(e => ({ time: text(e.time), text: text(e.text) }))
@@ -47,6 +48,7 @@
       day: day >= 1 ? Math.floor(day) : 1,
       goal: goal > 0 ? goal : DEFAULT_GOAL,
       balance: balance > 0 ? balance : 0,
+      followers: followers > 0 ? Math.floor(followers) : 0,
       updated: typeof r.updated === 'string' ? r.updated : null,
       stalled: stalled && anyWorking,
       agents,

@@ -35,6 +35,7 @@ function check(cond, msg) { if (!cond) throw new Error(msg); console.log('  ok -
       check(errors.length === 0, `real mode has no page errors (${errors.join(' | ')})`);
       check(/Updated/.test(await page.textContent('#status')), 'real mode shows the "Updated" line');
       check(!(await page.isVisible('#badge')), 'real mode hides the Example data badge');
+      check(/\d+ birds?: one for each TikTok follower/.test(await page.textContent('#flock')), 'real mode shows the follower birds line');
       if (SHOTS) await page.screenshot({ path: path.join(SHOTS, `real-${name}.png`) });
       await page.close();
 

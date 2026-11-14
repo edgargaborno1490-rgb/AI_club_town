@@ -60,6 +60,15 @@ function setBalance(town, amount) {
   return t;
 }
 
+// Followers show as birds over the island (one bird per follower, up to the page's limit).
+function setFollowers(town, count) {
+  const str = String(count).replace(/[,\s]/g, '');
+  if (!/^\d+$/.test(str)) throw new Error(`Not a follower count: "${count}" (use a whole number like 25)`);
+  const t = copy(town);
+  t.followers = Number(str);
+  return t;
+}
+
 function closeDay(town, time) {
   const t = copy(town);
   for (const id of IDS) {
@@ -71,4 +80,4 @@ function closeDay(town, time) {
   return t;
 }
 
-module.exports = { NAMES, IDS, newDay, start, done, log, setBalance, closeDay };
+module.exports = { NAMES, IDS, newDay, start, done, log, setBalance, setFollowers, closeDay };

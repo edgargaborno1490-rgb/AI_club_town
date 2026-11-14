@@ -67,3 +67,12 @@ test('a town not updated for over 3 hours shows nobody working', () => {
   assert.equal(fresh.agents.news.status, 'working');
   assert.equal(fresh.stalled, false);
 });
+
+test('followers are read as a whole number, junk becomes 0', () => {
+  assert.equal(parseTown({ followers: 10 }).followers, 10);
+  assert.equal(parseTown({ followers: '1,250' }).followers, 1250);
+  assert.equal(parseTown({ followers: 12.7 }).followers, 12);
+  assert.equal(parseTown({ followers: -3 }).followers, 0);
+  assert.equal(parseTown({ followers: 'lots' }).followers, 0);
+  assert.equal(parseTown({}).followers, 0);
+});

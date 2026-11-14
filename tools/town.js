@@ -58,9 +58,10 @@ function main(argv) {
     case 'done':      next = ops.done(town, a, now.time, b); msg = `Village: ${a} done`; break;
     case 'log':       next = ops.log(town, a, now.time); msg = 'Village: log'; break;
     case 'balance':   next = ops.setBalance(town, a); msg = `Village: balance ${next.balance}`; break;
+    case 'followers': next = ops.setFollowers(town, a); msg = `Village: ${next.followers} followers`; break;
     case 'close-day': next = ops.closeDay(town, now.time); msg = 'Village: day closed'; break;
     default:
-      console.error('Usage: node tools/town.js <new-day|start|done|log|balance|close-day|today> [args] [--push]');
+      console.error('Usage: node tools/town.js <new-day|start|done|log|balance|followers|close-day|today> [args] [--push]');
       process.exit(2);
   }
   fs.writeFileSync(FILE, JSON.stringify(next, null, 2) + '\n');

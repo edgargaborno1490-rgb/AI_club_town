@@ -27,7 +27,7 @@
       if (s.add) balance = Math.round((balance + s.add) * 100) / 100;
       log.push({ time: s.t, text: s.log });
     }
-    return { day, goal: 1000, balance, updated: null, agents, log };
+    return { day, goal: 1000, balance, followers: 10 + (day - 1) * 4, updated: null, agents, log };
   }
 
   return { STEPS, stateAt };
