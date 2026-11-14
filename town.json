@@ -2,7 +2,7 @@
   "day": 1,
   "goal": 1000,
   "balance": 0,
-  "updated": "2026-11-14T06:25:43.625Z",
+  "updated": "2026-11-14T06:25:45.298Z",
   "agents": {
     "chief": {
       "status": "done",
@@ -13,8 +13,8 @@
       "task": ""
     },
     "howitworks": {
-      "status": "idle",
-      "task": ""
+      "status": "working",
+      "task": "Explaining: how a credit score works"
     },
     "news": {
       "status": "idle",
@@ -45,6 +45,10 @@
     {
       "time": "20:25",
       "text": "What If Studio: Script ready: What If Earth Suddenly Stopped Spinning?"
+    },
+    {
+      "time": "20:25",
+      "text": "How It Works started: Explaining: how a credit score works"
     }
   ],
   "lastRunDate": "2026-11-13"
