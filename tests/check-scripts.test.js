@@ -76,3 +76,10 @@ test('a day needs one script per slug in the plan', () => {
   fs.writeFileSync(path.join(dir, 'c.md'), script());
   assert.deepEqual(checkDay(dir), []);
 });
+
+test('village scripts need an "as of" date but no web links', () => {
+  const s = script({ type: 'village', facts: '- Scripts written this week: 7 (village/topics.md), as of Nov 21, 2026.' });
+  assert.deepEqual(checkScript(s), []);
+  const noDate = script({ type: 'village', facts: '- Scripts written: 7 (village/topics.md)' });
+  assert.ok(checkScript(noDate).some(p => /as of/.test(p)));
+});

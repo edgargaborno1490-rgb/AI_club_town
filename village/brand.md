@@ -11,6 +11,8 @@ before writing.
 - ~65–75 s vertical explainers, one topic each.
 - **One video a day, on a rotation** (from Nov 15, 2026; `node tools/rotation.js`):
   Mon/Wed/Fri How It Works · Tue/Sat What If · Thu/Sun World News.
+  Plus **AI Village · Week N** every Saturday from Nov 21 (posted Sunday), hosted by the
+  **village host** voice (ElevenLabs, the owner picks and records it; not Mark, Puck or George).
   | Series | Desk | Topic type | Voice |
   |---|---|---|---|
   | What If | What If Studio (`whatif`) | science | **Puck** (Kokoro `am_puck`, free; the studio makes it) |
@@ -36,7 +38,7 @@ Save it as `scripts/YYYY-MM-DD/<slug>.md`. `node tools/check-scripts.js` must pa
 
 # WhiteBucket Explains: <title as a question or hook>
 
-Topic type: money | science | news
+Topic type: money | science | news | village
 Format: 9:16 · paper line with the bucket guy · about 72 s · ~190 words · voice: <the series' voice>
 Post: <date window, or "any time (evergreen)">
 Tone: <one line>

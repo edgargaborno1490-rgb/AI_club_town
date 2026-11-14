@@ -21,3 +21,11 @@ test('World News on Thursday and Sunday', () => {
 test('a bad date throws', () => {
   assert.throws(() => deskFor('someday'), /date/);
 });
+
+test('weekly update: Saturdays from Nov 21, numbered by week', () => {
+  const { weeklyUpdateWeek } = require('../tools/rotation.js');
+  assert.equal(weeklyUpdateWeek('2026-11-14'), null); // first Saturday: intro first, no update yet
+  assert.equal(weeklyUpdateWeek('2026-11-21'), 1);
+  assert.equal(weeklyUpdateWeek('2026-11-28'), 2);
+  assert.equal(weeklyUpdateWeek('2026-11-22'), null); // Sunday
+});

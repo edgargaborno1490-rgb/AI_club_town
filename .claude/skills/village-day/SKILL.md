@@ -24,7 +24,8 @@ Tue/Sat What If (science, Puck) · Thu/Sun World News (Mark on ElevenLabs).
   and move on to the next villager.
 - If a command prints "Push stopped", someone else changed that repo at the same time.
   Stop the day there and say so in your summary; don't force-push.
-- One script. Nothing extra. The desks that aren't on today stay idle.
+- One script (plus the Village Update on Saturdays). Nothing extra. The desks that aren't
+  on today stay idle.
 
 ## Steps
 
@@ -49,6 +50,8 @@ Tue/Sat What If (science, Puck) · Thu/Sun World News (Mark on ElevenLabs).
    What If → `what-if-writer`; World News → part A of `world-news-writer`.
 4. **World News desk** (`news`): on days it didn't write, follow part B of
    `world-news-writer` (fact-check today's script).
+4b. **Saturdays only:** if `node tools/rotation.js` prints "also Village Update", the
+   Chief follows `weekly-update` (a second DRAFT, posted Sunday).
 5. **Programmer** (`programmer`): follow `programmer` (checks the script, sends it to the studio).
 6. **Banker** (`banker`): follow `banker`.
 7. **Close the day**

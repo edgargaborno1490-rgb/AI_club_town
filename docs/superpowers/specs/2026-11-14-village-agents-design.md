@@ -106,3 +106,10 @@ The village now serves it:
 - Crossovers: a What If can be "Part 2" of a World News story, only as a clearly
   hypothetical, educational question; never implying real reported facts about real people
   are fake, never buy/sell advice.
+
+## Update 2026-11-14: AI Village series
+- Intro video script: `scripts/specials/ai-village-intro.md` (sent to the studio as a DRAFT).
+- Every Saturday from Nov 21 the Chief also drafts **AI Village · Week N** (skill `weekly-update`),
+  posted Sunday, with only real numbers from the repo records. New topic type `village`
+  (fact notes cite repo files instead of web links).
+- Voice: a fourth ElevenLabs "village host" voice the owner picks and records (not Mark).

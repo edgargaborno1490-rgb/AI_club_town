@@ -6,6 +6,16 @@ const BY_WEEKDAY = ['news', 'howitworks', 'whatif', 'howitworks', 'news', 'howit
 const SERIES = { howitworks: 'How It Works', whatif: 'What If', news: 'World News' };
 const VOICE = { howitworks: 'George (Kokoro bm_george, made by the studio)', whatif: 'Puck (Kokoro am_puck, made by the studio)', news: 'Mark (ElevenLabs)' };
 
+// Village Update: every Saturday from Nov 21, 2026 (week 1). Returns the week number or null.
+const FIRST_UPDATE = Date.UTC(2026, 10, 21);
+const HOST_VOICE = 'Village host (ElevenLabs, the owner picks and records it)';
+function weeklyUpdateWeek(date) {
+  deskFor(date);
+  const t = Date.parse(date + 'T00:00:00Z');
+  if (new Date(t).getUTCDay() !== 6 || t < FIRST_UPDATE) return null;
+  return Math.round((t - FIRST_UPDATE) / (7 * 864e5)) + 1;
+}
+
 function deskFor(date) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date || '')) throw new Error(`Not a date: "${date}"`);
   return BY_WEEKDAY[new Date(date + 'T12:00:00Z').getUTCDay()];
@@ -16,7 +26,9 @@ if (require.main === module) {
     const date = process.argv[2] || require('./town.js').honolulu().date;
     const desk = deskFor(date);
     console.log(`${date}: ${SERIES[desk]} (desk ${desk}, voice: ${VOICE[desk]})`);
+    const week = weeklyUpdateWeek(date);
+    if (week) console.log(`${date}: also Village Update · Week ${week} (voice: ${HOST_VOICE})`);
   } catch (err) { console.error(err.message); process.exit(1); }
 }
 
-module.exports = { deskFor, SERIES, VOICE };
+module.exports = { deskFor, weeklyUpdateWeek, SERIES, VOICE, HOST_VOICE };
