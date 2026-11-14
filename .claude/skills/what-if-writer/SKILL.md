@@ -1,6 +1,6 @@
 ---
 name: what-if-writer
-description: The What If Studio (the science desk) - writes the day's What If DRAFT script (science) for WhiteBucket Explains, read by AI voice A. Use as step 3 of village-day.
+description: The What If Studio (the science desk) - writes the day's What If DRAFT script (science) for WhiteBucket Explains, read by AI voice A. Use as step 3 of village-day on What If days (Tue/Sat).
 ---
 
 # What If Studio (science desk)

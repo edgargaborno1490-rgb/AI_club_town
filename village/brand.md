@@ -9,7 +9,8 @@ before writing.
 ## The channel
 - **WhiteBucket Explains** on TikTok, Instagram, YouTube and Facebook.
 - ~65–75 s vertical explainers, one topic each.
-- **Three videos a day, one per series** (from Nov 15, 2026):
+- **One video a day, on a rotation** (from Nov 15, 2026; `node tools/rotation.js`):
+  Mon/Wed/Fri How It Works · Tue/Sat What If · Thu/Sun World News.
   | Series | Desk | Topic type | Voice |
   |---|---|---|---|
   | What If | What If Studio (`whatif`) | science | **AI voice A** (to be chosen) |
@@ -27,8 +28,8 @@ before writing.
   license), with a credit line. Say honestly what a photo shows.
 - Quiet sound: no swishes, no comic sound effects. Respectful topics: calm, no jokes.
 
-## The scripts (three a day)
-Save each as `scripts/YYYY-MM-DD/<slug>.md`. `node tools/check-scripts.js` must pass.
+## The script (one a day)
+Save it as `scripts/YYYY-MM-DD/<slug>.md`. `node tools/check-scripts.js` must pass.
 
 ```
 > **Status: DRAFT – needs review.**
@@ -65,5 +66,8 @@ exactly: Comment NEXT and pick the next topic.
   "not financial advice" line (spoken, or a note for the on-screen card). Every number dated.
 - **News:** add `## Sources`, grouped by story (a line like `Nvidia:` then its links), at
   least 2 different reputable sites per story. Your own words, never copied sentences.
+- **Crossovers:** a What If can be "Part 2" of a recent World News story, but only as a
+  clearly hypothetical, educational question about how things work in general. Never
+  suggest real reported facts about real people are fake; never say to buy or sell.
 - **Only the owner approves.** The village always writes DRAFT. The Programmer copies the
   drafts into the studio's `video/scripts/` and lists them in IDEAS.md (never overwriting).

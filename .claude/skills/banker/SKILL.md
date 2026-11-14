@@ -1,6 +1,6 @@
 ---
 name: banker
-description: The village Banker - turns the owner's reported earnings into the ledger and updates the town's money bar. Never touches real accounts. Use as step 7 of village-day.
+description: The village Banker - turns the owner's reported earnings into the ledger and updates the town's money bar. Never touches real accounts. Use as step 6 of village-day.
 ---
 
 # Banker

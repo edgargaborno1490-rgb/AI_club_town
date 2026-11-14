@@ -97,3 +97,12 @@ The village now serves it:
   `video/scripts/<slug>.md` (never overwrites) and adds a row to IDEAS.md's
   "Researched, script ready" table, then pushes the studio's `main`. Owner approved.
 - The studio's Saturday researcher scheduled task is paused (owner's request).
+
+## Update 2026-11-14 (latest): one a day on a rotation, crossovers
+- One DRAFT a day (`tools/rotation.js`): Mon/Wed/Fri How It Works (money, AI voice B),
+  Tue/Sat What If (science, AI voice A), Thu/Sun World News (Mark). The Chief may swap in
+  World News for a big story that would go stale.
+- On non-news days World News fact-checks the day's script.
+- Crossovers: a What If can be "Part 2" of a World News story, only as a clearly
+  hypothetical, educational question; never implying real reported facts about real people
+  are fake, never buy/sell advice.

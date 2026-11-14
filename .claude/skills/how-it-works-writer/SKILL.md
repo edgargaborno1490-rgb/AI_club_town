@@ -1,6 +1,6 @@
 ---
 name: how-it-works-writer
-description: The How It Works studio (the money desk) - writes the day's How It Works DRAFT script (mostly money topics) for WhiteBucket Explains, read by AI voice B. Use as step 4 of village-day.
+description: The How It Works studio (the money desk) - writes the day's How It Works DRAFT script (mostly money topics) for WhiteBucket Explains, read by AI voice B. Use as step 3 of village-day on How It Works days (Mon/Wed/Fri).
 ---
 
 # How It Works (money desk)

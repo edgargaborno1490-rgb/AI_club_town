@@ -1,15 +1,17 @@
 ---
 name: village-day
-description: Run one full White Bucket village day - the Chief picks three new topics (What If, How It Works, World News), each desk writes a DRAFT script in the WhiteBucket Explains studio format, the news desk fact-checks, the Programmer sends the drafts to the studio, and the town lights up as they work. Use when the daily scheduled run starts or the owner says "run the village".
+description: Run one full White Bucket village day - the Chief picks one new topic for today's desk on the rotation, that desk writes the DRAFT script in the WhiteBucket Explains studio format, the news desk fact-checks, the Programmer sends it to the studio, and the town lights up as they work. Use when the daily scheduled run starts or the owner says "run the village".
 ---
 
 # Village day
 
 AI Club Town is the front office for the owner's video studio (**whitebucket-studio**).
-Each day the village writes **three** DRAFT scripts for **WhiteBucket Explains**, one per
-series, and sends them to the studio. The owner approves them, the voices are added, and
-the studio builds the videos. The town page reads `town.json` from `main`, so every status
-change is pushed right away.
+Each day the village writes **one** DRAFT script for **WhiteBucket Explains** and sends it
+to the studio. The owner approves it, the voice is added, and the studio builds the video.
+The town page reads `town.json` from `main`, so every status change is pushed right away.
+
+**Rotation** (`node tools/rotation.js`): Mon/Wed/Fri How It Works (money, AI voice B) ·
+Tue/Sat What If (science, AI voice A) · Thu/Sun World News (Mark on ElevenLabs).
 
 ## Rules for the whole run
 - Work on `main` of AI_club_town. All pushes go to `main` (the owner approved this).
@@ -22,7 +24,7 @@ change is pushed right away.
   and move on to the next villager.
 - If a command prints "Push stopped", someone else changed that repo at the same time.
   Stop the day there and say so in your summary; don't force-push.
-- Keep it to three scripts. Nothing extra.
+- One script. Nothing extra. The desks that aren't on today stay idle.
 
 ## Steps
 
@@ -40,19 +42,20 @@ change is pushed right away.
    Make sure the studio is next to this repo at `../whitebucket-studio` on its `main`
    branch: `ls ../whitebucket-studio/video/WORKFLOW.md`. If it's missing, attach it with the
    add_repo tool (owner "edgargaborno1490-rgb", repo "whitebucket-studio", access "push")
-   and clone it there with `--depth 1`. If that fails, log it, write the scripts anyway,
-   and the Programmer will report that they weren't sent.
-2. **Chief of Staff** (`chief`): follow `chief-of-staff`. Picks three topics.
-3. **What If Studio** (`whatif`): follow `what-if-writer`.
-4. **How It Works** (`howitworks`): follow `how-it-works-writer`.
-5. **World News** (`news`): follow `world-news-writer` (writes the news script, then
-   fact-checks the other two).
-6. **Programmer** (`programmer`): follow `programmer` (checks all three, sends them to the studio).
-7. **Banker** (`banker`): follow `banker`.
-8. **Close the day**
+   and clone it there with `--depth 1`. If that fails, log it, write the script anyway,
+   and the Programmer will report that it wasn't sent.
+2. **Chief of Staff** (`chief`): follow `chief-of-staff`. Picks today's topic and desk.
+3. **Today's writer** (only one): How It Works → `how-it-works-writer`;
+   What If → `what-if-writer`; World News → part A of `world-news-writer`.
+4. **World News desk** (`news`): on days it didn't write, follow part B of
+   `world-news-writer` (fact-check today's script).
+5. **Programmer** (`programmer`): follow `programmer` (checks the script, sends it to the studio).
+6. **Banker** (`banker`): follow `banker`.
+7. **Close the day**
    ```bash
-   node tools/town.js log "Day wrap-up: 3 DRAFTs in the studio: <the three titles>."
+   node tools/town.js log "Day wrap-up: DRAFT in the studio: <title> (<voice>)."
    node tools/town.js close-day --push
    ```
 
-Finish with a short summary: the three titles and their voices, anything that failed, and the balance.
+Finish with a short summary: the title and its voice, why this topic, anything that
+failed, and the balance.
