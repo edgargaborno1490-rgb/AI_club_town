@@ -50,3 +50,10 @@ test('timeAgo phrases', () => {
   assert.equal(timeAgo(null, now), '');
   assert.equal(timeAgo('nonsense', now), '');
 });
+
+test('money written the way people type it', () => {
+  assert.equal(parseTown({ balance: '$12.40' }).balance, 12.4);
+  assert.equal(parseTown({ balance: '1,234.50' }).balance, 1234.5);
+  assert.equal(parseTown({ goal: '$1,000' }).goal, 1000);
+  assert.equal(parseTown({ balance: '12abc' }).balance, 0);
+});

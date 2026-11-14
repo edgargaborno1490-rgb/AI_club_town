@@ -50,6 +50,12 @@ function check(cond, msg) { if (!cond) throw new Error(msg); console.log('  ok -
       check(/No activity data yet/.test(await page.textContent('#status')), 'missing data says "No activity data yet"');
       check((await page.$$('.tag[data-s="working"]')).length === 0, 'missing data shows nobody working');
       await page.close();
+
+      const noTask = JSON.stringify({ agents: { chief: { status: 'working', task: '' } } });
+      ({ page, errors } = await run('/', p => p.route('**/town.json*', r => r.fulfill({ contentType: 'application/json', body: noTask }))));
+      check(await page.isVisible('.tag[data-id="chief"][data-s="working"] .chip'), 'working agent with no task still shows its name');
+      check(!(await page.isVisible('.tag[data-id="chief"] .bubble')), 'working agent with no task shows no empty bubble');
+      await page.close();
     }
   } catch (e) {
     failed = true;

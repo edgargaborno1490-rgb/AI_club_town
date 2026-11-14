@@ -278,6 +278,7 @@
           a.status = s.status;
           a.tag.dataset.s = s.status;
           a.btext.textContent = s.task;
+          a.btext.parentNode.hidden = !s.task;
         }
       },
     };

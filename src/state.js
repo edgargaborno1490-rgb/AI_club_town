@@ -11,7 +11,8 @@
 
   const isObj = v => v !== null && typeof v === 'object' && !Array.isArray(v);
   const num = v => {
-    const n = typeof v === 'string' ? parseFloat(v) : v;
+    // Accept "$1,234.50" the way people type it; reject partial junk like "12abc".
+    const n = typeof v === 'string' && v.trim() !== '' ? Number(v.replace(/[$,\s]/g, '')) : v;
     return typeof n === 'number' && isFinite(n) ? n : NaN;
   };
   const text = v => (typeof v === 'string' ? v : '');
