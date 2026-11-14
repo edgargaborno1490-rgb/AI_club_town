@@ -4,7 +4,7 @@
 // Mon/Wed/Fri: How It Works (money) · Tue/Sat: What If · Thu/Sun: World News
 const BY_WEEKDAY = ['news', 'howitworks', 'whatif', 'howitworks', 'news', 'howitworks', 'whatif'];
 const SERIES = { howitworks: 'How It Works', whatif: 'What If', news: 'World News' };
-const VOICE = { howitworks: 'AI voice B (to be chosen)', whatif: 'AI voice A (to be chosen)', news: 'Mark (ElevenLabs)' };
+const VOICE = { howitworks: 'George (Kokoro bm_george, made by the studio)', whatif: 'Puck (Kokoro am_puck, made by the studio)', news: 'Mark (ElevenLabs)' };
 
 function deskFor(date) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date || '')) throw new Error(`Not a date: "${date}"`);

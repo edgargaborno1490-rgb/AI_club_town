@@ -1,6 +1,6 @@
 ---
 name: how-it-works-writer
-description: The How It Works studio (the money desk) - writes the day's How It Works DRAFT script (mostly money topics) for WhiteBucket Explains, read by AI voice B. Use as step 3 of village-day on How It Works days (Mon/Wed/Fri).
+description: The How It Works studio (the money desk) - writes the day's How It Works DRAFT script (mostly money topics) for WhiteBucket Explains, read by George (Kokoro). Use as step 3 of village-day on How It Works days (Mon/Wed/Fri).
 ---
 
 # How It Works (money desk)
@@ -15,7 +15,7 @@ description: The How It Works studio (the money desk) - writes the day's How It 
    Educational only: no stock picks, predictions or "buy this". Include a short
    "not financial advice" line near the end.
 5. Write `scripts/$DATE/<slug>.md` in the format in `brand.md` (`Topic type: money`,
-   `voice: AI voice B (to be chosen)` in the Format line).
+   `voice: George (Kokoro bm_george, made by the studio)` in the Format line).
    The section plan uses the paper-line look and gives the bucket guy something to do.
 6. Run `node tools/check-scripts.js $DATE` and fix everything it lists for your file
    (other desks' files may not exist yet).

@@ -10,8 +10,8 @@ Each day the village writes **one** DRAFT script for **WhiteBucket Explains** an
 to the studio. The owner approves it, the voice is added, and the studio builds the video.
 The town page reads `town.json` from `main`, so every status change is pushed right away.
 
-**Rotation** (`node tools/rotation.js`): Mon/Wed/Fri How It Works (money, AI voice B) ·
-Tue/Sat What If (science, AI voice A) · Thu/Sun World News (Mark on ElevenLabs).
+**Rotation** (`node tools/rotation.js`): Mon/Wed/Fri How It Works (money, George) ·
+Tue/Sat What If (science, Puck) · Thu/Sun World News (Mark on ElevenLabs).
 
 ## Rules for the whole run
 - Work on `main` of AI_club_town. All pushes go to `main` (the owner approved this).

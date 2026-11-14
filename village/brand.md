@@ -13,8 +13,8 @@ before writing.
   Mon/Wed/Fri How It Works · Tue/Sat What If · Thu/Sun World News.
   | Series | Desk | Topic type | Voice |
   |---|---|---|---|
-  | What If | What If Studio (`whatif`) | science | **AI voice A** (to be chosen) |
-  | How It Works | How It Works (`howitworks`) | money (mostly) | **AI voice B** (to be chosen, different from A) |
+  | What If | What If Studio (`whatif`) | science | **Puck** (Kokoro `am_puck`, free; the studio makes it) |
+  | How It Works | How It Works (`howitworks`) | money (mostly) | **George** (Kokoro `bm_george`, free; the studio makes it) |
   | World News | World News (`news`) | news | **Mark** (ElevenLabs, the owner records it) |
 - Write every narration for the ear, whichever voice reads it.
 
