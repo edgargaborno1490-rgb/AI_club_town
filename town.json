@@ -2,16 +2,33 @@
   "day": 1,
   "goal": 1000,
   "balance": 0,
-  "updated": "2026-11-14T12:00:00Z",
+  "updated": "2026-11-14T06:24:58.217Z",
   "agents": {
-    "chief":      {"status": "idle", "task": ""},
-    "whatif":     {"status": "idle", "task": ""},
-    "howitworks": {"status": "idle", "task": ""},
-    "news":       {"status": "idle", "task": ""},
-    "programmer": {"status": "idle", "task": ""},
-    "banker":     {"status": "idle", "task": ""}
+    "chief": {
+      "status": "idle",
+      "task": ""
+    },
+    "whatif": {
+      "status": "idle",
+      "task": ""
+    },
+    "howitworks": {
+      "status": "idle",
+      "task": ""
+    },
+    "news": {
+      "status": "idle",
+      "task": ""
+    },
+    "programmer": {
+      "status": "idle",
+      "task": ""
+    },
+    "banker": {
+      "status": "idle",
+      "task": ""
+    }
   },
-  "log": [
-    {"time": "12:00", "text": "Town opened. Waiting for the first agent run."}
-  ]
+  "log": [],
+  "lastRunDate": "2026-11-13"
 }
