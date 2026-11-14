@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Club Town</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="stage"></div>
+<div id="labels"></div>
+
+<section class="panel goal" aria-label="Town goal">
+  <div class="row"><h1>AI Club Town</h1><span class="day" id="day">Day 1</span></div>
+  <div class="row"><span class="money" id="money">$0.00 <small id="goal">of $1,000</small></span></div>
+  <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  <div class="note"><span class="badge" id="badge" hidden>Example data</span><span id="status">Loading the town…</span></div>
+  <div class="btns" id="demo-controls" hidden><button id="pause" type="button">Pause</button><button id="next" type="button">Next update</button></div>
+</section>
+
+<section class="panel log" aria-label="Town log">
+  <h2>Today in town</h2>
+  <ol id="feed"></ol>
+</section>
+
+<script src="vendor/three.min.js"></script>
+<script src="vendor/OrbitControls.js"></script>
+<script src="src/state.js"></script>
+<script src="src/demo.js"></script>
+<script src="src/scene.js"></script>
+<script src="src/app.js"></script>
+</body>
+</html>
