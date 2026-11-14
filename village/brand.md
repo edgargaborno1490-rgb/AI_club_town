@@ -1,60 +1,64 @@
-# White Bucket Project: style guide
+# WhiteBucket Explains: what the village writes
 
-White Bucket Project is a learning channel: how things work, money, earth science,
-"what if" questions and world news. Posted on TikTok, YouTube Shorts, Instagram Reels
-and Facebook Reels. The owner can change anything here; every writer reads this first.
+The village is the front office for the owner's video studio, the
+`whitebucket-studio` repo. **The studio's `video/WORKFLOW.md` is the boss:** if anything
+here disagrees with it, follow WORKFLOW.md. Every writer reads WORKFLOW.md and one or
+two recent studio scripts (`video/scripts/hawaii-expensive.md`, `video/scripts/nvidia.md`)
+before writing.
 
-## Voice
-- A curious friend explaining something cool. Plain words, short sentences.
-- Hook in the first 3 seconds: a question or a surprising claim, never "Hey guys".
-- One surprising fact per video, clearly true.
-- No hype words ("insane", "you won't believe"), no clickbait you can't pay off.
-- Close with a short invite: "Follow White Bucket for more." Vary the wording.
-- Audience: teens and adults who like learning. Keep it family-friendly.
+## The channel
+- **WhiteBucket Explains** on TikTok, Instagram, YouTube and Facebook.
+- ~65–75 s vertical explainers, one topic each.
+- **Mix:** about 2 money videos for every 1 science video, plus timely news, holidays and
+  sky events when they come up.
+- Voiceover: the owner records the narration in ElevenLabs (voice **Mark**), so write for the ear.
 
-## Format
-- Vertical video, 60–75 seconds. Narration 150–190 words (about 2.5 words a second).
-- Every scene is something code can draw later: simple shapes, diagrams, maps, icons,
-  big text, low-poly 3D. No real people's faces, no footage from other creators or news
-  outlets, no logos or brands as visuals.
+## The look the section plan describes ("paper line", locked in)
+- Cream paper background, dark brown ink line drawings (outlines, no fills), red for key
+  words and bad numbers. Big spaced-out headlines, small all-caps labels for sources and dates,
+  outlined panels, one caption line at a time.
+- **The bucket guy:** a faceless dark figure with a white bucket on his head. Playful: hops,
+  points, shrugs, cheers, jumps at big numbers. Stands bottom right, walks into some scenes.
+- A few real photos in white paper frames, only free-to-use (NASA, Wikimedia Commons with
+  license), with a credit line. Say honestly what a photo shows.
+- Quiet sound: no swishes, no comic sound effects. Respectful topics: calm, no jokes.
 
-## Script template
-Save as `scripts/YYYY-MM-DD/<series>.md`, where series is `what-if`, `how-it-works`
-or `world-news`. `node tools/check-scripts.js` must pass.
+## The script (one per day)
+Save as `scripts/YYYY-MM-DD/<slug>.md`. `node tools/check-scripts.js` must pass.
 
 ```
----
-series: what-if
-title: What If the Moon Disappeared?
-topic: earth science
-length: 70s
----
+> **Status: DRAFT – needs review.**
 
-## Hook
-One line, spoken in the first 3 seconds.
+# WhiteBucket Explains: <title as a question or hook>
 
-## Narration
-The full voiceover, 150–190 words, starting with the hook.
+Topic type: money | science | news
+Format: 9:16 · paper line with the bucket guy · about 72 s · ~190 words · voice: Mark
+Post: <date window, or "any time (evergreen)">
+Tone: <one line>
 
-## Scenes
-1. [6s] On screen: what is drawn | Text: big on-screen words
-2. [10s] On screen: ... | Text: ...
-(at least 4 scenes; the seconds add up to 60–75)
+## Narration (record as one paragraph)
+One paragraph, about 180–200 words. First sentence is the hook. "…" for pauses. Short
+sentences. Numbers spelled the way they're said ("one point one million"). Ends with
+exactly: Comment NEXT and pick the next topic.
 
-## Facts to double-check
-- Each number or claim, with where it comes from.
+## Section plan
+| # | Narration | On screen |
+|---|---|---|
+| 0 | hook words… | what's drawn, the headline (black + red words), what the bucket guy does |
+(5–7 rows)
 
-## Title
-A title under 60 characters.
-
-## Hashtags
-#whitebucket plus 4–6 topic tags
+## Fact notes
+- Every claim and number, with a source link and an "as of" date.
 
 ## Captions
-- TikTok: one or two lines
-- YouTube: one or two lines
-- Instagram: one or two lines
-- Facebook: one or two lines
+- TikTok: … (about 5 hashtags, ends "Comment NEXT and pick the next topic!")
+- Instagram: …
+- Facebook: … (3 hashtags)
+- YouTube: title + one line
 ```
 
-World News adds a `## Sources` section with the links (at least 2 different sites).
+- **Money:** educational only. No stock picks, predictions or "buy this". Include a short
+  "not financial advice" line (spoken, or a note for the on-screen card). Every number dated.
+- **News:** add `## Sources`, grouped by story (a line like `Nvidia:` then its links), at
+  least 2 different reputable sites per story. Your own words, never copied sentences.
+- **Only the owner approves.** The village always writes DRAFT.

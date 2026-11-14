@@ -3,60 +3,64 @@ const assert = require('node:assert/strict');
 const { checkScript } = require('../tools/check-scripts.js');
 
 const words = n => Array.from({ length: n }, (_, i) => 'word' + i).join(' ');
+const END = 'Comment NEXT and pick the next topic.';
 
-function script({ series = 'what-if', narration = 170, scenes = [10, 15, 15, 15, 15], sources = null, drop = null } = {}) {
+function script({ type = 'science', narration = 185, end = END, rows = 6, status = '> **Status: DRAFT – needs review.**', facts, sources, drop, extra = '' } = {}) {
   const sections = {
-    Hook: 'What if the Moon vanished tonight?',
-    Narration: words(narration),
-    Scenes: scenes.map((s, i) => `${i + 1}. [${s}s] On screen: shot ${i + 1} | Text: caption ${i + 1}`).join('\n'),
-    'Facts to double-check': '- The Moon is about 384,400 km away.',
-    Title: 'What If the Moon Disappeared?',
-    Hashtags: '#whatif #space #learnontiktok',
-    Captions: '- TikTok: a\n- YouTube: b\n- Instagram: c\n- Facebook: d',
+    'Narration (record as one paragraph)': `${words(narration)} ${end}`,
+    'Section plan': ['| # | Narration | On screen |', '|---|---|---|', ...Array.from({ length: rows }, (_, i) => `| ${i} | line ${i} | drawing ${i} |`)].join('\n'),
+    'Fact notes': facts || '- Claim one, as of Nov 2026. Source: https://nasa.gov/a\n- Claim two. Source: https://noaa.gov/b',
+    Captions: '- TikTok: a\n- Instagram: b\n- Facebook: c\n- YouTube: d',
   };
   if (sources) sections.Sources = sources;
-  if (drop) delete sections[drop];
-  const body = Object.entries(sections).map(([h, t]) => `## ${h}\n${t}\n`).join('\n');
-  return `---\nseries: ${series}\ntitle: Test title\ntopic: earth science\nlength: 70s\n---\n\n${body}`;
+  if (drop) delete Object.assign(sections)[drop];
+  const body = Object.entries(sections).map(([h, t]) => `## ${h}\n\n${t}\n`).join('\n');
+  return `${status}\n\n# WhiteBucket Explains: Test topic?\n\nTopic type: ${type}\nFormat: 9:16 · paper line with the bucket guy · about 72 s · voice: Mark\n${extra}\n${body}`;
 }
 
-test('a complete script passes', () => {
-  assert.deepEqual(checkScript(script(), 'what-if'), []);
+test('a complete studio-format script passes', () => {
+  assert.deepEqual(checkScript(script()), []);
 });
 
-test('a missing section is named', () => {
-  assert.ok(checkScript(script({ drop: 'Hashtags' }), 'what-if').some(p => /Hashtags/.test(p)));
+test('the script must start as DRAFT', () => {
+  assert.ok(checkScript(script({ status: '> **Status: APPROVED**' })).some(p => /DRAFT/.test(p)));
 });
 
-test('narration outside 150-190 words is flagged', () => {
-  assert.ok(checkScript(script({ narration: 90 }), 'what-if').some(p => /Narration has 90 words/.test(p)));
-  assert.ok(checkScript(script({ narration: 230 }), 'what-if').some(p => /Narration has 230 words/.test(p)));
+test('narration must be 170-210 words', () => {
+  assert.ok(checkScript(script({ narration: 120 })).some(p => /Narration has/.test(p)));
 });
 
-test('scene seconds outside 60-75 are flagged', () => {
-  assert.ok(checkScript(script({ scenes: [10, 10, 10, 10, 10] }), 'what-if').some(p => /Scenes add up to 50s/.test(p)));
+test('narration must end with the locked-in line', () => {
+  assert.ok(checkScript(script({ end: 'Follow White Bucket for more.' })).some(p => /Comment NEXT/.test(p)));
 });
 
-test('the wrong series in the front matter is flagged', () => {
-  assert.ok(checkScript(script({ series: 'news' }), 'what-if').some(p => /series/.test(p)));
+test('section plan needs 4-8 rows', () => {
+  assert.ok(checkScript(script({ rows: 2 })).some(p => /Section plan/.test(p)));
+});
+
+test('fact notes need links and an "as of" date', () => {
+  assert.ok(checkScript(script({ facts: '- A claim with no source' })).some(p => /Fact notes/.test(p)));
+  assert.ok(checkScript(script({ facts: '- A https://a.com/x\n- B https://b.com/y' })).some(p => /as of/.test(p)));
+});
+
+test('money scripts must say not financial advice', () => {
+  assert.ok(checkScript(script({ type: 'money' })).some(p => /not financial advice/.test(p)));
+  assert.deepEqual(checkScript(script({ type: 'money', extra: 'Note: small "not financial advice" card near the end.' })), []);
 });
 
 test('a missing caption platform is flagged', () => {
-  const s = script().replace('- Facebook: d', '');
-  assert.ok(checkScript(s, 'what-if').some(p => /Facebook/.test(p)));
+  const s = script().replace('- Facebook: c\n', '');
+  assert.ok(checkScript(s).some(p => /Facebook/.test(p)));
 });
 
-test('world news needs sources from at least 2 different sites', () => {
-  const one = '- https://www.reuters.com/a\n- https://www.reuters.com/b';
-  const two = '- https://www.reuters.com/a\n- https://apnews.com/b';
-  assert.ok(checkScript(script({ series: 'world-news', sources: one }), 'world-news').some(p => /2 different sites/.test(p)));
-  assert.deepEqual(checkScript(script({ series: 'world-news', sources: two }), 'world-news'), []);
-  assert.ok(checkScript(script({ series: 'world-news' }), 'world-news').some(p => /Sources/.test(p)));
+test('topic type must be money, science or news', () => {
+  assert.ok(checkScript(script({ type: 'gossip' })).some(p => /Topic type/.test(p)));
 });
 
-test('world news needs 2 different sites for every story group', () => {
-  const grouped = 'Story A:\n- https://reuters.com/a\n- https://apnews.com/a\n\nStory B:\n- https://bbc.com/b';
-  assert.ok(checkScript(script({ series: 'world-news', sources: grouped }), 'world-news').some(p => /Story B/.test(p)));
-  const ok = 'Story A:\n- https://reuters.com/a\n- https://apnews.com/a\n\nStory B:\n- https://bbc.com/b\n- https://npr.org/b';
-  assert.deepEqual(checkScript(script({ series: 'world-news', sources: ok }), 'world-news'), []);
+test('news scripts need 2 different sites for every story group', () => {
+  const bad = 'Story A:\n- https://reuters.com/a\n- https://apnews.com/a\n\nStory B:\n- https://bbc.com/b';
+  assert.ok(checkScript(script({ type: 'news', sources: bad })).some(p => /Story B/.test(p)));
+  const ok = 'Story A:\n- https://reuters.com/a\n- https://apnews.com/a';
+  assert.deepEqual(checkScript(script({ type: 'news', sources: ok })), []);
+  assert.ok(checkScript(script({ type: 'news' })).some(p => /Sources/.test(p)));
 });

@@ -1,85 +1,83 @@
 #!/usr/bin/env node
-// Checks that a day's scripts follow the White Bucket format.
+// Checks that a day's script follows the WhiteBucket Explains studio format
+// (the same layout as whitebucket-studio/video/scripts/*.md).
 //   node tools/check-scripts.js [YYYY-MM-DD]   (defaults to today in Hawaii)
 const fs = require('fs');
 const path = require('path');
 
-const SERIES = ['what-if', 'how-it-works', 'world-news'];
-const SECTIONS = ['Hook', 'Narration', 'Scenes', 'Facts to double-check', 'Title', 'Hashtags', 'Captions'];
-const PLATFORMS = ['TikTok', 'YouTube', 'Instagram', 'Facebook'];
-
-function frontMatter(text) {
-  const m = text.match(/^---\n([\s\S]*?)\n---/);
-  if (!m) return null;
-  return Object.fromEntries(m[1].split('\n').map(l => l.split(/:\s*/)).filter(p => p.length >= 2).map(([k, ...v]) => [k.trim(), v.join(': ').trim()]));
-}
+const ENDING = 'Comment NEXT and pick the next topic.';
+const TYPES = ['money', 'science', 'news'];
+const PLATFORMS = ['TikTok', 'Instagram', 'Facebook', 'YouTube'];
 
 function sections(text) {
   const out = {};
-  const parts = text.split(/^## +/m).slice(1);
-  for (const p of parts) {
+  for (const p of text.split(/^## +/m).slice(1)) {
     const nl = p.indexOf('\n');
-    const head = (nl === -1 ? p : p.slice(0, nl)).trim();
+    const head = (nl === -1 ? p : p.slice(0, nl)).trim().replace(/\s*\(.*\)$/, '');
     out[head] = nl === -1 ? '' : p.slice(nl + 1).trim();
   }
   return out;
 }
 
-function checkScript(text, series) {
-  const problems = [];
-  const fm = frontMatter(text);
-  if (!fm) problems.push('Missing front matter (--- series/title/topic/length ---)');
-  else {
-    if (fm.series !== series) problems.push(`Front matter series is "${fm.series}", expected "${series}"`);
-    if (!fm.title) problems.push('Front matter has no title');
+const hostsOf = text => [...text.matchAll(/https?:\/\/([^/\s)]+)/g)].map(m => m[1].replace(/^www\./, ''));
+
+function checkSourceGroups(text) {
+  const problems = [], groups = [];
+  for (const line of text.split('\n').map(l => l.trim()).filter(Boolean)) {
+    const isLink = /https?:\/\//.test(line);
+    if (!isLink || !groups.length) groups.push({ name: isLink ? 'Sources' : line.replace(/:$/, ''), hosts: new Set() });
+    for (const h of hostsOf(line)) groups.at(-1).hosts.add(h);
   }
+  for (const g of groups) if (g.hosts.size < 2) problems.push(`Sources must come from at least 2 different sites (${g.name})`);
+  return problems;
+}
+
+function checkScript(text) {
+  const problems = [];
+  const firstLine = text.split('\n').find(l => l.trim()) || '';
+  if (!/^>\s*\*\*Status: DRAFT/.test(firstLine)) problems.push('First line must be "> **Status: DRAFT – needs review.**" (only the owner approves)');
+  if (!/^# WhiteBucket Explains: .+/m.test(text)) problems.push('Missing title line "# WhiteBucket Explains: <title>"');
+  const type = (text.match(/^Topic type:\s*(\S+)/m) || [])[1];
+  if (!TYPES.includes(type)) problems.push(`Topic type must be one of ${TYPES.join(', ')} (got "${type || ''}")`);
+
   const s = sections(text);
-  const needed = series === 'world-news' ? [...SECTIONS, 'Sources'] : SECTIONS;
-  for (const name of needed) if (!s[name]) problems.push(`Missing or empty section: ${name}`);
+  for (const name of ['Narration', 'Section plan', 'Fact notes', 'Captions']) if (!s[name]) problems.push(`Missing or empty section: ${name}`);
 
   if (s.Narration) {
     const n = s.Narration.split(/\s+/).filter(Boolean).length;
-    if (n < 150 || n > 190) problems.push(`Narration has ${n} words (needs 150-190)`);
+    if (n < 170 || n > 210) problems.push(`Narration has ${n} words (needs about 180-200, at most 170-210)`);
+    if (!s.Narration.trim().endsWith(ENDING)) problems.push(`Narration must end with exactly "${ENDING}"`);
   }
-  if (s.Scenes) {
-    const secs = [...s.Scenes.matchAll(/^\s*\d+\.\s*\[(\d+(?:\.\d+)?)s\]/gm)].map(m => Number(m[1]));
-    if (secs.length < 4) problems.push(`Scenes has ${secs.length} timed scenes (needs at least 4, like "1. [8s] On screen: ... | Text: ...")`);
-    const total = secs.reduce((a, b) => a + b, 0);
-    if (total < 60 || total > 75) problems.push(`Scenes add up to ${total}s (needs 60-75s)`);
+  if (s['Section plan']) {
+    const rows = s['Section plan'].split('\n').filter(l => /^\|/.test(l.trim()) && !/^\|\s*#\s*\|/.test(l.trim()) && !/^\|[\s|:-]+\|$/.test(l.trim()));
+    if (rows.length < 4 || rows.length > 8) problems.push(`Section plan has ${rows.length} sections (needs 4-8 table rows)`);
+  }
+  if (s['Fact notes']) {
+    if (hostsOf(s['Fact notes']).length < 2) problems.push('Fact notes need a source link for the claims (at least 2 links)');
+    if (!/as of/i.test(s['Fact notes'])) problems.push('Fact notes need an "as of" date');
   }
   if (s.Captions) for (const p of PLATFORMS) if (!new RegExp(`\\b${p}\\b`).test(s.Captions)) problems.push(`Captions missing ${p}`);
-  if (series === 'world-news' && s.Sources) {
-    // Sources are grouped by story: a heading line ("Nvidia:") followed by link lines.
-    const groups = [];
-    for (const line of s.Sources.split('\n').map(l => l.trim()).filter(Boolean)) {
-      const isLink = /https?:\/\//.test(line);
-      if (!isLink || !groups.length) groups.push({ name: isLink ? 'Sources' : line.replace(/:$/, ''), hosts: new Set() });
-      for (const m of line.matchAll(/https?:\/\/([^/\s)]+)/g)) groups.at(-1).hosts.add(m[1].replace(/^www\./, ''));
-    }
-    for (const g of groups) {
-      if (g.hosts.size < 2) problems.push(`Sources must come from at least 2 different sites (${g.name})`);
-    }
+  if (type === 'money' && !/not financial advice/i.test(text)) problems.push('Money scripts must include a "not financial advice" line');
+  if (type === 'news') {
+    if (!s.Sources) problems.push('News scripts need a "## Sources" section grouped by story');
+    else problems.push(...checkSourceGroups(s.Sources));
   }
   return problems;
 }
 
 function checkDay(dir) {
-  const problems = [];
-  if (!fs.existsSync(path.join(dir, 'plan.md'))) problems.push('plan.md: missing');
-  for (const series of SERIES) {
-    const file = path.join(dir, series + '.md');
-    if (!fs.existsSync(file)) { problems.push(`${series}.md: missing`); continue; }
-    for (const p of checkScript(fs.readFileSync(file, 'utf8'), series)) problems.push(`${series}.md: ${p}`);
-  }
-  return problems;
+  if (!fs.existsSync(path.join(dir, 'plan.md'))) return ['plan.md: missing'];
+  const scripts = fs.readdirSync(dir).filter(f => f.endsWith('.md') && f !== 'plan.md');
+  if (scripts.length !== 1) return [`expected exactly 1 script besides plan.md, found ${scripts.length}`];
+  return checkScript(fs.readFileSync(path.join(dir, scripts[0]), 'utf8')).map(p => `${scripts[0]}: ${p}`);
 }
 
 if (require.main === module) {
   const date = process.argv[2] || require('./town.js').honolulu().date;
   const dir = path.join(__dirname, '..', 'scripts', date);
-  const problems = checkDay(dir);
+  const problems = fs.existsSync(dir) ? checkDay(dir) : [`scripts/${date}: folder missing`];
   if (problems.length) { console.log(problems.join('\n')); process.exit(1); }
-  console.log(`scripts/${date}: all scripts OK`);
+  console.log(`scripts/${date}: script OK`);
 }
 
-module.exports = { checkScript, checkDay, SERIES };
+module.exports = { checkScript, checkDay, ENDING };

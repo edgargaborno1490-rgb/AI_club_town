@@ -20,7 +20,7 @@ for (const name of ['village-day', ...AGENT_SKILLS]) {
 test('village-day runs every villager and uses the tools', () => {
   const text = read('village-day');
   for (const name of AGENT_SKILLS) assert.ok(text.includes(name), `mentions ${name}`);
-  for (const tool of ['tools/town.js new-day', 'tools/town.js close-day', 'tools/check-scripts.js', '--push']) {
+  for (const tool of ['tools/town.js new-day', 'tools/town.js close-day', '--push', 'whitebucket-studio']) {
     assert.ok(text.includes(tool), `mentions ${tool}`);
   }
 });

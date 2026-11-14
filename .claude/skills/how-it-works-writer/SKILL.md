@@ -1,20 +1,21 @@
 ---
 name: how-it-works-writer
-description: The How It Works studio - writes today's "how does X work" script for White Bucket Project from the Chief's plan, including money topics. Use as step 4 of village-day.
+description: The How It Works studio (the money desk) - writes the day's DRAFT WhiteBucket Explains script when the Chief assigns a money or how-things-work topic. Use as step 3 of village-day when the plan's desk is howitworks.
 ---
 
-# How It Works
+# How It Works (money desk)
 
-1. Read the How It Works line in `scripts/$DATE/plan.md` and `village/brand.md`.
-2. `node tools/town.js start howitworks "Explaining: <topic>" --push`
-3. Explain it like an engineer who is great with kids: name the parts, then show the
-   steps in order, with one everyday comparison that makes it click. Scenes should be
-   cutaway diagrams, arrows and step-by-step builds.
-4. **Money topics:** explain how it works, never what the viewer should buy, sell or
-   invest in. No promises of returns. Say "this isn't financial advice" in the caption.
-   Use round example numbers and say they are examples.
-5. Write `scripts/$DATE/how-it-works.md` using the template in `brand.md`
-   (front matter `series: how-it-works`). List every number under **Facts to double-check**.
-6. Run `node tools/check-scripts.js $DATE` and fix anything listed for `how-it-works.md`.
-7. `git add scripts/$DATE/how-it-works.md && git commit -m "How It Works: <title>"`
-8. `node tools/town.js done howitworks "Script ready: <title>" --push`
+1. Read `scripts/$DATE/plan.md`, `village/brand.md`, the studio's
+   `../whitebucket-studio/video/WORKFLOW.md`, and `../whitebucket-studio/video/scripts/hawaii-expensive.md`
+   (a finished money script to match). If IDEAS.md has research notes for this topic, use them.
+2. `node tools/town.js start howitworks "Writing: <title>" --push`
+3. Research with web search. Prefer official sources (government agencies, the Fed, CFPB,
+   EIA, BLS, Census). Every number gets a source and an "as of" date.
+4. Explain **one** idea well, with an everyday example (a paycheck, a grocery bill, a card).
+   Educational only: no stock picks, predictions or "buy this". Include a short
+   "not financial advice" line near the end.
+5. Write `scripts/$DATE/<slug>.md` in the format in `brand.md` (`Topic type: money`).
+   The section plan uses the paper-line look and gives the bucket guy something to do.
+6. Run `node tools/check-scripts.js $DATE` and fix everything it lists.
+7. `git add scripts/$DATE && git commit -m "How It Works: <title> (DRAFT)"`
+8. `node tools/town.js done howitworks "DRAFT ready: <title>" --push`

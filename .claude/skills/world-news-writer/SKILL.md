@@ -1,29 +1,31 @@
 ---
 name: world-news-writer
-description: The World News desk - finds today's top world stories, fact-checks each against two independent sources, and writes White Bucket's short news roundup script. Use as step 5 of village-day.
+description: The World News desk - writes the day's DRAFT script when the Chief assigns a timely news topic, and on every other day fact-checks the script another desk wrote. Use as step 3 (if assigned) and step 4 of village-day.
 ---
 
-# World News
+# World News desk
 
-1. Read `village/brand.md`.
-2. `node tools/town.js start news "Picking today's top stories" --push`
-3. Search the web for major world news from the **last 48 hours** (Hawaii date `$DATE`).
-   Pick **3 stories** that matter to a general audience: world events, science,
-   space, economy, climate, big tech. Skip celebrity gossip and partisan fights.
-4. `node tools/town.js start news "Fact-checking 3 stories" --push`
-   For each story, find **two independent reputable sources** (wire services, major
-   newspapers, public broadcasters, official agencies) that agree on the facts. If a
-   story can't be confirmed twice, drop it and pick another. Never use a single source,
-   social media posts, or a site that only repeats another outlet.
-5. Write `scripts/$DATE/world-news.md` using the template in `brand.md`
-   (front matter `series: world-news`):
-   - Hook names the biggest story. Narration: about 50 words per story, neutral,
-     no opinions, in your own words (never copy sentences from the sources).
-   - Say "as of <Month Day>" once, because news changes.
-   - Scenes are maps, icons and big text only. No footage, photos or logos from outlets.
-   - Tragedies: state the facts with care, no graphic detail.
-   - `## Sources`: every link you used, grouped by story: a line like `Nvidia:` and
-     then that story's links, at least 2 different sites per story.
-6. Run `node tools/check-scripts.js $DATE` and fix anything listed for `world-news.md`.
-7. `git add scripts/$DATE/world-news.md && git commit -m "World News: $DATE"`
-8. `node tools/town.js done news "Roundup ready, every story checked twice." --push`
+## A. When the plan's desk is `news` (you write today's script)
+1. Read `scripts/$DATE/plan.md`, `village/brand.md`, the studio's
+   `../whitebucket-studio/video/WORKFLOW.md`, and `../whitebucket-studio/video/scripts/nvidia.md`
+   (a finished news script to match).
+2. `node tools/town.js start news "Writing: <title>" --push`
+3. One story, explained: what happened, why it matters, what happens next. Use only facts
+   confirmed by **two independent reputable sources** (wire services, major newspapers,
+   public broadcasters, official agencies). Neutral, no opinions, your own words.
+   Say "as of <Month Day>" once. Tragedies: facts with care, no graphic detail.
+4. Write `scripts/$DATE/<slug>.md` in the format in `brand.md` (`Topic type: news`) with
+   `## Sources` grouped by story.
+5. Run `node tools/check-scripts.js $DATE` and fix everything it lists.
+6. `git add scripts/$DATE && git commit -m "World News: <title> (DRAFT)"`
+7. `node tools/town.js done news "DRAFT ready: <title>" --push`
+
+## B. Every other day (you fact-check)
+1. `node tools/town.js start news "Fact-checking today's script" --push`
+2. Read today's script in `scripts/$DATE/`. For every number and claim in the narration,
+   confirm it with web search against a second reputable source.
+3. Fix wrong or outdated facts in the narration and the Fact notes (keep the word count
+   and ending). Add the second source next to each fact as `(checked: <link>)`.
+4. Run `node tools/check-scripts.js $DATE`.
+5. `git add scripts/$DATE && git commit -m "World News: fact-check for $DATE"`
+6. `node tools/town.js done news "Fact-check done: <N> facts confirmed, <M> fixed." --push`

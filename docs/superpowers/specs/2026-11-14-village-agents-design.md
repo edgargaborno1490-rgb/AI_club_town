@@ -76,3 +76,15 @@ and push to `main`. Before scheduling, one full test run, checked by hand.
 
 ## Left to the builder
 - Exact wording of each skill, the checker's code, commit messages, the cron minute.
+
+## Update 2026-11-14: front office for whitebucket-studio
+The owner already runs a video studio (`whitebucket-studio`, channel **WhiteBucket Explains**).
+The village now serves it:
+- **One** DRAFT script a day (not three), in the studio's script format, following the studio's
+  `video/WORKFLOW.md` (paper-line look, the bucket guy, ending "Comment NEXT and pick the next topic.").
+- The Chief picks from the studio's `video/IDEAS.md`, never a topic that is made, scripted or
+  already written (`tools/taken-topics.js`), keeping about 2 money : 1 science.
+- Desks: money → How It Works, science → What If, timely news → World News. On days World
+  News doesn't write, it fact-checks the script against a second source.
+- The village only reads the studio repo. The owner approves, records the voice, and the
+  studio's editor builds the video as before.
