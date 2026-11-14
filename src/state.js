@@ -17,18 +17,23 @@
   };
   const text = v => (typeof v === 'string' ? v : '');
 
-  function parseTown(raw) {
+  const STALE_MS = 3 * 60 * 60 * 1000;
+
+  function parseTown(raw, now) {
     const ok = isObj(raw);
     const r = ok ? raw : {};
+    const updatedAt = typeof r.updated === 'string' ? Date.parse(r.updated) : NaN;
+    // A run that stopped part-way leaves agents "working"; after 3 hours, show them idle.
+    const stalled = !!now && !isNaN(updatedAt) && now.getTime() - updatedAt > STALE_MS;
     const agentsIn = isObj(r.agents) ? r.agents : {};
     const agents = {};
     for (const id of AGENT_IDS) {
       const a = isObj(agentsIn[id]) ? agentsIn[id] : {};
-      agents[id] = {
-        status: STATUSES.includes(a.status) ? a.status : 'idle',
-        task: text(a.task),
-      };
+      let status = STATUSES.includes(a.status) ? a.status : 'idle';
+      if (stalled && status === 'working') status = 'idle';
+      agents[id] = { status, task: status === 'working' ? text(a.task) : '' };
     }
+    const anyWorking = AGENT_IDS.some(id => isObj(agentsIn[id]) && agentsIn[id].status === 'working');
     const balance = num(r.balance);
     const goal = num(r.goal);
     const day = num(r.day);
@@ -43,6 +48,7 @@
       goal: goal > 0 ? goal : DEFAULT_GOAL,
       balance: balance > 0 ? balance : 0,
       updated: typeof r.updated === 'string' ? r.updated : null,
+      stalled: stalled && anyWorking,
       agents,
       log,
     };

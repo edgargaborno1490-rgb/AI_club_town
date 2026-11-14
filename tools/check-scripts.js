@@ -49,8 +49,16 @@ function checkScript(text, series) {
   }
   if (s.Captions) for (const p of PLATFORMS) if (!new RegExp(`\\b${p}\\b`).test(s.Captions)) problems.push(`Captions missing ${p}`);
   if (series === 'world-news' && s.Sources) {
-    const hosts = new Set([...s.Sources.matchAll(/https?:\/\/([^/\s)]+)/g)].map(m => m[1].replace(/^www\./, '')));
-    if (hosts.size < 2) problems.push('Sources must come from at least 2 different sites');
+    // Sources are grouped by story: a heading line ("Nvidia:") followed by link lines.
+    const groups = [];
+    for (const line of s.Sources.split('\n').map(l => l.trim()).filter(Boolean)) {
+      const isLink = /https?:\/\//.test(line);
+      if (!isLink || !groups.length) groups.push({ name: isLink ? 'Sources' : line.replace(/:$/, ''), hosts: new Set() });
+      for (const m of line.matchAll(/https?:\/\/([^/\s)]+)/g)) groups.at(-1).hosts.add(m[1].replace(/^www\./, ''));
+    }
+    for (const g of groups) {
+      if (g.hosts.size < 2) problems.push(`Sources must come from at least 2 different sites (${g.name})`);
+    }
   }
   return problems;
 }

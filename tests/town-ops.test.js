@@ -78,3 +78,26 @@ test('Honolulu date and time from a UTC moment', () => {
   assert.deepEqual(honolulu(new Date('2026-11-15T18:05:00Z')), { date: '2026-11-15', time: '8:05' });
   assert.deepEqual(honolulu(new Date('2026-11-16T03:30:00Z')), { date: '2026-11-15', time: '17:30' });
 });
+
+test('a push that hits a conflict stops loudly and leaves the repo clean', () => {
+  const { execFileSync } = require('child_process');
+  const fs = require('fs'), os = require('os'), path = require('path');
+  const { push } = require('../tools/town.js');
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'town-push-'));
+  const g = (cwd, ...a) => execFileSync('git', a, { cwd, stdio: 'pipe' }).toString();
+  const origin = path.join(tmp, 'origin.git'), a = path.join(tmp, 'a'), b = path.join(tmp, 'b');
+  g(tmp, 'init', '-q', '--bare', '-b', 'main', origin);
+  for (const d of [a, b]) {
+    g(tmp, 'clone', '-q', origin, d);
+    g(d, 'config', 'user.email', 't@t'); g(d, 'config', 'user.name', 't');
+  }
+  fs.writeFileSync(path.join(a, 'town.json'), '{"day":1}\n');
+  g(a, 'add', '.'); g(a, 'commit', '-qm', 'init'); g(a, 'push', '-q', 'origin', 'HEAD:main');
+  g(b, 'pull', '-q', 'origin', 'main');
+  fs.writeFileSync(path.join(b, 'town.json'), '{"day":2}\n');
+  g(b, 'commit', '-qam', 'other'); g(b, 'push', '-q', 'origin', 'HEAD:main');
+  fs.writeFileSync(path.join(a, 'town.json'), '{"day":3}\n');
+  assert.throws(() => push('test', a), /conflict/i);
+  assert.equal(fs.existsSync(path.join(a, '.git', 'rebase-merge')) || fs.existsSync(path.join(a, '.git', 'rebase-apply')), false);
+  assert.doesNotMatch(fs.readFileSync(path.join(a, 'town.json'), 'utf8'), /<<<<<<</);
+});

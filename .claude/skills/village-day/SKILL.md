@@ -19,6 +19,8 @@ watch the buildings light up.
 - If a villager can't finish (a tool fails, a search returns nothing usable), don't stop
   the day: `node tools/town.js done <agent> "Couldn't finish: <short reason>" --push`
   and move on to the next villager.
+- If a command prints "Push stopped", someone else changed `main` at the same time.
+  Stop the day there and say so in your summary; don't force-push.
 - Keep the day small: one script per series. Don't start extra work.
 
 ## Steps

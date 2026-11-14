@@ -22,7 +22,8 @@ description: The World News desk - finds today's top world stories, fact-checks 
    - Say "as of <Month Day>" once, because news changes.
    - Scenes are maps, icons and big text only. No footage, photos or logos from outlets.
    - Tragedies: state the facts with care, no graphic detail.
-   - `## Sources`: every link you used, grouped by story.
+   - `## Sources`: every link you used, grouped by story: a line like `Nvidia:` and
+     then that story's links, at least 2 different sites per story.
 6. Run `node tools/check-scripts.js $DATE` and fix anything listed for `world-news.md`.
 7. `git add scripts/$DATE/world-news.md && git commit -m "World News: $DATE"`
 8. `node tools/town.js done news "Roundup ready, every story checked twice." --push`

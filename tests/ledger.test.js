@@ -39,3 +39,10 @@ test('csv quotes notes with commas', () => {
   const csv = toCsv([{ date: '2026-11-20', platform: 'TikTok', amount: 1, note: 'a, b' }]);
   assert.match(csv, /"a, b"/);
 });
+
+test('every line under Earnings that is not readable gets reported', () => {
+  const text = `# x\n- 2026-01-01 | TikTok | 9 | example above the list\n\n## Earnings\n- Dec 2 | YouTube | 5.00\n2026-12-03 | Instagram | 3.00\n- 2026-12-05 | TikTok | 1.234,50\n- 2026-12-06 | YouTube | 2.00\n`;
+  const { rows, skipped } = parseEarnings(text);
+  assert.deepEqual(rows.map(r => r.amount), [3, 2]);
+  assert.deepEqual(skipped, ['- Dec 2 | YouTube | 5.00', '- 2026-12-05 | TikTok | 1.234,50']);
+});

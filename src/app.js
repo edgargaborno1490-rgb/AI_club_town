@@ -60,6 +60,7 @@
     else {
       const ago = timeAgo(lastGood.updated, new Date());
       msg = ago ? 'Updated ' + ago + '.' : 'Updated (time not given).';
+      if (lastGood.stalled) msg += ' The last run stopped early.';
       if (lastFailed) msg += " Couldn't refresh, showing the last update.";
     }
     $('status').textContent = msg;
@@ -69,7 +70,7 @@
     try {
       const res = await fetch('town.json', { cache: 'no-store' });
       if (!res.ok) throw new Error('HTTP ' + res.status);
-      const state = parseTown(await res.json());
+      const state = parseTown(await res.json(), new Date());
       if (!state.ok) throw new Error('town.json is not an object');
       lastGood = state; lastFailed = false;
       render(state);

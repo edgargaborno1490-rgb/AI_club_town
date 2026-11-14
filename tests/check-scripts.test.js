@@ -53,3 +53,10 @@ test('world news needs sources from at least 2 different sites', () => {
   assert.deepEqual(checkScript(script({ series: 'world-news', sources: two }), 'world-news'), []);
   assert.ok(checkScript(script({ series: 'world-news' }), 'world-news').some(p => /Sources/.test(p)));
 });
+
+test('world news needs 2 different sites for every story group', () => {
+  const grouped = 'Story A:\n- https://reuters.com/a\n- https://apnews.com/a\n\nStory B:\n- https://bbc.com/b';
+  assert.ok(checkScript(script({ series: 'world-news', sources: grouped }), 'world-news').some(p => /Story B/.test(p)));
+  const ok = 'Story A:\n- https://reuters.com/a\n- https://apnews.com/a\n\nStory B:\n- https://bbc.com/b\n- https://npr.org/b';
+  assert.deepEqual(checkScript(script({ series: 'world-news', sources: ok }), 'world-news'), []);
+});

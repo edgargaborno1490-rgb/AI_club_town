@@ -6,14 +6,29 @@ const path = require('path');
 
 const LINE = /^-\s*(\d{4}-\d{2}-\d{2})\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*(?:\|\s*(.*?))?\s*$/;
 
+// "12", "12.40", "$1,234.50" are amounts; "1.234,50" or "lots" are not.
+const AMOUNT = /^\$?(\d{1,3}(,\d{3})+|\d+)(\.\d+)?$/;
+
+function candidateLines(md) {
+  const lines = md.split('\n');
+  const start = lines.findIndex(l => /^##\s+Earnings\s*$/i.test(l.trim()));
+  if (start === -1) return lines.map(l => l.trim()).filter(l => /^-\s*\d{4}-\d{2}-\d{2}/.test(l));
+  const out = [];
+  for (const l of lines.slice(start + 1)) {
+    if (/^##\s/.test(l.trim())) break;
+    if (l.trim()) out.push(l.trim());
+  }
+  return out;
+}
+
 function parseEarnings(md) {
   const rows = [], skipped = [];
-  for (const raw of md.split('\n')) {
-    const line = raw.trim();
-    if (!/^-\s*\d{4}-\d{2}-\d{2}/.test(line)) continue;
+  for (const raw of candidateLines(md)) {
+    const line = raw.startsWith('-') ? raw : '- ' + raw;
     const m = line.match(LINE);
-    const amount = m ? Number(m[3].replace(/[$,\s]/g, '')) : NaN;
-    if (!m || !isFinite(amount) || m[3].trim() === '') { skipped.push(line); continue; }
+    const ok = m && AMOUNT.test(m[3].replace(/\s/g, ''));
+    const amount = ok ? Number(m[3].replace(/[$,\s]/g, '')) : NaN;
+    if (!ok || !isFinite(amount)) { skipped.push(raw); continue; }
     rows.push({ date: m[1], platform: m[2], amount: Math.round(amount * 100) / 100, note: m[4] || '' });
   }
   return { rows, skipped };

@@ -23,20 +23,25 @@ function honolulu(d = new Date()) {
   return { date: `${parts.year}-${parts.month}-${parts.day}`, time: `${Number(parts.hour)}:${parts.minute}` };
 }
 
-function git(...args) {
-  return execFileSync('git', args, { cwd: ROOT, stdio: ['ignore', 'pipe', 'pipe'] }).toString();
-}
-
-function push(message) {
+// Commits town.json (plus anything already committed) and pushes to main.
+// If main moved, rebases and retries; if that rebase conflicts, it undoes the rebase
+// and stops with an error instead of pushing a half-finished state.
+function push(message, root = ROOT) {
+  const git = (...args) => execFileSync('git', args, { cwd: root, stdio: ['ignore', 'pipe', 'pipe'] }).toString();
   git('add', 'town.json');
-  if (!git('status', '--porcelain', 'town.json').trim()) return;
-  git('commit', '-m', message);
+  if (git('status', '--porcelain', 'town.json').trim()) git('commit', '-m', message, '--', 'town.json');
   for (let attempt = 1; attempt <= 4; attempt++) {
     try { git('push', 'origin', 'HEAD:main'); return; } catch (err) {
       if (attempt === 4) throw err;
-      try { git('pull', '--rebase', 'origin', 'main'); } catch (_) { /* retry push anyway */ }
-      execFileSync('sleep', [String(2 ** attempt)]);
     }
+    try {
+      git('pull', '--rebase', 'origin', 'main');
+    } catch (err) {
+      try { git('rebase', '--abort'); } catch (_) { /* nothing to abort */ }
+      throw new Error('Push stopped: a conflict with newer changes on main (someone else changed the same file). ' +
+        'Nothing was lost locally. Run `git pull --rebase origin main`, fix the conflict, then push.');
+    }
+    execFileSync('sleep', [String(2 ** attempt)]);
   }
 }
 
@@ -66,4 +71,4 @@ function main(argv) {
 if (require.main === module) {
   try { main(process.argv.slice(2)); } catch (err) { console.error(err.message); process.exit(1); }
 }
-module.exports = { honolulu };
+module.exports = { honolulu, push };

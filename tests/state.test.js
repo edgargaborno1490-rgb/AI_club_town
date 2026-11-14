@@ -57,3 +57,13 @@ test('money written the way people type it', () => {
   assert.equal(parseTown({ goal: '$1,000' }).goal, 1000);
   assert.equal(parseTown({ balance: '12abc' }).balance, 0);
 });
+
+test('a town not updated for over 3 hours shows nobody working', () => {
+  const raw = { updated: '2026-11-14T08:00:00Z', agents: { news: { status: 'working', task: 'X' } } };
+  const s = parseTown(raw, new Date('2026-11-14T12:00:00Z'));
+  assert.equal(s.agents.news.status, 'idle');
+  assert.equal(s.stalled, true);
+  const fresh = parseTown(raw, new Date('2026-11-14T09:00:00Z'));
+  assert.equal(fresh.agents.news.status, 'working');
+  assert.equal(fresh.stalled, false);
+});
