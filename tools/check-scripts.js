@@ -65,11 +65,19 @@ function checkScript(text) {
   return problems;
 }
 
+// Every "- Slug: <name>" line in plan.md needs a matching <name>.md that passes.
 function checkDay(dir) {
-  if (!fs.existsSync(path.join(dir, 'plan.md'))) return ['plan.md: missing'];
-  const scripts = fs.readdirSync(dir).filter(f => f.endsWith('.md') && f !== 'plan.md');
-  if (scripts.length !== 1) return [`expected exactly 1 script besides plan.md, found ${scripts.length}`];
-  return checkScript(fs.readFileSync(path.join(dir, scripts[0]), 'utf8')).map(p => `${scripts[0]}: ${p}`);
+  const planFile = path.join(dir, 'plan.md');
+  if (!fs.existsSync(planFile)) return ['plan.md: missing'];
+  const slugs = [...fs.readFileSync(planFile, 'utf8').matchAll(/^-\s*Slug:\s*`?([\w-]+)`?\s*$/gm)].map(m => m[1]);
+  if (!slugs.length) return ['plan.md: no "- Slug: <name>" lines'];
+  const problems = [];
+  for (const slug of slugs) {
+    const file = path.join(dir, slug + '.md');
+    if (!fs.existsSync(file)) { problems.push(`${slug}.md: missing`); continue; }
+    for (const p of checkScript(fs.readFileSync(file, 'utf8'))) problems.push(`${slug}.md: ${p}`);
+  }
+  return problems;
 }
 
 if (require.main === module) {

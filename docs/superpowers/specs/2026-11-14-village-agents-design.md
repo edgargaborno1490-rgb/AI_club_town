@@ -88,3 +88,12 @@ The village now serves it:
   News doesn't write, it fact-checks the script against a second source.
 - The village only reads the studio repo. The owner approves, records the voice, and the
   studio's editor builds the video as before.
+
+## Update 2026-11-14 (later): three a day, straight into the studio
+- Back to **three** DRAFT scripts a day, one per series: What If (science, AI voice A),
+  How It Works (mostly money, AI voice B), World News (Mark on ElevenLabs). The voices for
+  A and B are still to be chosen.
+- The Programmer sends the drafts into the studio with `tools/send-to-studio.js`: copies to
+  `video/scripts/<slug>.md` (never overwrites) and adds a row to IDEAS.md's
+  "Researched, script ready" table, then pushes the studio's `main`. Owner approved.
+- The studio's Saturday researcher scheduled task is paused (owner's request).

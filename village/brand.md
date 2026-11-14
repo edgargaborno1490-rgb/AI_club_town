@@ -9,9 +9,13 @@ before writing.
 ## The channel
 - **WhiteBucket Explains** on TikTok, Instagram, YouTube and Facebook.
 - ~65–75 s vertical explainers, one topic each.
-- **Mix:** about 2 money videos for every 1 science video, plus timely news, holidays and
-  sky events when they come up.
-- Voiceover: the owner records the narration in ElevenLabs (voice **Mark**), so write for the ear.
+- **Three videos a day, one per series** (from Nov 15, 2026):
+  | Series | Desk | Topic type | Voice |
+  |---|---|---|---|
+  | What If | What If Studio (`whatif`) | science | **AI voice A** (to be chosen) |
+  | How It Works | How It Works (`howitworks`) | money (mostly) | **AI voice B** (to be chosen, different from A) |
+  | World News | World News (`news`) | news | **Mark** (ElevenLabs, the owner records it) |
+- Write every narration for the ear, whichever voice reads it.
 
 ## The look the section plan describes ("paper line", locked in)
 - Cream paper background, dark brown ink line drawings (outlines, no fills), red for key
@@ -23,8 +27,8 @@ before writing.
   license), with a credit line. Say honestly what a photo shows.
 - Quiet sound: no swishes, no comic sound effects. Respectful topics: calm, no jokes.
 
-## The script (one per day)
-Save as `scripts/YYYY-MM-DD/<slug>.md`. `node tools/check-scripts.js` must pass.
+## The scripts (three a day)
+Save each as `scripts/YYYY-MM-DD/<slug>.md`. `node tools/check-scripts.js` must pass.
 
 ```
 > **Status: DRAFT – needs review.**
@@ -32,7 +36,7 @@ Save as `scripts/YYYY-MM-DD/<slug>.md`. `node tools/check-scripts.js` must pass.
 # WhiteBucket Explains: <title as a question or hook>
 
 Topic type: money | science | news
-Format: 9:16 · paper line with the bucket guy · about 72 s · ~190 words · voice: Mark
+Format: 9:16 · paper line with the bucket guy · about 72 s · ~190 words · voice: <the series' voice>
 Post: <date window, or "any time (evergreen)">
 Tone: <one line>
 
@@ -61,4 +65,5 @@ exactly: Comment NEXT and pick the next topic.
   "not financial advice" line (spoken, or a note for the on-screen card). Every number dated.
 - **News:** add `## Sources`, grouped by story (a line like `Nvidia:` then its links), at
   least 2 different reputable sites per story. Your own words, never copied sentences.
-- **Only the owner approves.** The village always writes DRAFT.
+- **Only the owner approves.** The village always writes DRAFT. The Programmer copies the
+  drafts into the studio's `video/scripts/` and lists them in IDEAS.md (never overwriting).

@@ -64,3 +64,15 @@ test('news scripts need 2 different sites for every story group', () => {
   assert.deepEqual(checkScript(script({ type: 'news', sources: ok })), []);
   assert.ok(checkScript(script({ type: 'news' })).some(p => /Sources/.test(p)));
 });
+
+test('a day needs one script per slug in the plan', () => {
+  const fs = require('fs'), os = require('os'), path = require('path');
+  const { checkDay } = require('../tools/check-scripts.js');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'day-'));
+  fs.writeFileSync(path.join(dir, 'plan.md'), '# Plan\n- Slug: a\n- Slug: b\n- Slug: c\n');
+  fs.writeFileSync(path.join(dir, 'a.md'), script());
+  fs.writeFileSync(path.join(dir, 'b.md'), script());
+  assert.ok(checkDay(dir).some(p => /c\.md: missing/.test(p)));
+  fs.writeFileSync(path.join(dir, 'c.md'), script());
+  assert.deepEqual(checkDay(dir), []);
+});
