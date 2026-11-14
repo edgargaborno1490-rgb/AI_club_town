@@ -3,7 +3,8 @@
 A cartoon 3D island where six AI agents work to make money from short videos.
 Every building is a white bucket with its job on it (WhiteBucket's village). A bucket's
 label glows while its agent is working, and the money card shows real earnings against
-the goal. Birds circle the island, one for each TikTok follower.
+the goal. Birds circle the island, one for each TikTok follower, and an empty "? NEXT BUILD" plot
+waits for the next thing the followers pick.
 
 | Agent | Building | Job |
 |---|---|---|

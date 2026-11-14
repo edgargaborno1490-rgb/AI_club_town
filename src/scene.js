@@ -275,7 +275,36 @@
       if (nearBuilding(ang) && r < 19.5) continue;
       tree(Math.cos(ang) * r, Math.sin(ang) * r, 0.8 + rand() * 0.6);
     }
-    AGENTS.forEach(a => { const ang = (a.angle + 30) * Math.PI / 180; tree(Math.cos(ang) * 9.5, Math.sin(ang) * 9.5, 0.9); });
+    const PLOT_ANGLE = 0; // between What If and How It Works
+    AGENTS.forEach(a => {
+      if ((a.angle + 30) % 360 === PLOT_ANGLE) return; // leave room for the next-build plot
+      const ang = (a.angle + 30) * Math.PI / 180; tree(Math.cos(ang) * 9.5, Math.sin(ang) * 9.5, 0.9);
+    });
+
+    // The empty "? NEXT BUILD" plot: each week something new goes here (the followers pick).
+    const extras = [];
+    {
+      const ang = PLOT_ANGLE * Math.PI / 180, r = 7.6;
+      const plot = new THREE.Group(); plot.position.set(Math.cos(ang) * r, 0, Math.sin(ang) * r);
+      plot.rotation.y = Math.atan2(-Math.cos(ang), -Math.sin(ang)); // the sign faces the plaza
+      const dirt = box(2.6, 0.12, 2.6, 0x9b6b3f, 0, 0.06, 0); dirt.castShadow = false; plot.add(dirt);
+      for (const [x, z] of [[-1.3, -1.3], [1.3, -1.3], [-1.3, 1.3], [1.3, 1.3]]) plot.add(box(0.12, 0.5, 0.12, 0xe8d3a8, x, 0.25, z));
+      for (const z of [-1.3, 1.3]) plot.add(box(2.6, 0.06, 0.05, 0xe8d3a8, 0, 0.4, z));
+      plot.add(box(0.12, 1.5, 0.12, 0x8a5a33, 0, 0.75, 0));
+      const c = document.createElement('canvas'); c.width = 256; c.height = 160;
+      const ctx = c.getContext('2d');
+      ctx.fillStyle = '#f6e7c4'; ctx.fillRect(0, 0, 256, 160);
+      words(ctx, '?', 128, 70, 100, '#d6402f');
+      words(ctx, 'NEXT BUILD', 128, 136, 28, '#3a2a20');
+      const wood = mat(0x8a5a33);
+      const sign = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.95, 0.08), [wood, wood, wood, wood, new THREE.MeshLambertMaterial({ map: new THREE.CanvasTexture(c) }), wood]);
+      sign.position.set(0, 1.6, 0.07); sign.castShadow = true; plot.add(sign);
+      scene.add(plot);
+      const tag = document.createElement('div'); tag.className = 'tag'; tag.dataset.id = 'next-build';
+      const chip = document.createElement('div'); chip.className = 'chip next'; chip.textContent = 'Next build: you pick';
+      tag.appendChild(chip); labels.appendChild(tag);
+      extras.push({ tag, anchor: new THREE.Vector3(plot.position.x, 2.6, plot.position.z) });
+    }
     const clouds = [];
     for (let i = 0; i < 6; i++) {
       const c = new THREE.Group(), m = mat(0xffffff);
@@ -351,6 +380,13 @@
         a.tag.style.zIndex = String(Math.round((1 - v.z) * 1000));
       }
       if (!reduced) birds.forEach(b => { if (b.g.visible) placeBird(b, t); });
+      for (const e of extras) {
+        v.copy(e.anchor).project(camera);
+        if (v.z > 1) { e.tag.style.display = 'none'; continue; }
+        e.tag.style.display = '';
+        e.tag.style.transform = `translate(${(v.x * 0.5 + 0.5) * innerWidth}px, ${(-v.y * 0.5 + 0.5) * innerHeight}px) translate(-50%, -100%)`;
+        e.tag.style.zIndex = String(Math.round((1 - v.z) * 1000));
+      }
       if (!reduced) clouds.forEach(c => { c.position.x += c.userData.v * dt; if (c.position.x > 70) c.position.x = -70; });
       pool.material.color.setHSL(0.54, 0.8, 0.68 + Math.sin(t * 2) * 0.03);
       controls.update();
