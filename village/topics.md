@@ -8,3 +8,4 @@ Format: `- YYYY-MM-DD | series | subject | topic`
 - 2026-11-13 | world-news | news | Top stories of 2026-11-13
 - 2026-11-13 | chief | village | Meet WhiteBucket and His AI Village (intro)
 - 2026-11-14 | what-if | space science | What if you fell into a black hole?
+- 2026-11-15 | world-news | news | Why every plane in America was grounded (FAA ground stop)
