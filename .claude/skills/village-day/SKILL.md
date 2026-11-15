@@ -65,12 +65,14 @@ Nov 25 a short Island Clip, only if something on the island changed.
    - `environment_id`: `env_016US1TUy1EDLLZAQxsURQAG` (whitebucket-studio)
    - `source_url`: `https://github.com/edgargaborno1490-rgb/whitebucket-studio`
    - `prompt`: say which script (`video/scripts/<slug>.md`), its series and voice, then:
-     "Right now, only: read CLAUDE.md, video/WORKFLOW.md and the script; reply with the title,
+     "Use the daily-video skill (.claude/skills/daily-video/SKILL.md). Right now, only: read the
+     skill and the script; reply with the title,
      voice, post window and the full narration in a quote block so the owner can copy it;
      then wait. Don't change the Status or build until the owner says APPROVED (and, for Mark
      or the village host, sends the MP3; for Puck/George make the voice with scripts/tts.py).
-     After approval follow WORKFLOW.md, check stills with the owner, render, caption, update
-     HANDOFF.md, and push to main."
+     After approval follow the daily-video skill (template FaaLine.tsx, real NASA media, 3D island
+     checkup, "See you tomorrow" ending): stills to the owner, render, caption, update HANDOFF.md,
+     push to main, send the MP4."
    If the tool isn't available or fails, say so in the summary (the owner can open one by hand).
 8. **Close the day**
    ```bash
