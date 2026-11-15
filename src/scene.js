@@ -7,8 +7,10 @@
     { id: 'banker',     name: 'Banker',         kind: 'bank',       shirt: 0x3f9f6b, angle: 90 },
     { id: 'programmer', name: 'Programmer',     kind: 'workshop',   shirt: 0x2e3d5a, angle: 150 },
     { id: 'news',       name: 'World News',     kind: 'news',       shirt: 0x2f6fd6, angle: 210 },
-    // The Analyst moved in on Nov 15, 2026: a smaller bucket on the plaza, opposite the next-build plot.
-    { id: 'analyst',    name: 'Analyst',        kind: 'stats',      shirt: 0x17a398, angle: 180, r: 8.6, scale: 0.8 },
+    // The Analyst moved in on Nov 15, 2026. Its building is still a covered construction site with
+    // no sign (owner's wish): visitors find out what it is at the reveal. Set kind 'stats' and drop
+    // `hidden` to reveal it.
+    { id: 'analyst',    name: 'Analyst',        kind: 'construction', shirt: 0x17a398, angle: 180, r: 8.6, scale: 0.8, hidden: true },
   ];
   const R = 13.5;
   const RING = { idle: 0x9aa7b6, working: 0xff9f1a, done: 0x1fae6a };
@@ -145,7 +147,59 @@
       s.scale.setScalar(1); return s;
     }
 
+    // Workers: villagers in hard hats and orange vests who build things around the island.
+    const workers = [];
+    function worker(parent, x, y, z, yaw, tool, path) {
+      const g = villager(0xff7a1a);
+      g.add(mesh(new THREE.SphereGeometry(0.45, 12, 6, 0, Math.PI * 2, 0, Math.PI / 2), mat(0xf2b10c), 0, 1.4, 0));
+      g.add(mesh(new THREE.CylinderGeometry(0.56, 0.56, 0.05, 14), mat(0xf2b10c), 0, 1.4, 0.06));
+      const arm = new THREE.Group(); arm.position.set(0.42, 0.85, 0.05);
+      arm.add(box(0.14, 0.5, 0.14, 0xff7a1a, 0, -0.22, 0));
+      if (tool === 'hammer') {
+        arm.add(box(0.06, 0.06, 0.42, 0x8a5a33, 0, -0.45, 0.16));
+        arm.add(box(0.12, 0.13, 0.22, 0x6b7785, 0, -0.45, 0.38));
+        arm.rotation.x = -1.2;
+      }
+      if (tool === 'plank') { g.add(box(0.12, 0.08, 1.7, 0xd9a86c, 0.38, 1.12, 0)); arm.rotation.x = -2.7; }
+      if (tool === 'clipboard') { arm.add(box(0.3, 0.04, 0.38, 0xf7f6f1, 0, -0.48, 0.1)); arm.rotation.x = -1.1; }
+      g.add(arm);
+      g.position.set(x, y, z); g.rotation.y = yaw;
+      parent.add(g);
+      const w = { g, arm, tool, path: path || null, y, p: workers.length * 1.7 };
+      workers.push(w);
+      return w;
+    }
+
     const builders = {
+      construction(g) { // a building under wraps: tarp, scaffolding, a crane and workers. No sign.
+        g.add(mesh(new THREE.CylinderGeometry(RT - 0.05, RB, BH, 10), mat(0x9fb0c2), 0, BH / 2, 0));
+        g.add(mesh(new THREE.ConeGeometry(RT - 0.05, 0.9, 10), mat(0x8b9db0), 0, BH + 0.45, 0));
+        for (const y of [1.2, 2.6]) {
+          const rope = mesh(new THREE.TorusGeometry(rAt(y) + 0.03, 0.05, 4, 24), mat(0x5a4a3a), 0, y, 0);
+          rope.rotation.x = Math.PI / 2; g.add(rope);
+        }
+        const S = 2.95, steel = 0xc9ced6, wood = 0xd9a86c;
+        for (const x of [-S, S]) for (const z of [-S, S]) g.add(box(0.12, BH + 0.4, 0.12, steel, x, (BH + 0.4) / 2, z));
+        for (const y of [1.5, 3]) {
+          for (const z of [-S, S]) g.add(box(S * 2, 0.08, 0.08, steel, 0, y + 0.4, z));
+          for (const x of [-S, S]) g.add(box(0.08, 0.08, S * 2, steel, x, y + 0.4, 0));
+        }
+        g.add(box(S * 2, 0.07, 0.6, wood, 0, 1.5, S));
+        g.add(box(0.6, 0.07, S * 2, wood, S, 3, 0));
+        for (const x of [-1.4, 0, 1.4]) g.add(mesh(new THREE.ConeGeometry(0.2, 0.5, 10), mat(0xff7a1a), x, 0.25, S + 1.9));
+        const yellow = 0xf2b10c;
+        g.add(box(0.28, 7.4, 0.28, yellow, -S, 3.7, -S));
+        const jib = new THREE.Group(); jib.position.set(-S, 7.4, -S);
+        jib.add(box(5, 0.2, 0.2, yellow, 1.7, 0, 0));
+        jib.add(box(1, 0.45, 0.45, 0x6b7785, -1.1, 0, 0));
+        jib.add(box(0.03, 2.2, 0.03, 0x1c2836, 3.6, -1.1, 0));
+        jib.add(box(0.25, 0.2, 0.25, 0x1c2836, 3.6, -2.25, 0));
+        g.add(jib);
+        worker(g, 0.9, 1.54, S - 0.05, Math.PI, 'hammer');
+        worker(g, -0.5, 0, S + 1.2, 0, 'plank', [new THREE.Vector3(-2.6, 0, S + 1.2), new THREE.Vector3(2.6, 0, S + 1.2)]);
+        worker(g, -2.1, 0, S + 2.6, Math.PI, 'clipboard');
+        return { glow: [], spin: [{ o: jib, axis: 'y', speed: 0.35, always: 0.35 }], top: 7.6 };
+      },
       hall(g) { // Chief of Staff: a bucket with a star badge and the town flag
         bucket(g, 0xe5533d);
         const glow = label(g, (ctx, W, H) => { patch(ctx, W, H, '#e5533d'); star(ctx, W / 2, 98, 70, '#fff'); words(ctx, 'CHIEF', W / 2, 208, 54, '#fff'); });
@@ -264,8 +318,10 @@
       scene.add(g);
 
       const person = villager(a.shirt); person.position.set(1.6, 0, 3.9); g.add(person);
+      person.visible = !a.hidden;
       const ring = new THREE.Mesh(new THREE.RingGeometry(0.75, 1.05, 32), new THREE.MeshBasicMaterial({ color: RING.idle, transparent: true, opacity: 0.5 }));
       ring.rotation.x = -Math.PI / 2; ring.position.set(1.6, 0.07, 3.9); g.add(ring);
+      ring.visible = !a.hidden;
 
       const tag = document.createElement('div');
       tag.className = 'tag'; tag.dataset.s = 'idle'; tag.dataset.id = a.id;
@@ -275,17 +331,21 @@
       const dot = document.createElement('span'); dot.className = 'dot';
       const name = document.createElement('span'); name.textContent = a.name;
       chip.append(dot, name); tag.append(bubble, chip);
+      tag.hidden = !!a.hidden; // a building under wraps has no sign
       labels.appendChild(tag);
 
-      return Object.assign(a, parts, { person, ring, tag, btext, status: 'idle', anchor: new THREE.Vector3(x, parts.top * sc + 0.6, z) });
+      return Object.assign(a, parts, { g, person, ring, tag, btext, status: 'idle', anchor: new THREE.Vector3(x, parts.top * sc + 0.6, z) });
     });
 
     // Trees and clouds
+    const treeTops = [];
     function tree(x, z, s) {
       const g = new THREE.Group(); g.position.set(x, 0, z); g.scale.setScalar(s);
       g.add(mesh(new THREE.CylinderGeometry(0.16, 0.22, 0.9, 6), mat(0x8a5a33), 0, 0.45, 0));
-      if (rand() < 0.5) g.add(mesh(new THREE.ConeGeometry(0.85, 1.9, 7), mat(0x3e9e4a), 0, 1.75, 0));
+      const cone = rand() < 0.5;
+      if (cone) g.add(mesh(new THREE.ConeGeometry(0.85, 1.9, 7), mat(0x3e9e4a), 0, 1.75, 0));
       else g.add(mesh(new THREE.IcosahedronGeometry(0.85, 0), mat(0x55b84a), 0, 1.5, 0));
+      treeTops.push(new THREE.Vector3(x, (cone ? 2.55 : 2.25) * s, z));
       scene.add(g);
     }
     const nearBuilding = ang => AGENTS.some(a => !a.r && Math.abs(((ang * 180 / Math.PI) - a.angle + 540) % 360 - 180) < 17);
@@ -334,8 +394,18 @@
         g.add(box(0.05, 0.05, 0.3, 0x8a5a33, 0, h + 0.16, 0.42));
         plot.add(g);
         plot.updateMatrixWorld(true);
-        perches.push({ pos: new THREE.Vector3(0, h + 0.27, 0.52).applyMatrix4(g.matrixWorld), yaw: plot.rotation.y + g.rotation.y });
+        perches.push({ pos: new THREE.Vector3(0, h + 0.08, 0.52).applyMatrix4(g.matrixWorld), yaw: plot.rotation.y + g.rotation.y });
+        perches.push({ pos: new THREE.Vector3(0, h + 0.95, 0).applyMatrix4(g.matrixWorld), yaw: plot.rotation.y + g.rotation.y });
       }
+      // The crew still putting the birdhouses up: one on a ladder, one hammering, one with a plank.
+      const ladder = new THREE.Group(); ladder.position.set(0.15, 0, 0.35); ladder.rotation.x = -0.27;
+      for (const x of [-0.22, 0.22]) ladder.add(box(0.06, 2.3, 0.06, 0x8a5a33, x, 1.15, 0));
+      for (let y = 0.3; y < 2.2; y += 0.45) ladder.add(box(0.5, 0.05, 0.05, 0x8a5a33, 0, y, 0));
+      plot.add(ladder);
+      const k = 0.85;
+      worker(plot, 0.15, 1.05, 0.3, Math.PI, 'hammer').g.scale.setScalar(k);
+      worker(plot, -1.1, 0, 1.05, Math.PI, 'hammer').g.scale.setScalar(k);
+      worker(plot, 1.4, 0, 1.5, 0, 'plank', [new THREE.Vector3(1.6, 0, 1.6), new THREE.Vector3(-0.5, 0, 1.75)]).g.scale.setScalar(k);
       chipAt(plot, 'Birdhouses (viewer idea)', 4.2);
     }
 
@@ -356,6 +426,28 @@
       sign.position.set(0, 1.6, 0.07); sign.castShadow = true; plot.add(sign);
       chipAt(plot, 'Next build: you pick', 2.6);
     }
+    // Places where birds land: birdhouses, bucket rims, treetops and the grass.
+    const spots = [];
+    const spot = (pos, yaw) => spots.push({ pos, yaw: yaw === undefined ? rand() * Math.PI * 2 : yaw, bird: null });
+    perches.forEach(pc => spot(pc.pos, pc.yaw));
+    for (const a of agents) {
+      if (a.hidden) continue;
+      a.g.updateMatrixWorld(true);
+      for (const deg of [35, 90, 145]) {
+        const th = deg * Math.PI / 180;
+        spot(new THREE.Vector3(RT * Math.cos(th), BH + 0.1, RT * Math.sin(th)).applyMatrix4(a.g.matrixWorld), a.g.rotation.y + Math.atan2(Math.cos(th), Math.sin(th)));
+      }
+    }
+    treeTops.forEach((p, i) => { if (i % 3 === 0) spot(p); });
+    for (let i = 0; i < 12; i++) {
+      const deg = i * 30 + 15, ang = deg * Math.PI / 180, r = 16.6 + (i % 2) * 0.6;
+      spot(new THREE.Vector3(Math.cos(ang) * r, 0.02, Math.sin(ang) * r));
+    }
+    for (let i = 0; i < 8; i++) {
+      const ang = (i * 45 + 22) * Math.PI / 180;
+      spot(new THREE.Vector3(Math.cos(ang) * 4.4, 0.18, Math.sin(ang) * 4.4));
+    }
+
     const clouds = [];
     for (let i = 0; i < 6; i++) {
       const c = new THREE.Group(), m = mat(0xffffff);
@@ -364,7 +456,8 @@
       c.userData.v = 0.6 + rand() * 0.8; scene.add(c); clouds.push(c);
     }
 
-    // Birds: one for each follower (up to MAX_BIRDS), circling the island.
+    // Birds: one for each follower (up to MAX_BIRDS). Most sit around the island; 5-10 fly at a
+    // time, and every few seconds one lands and another takes off.
     const MAX_BIRDS = 60;
     const BIRD_COLORS = [0xffffff, 0xffffff, 0x2f80ed, 0xe5533d, 0xf2b10c, 0x7656d1, 0x1c2836];
     const birds = [];
@@ -382,30 +475,91 @@
         g.add(pivot); return pivot;
       });
       g.traverse(o => { o.castShadow = false; });
-      g.scale.setScalar(i < perches.length ? 0.6 : 1);
-      const b = { perch: perches[i] || null, g, wings, r: 9 + br() * 20, h: 8 + br() * 7, w: (0.18 + br() * 0.25) * (br() < 0.5 ? -1 : 1), p: br() * Math.PI * 2 };
+      g.scale.setScalar(0.8);
+      g.visible = false;
+      const b = { g, wings, mode: 'fly', spot: null, from: null, t0: 0, r: 9 + br() * 20, h: 8 + br() * 7, w: (0.18 + br() * 0.25) * (br() < 0.5 ? -1 : 1), p: br() * Math.PI * 2 };
       scene.add(g);
       return b;
     }
-    function placeBird(b, t) {
-      if (b.perch) { // sitting on a birdhouse: a little hop now and then, wings folded
-        b.g.position.copy(b.perch.pos); b.g.position.y += Math.max(0, Math.sin(t * 1.3 + b.p * 5)) ** 12 * 0.25;
-        b.g.rotation.y = b.perch.yaw;
-        b.wings[0].rotation.z = 0.15; b.wings[1].rotation.z = -0.15;
+    function orbit(b, t, out) {
+      const a = b.p + b.w * t;
+      out.set(Math.cos(a) * b.r, b.h + Math.sin(t * 0.8 + b.p) * 0.6, Math.sin(a) * b.r);
+      return Math.atan2(-Math.sin(a) * b.w, Math.cos(a) * b.w);
+    }
+    const FLIGHT = 2.8, SIT = 0.2;
+    const ease = k => k * k * (3 - 2 * k);
+    const goal = new THREE.Vector3();
+    function wingsAt(b, t, flying) {
+      if (!flying) { // folded along the back
+        b.wings[0].rotation.set(0, -1.4, 0.25); b.wings[1].rotation.set(0, 1.4, -0.25);
         return;
       }
-      const a = b.p + b.w * t;
-      b.g.position.set(Math.cos(a) * b.r, b.h + Math.sin(t * 0.8 + b.p) * 0.6, Math.sin(a) * b.r);
-      b.g.rotation.y = Math.atan2(-Math.sin(a) * b.w, Math.cos(a) * b.w);
-      const flap = reduced ? 0.2 : Math.sin(t * 9 + b.p * 3) * 0.6;
-      b.wings[0].rotation.z = -flap; b.wings[1].rotation.z = flap;
+      const f = reduced ? 0.2 : Math.sin(t * 9 + b.p * 3) * 0.6;
+      b.wings[0].rotation.set(0, 0, -f); b.wings[1].rotation.set(0, 0, f);
+    }
+    function placeBird(b, t) {
+      if (b.mode === 'sit') {
+        b.g.position.copy(b.spot.pos);
+        b.g.position.y += SIT + (reduced ? 0 : Math.max(0, Math.sin(t * 1.3 + b.p * 5)) ** 12 * 0.25);
+        b.g.rotation.y = b.spot.yaw;
+        wingsAt(b, t, false);
+        return;
+      }
+      if (b.mode === 'fly') { b.g.rotation.y = orbit(b, t, b.g.position); wingsAt(b, t, true); return; }
+      // 'land' glides down to its spot; 'up' climbs back to its circle.
+      const k = Math.min(1, (t - b.t0) / FLIGHT), e = ease(k);
+      if (b.mode === 'land') { goal.copy(b.spot.pos); goal.y += SIT; } else orbit(b, t, goal);
+      const x = b.from.x + (goal.x - b.from.x) * e, z = b.from.z + (goal.z - b.from.z) * e;
+      const y = b.from.y + (goal.y - b.from.y) * e + Math.sin(Math.PI * k) * 1.5;
+      const dx = x - b.g.position.x, dz = z - b.g.position.z;
+      if (dx * dx + dz * dz > 1e-6) b.g.rotation.y = Math.atan2(dx, dz);
+      b.g.position.set(x, y, z);
+      wingsAt(b, t, true);
+      if (k >= 1) b.mode = b.mode === 'land' ? 'sit' : 'fly';
+    }
+    const flyTarget = n => Math.min(n, Math.max(5, Math.min(10, 5 + Math.floor(n / 15))));
+    const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+    function land(b, t, instant) {
+      const free = spots.filter(x => !x.bird);
+      if (!free.length) return false;
+      b.spot = pick(free); b.spot.bird = b;
+      if (instant) b.mode = 'sit';
+      else { b.mode = 'land'; b.from = b.g.position.clone(); b.t0 = t; }
+      return true;
+    }
+    function takeOff(b, t, instant) {
+      if (b.spot) { b.spot.bird = null; b.spot = null; }
+      if (instant) b.mode = 'fly';
+      else { b.mode = 'up'; b.from = b.g.position.clone(); b.t0 = t; }
+    }
+    let shown = 0, nextSwap = 3;
+    function schedule(t) {
+      if (t < nextSwap) return;
+      nextSwap = t + 2.5 + Math.random() * 2;
+      const vis = birds.slice(0, shown);
+      const flying = vis.filter(b => b.mode === 'fly');
+      const sitting = vis.filter(b => b.mode === 'sit');
+      const airborne = vis.filter(b => b.mode === 'fly' || b.mode === 'up').length;
+      const want = flyTarget(shown);
+      if (airborne > want && flying.length) { land(pick(flying), t); return; }
+      if (airborne < want && sitting.length) { takeOff(pick(sitting), t); return; }
+      if (flying.length && sitting.length) { const up = pick(sitting); land(pick(flying), t); takeOff(up, t); }
     }
     // Named birds: followers who asked for one get their username on a small tag.
     function setBirds(n, names) {
       const want = Math.min(Math.max(0, n | 0, names.length), MAX_BIRDS);
-      while (birds.length < want) { const b = bird(birds.length); placeBird(b, 0); birds.push(b); }
+      while (birds.length < want) birds.push(bird(birds.length));
+      const t = clock.elapsedTime;
       birds.forEach((b, i) => {
-        b.g.visible = i < want;
+        if (i < want && !b.g.visible) {
+          b.g.visible = true;
+          const airborne = birds.filter(x => x !== b && x.g.visible && (x.mode === 'fly' || x.mode === 'up')).length;
+          if (airborne < flyTarget(want) || !land(b, t, true)) takeOff(b, t, true);
+          placeBird(b, t);
+        } else if (i >= want && b.g.visible) {
+          b.g.visible = false;
+          takeOff(b, t, true);
+        }
         const name = i < want ? names[i] || '' : '';
         if (name && !b.tag) {
           b.tag = document.createElement('div'); b.tag.className = 'tag birdtag'; b.tag.dataset.id = 'bird';
@@ -413,6 +567,7 @@
         }
         if (b.tag) { b.tag.textContent = name; b.tag.hidden = !name; }
       });
+      shown = want;
     }
 
     const v = new THREE.Vector3();
@@ -450,7 +605,19 @@
         a.tag.style.transform = `translate(${x}px, ${y}px) translate(-50%, -100%)`;
         a.tag.style.zIndex = String(Math.round((1 - v.z) * 1000));
       }
-      if (!reduced) birds.forEach(b => { if (b.g.visible) placeBird(b, t); });
+      if (!reduced) {
+        schedule(t);
+        birds.forEach(b => { if (b.g.visible) placeBird(b, t); });
+        for (const w of workers) {
+          if (w.tool === 'hammer') w.arm.rotation.x = -1.2 + Math.sin(t * 7 + w.p) * 0.5;
+          if (w.path) {
+            const ph = t * 0.5 + w.p, k = (Math.sin(ph) + 1) / 2, [a, b] = w.path;
+            const dir = Math.cos(ph) >= 0 ? 1 : -1;
+            w.g.position.set(a.x + (b.x - a.x) * k, w.y + Math.abs(Math.sin(t * 7)) * 0.06, a.z + (b.z - a.z) * k);
+            w.g.rotation.y = Math.atan2((b.x - a.x) * dir, (b.z - a.z) * dir);
+          }
+        }
+      }
       for (const b of birds) {
         if (!b.tag || b.tag.hidden) continue;
         v.copy(b.g.position); v.y += 0.7; v.project(camera);

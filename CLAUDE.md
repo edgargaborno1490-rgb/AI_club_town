@@ -12,8 +12,16 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   `node tools/town.js ...` (never by hand); `--push` commits and pushes it to `main`.
 - **Seven workers, each a white bucket** with its job on it: Chief of Staff (red, star),
   What If (purple, "?"), How It Works (orange, gears), World News (blue, NEWS), Programmer
-  (code, 1s and 0s), Banker (gold coins), and since Nov 15, 2026 the **Analyst** (teal,
-  bar chart; a smaller bucket on the plaza). Code: `src/scene.js`.
+  (code, 1s and 0s), Banker (gold coins), and since Nov 15, 2026 the **Analyst**. Code: `src/scene.js`.
+- **The Analyst's building is under wraps** (owner's wish, Nov 15, 2026): a tarp-covered bucket
+  with scaffolding, a crane and a work crew, and **no sign**, so visitors don't know what it is
+  until the reveal. Reveal = in `src/scene.js` set its kind to `stats` and remove `hidden: true`
+  (only when the owner says; good moment for an Island Clip or weekly update).
+- **Workers** (hard hats, orange vests) build things: 3 at the construction site, 3 putting up
+  the birdhouses (one on a ladder).
+- **Birds sit and take turns flying:** most birds sit on bucket rims, the birdhouses, treetops,
+  the grass and the plaza; 5-10 fly at a time (more followers = more in the air, max 10), and
+  every few seconds one lands while another takes off.
 - **Analyst:** reads view counts the owner copies into `village/stats.md` (or tells Claude),
   `node tools/stats.js --write` saves `village/analyst-report.md`; the Chief uses it when
   picking topics. Rotation changes stay the owner's call. Numbers only, never logins.
