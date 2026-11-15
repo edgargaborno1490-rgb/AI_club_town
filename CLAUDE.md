@@ -19,7 +19,9 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   picking topics. Rotation changes stay the owner's call. Numbers only, never logins.
 - **Daily run:** a scheduled task runs the `village-day` skill at 7:38 AM Hawaii time, inside
   the owner's main Claude chat (that chat has push access to both repos). Skills live in
-  `.claude/skills/`; `village-day` lists the steps.
+  `.claude/skills/`; `village-day` lists the steps. Each run also opens a new
+  "🎬 Video: <title>" chat in the studio for that day's draft (it shows the narration and waits
+  for the owner's APPROVED).
 - **Rotation** (`node tools/rotation.js`): Mon/Wed/Fri How It Works (money, voice George),
   Tue/Sat What If (science, Puck), Thu/Sun World News (Mark, ElevenLabs). Saturdays from
   Nov 21, 2026 also "AI Village · Week N" (village host voice, posted Sunday). Wed/Fri from

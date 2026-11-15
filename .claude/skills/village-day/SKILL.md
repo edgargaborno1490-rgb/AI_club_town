@@ -59,6 +59,19 @@ Nov 25 a short Island Clip, only if something on the island changed.
 5. **Programmer** (`programmer`): follow `programmer` (checks the script, sends it to the studio).
 6. **Banker** (`banker`): follow `banker`.
 7. **Analyst** (`analyst`): follow `analyst` (reads `village/stats.md`, updates the report).
+7b. **Open the video chat** (one per DRAFT sent to the studio today; skip any that weren't sent).
+   Use the `create_session` tool (claude-code-remote) with:
+   - `title`: "🎬 Video: <title> (<voice name>)"
+   - `environment_id`: `env_016US1TUy1EDLLZAQxsURQAG` (whitebucket-studio)
+   - `source_url`: `https://github.com/edgargaborno1490-rgb/whitebucket-studio`
+   - `prompt`: say which script (`video/scripts/<slug>.md`), its series and voice, then:
+     "Right now, only: read CLAUDE.md, video/WORKFLOW.md and the script; reply with the title,
+     voice, post window and the full narration in a quote block so the owner can copy it;
+     then wait. Don't change the Status or build until the owner says APPROVED (and, for Mark
+     or the village host, sends the MP3; for Puck/George make the voice with scripts/tts.py).
+     After approval follow WORKFLOW.md, check stills with the owner, render, caption, update
+     HANDOFF.md, and push to main."
+   If the tool isn't available or fails, say so in the summary (the owner can open one by hand).
 8. **Close the day**
    ```bash
    node tools/town.js log "Day wrap-up: DRAFT in the studio: <title> (<voice>)."
@@ -66,4 +79,5 @@ Nov 25 a short Island Clip, only if something on the island changed.
    ```
 
 Finish with a short summary: the title and its voice, why this topic, anything that
-failed, the balance, and the Analyst's one-line finding (or the reminder to add numbers).
+failed, the balance, the Analyst's one-line finding (or the reminder to add numbers), the
+full narration in a quote block (so the owner can copy it), and the name of the video chat.
