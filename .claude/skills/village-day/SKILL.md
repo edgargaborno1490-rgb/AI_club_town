@@ -12,6 +12,8 @@ The town page reads `town.json` from `main`, so every status change is pushed ri
 
 **Rotation** (`node tools/rotation.js`): Mon/Wed/Fri How It Works (money, George) ·
 Tue/Sat What If (science, Puck) · Thu/Sun World News (Mark on ElevenLabs).
+Extras: Saturdays from Nov 21 the weekly "AI Village · Week N"; Wednesdays and Fridays from
+Nov 25 a short Island Clip, only if something on the island changed.
 
 ## Rules for the whole run
 - Work on `main` of AI_club_town. All pushes go to `main` (the owner approved this).
@@ -24,8 +26,8 @@ Tue/Sat What If (science, Puck) · Thu/Sun World News (Mark on ElevenLabs).
   and move on to the next villager.
 - If a command prints "Push stopped", someone else changed that repo at the same time.
   Stop the day there and say so in your summary; don't force-push.
-- One script (plus the Village Update on Saturdays). Nothing extra. The desks that aren't
-  on today stay idle.
+- One script (plus the Village Update on Saturdays and an Island Clip on Wed/Fri when
+  there's news). Nothing extra. The desks that aren't on today stay idle.
 
 ## Steps
 
@@ -52,13 +54,16 @@ Tue/Sat What If (science, Puck) · Thu/Sun World News (Mark on ElevenLabs).
    `world-news-writer` (fact-check today's script).
 4b. **Saturdays only:** if `node tools/rotation.js` prints "also Village Update", the
    Chief follows `weekly-update` (a second DRAFT, posted Sunday).
+4c. **Wednesdays and Fridays from Nov 25:** if `node tools/rotation.js` prints "also Island
+   Clip", the Chief follows `island-clip` (it may skip when nothing changed).
 5. **Programmer** (`programmer`): follow `programmer` (checks the script, sends it to the studio).
 6. **Banker** (`banker`): follow `banker`.
-7. **Close the day**
+7. **Analyst** (`analyst`): follow `analyst` (reads `village/stats.md`, updates the report).
+8. **Close the day**
    ```bash
    node tools/town.js log "Day wrap-up: DRAFT in the studio: <title> (<voice>)."
    node tools/town.js close-day --push
    ```
 
 Finish with a short summary: the title and its voice, why this topic, anything that
-failed, and the balance.
+failed, the balance, and the Analyst's one-line finding (or the reminder to add numbers).

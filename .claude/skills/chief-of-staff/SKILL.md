@@ -11,6 +11,7 @@ description: The village's Chief of Staff - picks today's one new WhiteBucket Ex
    - `node tools/taken-topics.js` (everything already made, scripted, or written by the village)
    - `../whitebucket-studio/video/IDEAS.md` (the studio's queue: "Up next" and "Evergreen")
    - `village/brand.md` and `village/topics.md` (what the village wrote recently)
+   - `village/analyst-report.md` if it exists (which series and videos get the most views)
 3. Pick **one** topic for today's desk:
    - **How It Works** (money): a timely money item from IDEAS "Up next" (like Black Friday)
      first, then an Evergreen 💰 idea.
@@ -26,6 +27,9 @@ description: The village's Chief of Staff - picks today's one new WhiteBucket Ex
    crashed a giant company's stock?" with real past cases). It must **never** suggest that
    real reported facts about real people are fake, never invent claims about real people,
    and never say to buy, sell or time a stock.
+   **Use the numbers:** when the Analyst's report shows a clear winner, lean toward topics
+   like the top videos (same kind of question, same kind of hook). Stay on today's desk;
+   changing the rotation is the owner's call.
    Never pick anything in the taken list, even reworded. Skip ideas the owner dropped
    (IDEAS or the studio's HANDOFF.md say so, e.g. the Thanksgiving turkey idea).
 4. Write `scripts/$DATE/plan.md` exactly like this (the tools read it):

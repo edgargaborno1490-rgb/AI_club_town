@@ -76,3 +76,28 @@ test('followers are read as a whole number, junk becomes 0', () => {
   assert.equal(parseTown({ followers: 'lots' }).followers, 0);
   assert.equal(parseTown({}).followers, 0);
 });
+
+test('named birds: only safe usernames, with an @, at most 60', () => {
+  const s = parseTown({ birds: ['bob', '@x.y_z', '<script>', 'a', 42, ...Array.from({ length: 70 }, (_, i) => 'u' + i)] });
+  assert.deepEqual(s.birds.slice(0, 2), ['@bob', '@x.y_z']);
+  assert.equal(s.birds.length, 60);
+  assert.deepEqual(parseTown({}).birds, []);
+});
+
+test('latest video needs a title and a https link', () => {
+  assert.deepEqual(parseTown({ latest: { title: ' Hi ', url: 'https://t.co/x' } }).latest, { title: 'Hi', url: 'https://t.co/x' });
+  assert.equal(parseTown({ latest: { title: 'Hi', url: 'javascript:alert(1)' } }).latest, null);
+  assert.equal(parseTown({ latest: { title: 'Hi', url: 'http://t.co/x' } }).latest, null);
+  assert.equal(parseTown({ latest: { title: '', url: 'https://t.co/x' } }).latest, null);
+});
+
+test('next follower milestone', () => {
+  assert.equal(parseTown({ followers: 12 }).nextMilestone, 25);
+  assert.equal(parseTown({ followers: 25 }).nextMilestone, 50);
+  assert.equal(parseTown({}).nextMilestone, 25);
+  assert.equal(parseTown({ followers: 99999 }).nextMilestone, null);
+});
+
+test('the Analyst is a known agent', () => {
+  assert.equal(parseTown({ agents: { analyst: { status: 'working', task: 'Reading stats' } } }).agents.analyst.status, 'working');
+});

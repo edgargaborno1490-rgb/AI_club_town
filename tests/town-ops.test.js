@@ -111,3 +111,25 @@ test('followers are set from a whole number and survive a new day', () => {
   assert.throws(() => ops.setFollowers({}, '-4'), /Not a follower count/);
   assert.throws(() => ops.setFollowers({}, '2.5'), /Not a follower count/);
 });
+
+test('birds: add with @, no duplicates, remove, bad names refused', () => {
+  let t = ops.addBird(base(), 'Some_User');
+  t = ops.addBird(t, '@some_user');
+  assert.deepEqual(t.birds, ['@Some_User']);
+  t = ops.addBird(t, 'other.one');
+  t = ops.removeBird(t, 'some_user');
+  assert.deepEqual(t.birds, ['@other.one']);
+  assert.throws(() => ops.addBird(base(), 'bad name!'), /username/);
+});
+
+test('latest video: title and https link', () => {
+  const t = ops.setLatest(base(), 'Black Hole', 'https://www.tiktok.com/@x/video/1');
+  assert.deepEqual(t.latest, { title: 'Black Hole', url: 'https://www.tiktok.com/@x/video/1' });
+  assert.throws(() => ops.setLatest(base(), 'X', 'http://a.b'), /https/);
+  assert.throws(() => ops.setLatest(base(), '', 'https://a.b'), /title/);
+});
+
+test('the analyst can start and finish', () => {
+  const t = ops.done(ops.start(base(), 'analyst', 'Reading stats', '18:00'), 'analyst', '18:05', 'No new numbers.');
+  assert.equal(t.agents.analyst.status, 'done');
+});

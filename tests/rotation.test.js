@@ -29,3 +29,12 @@ test('weekly update: Saturdays from Nov 21, numbered by week', () => {
   assert.equal(weeklyUpdateWeek('2026-11-28'), 2);
   assert.equal(weeklyUpdateWeek('2026-11-22'), null); // Sunday
 });
+
+test('island clips: Wednesdays and Fridays from Nov 25 (week 2)', () => {
+  const { islandClipDay } = require('../tools/rotation.js');
+  assert.equal(islandClipDay('2026-11-18'), false); // week 1: Sunday update only
+  assert.equal(islandClipDay('2026-11-20'), false);
+  assert.equal(islandClipDay('2026-11-25'), true);  // Wednesday
+  assert.equal(islandClipDay('2026-11-27'), true);  // Friday
+  assert.equal(islandClipDay('2026-11-26'), false); // Thursday
+});

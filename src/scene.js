@@ -7,6 +7,8 @@
     { id: 'banker',     name: 'Banker',         kind: 'bank',       shirt: 0x3f9f6b, angle: 90 },
     { id: 'programmer', name: 'Programmer',     kind: 'workshop',   shirt: 0x2e3d5a, angle: 150 },
     { id: 'news',       name: 'World News',     kind: 'news',       shirt: 0x2f6fd6, angle: 210 },
+    // The Analyst moved in on Nov 15, 2026: a smaller bucket on the plaza, opposite the next-build plot.
+    { id: 'analyst',    name: 'Analyst',        kind: 'stats',      shirt: 0x17a398, angle: 180, r: 8.6, scale: 0.8 },
   ];
   const R = 13.5;
   const RING = { idle: 0x9aa7b6, working: 0xff9f1a, done: 0x1fae6a };
@@ -220,6 +222,20 @@
         g.add(globe);
         return { glow: [glow], spin: [{ o: globe, axis: 'y', speed: 1.5, always: 0.3 }], blink: beacon, top: BH + 3.8 };
       },
+      stats(g) { // Analyst: a bucket with a bar chart on the front and a growing chart on top
+        bucket(g, 0x17a398, 0x0f6b63);
+        const glow = label(g, (ctx, W, H) => {
+          patch(ctx, W, H, '#17a398');
+          ctx.fillStyle = '#fff';
+          [[0.3, 60], [0.45, 95], [0.6, 75], [0.75, 135]].forEach(([fx, h]) => ctx.fillRect(W * fx - 30, 160 - h, 60, h));
+          ctx.strokeStyle = '#fff'; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(W * 0.2, 162); ctx.lineTo(W * 0.85, 162); ctx.stroke();
+          words(ctx, 'STATS', W / 2, 214, 50, '#fff');
+        });
+        const bars = [0xffffff, 0x9be8df, 0xffd36b].map((c, i) => {
+          const b = box(0.55, 1, 0.55, c, (i - 1) * 0.75, BH, 0); b.userData.base = 0.9 + i * 0.55; g.add(b); return b;
+        });
+        return { glow: [glow], spin: [], bars, top: BH + 2.4 };
+      },
     };
 
     function villager(shirt) {
@@ -234,13 +250,16 @@
 
     const agents = AGENTS.map(def => {
       const a = Object.assign({}, def);
-      const ang = a.angle * Math.PI / 180, x = Math.cos(ang) * R, z = Math.sin(ang) * R;
-      const path = box(1.7, 0.1, R - 5, 0xf1dfb0, 0, 0.05, 0);
-      path.castShadow = false;
-      const pg = new THREE.Group(); pg.add(path); path.position.z = (R - 5) / 2 + 5;
-      pg.rotation.y = Math.atan2(x, z); scene.add(pg);
+      const r = a.r || R, sc = a.scale || 1;
+      const ang = a.angle * Math.PI / 180, x = Math.cos(ang) * r, z = Math.sin(ang) * r;
+      if (!a.r) { // buckets on the outer ring get a path to the plaza
+        const path = box(1.7, 0.1, R - 5, 0xf1dfb0, 0, 0.05, 0);
+        path.castShadow = false;
+        const pg = new THREE.Group(); pg.add(path); path.position.z = (R - 5) / 2 + 5;
+        pg.rotation.y = Math.atan2(x, z); scene.add(pg);
+      }
 
-      const g = new THREE.Group(); g.position.set(x, 0, z); g.rotation.y = Math.atan2(-x, -z);
+      const g = new THREE.Group(); g.position.set(x, 0, z); g.rotation.y = Math.atan2(-x, -z); g.scale.setScalar(sc);
       const parts = builders[a.kind](g);
       scene.add(g);
 
@@ -258,7 +277,7 @@
       chip.append(dot, name); tag.append(bubble, chip);
       labels.appendChild(tag);
 
-      return Object.assign(a, parts, { person, ring, tag, btext, status: 'idle', anchor: new THREE.Vector3(x, parts.top + 0.6, z) });
+      return Object.assign(a, parts, { person, ring, tag, btext, status: 'idle', anchor: new THREE.Vector3(x, parts.top * sc + 0.6, z) });
     });
 
     // Trees and clouds
@@ -269,7 +288,7 @@
       else g.add(mesh(new THREE.IcosahedronGeometry(0.85, 0), mat(0x55b84a), 0, 1.5, 0));
       scene.add(g);
     }
-    const nearBuilding = ang => AGENTS.some(a => Math.abs(((ang * 180 / Math.PI) - a.angle + 540) % 360 - 180) < 17);
+    const nearBuilding = ang => AGENTS.some(a => !a.r && Math.abs(((ang * 180 / Math.PI) - a.angle + 540) % 360 - 180) < 17);
     for (let i = 0; i < 70; i++) {
       const ang = rand() * Math.PI * 2, r = 18 + rand() * 4;
       if (nearBuilding(ang) && r < 19.5) continue;
@@ -277,7 +296,9 @@
     }
     const PLOT_ANGLE = 0; // between What If and How It Works
     AGENTS.forEach(a => {
+      if (a.r) return;
       if ((a.angle + 30) % 360 === PLOT_ANGLE) return; // leave room for the next-build plot
+      if (AGENTS.some(b => b.r && b.angle === a.angle + 30)) return; // or for an inner bucket
       const ang = (a.angle + 30) * Math.PI / 180; tree(Math.cos(ang) * 9.5, Math.sin(ang) * 9.5, 0.9);
     });
 
@@ -342,10 +363,19 @@
       const flap = reduced ? 0.2 : Math.sin(t * 9 + b.p * 3) * 0.6;
       b.wings[0].rotation.z = -flap; b.wings[1].rotation.z = flap;
     }
-    function setBirds(n) {
-      const want = Math.min(Math.max(0, n | 0), MAX_BIRDS);
+    // Named birds: followers who asked for one get their username on a small tag.
+    function setBirds(n, names) {
+      const want = Math.min(Math.max(0, n | 0, names.length), MAX_BIRDS);
       while (birds.length < want) { const b = bird(birds.length); placeBird(b, 0); birds.push(b); }
-      birds.forEach((b, i) => { b.g.visible = i < want; });
+      birds.forEach((b, i) => {
+        b.g.visible = i < want;
+        const name = i < want ? names[i] || '' : '';
+        if (name && !b.tag) {
+          b.tag = document.createElement('div'); b.tag.className = 'tag birdtag'; b.tag.dataset.id = 'bird';
+          labels.appendChild(b.tag);
+        }
+        if (b.tag) { b.tag.textContent = name; b.tag.hidden = !name; }
+      });
     }
 
     const v = new THREE.Vector3();
@@ -368,6 +398,10 @@
           b.position.y = BH + k * 3.2;
           b.material.opacity = Math.sin(k * Math.PI);
         });
+        if (a.bars) a.bars.forEach((b, i) => {
+          const h = b.userData.base * (working && !reduced ? 0.75 + 0.35 * Math.abs(Math.sin(t * 2.2 + i)) : 1);
+          b.scale.y = h; b.position.y = BH + h / 2;
+        });
         if (a.blink) a.blink.material.emissiveIntensity = working ? (Math.sin(t * 8) > 0 ? 1 : 0.1) : 0.4;
 
         v.copy(a.anchor).project(camera);
@@ -380,6 +414,13 @@
         a.tag.style.zIndex = String(Math.round((1 - v.z) * 1000));
       }
       if (!reduced) birds.forEach(b => { if (b.g.visible) placeBird(b, t); });
+      for (const b of birds) {
+        if (!b.tag || b.tag.hidden) continue;
+        v.copy(b.g.position); v.y += 0.7; v.project(camera);
+        if (v.z > 1) { b.tag.style.display = 'none'; continue; }
+        b.tag.style.display = '';
+        b.tag.style.transform = `translate(${(v.x * 0.5 + 0.5) * innerWidth}px, ${(-v.y * 0.5 + 0.5) * innerHeight}px) translate(-50%, -100%)`;
+      }
       for (const e of extras) {
         v.copy(e.anchor).project(camera);
         if (v.z > 1) { e.tag.style.display = 'none'; continue; }
@@ -409,7 +450,7 @@
           a.btext.textContent = s.task;
           a.btext.parentNode.hidden = !s.task;
         }
-        setBirds(state.followers || 0);
+        setBirds(state.followers || 0, state.birds || []);
       },
     };
   }

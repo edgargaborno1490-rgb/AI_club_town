@@ -4,7 +4,9 @@
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.TownState = api;
 })(typeof self !== 'undefined' ? self : this, function () {
-  const AGENT_IDS = ['chief', 'whatif', 'howitworks', 'news', 'programmer', 'banker'];
+  const AGENT_IDS = ['chief', 'whatif', 'howitworks', 'news', 'programmer', 'banker', 'analyst'];
+  // Follower milestones: each one is a story beat for a weekly update.
+  const MILESTONES = [25, 50, 100, 250, 500, 1000, 2500, 5000, 10000];
   const STATUSES = ['idle', 'working', 'done'];
   const DEFAULT_GOAL = 1000;
   const MAX_LOG = 20;
@@ -43,12 +45,23 @@
       .map(e => ({ time: text(e.time), text: text(e.text) }))
       .slice(-MAX_LOG)
       .reverse();
+    const birds = (Array.isArray(r.birds) ? r.birds : [])
+      .filter(b => typeof b === 'string' && /^@?[A-Za-z0-9._]{2,30}$/.test(b))
+      .map(b => (b[0] === '@' ? b : '@' + b))
+      .slice(0, 60);
+    const L = isObj(r.latest) ? r.latest : {};
+    const latest = typeof L.title === 'string' && L.title.trim() && /^https:\/\/[^\s"'<>]+$/.test(text(L.url))
+      ? { title: L.title.trim().slice(0, 90), url: L.url } : null;
+    const f = followers > 0 ? Math.floor(followers) : 0;
     return {
       ok,
       day: day >= 1 ? Math.floor(day) : 1,
       goal: goal > 0 ? goal : DEFAULT_GOAL,
       balance: balance > 0 ? balance : 0,
-      followers: followers > 0 ? Math.floor(followers) : 0,
+      followers: f,
+      nextMilestone: MILESTONES.find(m => m > f) || null,
+      birds,
+      latest,
       updated: typeof r.updated === 'string' ? r.updated : null,
       stalled: stalled && anyWorking,
       agents,
@@ -69,5 +82,5 @@
     return days + (days === 1 ? ' day ago' : ' days ago');
   }
 
-  return { AGENT_IDS, parseTown, timeAgo };
+  return { AGENT_IDS, MILESTONES, parseTown, timeAgo };
 });

@@ -5,6 +5,9 @@
 //   node tools/town.js done <agent> ["<note>"] [--push]
 //   node tools/town.js log "<text>" [--push]
 //   node tools/town.js balance <amount> [--push]
+//   node tools/town.js followers <n> [--push]
+//   node tools/town.js bird add|remove <username> [--push]   (only followers who asked)
+//   node tools/town.js latest "<video title>" <https link> [--push]
 //   node tools/town.js close-day [--push]
 //   node tools/town.js today          (prints the Hawaii date, for folder names)
 const fs = require('fs');
@@ -59,9 +62,14 @@ function main(argv) {
     case 'log':       next = ops.log(town, a, now.time); msg = 'Village: log'; break;
     case 'balance':   next = ops.setBalance(town, a); msg = `Village: balance ${next.balance}`; break;
     case 'followers': next = ops.setFollowers(town, a); msg = `Village: ${next.followers} followers`; break;
+    case 'bird':
+      if (a === 'add') { next = ops.addBird(town, b); msg = `Village: bird for ${b}`; break; }
+      if (a === 'remove') { next = ops.removeBird(town, b); msg = `Village: bird removed`; break; }
+      throw new Error('Use: node tools/town.js bird add|remove <username>');
+    case 'latest':    next = ops.setLatest(town, a, b); msg = `Village: latest video ${a}`; break;
     case 'close-day': next = ops.closeDay(town, now.time); msg = 'Village: day closed'; break;
     default:
-      console.error('Usage: node tools/town.js <new-day|start|done|log|balance|followers|close-day|today> [args] [--push]');
+      console.error('Usage: node tools/town.js <new-day|start|done|log|balance|followers|bird|latest|close-day|today> [args] [--push]');
       process.exit(2);
   }
   fs.writeFileSync(FILE, JSON.stringify(next, null, 2) + '\n');

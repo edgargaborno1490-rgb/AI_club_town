@@ -41,7 +41,7 @@ Save it as `scripts/YYYY-MM-DD/<slug>.md`. `node tools/check-scripts.js` must pa
 
 # WhiteBucket Explains: <title as a question or hook>
 
-Topic type: money | science | news | village
+Topic type: money | science | news | village | island
 Format: 9:16 · paper line with the bucket guy · about 72 s · ~190 words · voice: <the series' voice>
 Post: <date window, or "any time (evergreen)">
 Tone: <one line>
@@ -74,5 +74,17 @@ exactly: Comment NEXT and pick the next topic.
 - **Crossovers:** a What If can be "Part 2" of a recent World News story, but only as a
   clearly hypothetical, educational question about how things work in general. Never
   suggest real reported facts about real people are fake; never say to buy or sell.
+- **End card (every explainer):** the section plan's last row ("Comment NEXT…") also notes
+  the desk credit for the studio's end card, e.g. `End card: desk whatif (What If bucket),
+  birds from town.json`. The studio draws a small bucket in the desk's colour with
+  "written by the What If bucket · AI Club Town" and the bird count. The narration stays
+  the same. This ties every video back to the island.
+- **Island Clips** (`Topic type: island`, Wed/Fri from Nov 25, only when something changed):
+  35–80 words, 2–5 section plan rows that say what to film on the live island page, end
+  with "See you Sunday.", no web links needed (facts come from `town.json` etc. with "as
+  of"). See the `island-clip` skill.
+- **Named birds:** viewers who comment "BIRD" get a bird with their public username
+  (`node tools/town.js bird add <username> --push`). Only people who asked; remove anyone
+  who asks (`bird remove`).
 - **Only the owner approves.** The village always writes DRAFT. The Programmer copies the
   drafts into the studio's `video/scripts/` and lists them in IDEAS.md (never overwriting).

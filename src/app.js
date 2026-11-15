@@ -25,6 +25,13 @@
     const n = state.followers, max = window.TownScene.MAX_BIRDS;
     $('flock').textContent = n === 0 ? 'No birds yet: every TikTok follower becomes a bird.'
       : `${n.toLocaleString('en-US')} ${n === 1 ? 'bird' : 'birds'}: one for each TikTok follower` + (n > max ? ` (${max} flying)` : '');
+    const named = state.birds.length;
+    if (named) $('flock').textContent += ` · ${named} named (comment BIRD to get yours)`;
+    $('milestone').textContent = state.nextMilestone
+      ? `Next milestone: ${state.nextMilestone.toLocaleString('en-US')} followers (${(state.nextMilestone - n).toLocaleString('en-US')} to go) → something new on the island`
+      : '';
+    $('latest').hidden = !state.latest;
+    if (state.latest) { $('latest').href = state.latest.url; $('latest-title').textContent = 'Latest video: ' + state.latest.title; }
     $('bar').style.width = Math.min(100, state.balance / state.goal * 100) + '%';
     const feed = $('feed');
     feed.textContent = '';

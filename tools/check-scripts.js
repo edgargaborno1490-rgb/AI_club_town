@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ENDING = 'Comment NEXT and pick the next topic.';
-const TYPES = ['money', 'science', 'news', 'village'];
+const TYPES = ['money', 'science', 'news', 'village', 'island'];
 const PLATFORMS = ['TikTok', 'Instagram', 'Facebook', 'YouTube'];
 
 function sections(text) {
@@ -46,16 +46,18 @@ function checkScript(text) {
   if (s.Narration) {
     const n = s.Narration.split(/\s+/).filter(Boolean).length;
     // AI Village videos (intro, weekly updates) may run to ~90 s and use their own ending.
-    const [lo, hi] = type === 'village' ? [170, 240] : [170, 210];
+    // Island clips are short (15-30 s).
+    const [lo, hi] = type === 'island' ? [35, 80] : type === 'village' ? [170, 240] : [170, 210];
     if (n < lo || n > hi) problems.push(`Narration has ${n} words (needs ${lo}-${hi})`);
-    if (type !== 'village' && !s.Narration.trim().endsWith(ENDING)) problems.push(`Narration must end with exactly "${ENDING}"`);
+    if (!['village', 'island'].includes(type) && !s.Narration.trim().endsWith(ENDING)) problems.push(`Narration must end with exactly "${ENDING}"`);
   }
   if (s['Section plan']) {
     const rows = s['Section plan'].split('\n').filter(l => /^\|/.test(l.trim()) && !/^\|\s*#\s*\|/.test(l.trim()) && !/^\|[\s|:-]+\|$/.test(l.trim()));
-    if (rows.length < 4 || rows.length > 8) problems.push(`Section plan has ${rows.length} sections (needs 4-8 table rows)`);
+    const [rlo, rhi] = type === 'island' ? [2, 5] : [4, 8];
+    if (rows.length < rlo || rows.length > rhi) problems.push(`Section plan has ${rows.length} sections (needs ${rlo}-${rhi} table rows)`);
   }
   if (s['Fact notes']) {
-    if (type !== 'village' && hostsOf(s['Fact notes']).length < 2) problems.push('Fact notes need a source link for the claims (at least 2 links)');
+    if (!['village', 'island'].includes(type) && hostsOf(s['Fact notes']).length < 2) problems.push('Fact notes need a source link for the claims (at least 2 links)');
     if (!/as of/i.test(s['Fact notes'])) problems.push('Fact notes need an "as of" date');
   }
   if (s.Captions) for (const p of PLATFORMS) if (!new RegExp(`\\b${p}\\b`).test(s.Captions)) problems.push(`Captions missing ${p}`);

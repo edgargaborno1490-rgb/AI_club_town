@@ -90,3 +90,12 @@ test('village videos may be longer and use their own ending', () => {
   const tooLong = script({ type: 'village', narration: 260, end: 'See you next Sunday.', facts: '- x, as of Nov 14, 2026.' });
   assert.ok(checkScript(tooLong).some(p => /Narration has/.test(p)));
 });
+
+test('island clips are short (35-80 words, 2-5 sections) with no web links needed', () => {
+  const ok = script({ type: 'island', narration: 50, end: 'See you Sunday.', rows: 3, facts: '- Followers: 25 (town.json), as of Nov 25, 2026.' });
+  assert.deepEqual(checkScript(ok), []);
+  const long = script({ type: 'island', narration: 120, end: 'See you Sunday.', rows: 3, facts: '- x, as of Nov 25, 2026.' });
+  assert.ok(checkScript(long).some(p => /Narration has/.test(p)));
+  const many = script({ type: 'island', narration: 50, end: 'See you Sunday.', rows: 7, facts: '- x, as of Nov 25, 2026.' });
+  assert.ok(checkScript(many).some(p => /Section plan/.test(p)));
+});

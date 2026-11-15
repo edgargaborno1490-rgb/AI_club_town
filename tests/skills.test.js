@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const DIR = path.join(__dirname, '..', '.claude', 'skills');
-const AGENT_SKILLS = ['chief-of-staff', 'what-if-writer', 'how-it-works-writer', 'world-news-writer', 'programmer', 'banker'];
+const AGENT_SKILLS = ['chief-of-staff', 'what-if-writer', 'how-it-works-writer', 'world-news-writer', 'programmer', 'banker', 'analyst', 'island-clip'];
 const read = name => fs.readFileSync(path.join(DIR, name, 'SKILL.md'), 'utf8');
 
 for (const name of ['village-day', ...AGENT_SKILLS]) {
@@ -26,5 +26,5 @@ test('village-day runs every villager and uses the tools', () => {
 });
 
 test('the brand guide and topic list exist', () => {
-  for (const f of ['brand.md', 'topics.md']) assert.ok(fs.existsSync(path.join(__dirname, '..', 'village', f)), f);
+  for (const f of ['brand.md', 'topics.md', 'stats.md']) assert.ok(fs.existsSync(path.join(__dirname, '..', 'village', f)), f);
 });

@@ -1,7 +1,7 @@
 // Pure changes to the town.json object. Each returns a new object and stamps `updated`.
 const NAMES = {
   chief: 'Chief of Staff', whatif: 'What If Studio', howitworks: 'How It Works',
-  news: 'World News', programmer: 'Programmer', banker: 'Banker',
+  news: 'World News', programmer: 'Programmer', banker: 'Banker', analyst: 'Analyst',
 };
 const IDS = Object.keys(NAMES);
 
@@ -69,6 +69,39 @@ function setFollowers(town, count) {
   return t;
 }
 
+// Named birds: only public usernames of followers who ASKED for a bird (commented "BIRD").
+const MAX_NAMED = 60;
+function birdName(name) {
+  const n = String(name || '').trim().replace(/^@+/, '');
+  if (!/^[A-Za-z0-9._]{2,30}$/.test(n)) throw new Error(`Not a username: "${name}" (letters, numbers, dots and underscores, 2-30 long)`);
+  return '@' + n;
+}
+function addBird(town, name) {
+  const n = birdName(name);
+  const t = copy(town);
+  t.birds = Array.isArray(t.birds) ? t.birds : [];
+  if (t.birds.some(b => b.toLowerCase() === n.toLowerCase())) return t;
+  if (t.birds.length >= MAX_NAMED) throw new Error(`Already ${MAX_NAMED} named birds (that's how many fly)`);
+  t.birds.push(n);
+  return t;
+}
+function removeBird(town, name) {
+  const n = birdName(name).toLowerCase();
+  const t = copy(town);
+  t.birds = (Array.isArray(t.birds) ? t.birds : []).filter(b => b.toLowerCase() !== n);
+  return t;
+}
+
+// The newest posted video, shown as a link on the town page.
+function setLatest(town, title, url) {
+  const ti = String(title || '').trim();
+  if (!ti || ti.length > 90) throw new Error('Give the video title (up to 90 characters)');
+  if (!/^https:\/\/[^\s"'<>]+$/.test(String(url || ''))) throw new Error(`Not a https link: "${url}"`);
+  const t = copy(town);
+  t.latest = { title: ti, url };
+  return t;
+}
+
 function closeDay(town, time) {
   const t = copy(town);
   for (const id of IDS) {
@@ -80,4 +113,4 @@ function closeDay(town, time) {
   return t;
 }
 
-module.exports = { NAMES, IDS, newDay, start, done, log, setBalance, setFollowers, closeDay };
+module.exports = { NAMES, IDS, newDay, start, done, log, setBalance, setFollowers, addBird, removeBird, setLatest, closeDay };
