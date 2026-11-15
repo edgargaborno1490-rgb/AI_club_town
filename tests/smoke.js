@@ -35,7 +35,10 @@ function check(cond, msg) { if (!cond) throw new Error(msg); console.log('  ok -
       check(errors.length === 0, `real mode has no page errors (${errors.join(' | ')})`);
       check(/Updated/.test(await page.textContent('#status')), 'real mode shows the "Updated" line');
       check(!(await page.isVisible('#badge')), 'real mode hides the Example data badge');
-      check(/\d+ birds?: one for each TikTok follower/.test(await page.textContent('#flock')), 'real mode shows the follower birds line');
+      check(/\d+ birds?: one for each follower/.test(await page.textContent('#flock')), 'real mode shows the follower birds line');
+      check(/of 1,000 followers/.test(await page.textContent('#goal')), 'the goal is 1,000 followers');
+      check((await page.$$('#race li')).length === 4, 'the race shows all four platforms');
+      check((await page.$$('.tag[data-id^="Birdhouses"]')).length === 1, 'the Birdhouses are on the island');
       if (SHOTS) await page.screenshot({ path: path.join(SHOTS, `real-${name}.png`) });
       await page.close();
 

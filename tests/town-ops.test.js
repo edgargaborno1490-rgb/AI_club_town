@@ -112,6 +112,18 @@ test('followers are set from a whole number and survive a new day', () => {
   assert.throws(() => ops.setFollowers({}, '2.5'), /Not a follower count/);
 });
 
+test('platform followers: set one at a time, total is the sum, survives a new day', () => {
+  let t = ops.setPlatform({ day: 1, followers: 12 }, 'YouTube', '19');
+  assert.deepEqual(t.platforms, { youtube: 19, tiktok: 0, instagram: 0, facebook: 0 });
+  assert.equal(t.followers, 19);
+  t = ops.setPlatform(t, 'tiktok', '1,016');
+  assert.equal(t.followers, 1035);
+  assert.equal(ops.newDay(t, '2026-11-20').platforms.tiktok, 1016);
+  assert.throws(() => ops.setPlatform(t, 'myspace', 3), /Unknown platform/);
+  assert.throws(() => ops.setPlatform(t, 'tiktok', '2.5'), /Not a follower count/);
+  assert.throws(() => ops.setFollowers(t, 50), /per platform/);
+});
+
 test('birds: add with @, no duplicates, remove, bad names refused', () => {
   let t = ops.addBird(base(), 'Some_User');
   t = ops.addBird(t, '@some_user');

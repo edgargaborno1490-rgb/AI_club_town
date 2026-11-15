@@ -101,3 +101,15 @@ test('next follower milestone', () => {
 test('the Analyst is a known agent', () => {
   assert.equal(parseTown({ agents: { analyst: { status: 'working', task: 'Reading stats' } } }).agents.analyst.status, 'working');
 });
+
+test('platform followers add up to the total and name a single leader', () => {
+  const s = parseTown({ followers: 12, platforms: { tiktok: 16, instagram: 4, youtube: '19', facebook: 3 } });
+  assert.equal(s.followers, 42);
+  assert.deepEqual(s.platforms.map(p => [p.id, p.followers]), [['youtube', 19], ['tiktok', 16], ['instagram', 4], ['facebook', 3]]);
+  assert.equal(s.leader, 'youtube');
+  assert.equal(s.nextMilestone, 50);
+  assert.equal(parseTown({ platforms: { tiktok: 5, youtube: 5 } }).leader, null);
+  assert.equal(parseTown({ platforms: { tiktok: 'junk', youtube: -2 } }).followers, 0);
+  assert.deepEqual(parseTown({ followers: 7 }).platforms, []);
+  assert.equal(parseTown({ followers: 7 }).followers, 7);
+});

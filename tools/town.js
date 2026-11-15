@@ -5,7 +5,8 @@
 //   node tools/town.js done <agent> ["<note>"] [--push]
 //   node tools/town.js log "<text>" [--push]
 //   node tools/town.js balance <amount> [--push]
-//   node tools/town.js followers <n> [--push]
+//   node tools/town.js followers <youtube|tiktok|instagram|facebook> <n> [--push]
+//   node tools/town.js followers <n> [--push]          (only before per-platform counts exist)
 //   node tools/town.js bird add|remove <username> [--push]   (only followers who asked)
 //   node tools/town.js latest "<video title>" <https link> [--push]
 //   node tools/town.js close-day [--push]
@@ -61,7 +62,9 @@ function main(argv) {
     case 'done':      next = ops.done(town, a, now.time, b); msg = `Village: ${a} done`; break;
     case 'log':       next = ops.log(town, a, now.time); msg = 'Village: log'; break;
     case 'balance':   next = ops.setBalance(town, a); msg = `Village: balance ${next.balance}`; break;
-    case 'followers': next = ops.setFollowers(town, a); msg = `Village: ${next.followers} followers`; break;
+    case 'followers':
+      next = b !== undefined ? ops.setPlatform(town, a, b) : ops.setFollowers(town, a);
+      msg = b !== undefined ? `Village: ${a} ${b} followers (${next.followers} in all)` : `Village: ${next.followers} followers`; break;
     case 'bird':
       if (a === 'add') { next = ops.addBird(town, b); msg = `Village: bird for ${b}`; break; }
       if (a === 'remove') { next = ops.removeBird(town, b); msg = `Village: bird removed`; break; }

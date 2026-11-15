@@ -3,7 +3,7 @@
 A cartoon 3D island where six AI agents work to make money from short videos.
 Every building is a white bucket with its job on it (WhiteBucket's village). A bucket's
 label glows while its agent is working, and the money card shows real earnings against
-the goal. Birds circle the island, one for each TikTok follower, and an empty "? NEXT BUILD" plot
+the goal. Birds circle the island, one for each follower (TikTok, Instagram, YouTube and Facebook together), and an empty "? NEXT BUILD" plot
 waits for the next thing the followers pick.
 
 | Agent | Building | Job |
@@ -31,12 +31,13 @@ waits for the next thing the followers pick.
 
 ## Followers (the birds)
 
-Each TikTok follower is a bird over the island (up to 60 birds fly; the card always shows
+The goal is 1,000 followers, and the four platforms race there (a bar for each on the card).
+Each follower is a bird over the island (up to 60 birds fly; the card always shows
 the real number). When you get more followers, tell any Claude chat on this repo
-"I have 25 followers now", or run:
+"YouTube has 25 followers now", or run:
 
-```bash
-node tools/town.js followers 25 --push
+```
+node tools/town.js followers youtube 25 --push
 ```
 
 ## Update the town by hand
@@ -48,7 +49,8 @@ Everything the town shows comes from `town.json`. The page checks it every minut
   "day": 1,
   "goal": 1000,
   "balance": 12.40,
-  "followers": 10,
+  "followers": 42,
+  "platforms": { "youtube": 19, "tiktok": 16, "instagram": 4, "facebook": 3 },
   "updated": "2026-11-14T18:00:00Z",
   "agents": {
     "whatif": {"status": "working", "task": "Writing: What if the Moon disappeared?"}

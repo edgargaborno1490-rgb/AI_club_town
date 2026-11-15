@@ -43,8 +43,14 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
 - Tests: `npm test` and `NODE_PATH=$(npm root -g) node tests/smoke.js` before pushing code.
 
 ## Followers and the island
-- Birds over the island = followers. Set the count with
-  `node tools/town.js followers <n> --push` (up to 60 birds fly; the card shows the real number).
+- **The goal is 1,000 followers** (owner's change, Nov 15, 2026; it used to be $1,000). The four
+  platforms **race** there together: the card shows the total of 1,000 plus a bar per platform
+  (YouTube, TikTok, Instagram, Facebook) and flags the leader. Money is only a small
+  "Earned so far" line now (the Banker still sets it).
+- Birds over the island = followers on all four platforms together. Set each platform with
+  `node tools/town.js followers <youtube|tiktok|instagram|facebook> <n> --push`; the total is
+  their sum (up to 60 birds fly; the card shows the real number). Nov 15, 2026: YouTube 19,
+  TikTok 16, Instagram 4, Facebook 3 = 42.
 - **Named birds:** viewers who comment "BIRD" get their public username on a bird:
   `node tools/town.js bird add <username> --push` (`bird remove` if they ask). Only people who asked.
 - **Milestones:** the card shows the next one (25, 50, 100, 250, …). Each is a story beat for
@@ -52,7 +58,11 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
 - **Latest video link** on the card: `node tools/town.js latest "<title>" <https link> --push`
   after the owner posts (ask them for the link).
 - The empty **"? NEXT BUILD"** plot: each week the owner picks one viewer idea from the
-  comments and it gets built there; that Sunday's update shows it.
+  comments and it gets built there; that Sunday's update shows it. When a build is done it keeps
+  its spot and a new empty plot opens.
+- **Built so far:** the **Birdhouses** (Nov 15, 2026, a YouTube viewer's comment): three little
+  houses on poles between What If and How It Works; the first three birds of the flock sit on
+  them. The next-build plot moved to between How It Works and the Banker.
 - **Planned, not built yet:** one animal per platform: TikTok = hyperactive ferret,
   Instagram = peacock, Facebook = owl, YouTube = whale (swims in the water). Before building,
   ask the owner whether it's one animal per follower or one per 10 followers. The intro video

@@ -28,7 +28,9 @@
       if (s.add) balance = Math.round((balance + s.add) * 100) / 100;
       log.push({ time: s.t, text: s.log });
     }
-    return { day, goal: 1000, balance, followers: 10 + (day - 1) * 4, birds: ['@sample_bird', '@demo.viewer'], latest: { title: 'Sample video', url: 'https://example.com/' }, updated: null, agents, log };
+    const platforms = { youtube: 4 + day * 2, tiktok: 5 + day, instagram: 1 + day, facebook: day };
+    const followers = Object.values(platforms).reduce((s, n) => s + n, 0);
+    return { day, goal: 1000, balance, platforms, followers, birds: ['@sample_bird', '@demo.viewer'], latest: { title: 'Sample video', url: 'https://example.com/' }, updated: null, agents, log };
   }
 
   return { STEPS, stateAt };

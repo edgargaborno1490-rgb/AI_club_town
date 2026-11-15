@@ -8,7 +8,14 @@
   // Follower milestones: each one is a story beat for a weekly update.
   const MILESTONES = [25, 50, 100, 250, 500, 1000, 2500, 5000, 10000];
   const STATUSES = ['idle', 'working', 'done'];
+  // The goal is followers (since Nov 15, 2026): the four platforms race to 1,000 together.
   const DEFAULT_GOAL = 1000;
+  const PLATFORMS = [
+    { id: 'youtube', name: 'YouTube' },
+    { id: 'tiktok', name: 'TikTok' },
+    { id: 'instagram', name: 'Instagram' },
+    { id: 'facebook', name: 'Facebook' },
+  ];
   const MAX_LOG = 20;
 
   const isObj = v => v !== null && typeof v === 'object' && !Array.isArray(v);
@@ -52,13 +59,24 @@
     const L = isObj(r.latest) ? r.latest : {};
     const latest = typeof L.title === 'string' && L.title.trim() && /^https:\/\/[^\s"'<>]+$/.test(text(L.url))
       ? { title: L.title.trim().slice(0, 90), url: L.url } : null;
-    const f = followers > 0 ? Math.floor(followers) : 0;
+    // Followers per platform; when any are given, the total is their sum.
+    const P = isObj(r.platforms) ? r.platforms : {};
+    const hasPlatforms = PLATFORMS.some(p => p.id in P);
+    const platforms = hasPlatforms ? PLATFORMS.map(p => {
+      const n = num(P[p.id]);
+      return { id: p.id, name: p.name, followers: n > 0 ? Math.floor(n) : 0 };
+    }) : [];
+    const top = platforms.reduce((m, p) => Math.max(m, p.followers), 0);
+    const leaders = platforms.filter(p => top > 0 && p.followers === top).map(p => p.id);
+    const f = hasPlatforms ? platforms.reduce((s, p) => s + p.followers, 0) : (followers > 0 ? Math.floor(followers) : 0);
     return {
       ok,
       day: day >= 1 ? Math.floor(day) : 1,
       goal: goal > 0 ? goal : DEFAULT_GOAL,
       balance: balance > 0 ? balance : 0,
       followers: f,
+      platforms,
+      leader: leaders.length === 1 ? leaders[0] : null,
       nextMilestone: MILESTONES.find(m => m > f) || null,
       birds,
       latest,
@@ -82,5 +100,5 @@
     return days + (days === 1 ? ' day ago' : ' days ago');
   }
 
-  return { AGENT_IDS, MILESTONES, parseTown, timeAgo };
+  return { AGENT_IDS, MILESTONES, PLATFORMS, parseTown, timeAgo };
 });

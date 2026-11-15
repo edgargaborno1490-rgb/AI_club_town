@@ -62,10 +62,26 @@ function setBalance(town, amount) {
 
 // Followers show as birds over the island (one bird per follower, up to the page's limit).
 function setFollowers(town, count) {
+  if (town && town.platforms) throw new Error('Followers are counted per platform now: node tools/town.js followers <youtube|tiktok|instagram|facebook> <n>');
   const str = String(count).replace(/[,\s]/g, '');
   if (!/^\d+$/.test(str)) throw new Error(`Not a follower count: "${count}" (use a whole number like 25)`);
   const t = copy(town);
   t.followers = Number(str);
+  return t;
+}
+
+// Followers on one platform. The total (birds over the island) becomes the sum of all four.
+const PLATFORM_IDS = ['youtube', 'tiktok', 'instagram', 'facebook'];
+function setPlatform(town, platform, count) {
+  const id = String(platform || '').toLowerCase();
+  if (!PLATFORM_IDS.includes(id)) throw new Error(`Unknown platform "${platform}". Use one of: ${PLATFORM_IDS.join(', ')}`);
+  const str = String(count).replace(/[,\s]/g, '');
+  if (!/^\d+$/.test(str)) throw new Error(`Not a follower count: "${count}" (use a whole number like 25)`);
+  const t = copy(town);
+  const prev = t.platforms && typeof t.platforms === 'object' ? t.platforms : {};
+  t.platforms = {};
+  for (const p of PLATFORM_IDS) t.platforms[p] = p === id ? Number(str) : (Number(prev[p]) || 0);
+  t.followers = PLATFORM_IDS.reduce((s, p) => s + t.platforms[p], 0);
   return t;
 }
 
@@ -113,4 +129,4 @@ function closeDay(town, time) {
   return t;
 }
 
-module.exports = { NAMES, IDS, newDay, start, done, log, setBalance, setFollowers, addBird, removeBird, setLatest, closeDay };
+module.exports = { NAMES, IDS, newDay, start, done, log, setBalance, setFollowers, setPlatform, PLATFORM_IDS, addBird, removeBird, setLatest, closeDay };

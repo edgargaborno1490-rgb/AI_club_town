@@ -294,20 +294,54 @@
       if (nearBuilding(ang) && r < 19.5) continue;
       tree(Math.cos(ang) * r, Math.sin(ang) * r, 0.8 + rand() * 0.6);
     }
-    const PLOT_ANGLE = 0; // between What If and How It Works
+    // Built plots: the Birdhouses (Nov 15, 2026, a YouTube viewer's idea) between What If and
+    // How It Works, and the empty "? NEXT BUILD" plot, now between How It Works and the Banker.
+    const BIRDHOUSE_ANGLE = 0, PLOT_ANGLE = 60;
+    const BUILT = [BIRDHOUSE_ANGLE, PLOT_ANGLE];
     AGENTS.forEach(a => {
       if (a.r) return;
-      if ((a.angle + 30) % 360 === PLOT_ANGLE) return; // leave room for the next-build plot
+      if (BUILT.includes((a.angle + 30 + 360) % 360)) return; // leave room for the plots
       if (AGENTS.some(b => b.r && b.angle === a.angle + 30)) return; // or for an inner bucket
       const ang = (a.angle + 30) * Math.PI / 180; tree(Math.cos(ang) * 9.5, Math.sin(ang) * 9.5, 0.9);
     });
+    const extras = [];
+    function plotAt(angle) {
+      const ang = angle * Math.PI / 180, r = 7.6;
+      const plot = new THREE.Group(); plot.position.set(Math.cos(ang) * r, 0, Math.sin(ang) * r);
+      plot.rotation.y = Math.atan2(-Math.cos(ang), -Math.sin(ang)); // the front faces the plaza
+      scene.add(plot);
+      return plot;
+    }
+    function chipAt(plot, text, y) {
+      const tag = document.createElement('div'); tag.className = 'tag'; tag.dataset.id = text;
+      const chip = document.createElement('div'); chip.className = 'chip next'; chip.textContent = text;
+      tag.appendChild(chip); labels.appendChild(tag);
+      extras.push({ tag, anchor: new THREE.Vector3(plot.position.x, y, plot.position.z) });
+    }
+
+    // The Birdhouses: three little houses on poles. The first few birds of the flock sit on them.
+    const perches = [];
+    {
+      const plot = plotAt(BIRDHOUSE_ANGLE);
+      const lawn = mesh(new THREE.CylinderGeometry(1.9, 1.9, 0.1, 24), mat(0x6cc24a), 0, 0.05, 0); lawn.castShadow = false; plot.add(lawn);
+      const HOUSES = [[-1.1, 0.5, 2.0, 0xe5533d], [0.15, -0.6, 2.6, 0x2f80ed], [1.15, 0.55, 1.7, 0xf2b10c]];
+      for (const [x, z, h, roofColor] of HOUSES) {
+        const g = new THREE.Group(); g.position.set(x, 0, z); g.rotation.y = (x * 0.4);
+        g.add(box(0.12, h, 0.12, 0x8a5a33, 0, h / 2, 0));
+        g.add(box(0.7, 0.62, 0.62, 0xffffff, 0, h + 0.31, 0));
+        const roof = mesh(new THREE.ConeGeometry(0.62, 0.5, 4), mat(roofColor), 0, h + 0.87, 0); roof.rotation.y = Math.PI / 4; g.add(roof);
+        const hole = mesh(new THREE.CircleGeometry(0.13, 12), new THREE.MeshBasicMaterial({ color: 0x1c2836 }), 0, h + 0.36, 0.312); hole.castShadow = false; g.add(hole);
+        g.add(box(0.05, 0.05, 0.3, 0x8a5a33, 0, h + 0.16, 0.42));
+        plot.add(g);
+        plot.updateMatrixWorld(true);
+        perches.push({ pos: new THREE.Vector3(0, h + 0.27, 0.52).applyMatrix4(g.matrixWorld), yaw: plot.rotation.y + g.rotation.y });
+      }
+      chipAt(plot, 'Birdhouses (viewer idea)', 4.2);
+    }
 
     // The empty "? NEXT BUILD" plot: each week something new goes here (the followers pick).
-    const extras = [];
     {
-      const ang = PLOT_ANGLE * Math.PI / 180, r = 7.6;
-      const plot = new THREE.Group(); plot.position.set(Math.cos(ang) * r, 0, Math.sin(ang) * r);
-      plot.rotation.y = Math.atan2(-Math.cos(ang), -Math.sin(ang)); // the sign faces the plaza
+      const plot = plotAt(PLOT_ANGLE);
       const dirt = box(2.6, 0.12, 2.6, 0x9b6b3f, 0, 0.06, 0); dirt.castShadow = false; plot.add(dirt);
       for (const [x, z] of [[-1.3, -1.3], [1.3, -1.3], [-1.3, 1.3], [1.3, 1.3]]) plot.add(box(0.12, 0.5, 0.12, 0xe8d3a8, x, 0.25, z));
       for (const z of [-1.3, 1.3]) plot.add(box(2.6, 0.06, 0.05, 0xe8d3a8, 0, 0.4, z));
@@ -320,11 +354,7 @@
       const wood = mat(0x8a5a33);
       const sign = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.95, 0.08), [wood, wood, wood, wood, new THREE.MeshLambertMaterial({ map: new THREE.CanvasTexture(c) }), wood]);
       sign.position.set(0, 1.6, 0.07); sign.castShadow = true; plot.add(sign);
-      scene.add(plot);
-      const tag = document.createElement('div'); tag.className = 'tag'; tag.dataset.id = 'next-build';
-      const chip = document.createElement('div'); chip.className = 'chip next'; chip.textContent = 'Next build: you pick';
-      tag.appendChild(chip); labels.appendChild(tag);
-      extras.push({ tag, anchor: new THREE.Vector3(plot.position.x, 2.6, plot.position.z) });
+      chipAt(plot, 'Next build: you pick', 2.6);
     }
     const clouds = [];
     for (let i = 0; i < 6; i++) {
@@ -352,11 +382,18 @@
         g.add(pivot); return pivot;
       });
       g.traverse(o => { o.castShadow = false; });
-      const b = { g, wings, r: 9 + br() * 20, h: 8 + br() * 7, w: (0.18 + br() * 0.25) * (br() < 0.5 ? -1 : 1), p: br() * Math.PI * 2 };
+      g.scale.setScalar(i < perches.length ? 0.6 : 1);
+      const b = { perch: perches[i] || null, g, wings, r: 9 + br() * 20, h: 8 + br() * 7, w: (0.18 + br() * 0.25) * (br() < 0.5 ? -1 : 1), p: br() * Math.PI * 2 };
       scene.add(g);
       return b;
     }
     function placeBird(b, t) {
+      if (b.perch) { // sitting on a birdhouse: a little hop now and then, wings folded
+        b.g.position.copy(b.perch.pos); b.g.position.y += Math.max(0, Math.sin(t * 1.3 + b.p * 5)) ** 12 * 0.25;
+        b.g.rotation.y = b.perch.yaw;
+        b.wings[0].rotation.z = 0.15; b.wings[1].rotation.z = -0.15;
+        return;
+      }
       const a = b.p + b.w * t;
       b.g.position.set(Math.cos(a) * b.r, b.h + Math.sin(t * 0.8 + b.p) * 0.6, Math.sin(a) * b.r);
       b.g.rotation.y = Math.atan2(-Math.sin(a) * b.w, Math.cos(a) * b.w);
@@ -425,7 +462,8 @@
         v.copy(e.anchor).project(camera);
         if (v.z > 1) { e.tag.style.display = 'none'; continue; }
         e.tag.style.display = '';
-        e.tag.style.transform = `translate(${(v.x * 0.5 + 0.5) * innerWidth}px, ${(-v.y * 0.5 + 0.5) * innerHeight}px) translate(-50%, -100%)`;
+        const ex = Math.max(Math.min(90, innerWidth * 0.2), Math.min(innerWidth - Math.min(90, innerWidth * 0.2), (v.x * 0.5 + 0.5) * innerWidth));
+        e.tag.style.transform = `translate(${ex}px, ${(-v.y * 0.5 + 0.5) * innerHeight}px) translate(-50%, -100%)`;
         e.tag.style.zIndex = String(Math.round((1 - v.z) * 1000));
       }
       if (!reduced) clouds.forEach(c => { c.position.x += c.userData.v * dt; if (c.position.x > 70) c.position.x = -70; });
