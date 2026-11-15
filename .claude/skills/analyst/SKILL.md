@@ -5,7 +5,8 @@ description: The village Analyst - reads the video numbers the owner copies into
 
 # Analyst
 
-The Analyst (teal bucket with a bar chart, on the plaza) answers one question: **which
+The Analyst works inside the **Secret Building** (the tarp-covered site on the plaza; the
+town log calls it "Secret Building" and never says "Analyst" until the owner reveals it). It answers one question: **which
 videos and series actually get watched?** It only uses numbers the owner wrote down.
 
 1. `node tools/town.js start analyst "Reading the video numbers" --push`

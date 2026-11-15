@@ -1,7 +1,7 @@
 // Pure changes to the town.json object. Each returns a new object and stamps `updated`.
 const NAMES = {
   chief: 'Chief of Staff', whatif: 'What If Studio', howitworks: 'How It Works',
-  news: 'World News', programmer: 'Programmer', banker: 'Banker', analyst: 'Analyst',
+  news: 'World News', programmer: 'Programmer', banker: 'Banker', analyst: 'Secret Building',
 };
 const IDS = Object.keys(NAMES);
 

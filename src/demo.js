@@ -12,7 +12,7 @@
     { t: '10:30', set: { howitworks: ['done', ''], news: ['done', ''], programmer: ['working', 'Rendering 2 more videos'] }, log: 'How It Works and World News scripts are ready.' },
     { t: '11:15', set: { programmer: ['done', ''], banker: ['working', "Logging today's costs: $0 extra"] }, log: '3 videos are ready for you to upload.' },
     { t: '18:00', set: { banker: ['done', ''], analyst: ['working', 'Reading this week\'s view counts'] }, add: 12.4, log: "Banker logged $12.40 you reported from yesterday's videos." },
-    { t: '18:10', set: { analyst: ['done', ''] }, log: 'Analyst: What If videos got the most views this week.' },
+    { t: '18:10', set: { analyst: ['done', ''] }, log: 'Secret Building: the What If videos got the most views this week.' },
   ];
 
   function stateAt(n) {

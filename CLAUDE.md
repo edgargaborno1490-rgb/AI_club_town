@@ -15,7 +15,8 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   (code, 1s and 0s), Banker (gold coins), and since Nov 15, 2026 the **Analyst**. Code: `src/scene.js`.
 - **The Analyst's building is under wraps** (owner's wish, Nov 15, 2026): a tarp-covered bucket
   with scaffolding, a crane and a work crew, and **no sign**, so visitors don't know what it is
-  until the reveal. Reveal = in `src/scene.js` set its kind to `stats` and remove `hidden: true`
+  until the reveal. The town log and videos call it the **Secret Building** (`NAMES` in
+  `tools/town-ops.js`); never say "Analyst" on the page or in a video before the reveal. Reveal = in `src/scene.js` set its kind to `stats` and remove `hidden: true`
   (only when the owner says; good moment for an Island Clip or weekly update).
 - **Workers** (hard hats, orange vests) build things: 3 at the construction site, 3 putting up
   the birdhouses (one on a ladder).

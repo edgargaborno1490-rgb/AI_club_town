@@ -5,7 +5,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const ENDING = 'Comment NEXT and pick the next topic.';
+// From Nov 15, 2026 (the owner posts every day): an island checkup, then this line.
+const ENDING = 'See you tomorrow for another island update!';
 const TYPES = ['money', 'science', 'news', 'village', 'island'];
 const PLATFORMS = ['TikTok', 'Instagram', 'Facebook', 'YouTube'];
 
@@ -47,13 +48,13 @@ function checkScript(text) {
     const n = s.Narration.split(/\s+/).filter(Boolean).length;
     // AI Village videos (intro, weekly updates) may run to ~90 s and use their own ending.
     // Island clips are short (15-30 s).
-    const [lo, hi] = type === 'island' ? [35, 80] : type === 'village' ? [170, 240] : [170, 210];
+    const [lo, hi] = type === 'island' ? [35, 80] : type === 'village' ? [170, 240] : [180, 240];
     if (n < lo || n > hi) problems.push(`Narration has ${n} words (needs ${lo}-${hi})`);
     if (!['village', 'island'].includes(type) && !s.Narration.trim().endsWith(ENDING)) problems.push(`Narration must end with exactly "${ENDING}"`);
   }
   if (s['Section plan']) {
     const rows = s['Section plan'].split('\n').filter(l => /^\|/.test(l.trim()) && !/^\|\s*#\s*\|/.test(l.trim()) && !/^\|[\s|:-]+\|$/.test(l.trim()));
-    const [rlo, rhi] = type === 'island' ? [2, 5] : [4, 8];
+    const [rlo, rhi] = type === 'island' ? [2, 5] : [4, 10]; // + island checkup and end card rows
     if (rows.length < rlo || rows.length > rhi) problems.push(`Section plan has ${rows.length} sections (needs ${rlo}-${rhi} table rows)`);
   }
   if (s['Fact notes']) {

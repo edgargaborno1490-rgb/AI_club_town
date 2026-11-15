@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const { checkScript } = require('../tools/check-scripts.js');
 
 const words = n => Array.from({ length: n }, (_, i) => 'word' + i).join(' ');
-const END = 'Comment NEXT and pick the next topic.';
+const END = 'See you tomorrow for another island update!';
 
 function script({ type = 'science', narration = 185, end = END, rows = 6, status = '> **Status: DRAFT – needs review.**', facts, sources, drop, extra = '' } = {}) {
   const sections = {
@@ -26,15 +26,15 @@ test('the script must start as DRAFT', () => {
   assert.ok(checkScript(script({ status: '> **Status: APPROVED**' })).some(p => /DRAFT/.test(p)));
 });
 
-test('narration must be 170-210 words', () => {
+test('narration must be 180-240 words', () => {
   assert.ok(checkScript(script({ narration: 120 })).some(p => /Narration has/.test(p)));
 });
 
 test('narration must end with the locked-in line', () => {
-  assert.ok(checkScript(script({ end: 'Follow White Bucket for more.' })).some(p => /Comment NEXT/.test(p)));
+  assert.ok(checkScript(script({ end: 'Follow White Bucket for more.' })).some(p => /See you tomorrow/.test(p)));
 });
 
-test('section plan needs 4-8 rows', () => {
+test('section plan needs 4-10 rows', () => {
   assert.ok(checkScript(script({ rows: 2 })).some(p => /Section plan/.test(p)));
 });
 

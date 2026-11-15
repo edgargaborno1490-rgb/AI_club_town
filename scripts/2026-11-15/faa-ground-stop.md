@@ -3,13 +3,13 @@
 # WhiteBucket Explains: Why Every Plane in America Was Grounded
 
 Topic type: news
-Format: 9:16 · paper line with the bucket guy · about 72 s · ~190 words · voice: Mark (ElevenLabs)
+Format: 9:16 · paper line with the bucket guy · about 78 s (ElevenLabs speed ~1.1) · ~235 words (news ~180 + island checkup ~55) · voice: Mark (ElevenLabs)
 Post: Nov 15–17, 2026 (while flights are still recovering)
 Tone: calm and clear; travelers were stuck, nobody was hurt. No blame, no guessing about the cause.
 
 ## Narration (record as one paragraph)
 
-On Friday, every plane in America was told to stay on the ground. Here's what happened. At three fifty-four p.m. Eastern, the FAA ordered a nationwide ground stop. That means no flight could take off, anywhere in the country. Planes already in the air kept flying… and over three thousand landed safely. So why stop everything? Air traffic controllers guide pilots by radio, and those radios run through a private communications network. On Friday, parts of that network started failing. Frequencies cut in and out, and controllers had to jump to backup systems. When controllers can't count on talking to pilots, the safest move is simple… stop sending new planes up. The stop lasted more than four hours and was lifted at eight fifteen p.m. But the delays rolled into the weekend. Thousands of flights were canceled Friday, and more than twenty-five hundred more on Saturday. Officials say there's no sign of a cyberattack. Early reports point to old equipment, but the exact cause is still being investigated. As of November fifteenth, the FAA expects flights to be back to normal by the end of Sunday. Comment NEXT and pick the next topic.
+On Friday, every plane in America was told to stay on the ground. Here's what happened. At three fifty-four p.m. Eastern, the FAA ordered a nationwide ground stop. That means no flight could take off, anywhere in the country. Planes already in the air kept flying… and over three thousand landed safely. So why stop everything? Air traffic controllers guide pilots by radio, and those radios run through a private communications network. On Friday, parts of that network started failing. Frequencies cut in and out, and controllers had to jump to backup systems. When controllers can't count on talking to pilots, the safest move is simple… stop sending new planes up. The stop lasted more than four hours and was lifted at eight fifteen p.m. But the delays rolled into the weekend. Thousands of flights were canceled Friday, and more than twenty-five hundred more on Saturday. Officials say there's no sign of a cyberattack. Early reports point to old equipment, but the exact cause is still being investigated. As of November fifteenth, the FAA expects flights to be back to normal by the end of Sunday. … Now, a quick island checkup. We have forty-two birds! Some are resting on the island… and some are flying. We built the birdhouses a YouTube viewer asked for. And there's a secret building going up… nobody knows what it is yet. See you tomorrow for another island update!
 
 ## Section plan
 
@@ -22,7 +22,8 @@ On Friday, every plane in America was told to stay on the ground. Here's what ha
 | 4 | When controllers can't count on talking to pilots… stop sending new planes up. | Simple rule card: "CAN'T TALK? → DON'T TAKE OFF". A plane on a runway with a red stop line. |
 | 5 | The stop lasted more than four hours… more than twenty-five hundred more on Saturday. | Timeline bar "3:54 PM → 8:15 PM" with "4+ HOURS". Departure board with rows flipping to red "CANCELED"; labels "FRI: thousands" and "SAT: 2,500+". The bucket guy droops, sitting on a suitcase. |
 | 6 | Officials say there's no sign of a cyberattack… end of Sunday. | Checklist: "cyberattack? no sign" (✕ in red), "cause: old equipment? being investigated" (magnifying glass). Calendar "back to normal: end of Sunday". |
-| 7 | Comment NEXT and pick the next topic. | `ChEnd`: the comment box types NEXT, the bucket guy bounces up to it. |
+| 7 | Now, a quick island checkup… nobody knows what it is yet. | Cut to the 3D island (`src/village/Island.tsx`, matching the live AI Club Town page): counter "42 BIRDS" (label "tiktok · instagram · youtube · facebook"); birds landing on bucket rims, birdhouses and treetops while a few circle overhead. Then the birdhouses with the hard-hat crew (one on a ladder), label "idea from a youtube viewer". Then the tarp-covered secret building with scaffolding and the crane, a big red "?" and label "secret building". |
+| 8 | See you tomorrow for another island update! | End card: the bucket guy waves; big words "SEE YOU" (black) "TOMORROW" (red), small label "new island update every day". Island credit under him: desk news, 42 birds. (Replaces the comment box typing NEXT.) |
 
 ## Fact notes
 
@@ -34,6 +35,7 @@ On Friday, every plane in America was told to stay on the ground. Here's what ha
 - Thousands of flights canceled on Friday (tallies vary; FlightAware reported thousands, so the narration says "thousands"), and more than 2,500 more canceled on Saturday, Nov 14. As of Nov 15, 2026. Sources: https://www.aljazeera.com/news/2026/11/14/faa-ground-stop-lifted-why-were-us-flights-grounded-and-whats-next and https://abc11.com/live-updates/faa-ground-stop-live-updates-what-know-nationwide-flights-are-grounded/20038887/
 - Officials expect air travel to recover by the end of Sunday, Nov 15. As of Nov 15, 2026. Sources: https://abc11.com/live-updates/faa-ground-stop-live-updates-what-know-nationwide-flights-are-grounded/20038887/ and https://www.nbcnews.com/news/us-news/live-blog/live-updates-flights-grounded-faa-communications-outage-rcna609268
 - Context (not in the narration): the first nationwide US ground stop since January 2023, when the FAA's NOTAM system failed. Sources: https://www.securityweek.com/no-signs-of-hacking-in-faa-ground-stop-as-fbi-reportedly-probes-software-update/ and https://en.wikipedia.org/wiki/2023_FAA_system_outage
+- Island checkup (as of Nov 15, 2026, from AI Club Town's town.json): 42 followers = 42 birds (YouTube 19, TikTok 16, Instagram 4, Facebook 3); 5-10 birds fly at a time and the rest sit around the island; the Birdhouses were built from a YouTube viewer's comment; the Secret Building is under wraps until the reveal.
 - Possible What If follow-up: What if air traffic control went silent for a whole day? (how planes, pilots and backup procedures handle it; general and hypothetical, no claims about this outage's cause)
 
 ## Sources
@@ -48,7 +50,7 @@ FAA nationwide ground stop (Nov 13, 2026):
 
 ## Captions
 
-- TikTok: On Friday, every plane in America was told to stay on the ground ✈️🛑 Here's what actually happened. Comment NEXT and pick the next topic! #faa #flights #news #travel #whitebucket
-- Instagram: Every plane in America, grounded. Here's why the FAA hit stop on Friday, and what's next ✈️ Comment NEXT and pick the next topic! #faa #flights #news #travel #whitebucket
-- Facebook: Why every plane in America was grounded on Friday, explained in one minute. Comment NEXT and pick the next topic! #news #flights #whitebucket
-- YouTube: "Why Every Plane in America Was Grounded ✈️ #shorts" · The FAA's rare nationwide ground stop, explained: what failed, what's known, and what's next. Comment NEXT and pick the next topic!
+- TikTok: On Friday, every plane in America was told to stay on the ground ✈️🛑 Here's what actually happened. New island update every day: see you tomorrow! #faa #flights #news #travel #whitebucket
+- Instagram: Every plane in America, grounded. Here's why the FAA hit stop on Friday, and what's next ✈️ New island update every day: see you tomorrow! #faa #flights #news #travel #whitebucket
+- Facebook: Why every plane in America was grounded on Friday, explained in one minute. New island update every day: see you tomorrow! #news #flights #whitebucket
+- YouTube: "Why Every Plane in America Was Grounded ✈️ #shorts" · The FAA's rare nationwide ground stop, explained: what failed, what's known, and what's next. New island update every day: see you tomorrow!

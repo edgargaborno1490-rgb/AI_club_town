@@ -15,7 +15,7 @@ before writing.
   **village host** voice (ElevenLabs, the owner picks and records it; not Mark, Puck or George).
   AI Village videos introduce the bucket guy as WhiteBucket (the owner), may run to ~90 s
   (170–240 words), and end with their own line (the weekly update: "See you next Sunday.")
-  instead of "Comment NEXT".
+  instead of the daily ending.
   | Series | Desk | Topic type | Voice |
   |---|---|---|---|
   | What If | What If Studio (`whatif`) | science | **Puck** (Kokoro `am_puck`, free; the studio makes it) |
@@ -47,21 +47,25 @@ Post: <date window, or "any time (evergreen)">
 Tone: <one line>
 
 ## Narration (record as one paragraph)
-One paragraph, about 180–200 words. First sentence is the hook. "…" for pauses. Short
-sentences. Numbers spelled the way they're said ("one point one million"). Ends with
-exactly: Comment NEXT and pick the next topic.
+One paragraph, about 200–235 words: the explainer (~170–190 words), then a short
+**island checkup** (2–4 sentences, ~10–15 s, facts only from town.json: the bird count,
+"some are resting on the island… and some are flying", what was built or is being built,
+e.g. the Secret Building, without saying what it is), then exactly:
+See you tomorrow for another island update!
+First sentence is the hook. "…" for pauses. Short sentences. Numbers spelled the way
+they're said ("one point one million").
 
 ## Section plan
 | # | Narration | On screen |
 |---|---|---|
 | 0 | hook words… | what's drawn, the headline (black + red words), what the bucket guy does |
-(5–7 rows)
+(5–7 rows for the explainer, then one for the island checkup and one for the end card)
 
 ## Fact notes
 - Every claim and number, with a source link and an "as of" date.
 
 ## Captions
-- TikTok: … (about 5 hashtags, ends "Comment NEXT and pick the next topic!")
+- TikTok: … (about 5 hashtags, ends "New island update every day: see you tomorrow!")
 - Instagram: …
 - Facebook: … (3 hashtags)
 - YouTube: title + one line
@@ -74,7 +78,7 @@ exactly: Comment NEXT and pick the next topic.
 - **Crossovers:** a What If can be "Part 2" of a recent World News story, but only as a
   clearly hypothetical, educational question about how things work in general. Never
   suggest real reported facts about real people are fake; never say to buy or sell.
-- **End card (every explainer):** the section plan's last row ("Comment NEXT…") also notes
+- **End card (every explainer):** the section plan's last row ("See you tomorrow…") also notes
   the desk credit for the studio's end card, e.g. `End card: desk whatif (What If bucket),
   birds from town.json`. The studio draws a small bucket in the desk's colour with
   "written by the What If bucket · AI Club Town" and the bird count. The narration stays
