@@ -94,7 +94,7 @@ Nov 16 won't have them. TubeAlfred's server is allowed in the `whitebucket-studi
 - Nov 13–14, 2026: town built, then turned into buckets; birds and the next-build plot added;
   the intro video ("Meet WhiteBucket and His AI Village") was made and posted on all four platforms.
 - Nov 16, 2026: followers YouTube 20, TikTok 17, Instagram 4, Facebook 3 = 44 (YouTube leads the race). The studio put a
-  short island update (44 birds + the 4-platform race) in front of the Leonids video; the owner liked it. The owner likes
+  short island update (44 birds + the 4-platform race) in front of the Leonids video. The owner likes
   the Kokoro voice Eric and might replace Puck (ask first). Real Mark voice = owner's ElevenLabs recording only.
 - The first scheduled run failed (a fresh session had no repo access); fixed by running in the
   owner's main chat.
