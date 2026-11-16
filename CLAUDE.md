@@ -82,3 +82,10 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   the intro video ("Meet WhiteBucket and His AI Village") was made and posted on all four platforms.
 - The first scheduled run failed (a fresh session had no repo access); fixed by running in the
   owner's main chat.
+
+## Code map (graphify, added Nov 16, 2026)
+If `graphify-out/graph.json` exists (the environment setup script builds it; it is not committed),
+use it for code questions before grepping: `graphify query "<question>"`, `graphify explain "<name>"`,
+`graphify path "<A>" "<B>"`. After code changes: `graphify update .` (free, no AI calls).
+If `graphify` is not installed, just work normally. The map is a shortcut, never a requirement.
+Obsidian view: `graphify export obsidian --graph graphify-out/graph.json --dir graphify-out/obsidian`.
