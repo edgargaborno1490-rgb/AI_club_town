@@ -31,30 +31,37 @@
     let saved = null;
     try { saved = localStorage.getItem(KEY); } catch (e) {}
     set(saved === '1');
+    // Touch phones use touch events (most reliable on iPhone Safari); mice use pointer events.
     let startX = null, startY = 0, dx = 0, moved = false;
-    card.addEventListener('pointerdown', e => {
-      if (e.button > 0 || e.target.closest('a, #demo-controls')) return;
-      startX = e.clientX; startY = e.clientY; dx = 0; moved = false;
-    });
-    window.addEventListener('pointermove', e => {
+    const begin = (x, y, target) => {
+      if (target.closest('a, #demo-controls')) return;
+      startX = x; startY = y; dx = 0; moved = false;
+    };
+    const move = (x, y, ev) => {
       if (startX === null) return;
-      dx = e.clientX - startX;
-      if (!moved && Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(e.clientY - startY)) moved = true;
+      dx = x - startX;
+      if (!moved && Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(y - startY)) moved = true;
       if (!moved) return;
+      if (ev && ev.cancelable) ev.preventDefault();
       const tucked = card.classList.contains('tucked');
-      const off = tucked ? -card.offsetWidth - 20 : 0;
+      const w = card.offsetWidth + 20;
       card.classList.add('dragging');
-      card.style.transform = 'translateX(' + Math.min(0, Math.max(-card.offsetWidth - 20, off + dx)) + 'px)';
-    });
+      card.style.transform = 'translateX(' + Math.min(0, Math.max(-w, (tucked ? -w : 0) + dx)) + 'px)';
+    };
     const end = () => {
       if (startX === null) return;
       startX = null;
       card.classList.remove('dragging');
       card.style.transform = '';
-      if (moved) { if (dx < -50) set(true); else if (dx > 50) set(false); }
+      if (moved) { if (dx < -40) set(true); else if (dx > 40) set(false); }
     };
-    window.addEventListener('pointerup', end);
-    window.addEventListener('pointercancel', end);
+    card.addEventListener('touchstart', e => { const t = e.touches[0]; begin(t.clientX, t.clientY, e.target); }, { passive: true });
+    card.addEventListener('touchmove', e => { const t = e.touches[0]; move(t.clientX, t.clientY, e); }, { passive: false });
+    card.addEventListener('touchend', end);
+    card.addEventListener('touchcancel', end);
+    card.addEventListener('pointerdown', e => { if (e.pointerType === 'mouse' && e.button === 0) begin(e.clientX, e.clientY, e.target); });
+    window.addEventListener('pointermove', e => { if (e.pointerType === 'mouse') move(e.clientX, e.clientY); });
+    window.addEventListener('pointerup', e => { if (e.pointerType === 'mouse') end(); });
     tab.addEventListener('click', () => { if (!moved) set(!card.classList.contains('tucked')); moved = false; });
   })();
 
