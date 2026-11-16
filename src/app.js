@@ -18,6 +18,46 @@
     requestAnimationFrame(tick);
   })();
 
+  // Swipe the goal card left to hide it and see the whole island; tap the tab or swipe right to bring it back.
+  (function cardSwipe() {
+    const card = $('goal-card'), tab = $('tuck'), KEY = 'town.cardTucked';
+    const set = tucked => {
+      card.classList.toggle('tucked', tucked);
+      tab.textContent = tucked ? '›' : '‹';
+      tab.setAttribute('aria-expanded', String(!tucked));
+      tab.setAttribute('aria-label', tucked ? 'Show the follower card' : 'Hide the card to see the island');
+      try { localStorage.setItem(KEY, tucked ? '1' : '0'); } catch (e) {}
+    };
+    let saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+    set(saved === '1');
+    let startX = null, startY = 0, dx = 0, moved = false;
+    card.addEventListener('pointerdown', e => {
+      if (e.button > 0 || e.target.closest('a, #demo-controls')) return;
+      startX = e.clientX; startY = e.clientY; dx = 0; moved = false;
+    });
+    window.addEventListener('pointermove', e => {
+      if (startX === null) return;
+      dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(e.clientY - startY)) moved = true;
+      if (!moved) return;
+      const tucked = card.classList.contains('tucked');
+      const off = tucked ? -card.offsetWidth - 20 : 0;
+      card.classList.add('dragging');
+      card.style.transform = 'translateX(' + Math.min(0, Math.max(-card.offsetWidth - 20, off + dx)) + 'px)';
+    });
+    const end = () => {
+      if (startX === null) return;
+      startX = null;
+      card.classList.remove('dragging');
+      card.style.transform = '';
+      if (moved) { if (dx < -50) set(true); else if (dx > 50) set(false); }
+    };
+    window.addEventListener('pointerup', end);
+    window.addEventListener('pointercancel', end);
+    tab.addEventListener('click', () => { if (!moved) set(!card.classList.contains('tucked')); moved = false; });
+  })();
+
   function render(state) {
     town.apply(state);
     // The goal is followers on all four platforms together; money is a small line under it.
