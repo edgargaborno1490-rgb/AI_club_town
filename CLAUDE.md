@@ -59,7 +59,15 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
 - Birds over the island = followers on all four platforms together. Set each platform with
   `node tools/town.js followers <youtube|tiktok|instagram|facebook> <n> --push`; the total is
   their sum (up to 60 birds fly; the card shows the real number). Nov 15, 2026: YouTube 19,
-  TikTok 16, Instagram 4, Facebook 3 = 42.
+  TikTok 16, Instagram 4, Facebook 3 = 42. Nov 16, 2026: YouTube 20, TikTok 17, Instagram 4,
+  Facebook 3 = 44.
+- **The card hides (owner's wish, Nov 16, 2026):** the owner wants to see the island, not the card.
+  Swipe the "AI Club Town · Day N" card left (or tap its ‹ tab) to tuck it off screen; a › tab
+  stays on the left edge to bring it back (tap or swipe right). The page remembers the choice.
+  Code: `cardSwipe` in `src/app.js` (touch events on phones, needed for iPhone Safari; mouse uses
+  pointer events) and `.goal.tucked` / `.tuck` in `styles.css`.
+- **Phones keep old copies of the page.** `index.html` loads `styles.css?v=N` and `src/*.js?v=N`:
+  bump N every time you change CSS or JS, or the owner's phone may show the old version.
 - **Named birds:** viewers who comment "BIRD" get their public username on a bird:
   `node tools/town.js bird add <username> --push` (`bird remove` if they ask). Only people who asked.
 - **Milestones:** the card shows the next one (25, 50, 100, 250, …). Each is a story beat for
@@ -98,6 +106,9 @@ Nov 16 won't have them. TubeAlfred's server is allowed in the `whitebucket-studi
   the Kokoro voice Eric and might replace Puck (ask first). Real Mark voice = owner's ElevenLabs recording only.
 - The first scheduled run failed (a fresh session had no repo access); fixed by running in the
   owner's main chat.
+- Nov 16, 2026: followers updated to 44; the follower card became swipeable. The first version
+  didn't swipe on the owner's phone (old cached files + pointer events), fixed with touch events and
+  the `?v=` cache-busting. If the owner says it still fails, ask iPhone or Android and which browser.
 
 ## Code map (graphify, added Nov 16, 2026)
 If `graphify-out/graph.json` exists (the environment setup script builds it; it is not committed),

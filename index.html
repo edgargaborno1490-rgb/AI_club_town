@@ -7,13 +7,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
 <div id="stage"></div>
 <div id="labels"></div>
 
-<section class="panel goal" aria-label="Town goal">
+<section class="panel goal" id="goal-card" aria-label="Town goal">
+  <button class="tuck" id="tuck" type="button" aria-controls="goal-card" aria-expanded="true" aria-label="Hide the card to see the island">‹</button>
   <div class="row"><h1>AI Club Town</h1><span class="day" id="day">Day 1</span></div>
   <div class="row"><span class="money" id="money">0 <small id="goal">of 1,000 followers</small></span></div>
   <div class="bar" aria-hidden="true"><i id="bar"></i></div>
@@ -33,9 +34,9 @@
 
 <script src="vendor/three.min.js"></script>
 <script src="vendor/OrbitControls.js"></script>
-<script src="src/state.js"></script>
-<script src="src/demo.js"></script>
-<script src="src/scene.js"></script>
-<script src="src/app.js"></script>
+<script src="src/state.js?v=4"></script>
+<script src="src/demo.js?v=4"></script>
+<script src="src/scene.js?v=4"></script>
+<script src="src/app.js?v=4"></script>
 </body>
 </html>
