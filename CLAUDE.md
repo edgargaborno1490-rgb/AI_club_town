@@ -116,6 +116,15 @@ Nov 16 won't have them. TubeAlfred's server is allowed in the `whitebucket-studi
 - Nov 16, 2026: followers YouTube 20, TikTok 17, Instagram 4, Facebook 3 = 44 (YouTube leads the race). The studio put a
   short island update (44 birds + the 4-platform race) in front of the Leonids video. The owner likes
   the Kokoro voice Eric and might replace Puck (ask first). Real Mark voice = owner's ElevenLabs recording only.
+- Nov 16, 2026 (later): the owner shared a "top 5 Claude skills for YouTube" TikTok (Outliers,
+  Packaging, Script, Retention, Comments → Ideas). Built **Packaging** and the weekly **Outliers**
+  check (see above); skipped the other three. What worked: watching the video with frame contact
+  sheets + faster-whisper; judging each skill against what the village already does and our size.
+  What didn't: faster-whisper crashes when given a file path (pass a numpy array); the creator cut
+  off the repo link on purpose ("comment FREE"), so we built our own; TubeAlfred Shorts+month search
+  came back empty, generic finance searches skew Hindi; `main` moved during the chat (merge
+  `origin/main` before pushing). The `watch-video` skill holds the steps for next time. The owner
+  checks the first Outliers report on Nov 23.
 - The first scheduled run failed (a fresh session had no repo access); fixed by running in the
   owner's main chat.
 - Nov 16, 2026: followers updated to 44; the follower card became swipeable. The first version
