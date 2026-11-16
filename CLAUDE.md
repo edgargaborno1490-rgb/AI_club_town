@@ -77,6 +77,25 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   ask the owner whether it's one animal per follower or one per 10 followers. The intro video
   promised "every follower becomes a bird", so changing it should be shown in a weekly update.
 
+## Plugins (added Nov 16, 2026)
+The owner added these Claude plugins. They connect when a chat starts, so a chat opened before
+Nov 16 won't have them. Their servers are allowed in the `whitebucket-studio` environment
+(`api.posty.hu`, `mcp.tubealfred.com`); if a tool is missing, say so and carry on without it.
+- **Posty** (social media scheduler: YouTube, TikTok, Instagram, Facebook and more). The village's
+  posting helper. **Posty never posts without the owner's APPROVED.** For every post:
+  `preview_post` first, show the owner the channel, @handle, local time, caption and video, and
+  call `create_post` only after the owner writes APPROVED for that post (an APPROVED script is
+  not an APPROVED post). Default to scheduling, not "publish now". Never delete a post or switch
+  workspaces unless the owner asks. The owner signs in to Posty in the browser; never ask for
+  or store a login, key or password. Never post from the daily scheduled run.
+- **TubeAlfred** (read-only YouTube data: channel and video stats, comments, transcripts).
+  The Analyst may use it for **YouTube** numbers instead of waiting for the owner, writing them
+  to `village/stats.md` like any other line (TikTok, Instagram and Facebook numbers still come
+  from the owner). It may also list YouTube comments that say "BIRD"; show the usernames to the
+  owner and add named birds only after the owner says yes. Public data only, never logins.
+- **social-media-skills** (captions, hashtags, hooks, platform specs). Helpers for writing;
+  `village/brand.md` and the studio's `video/WORKFLOW.md` still win.
+
 ## History
 - Nov 13–14, 2026: town built, then turned into buckets; birds and the next-build plot added;
   the intro video ("Meet WhiteBucket and His AI Village") was made and posted on all four platforms.

@@ -13,6 +13,9 @@ videos and series actually get watched?** It only uses numbers the owner wrote d
 2. If the owner gave numbers in the chat, add them to `village/stats.md` under `## Numbers`,
    one line per video per platform, in the format at the top of that file. Never invent,
    round up or guess a number. If a title or series is unclear, ask rather than guess.
+   **YouTube only:** if the TubeAlfred tools are available (plugin since Nov 16, 2026), you may
+   look up each posted video's public views and likes and add them the same way (date = today).
+   TikTok, Instagram and Facebook numbers still come from the owner. Skip it if the tools fail.
 3. `node tools/stats.js --write` (saves `village/analyst-report.md`). Fix or report any
    "Lines I could not read".
 4. If the report changed: `git add village/stats.md village/analyst-report.md && git commit -m "Analyst: report for $DATE"`
