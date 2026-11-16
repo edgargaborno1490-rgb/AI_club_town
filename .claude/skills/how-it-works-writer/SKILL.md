@@ -17,6 +17,7 @@ description: The How It Works studio (the money desk) - writes the day's How It 
 5. Write `scripts/$DATE/<slug>.md` in the format in `brand.md` (`Topic type: money`,
    `voice: George (Kokoro bm_george, made by the studio)` in the Format line).
    The section plan uses the paper-line look and gives the bucket guy something to do.
+   **Packaging:** follow `packaging` (5 scored title + cover ideas; the pick becomes the title line).
 6. Run `node tools/check-scripts.js $DATE` and fix everything it lists for your file
    (other desks' files may not exist yet).
 7. `git add scripts/$DATE && git commit -m "How It Works: <title> (DRAFT)"`

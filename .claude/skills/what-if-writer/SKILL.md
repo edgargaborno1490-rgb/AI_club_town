@@ -15,6 +15,7 @@ description: The What If Studio (the science desk) - writes the day's What If DR
    `voice: Puck (Kokoro am_puck, made by the studio)` in the Format line).
    Hook first, build to the most surprising fact, then the locked-in ending.
    Suggest one or two free-to-use photos (NASA / Wikimedia) in the section plan.
+   **Packaging:** follow `packaging` (5 scored title + cover ideas; the pick becomes the title line).
 5. Run `node tools/check-scripts.js $DATE` and fix everything it lists for your file
    (other desks' files may not exist yet).
 6. `git add scripts/$DATE && git commit -m "What If: <title> (DRAFT)"`

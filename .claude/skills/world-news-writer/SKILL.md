@@ -20,6 +20,7 @@ description: The World News desk - on news days writes the DRAFT World News scri
    `voice: Mark (ElevenLabs)` in the Format line) with `## Sources` grouped by story.
    If the story invites a great "what if", add it as the last line of the Fact notes:
    `Possible What If follow-up: <question>` (the Chief may use it on the next What If day).
+   **Packaging:** follow `packaging` (5 scored title + cover ideas; the pick becomes the title line).
 5. Run `node tools/check-scripts.js $DATE` and fix everything it lists.
 6. `git add scripts/$DATE && git commit -m "World News: <title> (DRAFT)"`
 7. `node tools/town.js done news "DRAFT ready: <title>" --push`

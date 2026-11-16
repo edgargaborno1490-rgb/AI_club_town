@@ -47,9 +47,13 @@ Nov 25 a short Island Clip, only if something on the island changed.
    add_repo tool (owner "edgargaborno1490-rgb", repo "whitebucket-studio", access "push")
    and clone it there with `--depth 1`. If that fails, log it, write the script anyway,
    and the Programmer will report that it wasn't sent.
+1b. **Mondays from Nov 23:** if `node tools/rotation.js` prints "also Outliers check", the
+   Secret Building (`analyst`) follows `outliers` first, so the Chief can use it. Skip it if
+   the TubeAlfred tools are missing; the day goes on.
 2. **Chief of Staff** (`chief`): follow `chief-of-staff`. Picks today's topic and desk.
 3. **Today's writer** (only one): How It Works → `how-it-works-writer`;
    What If → `what-if-writer`; World News → part A of `world-news-writer`.
+   The writer also follows `packaging` (5 scored title + cover ideas in the script).
 4. **World News desk** (`news`): on days it didn't write, follow part B of
    `world-news-writer` (fact-check today's script).
 4b. **Saturdays only:** if `node tools/rotation.js` prints "also Village Update", the
@@ -65,7 +69,8 @@ Nov 25 a short Island Clip, only if something on the island changed.
    - `environment_id`: `env_016US1TUy1EDLLZAQxsURQAG` (whitebucket-studio)
    - `source_url`: `https://github.com/edgargaborno1490-rgb/whitebucket-studio`
    - `prompt`: say which script (`video/scripts/<slug>.md`), its series and voice, then:
-     "Use the daily-video skill (.claude/skills/daily-video/SKILL.md). Right now, only: read the
+     "The script's Packaging section has the picked title and cover words (the owner may
+     choose the runner-up instead). Use the daily-video skill (.claude/skills/daily-video/SKILL.md). Right now, only: read the
      skill and the script; reply with the title,
      voice, post window and the full narration in a quote block so the owner can copy it;
      then wait. Don't change the Status or build until the owner says APPROVED (and, for Mark
@@ -80,6 +85,6 @@ Nov 25 a short Island Clip, only if something on the island changed.
    node tools/town.js close-day --push
    ```
 
-Finish with a short summary: the title and its voice, why this topic, anything that
-failed, the balance, the Analyst's one-line finding (or the reminder to add numbers), the
+Finish with a short summary: the title and its voice, the picked cover words and the runner-up title, why this topic, anything that
+failed, the balance, the Analyst's one-line finding (on Mondays also the top outlier) (or the reminder to add numbers), the
 full narration in a quote block (so the owner can copy it), and the name of the video chat.

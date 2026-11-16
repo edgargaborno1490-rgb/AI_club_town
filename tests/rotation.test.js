@@ -38,3 +38,11 @@ test('island clips: Wednesdays and Fridays from Nov 25 (week 2)', () => {
   assert.equal(islandClipDay('2026-11-27'), true);  // Friday
   assert.equal(islandClipDay('2026-11-26'), false); // Thursday
 });
+
+test('the Outliers check runs on Mondays from Nov 23, 2026', () => {
+  const { outliersDay } = require('../tools/rotation.js');
+  assert.equal(outliersDay('2026-11-16'), false);
+  assert.equal(outliersDay('2026-11-23'), true);
+  assert.equal(outliersDay('2026-11-24'), false);
+  assert.equal(outliersDay('2026-11-30'), true);
+});

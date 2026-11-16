@@ -25,6 +25,14 @@ function islandClipDay(date) {
   return t >= FIRST_CLIP && [3, 5].includes(new Date(t).getUTCDay());
 }
 
+// Outliers check: every Monday from Nov 23, 2026, before the Chief picks (tools/outliers.js).
+const FIRST_OUTLIERS = Date.UTC(2026, 10, 23);
+function outliersDay(date) {
+  deskFor(date);
+  const t = Date.parse(date + 'T00:00:00Z');
+  return t >= FIRST_OUTLIERS && new Date(t).getUTCDay() === 1;
+}
+
 function deskFor(date) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date || '')) throw new Error(`Not a date: "${date}"`);
   return BY_WEEKDAY[new Date(date + 'T12:00:00Z').getUTCDay()];
@@ -37,8 +45,9 @@ if (require.main === module) {
     console.log(`${date}: ${SERIES[desk]} (desk ${desk}, voice: ${VOICE[desk]})`);
     const week = weeklyUpdateWeek(date);
     if (week) console.log(`${date}: also Village Update · Week ${week} (voice: ${HOST_VOICE})`);
+    if (outliersDay(date)) console.log(`${date}: also Outliers check (Secret Building, before the Chief picks)`);
     if (islandClipDay(date)) console.log(`${date}: also Island Clip, only if something on the island changed (voice: ${HOST_VOICE})`);
   } catch (err) { console.error(err.message); process.exit(1); }
 }
 
-module.exports = { deskFor, weeklyUpdateWeek, islandClipDay, SERIES, VOICE, HOST_VOICE };
+module.exports = { deskFor, weeklyUpdateWeek, islandClipDay, outliersDay, SERIES, VOICE, HOST_VOICE };

@@ -46,6 +46,14 @@ Format: 9:16 · paper line with the bucket guy · about 72 s · ~190 words · vo
 Post: <date window, or "any time (evergreen)">
 Tone: <one line>
 
+## Packaging
+| # | Title | Cover words | Score | Why |
+|---|---|---|---|---|
+(5 ideas, scored like `8/10`; see the `packaging` skill)
+
+Pick: #N
+Runner-up: #M (<why>)
+
 ## Narration (record as one paragraph)
 One paragraph, about 200–235 words: the explainer (~170–190 words), then a short
 **island checkup** (2–4 sentences, ~10–15 s, facts only from town.json: the bird count,
@@ -68,7 +76,7 @@ they're said ("one point one million").
 - TikTok: … (about 5 hashtags, ends "New island update every day: see you tomorrow!")
 - Instagram: …
 - Facebook: … (3 hashtags)
-- YouTube: title + one line
+- YouTube: the picked title + one line
 ```
 
 - **Money:** educational only. No stock picks, predictions or "buy this". Include a short

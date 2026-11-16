@@ -33,6 +33,27 @@ function checkSourceGroups(text) {
   return problems;
 }
 
+// Packaging (from Nov 17, 2026): 5 title + cover ideas, scored, and a pick that is the title line.
+//   | # | Title | Cover words | Score | Why |   then a line "Pick: #3"
+const PACKAGED = ['money', 'science', 'news'];
+function checkPackaging(body, title) {
+  const problems = [];
+  const rows = body.split('\n').map(l => l.trim())
+    .filter(l => /^\|/.test(l) && !/^\|\s*#\s*\|/.test(l) && !/^\|[\s|:-]+\|$/.test(l))
+    .map(l => l.replace(/^\||\|$/g, '').split('|').map(c => c.trim()));
+  if (rows.length !== 5) problems.push(`Packaging needs exactly 5 ideas (got ${rows.length})`);
+  for (const [i, r] of rows.entries()) {
+    const [, t = '', cover = '', score = ''] = r;
+    if (!t || t.length > 100) problems.push(`Packaging idea ${i + 1}: title must be 1-100 characters`);
+    if (!cover || cover.split(/\s+/).length > 6) problems.push(`Packaging idea ${i + 1}: cover words must be 1-6 words`);
+    if (!/^(10|\d)\s*\/\s*10$/.test(score)) problems.push(`Packaging idea ${i + 1}: score must look like "8/10"`);
+  }
+  const pick = (body.match(/^Pick:\s*#?(\d)/m) || [])[1];
+  if (!pick || pick < 1 || pick > rows.length) problems.push('Packaging needs a line "Pick: #<1-5>"');
+  else if (rows[pick - 1] && title && rows[pick - 1][1] !== title) problems.push(`The title line must be the picked title: "${rows[pick - 1][1]}"`);
+  return problems;
+}
+
 function checkScript(text) {
   const problems = [];
   const firstLine = text.split('\n').find(l => l.trim()) || '';
@@ -62,6 +83,10 @@ function checkScript(text) {
     if (!/as of/i.test(s['Fact notes'])) problems.push('Fact notes need an "as of" date');
   }
   if (s.Captions) for (const p of PLATFORMS) if (!new RegExp(`\\b${p}\\b`).test(s.Captions)) problems.push(`Captions missing ${p}`);
+  if (PACKAGED.includes(type)) {
+    if (!s.Packaging) problems.push('Missing or empty section: Packaging (5 scored title + cover ideas; see the packaging skill)');
+    else problems.push(...checkPackaging(s.Packaging, (text.match(/^# WhiteBucket Explains: (.+)$/m) || [])[1]?.trim()));
+  }
   if (type === 'money' && !/not financial advice/i.test(text)) problems.push('Money scripts must include a "not financial advice" line');
   if (type === 'news') {
     if (!s.Sources) problems.push('News scripts need a "## Sources" section grouped by story');
@@ -93,4 +118,4 @@ if (require.main === module) {
   console.log(`scripts/${date}: script OK`);
 }
 
-module.exports = { checkScript, checkDay, ENDING };
+module.exports = { checkScript, checkDay, checkPackaging, ENDING };

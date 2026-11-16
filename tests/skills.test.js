@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const DIR = path.join(__dirname, '..', '.claude', 'skills');
-const AGENT_SKILLS = ['chief-of-staff', 'what-if-writer', 'how-it-works-writer', 'world-news-writer', 'programmer', 'banker', 'analyst', 'island-clip'];
+const AGENT_SKILLS = ['chief-of-staff', 'what-if-writer', 'how-it-works-writer', 'world-news-writer', 'programmer', 'banker', 'analyst', 'island-clip', 'packaging', 'outliers'];
 const read = name => fs.readFileSync(path.join(DIR, name, 'SKILL.md'), 'utf8');
 
 for (const name of ['village-day', ...AGENT_SKILLS]) {

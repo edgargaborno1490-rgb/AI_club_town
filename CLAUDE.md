@@ -37,6 +37,18 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   Nov 25 also a short **Island Clip** (15–30 s), only if something on the island changed
   (`island-clip` skill). The owner decided (Nov 15) to keep What If for now; revisit with
   the Analyst's numbers (the 2-money-to-1-science test ends mid-December).
+- **Packaging** (from Nov 17, 2026, owner's pick after a "top 5 Claude YouTube skills" video):
+  each money/science/news script has a `## Packaging` section: 5 title + cover-word ideas
+  scored /10 (Hook + Clear + True; anything the video doesn't deliver scores 0), `Pick: #N` and
+  a runner-up. The title line must be the pick (`check-scripts.js` checks it). Skill: `packaging`.
+- **Outliers** (Mondays from Nov 23, 2026): the Secret Building runs `outliers` before the Chief:
+  2 TubeAlfred searches (`node tools/outliers.js queries`), channel medians for up to 4 videos,
+  `village/outliers/<date>.json` → `node tools/outliers.js <date> --write` → `village/outliers.md`
+  (videos at 3x+ their channel's usual views). The Chief borrows topics, never titles or footage.
+  TubeAlfred credits are limited (45 left on Nov 16): max 8 calls a run, stop below 15.
+  Skipped from the video's list: Script (the desks already do it), Retention (needs a Google
+  login; useless at our view counts), Comments → Ideas (wait for more comments; TubeAlfred
+  comment calls cost 20+ credits).
 - Scripts go to `scripts/<date>/`, then into the studio's `video/scripts/` through
   `node tools/send-to-studio.js` (adds new DRAFTs and IDEAS.md rows, never overwrites).
   Writing rules: `village/brand.md` (the studio's `video/WORKFLOW.md` wins if they disagree).

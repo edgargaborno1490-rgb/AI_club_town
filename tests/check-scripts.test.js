@@ -5,12 +5,17 @@ const { checkScript } = require('../tools/check-scripts.js');
 const words = n => Array.from({ length: n }, (_, i) => 'word' + i).join(' ');
 const END = 'See you tomorrow for another island update!';
 
+const PACK = ['| # | Title | Cover words | Score | Why |', '|---|---|---|---|---|',
+  '| 1 | Test topic? | BIG WORDS | 9/10 | clear |', '| 2 | Another one | TWO WORDS | 7/10 | ok |',
+  '| 3 | Third | THREE | 6/10 | ok |', '| 4 | Fourth | FOUR | 5/10 | ok |', '| 5 | Fifth | FIVE | 4/10 | ok |', '', 'Pick: #1'].join('\n');
+
 function script({ type = 'science', narration = 185, end = END, rows = 6, status = '> **Status: DRAFT – needs review.**', facts, sources, drop, extra = '' } = {}) {
   const sections = {
     'Narration (record as one paragraph)': `${words(narration)} ${end}`,
     'Section plan': ['| # | Narration | On screen |', '|---|---|---|', ...Array.from({ length: rows }, (_, i) => `| ${i} | line ${i} | drawing ${i} |`)].join('\n'),
     'Fact notes': facts || '- Claim one, as of Nov 2026. Source: https://nasa.gov/a\n- Claim two. Source: https://noaa.gov/b',
     Captions: '- TikTok: a\n- Instagram: b\n- Facebook: c\n- YouTube: d',
+    Packaging: PACK,
   };
   if (sources) sections.Sources = sources;
   if (drop) delete Object.assign(sections)[drop];
@@ -98,4 +103,22 @@ test('island clips are short (35-80 words, 2-5 sections) with no web links neede
   assert.ok(checkScript(long).some(p => /Narration has/.test(p)));
   const many = script({ type: 'island', narration: 50, end: 'See you Sunday.', rows: 7, facts: '- x, as of Nov 25, 2026.' });
   assert.ok(checkScript(many).some(p => /Section plan/.test(p)));
+});
+
+test('money, science and news scripts need 5 scored packaging ideas and a pick', () => {
+  assert.ok(checkScript(script({ drop: 'Packaging' })).some(p => /Packaging/.test(p)));
+  const four = script().replace('| 5 | Fifth | FIVE | 4/10 | ok |\n', '');
+  assert.ok(checkScript(four).some(p => /exactly 5/.test(p)));
+  assert.ok(checkScript(script().replace('Pick: #1', '')).some(p => /Pick/.test(p)));
+  assert.ok(checkScript(script().replace('9/10', 'great')).some(p => /score/.test(p)));
+  assert.ok(checkScript(script().replace('BIG WORDS', 'far too many words on this little cover')).some(p => /cover words/.test(p)));
+});
+
+test('the title line must be the picked packaging title', () => {
+  assert.ok(checkScript(script().replace('Pick: #1', 'Pick: #2')).some(p => /picked title: "Another one"/.test(p)));
+});
+
+test('village and island scripts do not need packaging', () => {
+  const s = script({ type: 'village', end: 'See you next Sunday.', facts: '- x, as of Nov 21, 2026.', drop: 'Packaging' });
+  assert.deepEqual(checkScript(s), []);
 });
