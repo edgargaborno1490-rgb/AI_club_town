@@ -49,6 +49,9 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   Skipped from the video's list: Script (the desks already do it), Retention (needs a Google
   login; useless at our view counts), Comments → Ideas (wait for more comments; TubeAlfred
   comment calls cost 20+ credits).
+- **Rest days:** dates in `village/rest-days.md` (Hawaii dates) make `tools/rotation.js` print
+  "REST DAY"; `village-day` then only logs it and closes the day. Nov 16, 2026 = rest day (the owner
+  posts the finished Leonids video). Use this instead of switching off the scheduled task.
 - Scripts go to `scripts/<date>/`, then into the studio's `video/scripts/` through
   `node tools/send-to-studio.js` (adds new DRAFTs and IDEAS.md rows, never overwrites).
   Writing rules: `village/brand.md` (the studio's `video/WORKFLOW.md` wins if they disagree).

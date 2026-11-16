@@ -42,6 +42,13 @@ Nov 25 a short Island Clip, only if something on the island changed.
    mkdir -p scripts/$DATE
    node tools/town.js new-day --push
    ```
+   **Rest day:** if `node tools/rotation.js` prints "REST DAY", the owner gave the village the
+   day off (`village/rest-days.md`). Don't pick a topic, write a script or open a video chat:
+   ```bash
+   node tools/town.js log "Rest day: <the reason it printed>."
+   node tools/town.js close-day --push
+   ```
+   Then keep `claude/laughing-ride-0rw56q` in sync and end with one line to the owner. Done.
    Make sure the studio is next to this repo at `../whitebucket-studio` on its `main`
    branch: `ls ../whitebucket-studio/video/WORKFLOW.md`. If it's missing, attach it with the
    add_repo tool (owner "edgargaborno1490-rgb", repo "whitebucket-studio", access "push")

@@ -46,3 +46,14 @@ test('the Outliers check runs on Mondays from Nov 23, 2026', () => {
   assert.equal(outliersDay('2026-11-24'), false);
   assert.equal(outliersDay('2026-11-30'), true);
 });
+
+test('rest days come from the list and skip the day', () => {
+  const fs = require('fs'), os = require('os'), path = require('path');
+  const { restDay } = require('../tools/rotation.js');
+  const f = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'rest-')), 'rest-days.md');
+  fs.writeFileSync(f, '# Rest days\n\n- 2026-11-16: owner posts the Leonids video\n- 2026-12-25\n');
+  assert.equal(restDay('2026-11-16', f), 'owner posts the Leonids video');
+  assert.equal(restDay('2026-12-25', f), 'day off');
+  assert.equal(restDay('2026-11-17', f), null);
+  assert.equal(restDay('2026-11-16', '/nope/missing.md'), null);
+});

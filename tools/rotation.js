@@ -33,6 +33,15 @@ function outliersDay(date) {
   return t >= FIRST_OUTLIERS && new Date(t).getUTCDay() === 1;
 }
 
+// Rest days: the owner's days off (village/rest-days.md, lines "- YYYY-MM-DD: reason").
+function restDay(date, file = require('path').join(__dirname, '..', 'village', 'rest-days.md')) {
+  deskFor(date);
+  let text = '';
+  try { text = require('fs').readFileSync(file, 'utf8'); } catch { return null; }
+  const m = text.match(new RegExp(`^-\\s*${date}\\s*:?\\s*(.*)$`, 'm'));
+  return m ? (m[1].trim() || 'day off') : null;
+}
+
 function deskFor(date) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date || '')) throw new Error(`Not a date: "${date}"`);
   return BY_WEEKDAY[new Date(date + 'T12:00:00Z').getUTCDay()];
@@ -42,6 +51,8 @@ if (require.main === module) {
   try {
     const date = process.argv[2] || require('./town.js').honolulu().date;
     const desk = deskFor(date);
+    const rest = restDay(date);
+    if (rest) { console.log(`${date}: REST DAY (${rest}). No script today.`); process.exit(0); }
     console.log(`${date}: ${SERIES[desk]} (desk ${desk}, voice: ${VOICE[desk]})`);
     const week = weeklyUpdateWeek(date);
     if (week) console.log(`${date}: also Village Update · Week ${week} (voice: ${HOST_VOICE})`);
@@ -50,4 +61,4 @@ if (require.main === module) {
   } catch (err) { console.error(err.message); process.exit(1); }
 }
 
-module.exports = { deskFor, weeklyUpdateWeek, islandClipDay, outliersDay, SERIES, VOICE, HOST_VOICE };
+module.exports = { restDay, deskFor, weeklyUpdateWeek, islandClipDay, outliersDay, SERIES, VOICE, HOST_VOICE };
