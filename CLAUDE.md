@@ -79,15 +79,9 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
 
 ## Plugins (added Nov 16, 2026)
 The owner added these Claude plugins. They connect when a chat starts, so a chat opened before
-Nov 16 won't have them. Their servers are allowed in the `whitebucket-studio` environment
-(`api.posty.hu`, `mcp.tubealfred.com`); if a tool is missing, say so and carry on without it.
-- **Posty** (social media scheduler: YouTube, TikTok, Instagram, Facebook and more). The village's
-  posting helper. **Posty never posts without the owner's APPROVED.** For every post:
-  `preview_post` first, show the owner the channel, @handle, local time, caption and video, and
-  call `create_post` only after the owner writes APPROVED for that post (an APPROVED script is
-  not an APPROVED post). Default to scheduling, not "publish now". Never delete a post or switch
-  workspaces unless the owner asks. The owner signs in to Posty in the browser; never ask for
-  or store a login, key or password. Never post from the daily scheduled run.
+Nov 16 won't have them. TubeAlfred's server is allowed in the `whitebucket-studio` environment
+(`mcp.tubealfred.com`); if a tool is missing, say so and carry on without it.
+- **No Posty** (removed Nov 16, 2026, owner's choice): the owner posts videos by hand.
 - **TubeAlfred** (read-only YouTube data: channel and video stats, comments, transcripts).
   The Analyst may use it for **YouTube** numbers instead of waiting for the owner, writing them
   to `village/stats.md` like any other line (TikTok, Instagram and Facebook numbers still come
