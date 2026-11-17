@@ -5,8 +5,11 @@
 const fs = require('fs');
 const path = require('path');
 
-// From Nov 15, 2026 (the owner posts every day): an island checkup, then this line.
+// From Nov 17, 2026 (owner's change): short dailies (30-45 s). Hook first, the explainer, then a short
+// island checkup at the END, then the BIRD line, then the "See you tomorrow" line.
 const ENDING = 'See you tomorrow for another island update!';
+const BIRD_LINE = 'Comment BIRD, and your name goes on a bird on our island.';
+const DAILY_WORDS = [90, 125]; // about 30-45 s, including the island checkup, BIRD line and ending
 const TYPES = ['money', 'science', 'news', 'village', 'island'];
 const PLATFORMS = ['TikTok', 'Instagram', 'Facebook', 'YouTube'];
 
@@ -69,13 +72,17 @@ function checkScript(text) {
     const n = s.Narration.split(/\s+/).filter(Boolean).length;
     // AI Village videos (intro, weekly updates) may run to ~90 s and use their own ending.
     // Island clips are short (15-30 s).
-    const [lo, hi] = type === 'island' ? [35, 80] : type === 'village' ? [170, 240] : [180, 240];
+    const [lo, hi] = type === 'island' ? [35, 80] : type === 'village' ? [170, 240] : DAILY_WORDS;
     if (n < lo || n > hi) problems.push(`Narration has ${n} words (needs ${lo}-${hi})`);
-    if (!['village', 'island'].includes(type) && !s.Narration.trim().endsWith(ENDING)) problems.push(`Narration must end with exactly "${ENDING}"`);
+    if (!['village', 'island'].includes(type)) {
+      const nar = s.Narration.trim();
+      if (!nar.endsWith(ENDING)) problems.push(`Narration must end with exactly "${ENDING}"`);
+      else if (!nar.slice(0, -ENDING.length).trim().endsWith(BIRD_LINE)) problems.push(`Narration must say "${BIRD_LINE}" right before "${ENDING}"`);
+    }
   }
   if (s['Section plan']) {
     const rows = s['Section plan'].split('\n').filter(l => /^\|/.test(l.trim()) && !/^\|\s*#\s*\|/.test(l.trim()) && !/^\|[\s|:-]+\|$/.test(l.trim()));
-    const [rlo, rhi] = type === 'island' ? [2, 5] : [4, 10]; // + island checkup and end card rows
+    const [rlo, rhi] = type === 'island' ? [2, 5] : [4, 10]; // hook, explainer rows, island checkup, end card
     if (rows.length < rlo || rows.length > rhi) problems.push(`Section plan has ${rows.length} sections (needs ${rlo}-${rhi} table rows)`);
   }
   if (s['Fact notes']) {

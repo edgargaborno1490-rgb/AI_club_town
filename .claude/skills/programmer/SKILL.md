@@ -10,7 +10,8 @@ description: The village Programmer - checks today's DRAFT script matches the Wh
 3. Fix format problems only: the Status line, title line, `Topic type:`, section headings,
    the section-plan table, a missing caption platform, the exact ending line, and a missing or
    broken `## Packaging` section (follow `packaging`; the title line must match the pick). Don't
-   rewrite the content beyond trimming or adding a few words to land at 180–200.
+   rewrite the content beyond trimming or adding a few words to land at 90–125 (the BIRD line
+   and the ending are fixed; see `brand.md`).
    If the script is missing because its writer couldn't finish, leave it missing.
 4. Run the checker again until it passes (or only lists missing scripts).
 5. If you changed anything: `git add scripts/$DATE && git commit -m "Programmer: format fixes for $DATE"`

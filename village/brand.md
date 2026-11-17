@@ -8,7 +8,7 @@ before writing.
 
 ## The channel
 - **WhiteBucket Explains** on TikTok, Instagram, YouTube and Facebook.
-- ~65–75 s vertical explainers, one topic each.
+- **30–45 s** vertical explainers, one topic each (owner's change, Nov 17, 2026: shorter so more people watch to the end).
 - **One video a day, on a rotation** (from Nov 15, 2026; `node tools/rotation.js`):
   Mon/Wed/Fri How It Works · Tue/Sat What If · Thu/Sun World News.
   Plus **AI Village · Week N** every Saturday from Nov 21 (posted Sunday), hosted by the
@@ -43,7 +43,7 @@ Save it as `scripts/YYYY-MM-DD/<slug>.md`. `node tools/check-scripts.js` must pa
 # WhiteBucket Explains: <title as a question or hook>
 
 Topic type: money | science | news | village | island
-Format: 9:16 · paper line with the bucket guy · about 72 s · ~190 words · voice: <the series' voice>
+Format: 9:16 · paper line with the bucket guy · about 40 s · ~110 words · voice: <the series' voice>
 Post: <date window, or "any time (evergreen)">
 Tone: <one line>
 
@@ -56,22 +56,24 @@ Pick: #N
 Runner-up: #M (<why>)
 
 ## Narration (record as one paragraph)
-One paragraph, about 200–235 words. **From Nov 17, 2026 (owner's change) the island checkup
-comes FIRST:** open with a short **island checkup** (2–4 sentences, ~10–15 s; up to ~6
-sentences when `village/island-news.md` has a lot of news) with facts only from town.json and
-`village/island-news.md`: the bird count, what's new or being built (e.g. the Secret Building,
-without saying what it is), and **every item under "To announce" in island-news.md**. Then one
-short bridge into the topic (e.g. "Now… today's question.") and the explainer (~150–180
-words), whose first sentence is the topic's hook. End with exactly:
-See you tomorrow for another island update!
-The checkup's first sentence should hook too (lead with the most exciting island news). "…" for pauses. Short sentences. Numbers spelled the way
-they're said ("one point one million").
+One paragraph, **90–125 words (30–45 s)**. Owner's change, Nov 17, 2026: **hook first, island checkup
+at the END.** In this order:
+1. **Hook** (first sentence): the topic's most surprising line. No island talk, no "hi", no intro.
+2. **Explainer** (~65–85 words): ONE idea, short sentences, the best fact last.
+3. **Island checkup** (1–2 short sentences, ~15–20 words) with facts only from town.json and
+   `village/island-news.md`: the bird count or the biggest island news, plus **every item under
+   "To announce"** (keep each to a few words; if there are many, pick the biggest and list the rest
+   in the section plan as on-screen chips). E.g. "On our island… forty-nine birds, and the bird bath is almost done."
+4. End with exactly these two sentences:
+Comment BIRD, and your name goes on a bird on our island. See you tomorrow for another island update!
+"…" for pauses. Short sentences. Numbers spelled the way they're said ("one point one million").
 
 ## Section plan
 | # | Narration | On screen |
 |---|---|---|
 | 0 | hook words… | what's drawn, the headline (black + red words), what the bucket guy does |
-(row 0 = the island checkup, then 5–7 rows for the explainer, then one for the end card)
+(row 0 = the hook, then 2–5 rows for the explainer, then one for the island checkup, then one for the
+end card with the "comment BIRD" box)
 
 ## Fact notes
 - Every claim and number, with a source link and an "as of" date.

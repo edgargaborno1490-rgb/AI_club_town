@@ -3,13 +3,13 @@ const assert = require('node:assert/strict');
 const { checkScript } = require('../tools/check-scripts.js');
 
 const words = n => Array.from({ length: n }, (_, i) => 'word' + i).join(' ');
-const END = 'See you tomorrow for another island update!';
+const END = 'Comment BIRD, and your name goes on a bird on our island. See you tomorrow for another island update!';
 
 const PACK = ['| # | Title | Cover words | Score | Why |', '|---|---|---|---|---|',
   '| 1 | Test topic? | BIG WORDS | 9/10 | clear |', '| 2 | Another one | TWO WORDS | 7/10 | ok |',
   '| 3 | Third | THREE | 6/10 | ok |', '| 4 | Fourth | FOUR | 5/10 | ok |', '| 5 | Fifth | FIVE | 4/10 | ok |', '', 'Pick: #1'].join('\n');
 
-function script({ type = 'science', narration = 185, end = END, rows = 6, status = '> **Status: DRAFT – needs review.**', facts, sources, drop, extra = '' } = {}) {
+function script({ type = 'science', narration = 95, end = END, rows = 6, status = '> **Status: DRAFT – needs review.**', facts, sources, drop, extra = '' } = {}) {
   const sections = {
     'Narration (record as one paragraph)': `${words(narration)} ${end}`,
     'Section plan': ['| # | Narration | On screen |', '|---|---|---|', ...Array.from({ length: rows }, (_, i) => `| ${i} | line ${i} | drawing ${i} |`)].join('\n'),
@@ -31,8 +31,13 @@ test('the script must start as DRAFT', () => {
   assert.ok(checkScript(script({ status: '> **Status: APPROVED**' })).some(p => /DRAFT/.test(p)));
 });
 
-test('narration must be 180-240 words', () => {
-  assert.ok(checkScript(script({ narration: 120 })).some(p => /Narration has/.test(p)));
+test('daily narration must be 90-125 words (30-45 s)', () => {
+  assert.ok(checkScript(script({ narration: 60 })).some(p => /Narration has/.test(p)));
+  assert.ok(checkScript(script({ narration: 190 })).some(p => /Narration has/.test(p)));
+});
+
+test('daily narration must ask viewers to comment BIRD right before the ending', () => {
+  assert.ok(checkScript(script({ end: 'See you tomorrow for another island update!' })).some(p => /Comment BIRD/.test(p)));
 });
 
 test('narration must end with the locked-in line', () => {
@@ -83,7 +88,7 @@ test('a day needs one script per slug in the plan', () => {
 });
 
 test('village scripts need an "as of" date but no web links', () => {
-  const s = script({ type: 'village', facts: '- Scripts written this week: 7 (village/topics.md), as of Nov 21, 2026.' });
+  const s = script({ type: 'village', narration: 185, facts: '- Scripts written this week: 7 (village/topics.md), as of Nov 21, 2026.' });
   assert.deepEqual(checkScript(s), []);
   const noDate = script({ type: 'village', facts: '- Scripts written: 7 (village/topics.md)' });
   assert.ok(checkScript(noDate).some(p => /as of/.test(p)));
@@ -119,6 +124,6 @@ test('the title line must be the picked packaging title', () => {
 });
 
 test('village and island scripts do not need packaging', () => {
-  const s = script({ type: 'village', end: 'See you next Sunday.', facts: '- x, as of Nov 21, 2026.', drop: 'Packaging' });
+  const s = script({ type: 'village', narration: 185, end: 'See you next Sunday.', facts: '- x, as of Nov 21, 2026.', drop: 'Packaging' });
   assert.deepEqual(checkScript(s), []);
 });

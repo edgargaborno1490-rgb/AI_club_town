@@ -72,7 +72,7 @@ Nov 25 a short Island Clip, only if something on the island changed.
 4c. **Wednesdays and Fridays from Nov 25:** if `node tools/rotation.js` prints "also Island
    Clip", the Chief follows `island-clip` (it may skip when nothing changed).
 5. **Programmer** (`programmer`): follow `programmer` (checks the script, sends it to the studio).
-5b. **Island news:** if the script's opening island checkup used items from
+5b. **Island news:** if the script's island checkup (at the end) used items from
    `village/island-news.md`, move those items from "To announce" to "Announced"
    (add the date and the script slug), then commit and push that file to `main`.
 6. **Banker** (`banker`): follow `banker`.
@@ -90,7 +90,7 @@ Nov 25 a short Island Clip, only if something on the island changed.
      then wait. Don't change the Status or build until the owner says APPROVED (and, for Mark
      or the village host, sends the MP3; for Eric/George make the voice with scripts/tts.py).
      After approval follow the daily-video skill (template FaaLine.tsx, real NASA media, 3D island
-     checkup at the START, "See you tomorrow" ending): stills to the owner, render, caption, update HANDOFF.md,
+     checkup at the END, then the comment BIRD box and the "See you tomorrow" ending; 30–45 s): stills to the owner, render, caption, update HANDOFF.md,
      push to main, send the MP4."
    If the tool isn't available or fails, say so in the summary (the owner can open one by hand).
 8. **Close the day**

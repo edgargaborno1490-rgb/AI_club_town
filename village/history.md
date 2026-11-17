@@ -42,3 +42,7 @@ CLAUDE.md keeps the rules. Add new days at the bottom.
   (YouTube + TikTok "Full screen"); vertical dailies continue. Six music styles were tried (beat,
   piano, R&B piano, dark cinematic, hyperpop, house) and none fit: **videos are voice only from now
   on** (no music, no sound effects). Kokoro Eric mispronounces "Megalodon". TubeAlfred: 37 credits left.
+- **Nov 17, 2026 (evening), shorter videos:** after looking at the numbers (AI Village intro 1,170 views and 20
+  follows vs Leonids 169 and 1), the owner chose **30–45 s dailies (90–125 words)**: hook first, the island
+  checkup moved back to the END (1–2 sentences), then a new line "Comment BIRD, and your name goes on a bird on
+  our island." before "See you tomorrow…". `check-scripts.js` checks the length and both lines.
