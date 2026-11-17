@@ -85,6 +85,14 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   sign in front of it; the floating name chip shows only while that worker is working (with its
   speech bubble). The Birdhouses, the Bird Bath and the next-build plot have no name labels
   (the plot keeps its own "? NEXT BUILD" board). The Secret Building has no sign.
+- **Aloha Island (owner's pick, Nov 17, 2026; TEST LINK until the owner says yes):** `?aloha` turns
+  the island Hawaiian: palms and flower bushes instead of pines, a sandy beach and lagoon, a
+  volcano across the water, tiki torches by each bucket, WhiteBucket waving in the plaza, and the
+  sky follows the real time in Hawaii (UTC-10, no daylight saving): morning, day, sunset, night
+  with stars and a moon; a "🌙 Hawaii · 9:00 PM" clock sits in the "Today in town" title.
+  `?aloha&hour=21` previews another hour. Code: `src/aloha.js` (+ hooks in `src/scene.js`: `ALOHA`).
+  To make it the normal look, change `on()` in `src/aloha.js` to return true (keep a way back).
+  The studio's island checkup (`whitebucket-studio` `src/village/Island.tsx`) doesn't have it yet.
 - **Phones keep old copies of the page.** `index.html` loads `styles.css?v=N` and `src/*.js?v=N`:
   bump N every time you change CSS or JS, or the owner's phone may show the old version.
 - **Named birds:** viewers who comment "BIRD" get their public username on a bird:

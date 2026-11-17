@@ -61,6 +61,17 @@ function check(cond, msg) { if (!cond) throw new Error(msg); console.log('  ok -
       check(await page.isVisible('.tag[data-id="chief"][data-s="working"] .chip'), 'working agent with no task still shows its name');
       check(!(await page.isVisible('.tag[data-id="chief"] .bubble')), 'working agent with no task shows no empty bubble');
       await page.close();
+
+      for (const hour of [12, 21]) {
+        ({ page, errors } = await run(`/?aloha&hour=${hour}`));
+        check(errors.length === 0, `Aloha Island at ${hour}:00 has no page errors (${errors.join(' | ')})`);
+        check(/Hawaii · \d+:\d\d (AM|PM)/.test(await page.textContent('.hawaii-clock')), `Aloha Island at ${hour}:00 shows the Hawaii clock`);
+        if (SHOTS) await page.screenshot({ path: path.join(SHOTS, `aloha-${hour}-${name}.png`) });
+        await page.close();
+      }
+      ({ page, errors } = await run('/'));
+      check(!(await page.$('.hawaii-clock')), 'the normal island has no Hawaii clock');
+      await page.close();
     }
   } catch (e) {
     failed = true;

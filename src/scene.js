@@ -40,7 +40,11 @@
     controls.minDistance = 18;
     controls.maxDistance = 90;
 
-    scene.add(new THREE.HemisphereLight(0xffffff, 0x7fae5a, 0.8));
+    const hemi = new THREE.HemisphereLight(0xffffff, 0x7fae5a, 0.8);
+    scene.add(hemi);
+    const ALOHA = !!(root.Aloha && root.Aloha.on()); // Aloha Island test link: ?aloha
+    let alohaSeed = 3;
+    const alohaRand = () => (alohaSeed = (alohaSeed * 16807) % 2147483647) / 2147483647;
     const sun = new THREE.DirectionalLight(0xffffff, 0.85);
     sun.position.set(22, 38, 18);
     sun.castShadow = true;
@@ -357,7 +361,11 @@
     function tree(x, z, s) {
       const g = new THREE.Group(); g.position.set(x, 0, z); g.scale.setScalar(s);
       g.add(mesh(new THREE.CylinderGeometry(0.16, 0.22, 0.9, 6), mat(0x8a5a33), 0, 0.45, 0));
-      const cone = rand() < 0.5;
+      const cone = rand() < 0.5; // drawn even on Aloha Island so the rest of the layout stays put
+      if (ALOHA) {
+        treeTops.push(new THREE.Vector3(x, root.Aloha.tree(THREE, mat, mesh, g, alohaRand) * s, z));
+        scene.add(g); return;
+      }
       if (cone) g.add(mesh(new THREE.ConeGeometry(0.85, 1.9, 7), mat(0x3e9e4a), 0, 1.75, 0));
       else g.add(mesh(new THREE.IcosahedronGeometry(0.85, 0), mat(0x55b84a), 0, 1.5, 0));
       treeTops.push(new THREE.Vector3(x, (cone ? 2.55 : 2.25) * s, z));
@@ -599,9 +607,15 @@
     }
 
     const v = new THREE.Vector3();
+    const alohaUpdate = ALOHA ? root.Aloha.build({
+      THREE, scene, mat, mesh, sun, hemi, water, fog: scene.fog, R, reduced,
+      outerAngles: AGENTS.filter(a => !a.r).map(a => a.angle),
+    }) : null;
+
     const clock = new THREE.Clock();
     function frame() {
       const dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime;
+      if (alohaUpdate) alohaUpdate(t);
       for (const a of agents) {
         const working = a.status === 'working';
         a.ring.material.color.setHex(RING[a.status]);
