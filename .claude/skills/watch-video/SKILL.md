@@ -62,7 +62,10 @@ what the video shows; it can follow our rules exactly.
   ~20 s **screen recording** with the sound on.
 - **Never copy** a song (label tracks get muted by Content ID), another creator's signature look
   (pixel icon rings, filmed silhouettes, stick figures) or their footage. Borrow techniques only.
-- **Owner's taste so far:** liked the calm, always-moving 16:9 style (studio `wide-video` skill). Rejected
+- **Music-only references** (Nov 17): Whisper invents words on them (it "heard" Korean in the end screen); measure motion
+  instead: per-frame difference on a 96 px grey copy (how often the frame is still), scene-cut times vs onset times.
+  That TikTok became our **ink motion** style (studio skill `ink-motion`): borrow the technique, sync it to the voice.
+- **Owner's taste so far:** liked the calm, always-moving 16:9 style (studio `wide-video` skill) and LOVED the ink motion test ("super nice"). Rejected
   hard beat cuts, and every generated music style (beat, piano, R&B piano, cinematic, hyperpop, house):
   **videos are voice only now.** Don't offer music again unless the owner asks.
 

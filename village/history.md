@@ -46,3 +46,7 @@ CLAUDE.md keeps the rules. Add new days at the bottom.
   follows vs Leonids 169 and 1), the owner chose **30–45 s dailies (90–125 words)**: hook first, the island
   checkup moved back to the END (1–2 sentences), then a new line "Comment BIRD, and your name goes on a bird on
   our island." before "See you tomorrow…". `check-scripts.js` checks the length and both lines.
+- **Nov 17, 2026 (night), ink motion:** the owner shared a music-only TikTok (letters flying in, a moving line,
+  spotlight closes). The studio made a 10 s test in our paper-and-ink look (the voice is the beat) and a 6 s test where
+  the pen line becomes a bird and flies into the island. Owner: "super nice, save this style… use it as a reference".
+  It's the house style now (studio skill `ink-motion`, references `video/reference/InkTest.mp4` + `InkBirdTest.mp4`).
