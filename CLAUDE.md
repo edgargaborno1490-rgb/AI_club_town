@@ -26,7 +26,7 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
 - **Analyst:** reads view counts the owner copies into `village/stats.md` (or tells Claude),
   `node tools/stats.js --write` saves `village/analyst-report.md`; the Chief uses it when
   picking topics. Rotation changes stay the owner's call. Numbers only, never logins.
-- **Daily run:** a scheduled task runs the `village-day` skill at 7:38 AM Hawaii time, inside
+- **Daily run:** a scheduled task runs the `village-day` skill at 4:30 AM Hawaii time (7:38 until Nov 17, 2026), inside
   the owner's main Claude chat (that chat has push access to both repos). Skills live in
   `.claude/skills/`; `village-day` lists the steps. Each run also opens a new
   "🎬 Video: <title>" chat in the studio for that day's draft (it shows the narration and waits
