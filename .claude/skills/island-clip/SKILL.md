@@ -26,8 +26,9 @@ An island that looks the same in every post gets boring, so skipping is normal.
    - Narration 35-80 words: the change in the first sentence, why it matters, one line
      inviting people in ("Comment BIRD and I'll name a bird after you."), end with
      "See you Sunday."
-   - Section plan, 2-5 rows: what to film on the live page
-     (https://edgargaborno1490-rgb.github.io/AI_club_town/), e.g. "zoom on the birds".
+   - Section plan, 2-5 rows: what to film on the island page, e.g. "zoom on the birds".
+     **Film it full screen or crop it so the address bar never shows**, and never put the link in
+     the narration or captions: the web address contains the owner's name (owner's rule, Nov 17, 2026).
    - Fact notes: each number with its file (`town.json`, `village/topics.md`) and "as of <date>".
    - Captions for TikTok, Instagram, Facebook, YouTube.
    Same honesty rules as `weekly-update`: real numbers only; no logins or private details;

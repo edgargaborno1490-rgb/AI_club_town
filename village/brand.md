@@ -103,3 +103,7 @@ they're said ("one point one million").
   who asks (`bird remove`).
 - **Only the owner approves.** The village always writes DRAFT. The Programmer copies the
   drafts into the studio's `video/scripts/` and lists them in IDEAS.md (never overwriting).
+
+## Privacy (owner's rule, Nov 17, 2026)
+- Never show or say the island's web address (it contains the owner's name): no link in narration, captions, on screen or in a recording's address bar (owner's rule, Nov 17, 2026).
+  Say "our AI island" instead. Never use the owner's real name; on camera he is WhiteBucket.

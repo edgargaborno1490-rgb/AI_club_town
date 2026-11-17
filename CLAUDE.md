@@ -57,6 +57,7 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   Writing rules: `village/brand.md` (the studio's `video/WORKFLOW.md` wins if they disagree).
 
 ## Rules
+- **Privacy:** Never show or say the island's web address (it contains the owner's name): no link in narration, captions, on screen or in a recording's address bar (owner's rule, Nov 17, 2026). Videos call him WhiteBucket, never his real name. The island stays public for the owner.
 - Push straight to `main` of both repos (owner approved). No pull requests.
   Also keep branch `claude/laughing-ride-0rw56q` in sync with `main`.
 - The village always writes **DRAFT**. Only the owner approves scripts.
