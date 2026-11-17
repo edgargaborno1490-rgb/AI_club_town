@@ -38,7 +38,7 @@ things a desk already does.
 ## 3. Judge each idea for OUR size
 A table: what it does · fits us? (worth it / already have it / later / skip) · why.
 Ask for each one:
-- Does it help a channel with ~20 YouTube subscribers and ~45 followers in total **now**?
+- Does it help a channel with ~25 YouTube subscribers and ~50 followers in total **now**?
   (Retention graphs and comment mining need views and comments we don't have yet.)
 - Does it need a login or account access? The village rule is numbers only, never logins.
 - What does it cost? TubeAlfred calls use credits (comments 20+ each).
@@ -50,6 +50,21 @@ build, then ask before building.
 Creators often cut off the repo link and ask viewers to comment a word ("FREE") to get it.
 Don't ask the owner to comment for it, and don't guess the link. Build our own version from
 what the video shows; it can follow our rules exactly.
+
+## 4b. "Make our video like this" (style, pacing, music references), learned Nov 17, 2026
+- **Measure, don't guess.** Words per minute from the transcript (the calm TikTok the owner loved: ~75 wpm;
+  our fast test: ~200 = "too fast"). Cut rate: `ffmpeg -i "$F" -vf "select='gt(scene,0.3)',showinfo" -f null - 2>&1 | grep -o "pts_time:[0-9.]*"`.
+  Motion detail: a 4 fps contact sheet with timestamps (`fps=4,...,drawtext=text='%{pts\:hms}'...,tile=6x6`).
+- **Sound:** numpy on the WAV: tempo (onset autocorrelation), key (chroma), energy per band (sub/bass/mid/air),
+  loudness every second (shows build → drop). Compare our version with the same numbers before sending it.
+- **Links:** Apple Music, Spotify and YouTube audio are blocked from the container (yt-dlp gets 403).
+  TubeAlfred `youtube_video_get` (1 credit) gives title/artist. For the sound itself, ask the owner for a
+  ~20 s **screen recording** with the sound on.
+- **Never copy** a song (label tracks get muted by Content ID), another creator's signature look
+  (pixel icon rings, filmed silhouettes, stick figures) or their footage. Borrow techniques only.
+- **Owner's taste so far:** liked the calm, always-moving 16:9 style (studio `wide-video` skill). Rejected
+  hard beat cuts, and every generated music style (beat, piano, R&B piano, cinematic, hyperpop, house):
+  **videos are voice only now.** Don't offer music again unless the owner asks.
 
 ## 5. If the owner says build it
 Add it as a village skill, wire it into `village-day` (and `tools/rotation.js` if it's
