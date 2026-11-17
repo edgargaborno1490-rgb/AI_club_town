@@ -39,6 +39,7 @@ function check(cond, msg) { if (!cond) throw new Error(msg); console.log('  ok -
       check(/of 1,000 followers/.test(await page.textContent('#goal')), 'the goal is 1,000 followers');
       check((await page.$$('#race li')).length === 4, 'the race shows all four platforms');
       check((await page.$$('.tag[data-id^="Birdhouses"]')).length === 1, 'the Birdhouses are on the island');
+      check((await page.$$('.tag[data-id^="Bird Bath"]')).length === 1, 'the Bird Bath is being built');
       if (SHOTS) await page.screenshot({ path: path.join(SHOTS, `real-${name}.png`) });
       await page.close();
 

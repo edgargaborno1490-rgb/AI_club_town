@@ -18,8 +18,8 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   until the reveal. The town log and videos call it the **Secret Building** (`NAMES` in
   `tools/town-ops.js`); never say "Analyst" on the page or in a video before the reveal. Reveal = in `src/scene.js` set its kind to `stats` and remove `hidden: true`
   (only when the owner says; good moment for an Island Clip or weekly update).
-- **Workers** (hard hats, orange vests) build things: 3 at the construction site, 3 putting up
-  the birdhouses (one on a ladder).
+- **Workers** (hard hats, orange vests) build things: 3 at the construction site, 3 building
+  the bird bath. The birdhouses are finished (no crew since Nov 17, 2026).
 - **Birds sit and take turns flying:** most birds sit on bucket rims, the birdhouses, treetops,
   the grass and the plaza; 5-10 fly at a time (more followers = more in the air, max 10), and
   every few seconds one lands while another takes off.
@@ -75,7 +75,7 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   `node tools/town.js followers <youtube|tiktok|instagram|facebook> <n> --push`; the total is
   their sum (up to 60 birds fly; the card shows the real number). Nov 15, 2026: YouTube 19,
   TikTok 16, Instagram 4, Facebook 3 = 42. Nov 16, 2026: YouTube 20, TikTok 17, Instagram 4,
-  Facebook 3 = 44.
+  Facebook 3 = 44. Nov 17, 2026: YouTube 25 (others unchanged) = 49.
 - **The card hides (owner's wish, Nov 16, 2026):** the owner wants to see the island, not the card.
   Swipe the "AI Club Town · Day N" card left (or tap its ‹ tab) to tuck it off screen; a › tab
   stays on the left edge to bring it back (tap or swipe right). The page remembers the choice.
@@ -94,7 +94,12 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   its spot and a new empty plot opens.
 - **Built so far:** the **Birdhouses** (Nov 15, 2026, a YouTube viewer's comment): three little
   houses on poles between What If and How It Works; the first three birds of the flock sit on
-  them. The next-build plot moved to between How It Works and the Banker.
+  them. Finished Nov 17, 2026 (crew and ladder removed).
+- **Being built:** the **Bird Bath** (Nov 17, 2026, YouTube viewer @dakotaboyd4809 asked "Where is
+  the bird bath?" on the Nov 15 plane Short): a stone bowl with water between How It Works and the
+  Banker, with a fence, cones and 3 workers; birds sit on its rim. When the owner says it's done,
+  remove the crew/fence/cones and rename its chip. The next-build plot moved to between the Banker
+  and the Programmer (`PLOT_ANGLE = 120` in `src/scene.js`).
 - **Planned, not built yet:** one animal per platform: TikTok = hyperactive ferret,
   Instagram = peacock, Facebook = owl, YouTube = whale (swims in the water). Before building,
   ask the owner whether it's one animal per follower or one per 10 followers. The intro video
@@ -105,7 +110,8 @@ The owner added these Claude plugins. They connect when a chat starts, so a chat
 Nov 16 won't have them. TubeAlfred's server is allowed in the `whitebucket-studio` environment
 (`mcp.tubealfred.com`); if a tool is missing, say so and carry on without it.
 - **No Posty** (removed Nov 16, 2026, owner's choice): the owner posts videos by hand.
-- **TubeAlfred** (read-only YouTube data: channel and video stats, comments, transcripts).
+- **TubeAlfred** (read-only YouTube data. The channel is **@whitebucket09**; its Shorts are titled by
+  post date, not topic. Nov 15 Short = the plane / FAA ground stop video: channel and video stats, comments, transcripts).
   The Analyst may use it for **YouTube** numbers instead of waiting for the owner, writing them
   to `village/stats.md` like any other line (TikTok, Instagram and Facebook numbers still come
   from the owner). It may also list YouTube comments that say "BIRD"; show the usernames to the

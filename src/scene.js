@@ -355,9 +355,11 @@
       tree(Math.cos(ang) * r, Math.sin(ang) * r, 0.8 + rand() * 0.6);
     }
     // Built plots: the Birdhouses (Nov 15, 2026, a YouTube viewer's idea) between What If and
-    // How It Works, and the empty "? NEXT BUILD" plot, now between How It Works and the Banker.
-    const BIRDHOUSE_ANGLE = 0, PLOT_ANGLE = 60;
-    const BUILT = [BIRDHOUSE_ANGLE, PLOT_ANGLE];
+    // How It Works; the Bird Bath (Nov 17, 2026, a YouTube viewer asked "Where is the bird bath?"),
+    // being built between How It Works and the Banker; and the empty "? NEXT BUILD" plot, now
+    // between the Banker and the Programmer.
+    const BIRDHOUSE_ANGLE = 0, BIRDBATH_ANGLE = 60, PLOT_ANGLE = 120;
+    const BUILT = [BIRDHOUSE_ANGLE, BIRDBATH_ANGLE, PLOT_ANGLE];
     AGENTS.forEach(a => {
       if (a.r) return;
       if (BUILT.includes((a.angle + 30 + 360) % 360)) return; // leave room for the plots
@@ -397,16 +399,36 @@
         perches.push({ pos: new THREE.Vector3(0, h + 0.08, 0.52).applyMatrix4(g.matrixWorld), yaw: plot.rotation.y + g.rotation.y });
         perches.push({ pos: new THREE.Vector3(0, h + 0.95, 0).applyMatrix4(g.matrixWorld), yaw: plot.rotation.y + g.rotation.y });
       }
-      // The crew still putting the birdhouses up: one on a ladder, one hammering, one with a plank.
-      const ladder = new THREE.Group(); ladder.position.set(0.15, 0, 0.35); ladder.rotation.x = -0.27;
-      for (const x of [-0.22, 0.22]) ladder.add(box(0.06, 2.3, 0.06, 0x8a5a33, x, 1.15, 0));
-      for (let y = 0.3; y < 2.2; y += 0.45) ladder.add(box(0.5, 0.05, 0.05, 0x8a5a33, 0, y, 0));
-      plot.add(ladder);
-      const k = 0.85;
-      worker(plot, 0.15, 1.05, 0.3, Math.PI, 'hammer').g.scale.setScalar(k);
-      worker(plot, -1.1, 0, 1.05, Math.PI, 'hammer').g.scale.setScalar(k);
-      worker(plot, 1.4, 0, 1.5, 0, 'plank', [new THREE.Vector3(1.6, 0, 1.6), new THREE.Vector3(-0.5, 0, 1.75)]).g.scale.setScalar(k);
       chipAt(plot, 'Birdhouses (viewer idea)', 4.2);
+    }
+
+    // The Bird Bath, under construction: a stone bowl on a pedestal, half filled with water,
+    // inside a little fence with cones, a pile of stones and three workers.
+    {
+      const plot = plotAt(BIRDBATH_ANGLE);
+      const dirt = box(2.8, 0.12, 2.8, 0x9b6b3f, 0, 0.06, 0); dirt.castShadow = false; plot.add(dirt);
+      const stone = 0xc9c4b8;
+      plot.add(mesh(new THREE.CylinderGeometry(0.55, 0.7, 0.2, 16), mat(stone), 0, 0.22, 0));
+      plot.add(mesh(new THREE.CylinderGeometry(0.22, 0.3, 0.9, 12), mat(stone), 0, 0.77, 0));
+      const bowl = mesh(new THREE.CylinderGeometry(0.95, 0.45, 0.32, 20, 1, true), mat(stone), 0, 1.36, 0);
+      bowl.material.side = THREE.DoubleSide; plot.add(bowl);
+      plot.add(mesh(new THREE.CylinderGeometry(0.45, 0.45, 0.06, 16), mat(stone), 0, 1.22, 0));
+      const water = mesh(new THREE.CylinderGeometry(0.8, 0.6, 0.05, 20), new THREE.MeshLambertMaterial({ color: 0x5fb8f0, transparent: true, opacity: 0.85 }), 0, 1.38, 0);
+      water.castShadow = false; plot.add(water);
+      for (const [x, z] of [[-1.4, -1.4], [1.4, -1.4], [-1.4, 1.4], [1.4, 1.4]]) plot.add(box(0.1, 0.55, 0.1, 0xe8d3a8, x, 0.28, z));
+      for (const z of [-1.4, 1.4]) plot.add(box(2.8, 0.06, 0.05, 0xff7a1a, 0, 0.45, z));
+      for (const x of [-0.9, 0.9]) plot.add(mesh(new THREE.ConeGeometry(0.16, 0.42, 10), mat(0xff7a1a), x, 0.21, 1.75));
+      for (const [x, z, s] of [[1.0, -0.8, 0.22], [1.2, -0.5, 0.18], [0.85, -0.45, 0.2], [1.05, -0.62, 0.16]]) plot.add(mesh(new THREE.DodecahedronGeometry(s, 0), mat(0xa9a395), x, s, z));
+      const k = 0.85;
+      worker(plot, -0.85, 0, 0.6, 2.4, 'hammer').g.scale.setScalar(k);
+      worker(plot, 0.9, 0, 0.95, Math.PI, 'clipboard').g.scale.setScalar(k);
+      worker(plot, -1.0, 0, -0.9, 0, 'plank', [new THREE.Vector3(-1.0, 0, -0.9), new THREE.Vector3(0.6, 0, -1.0)]).g.scale.setScalar(k);
+      plot.updateMatrixWorld(true);
+      for (const deg of [20, 140, 260]) { // bathing birds sit on the rim
+        const th = deg * Math.PI / 180;
+        perches.push({ pos: new THREE.Vector3(Math.cos(th) * 0.9, 1.5, Math.sin(th) * 0.9).applyMatrix4(plot.matrixWorld), yaw: plot.rotation.y - th });
+      }
+      chipAt(plot, 'Bird Bath (building)', 2.6);
     }
 
     // The empty "? NEXT BUILD" plot: each week something new goes here (the followers pick).
