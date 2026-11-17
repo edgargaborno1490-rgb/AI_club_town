@@ -2,7 +2,7 @@
   "day": 5,
   "goal": 1000,
   "balance": 0,
-  "updated": "2026-11-17T18:07:39.994Z",
+  "updated": "2026-11-17T18:07:42.308Z",
   "agents": {
     "chief": {
       "status": "done",
@@ -17,8 +17,8 @@
       "task": ""
     },
     "news": {
-      "status": "working",
-      "task": "Fact-checking: Megalodon"
+      "status": "done",
+      "task": ""
     },
     "programmer": {
       "status": "done",
@@ -105,6 +105,10 @@
     {
       "time": "8:07",
       "text": "World News started: Fact-checking: Megalodon"
+    },
+    {
+      "time": "8:07",
+      "text": "World News: Fact-checked Megalodon: one fix (tooth ≈ hand length)"
     }
   ],
   "lastRunDate": "2026-11-17",
