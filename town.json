@@ -2,7 +2,7 @@
   "day": 5,
   "goal": 1000,
   "balance": 0,
-  "updated": "2026-11-17T17:03:50.751Z",
+  "updated": "2026-11-17T17:04:01.963Z",
   "agents": {
     "chief": {
       "status": "done",
@@ -17,8 +17,8 @@
       "task": ""
     },
     "news": {
-      "status": "idle",
-      "task": ""
+      "status": "working",
+      "task": "Fact-checking today's script"
     },
     "programmer": {
       "status": "idle",
@@ -49,6 +49,10 @@
     {
       "time": "7:03",
       "text": "What If Studio: DRAFT ready: What If the Moon Disappeared?"
+    },
+    {
+      "time": "7:04",
+      "text": "World News started: Fact-checking today's script"
     }
   ],
   "lastRunDate": "2026-11-17",
