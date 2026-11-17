@@ -81,6 +81,10 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   stays on the left edge to bring it back (tap or swipe right). The page remembers the choice.
   Code: `cardSwipe` in `src/app.js` (touch events on phones, needed for iPhone Safari; mouse uses
   pointer events) and `.goal.tucked` / `.tuck` in `styles.css`.
+- **Name signs, not floating names (owner's wish, Nov 17, 2026):** each bucket has a small wooden
+  sign in front of it; the floating name chip shows only while that worker is working (with its
+  speech bubble). The Birdhouses, the Bird Bath and the next-build plot have no name labels
+  (the plot keeps its own "? NEXT BUILD" board). The Secret Building has no sign.
 - **Phones keep old copies of the page.** `index.html` loads `styles.css?v=N` and `src/*.js?v=N`:
   bump N every time you change CSS or JS, or the owner's phone may show the old version.
 - **Named birds:** viewers who comment "BIRD" get their public username on a bird:
@@ -98,7 +102,7 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
 - **Being built:** the **Bird Bath** (Nov 17, 2026, YouTube viewer @dakotaboyd4809 asked "Where is
   the bird bath?" on the Nov 15 plane Short): a stone bowl with water between How It Works and the
   Banker, with a fence, cones and 3 workers; birds sit on its rim. When the owner says it's done,
-  remove the crew/fence/cones and rename its chip. The next-build plot moved to between the Banker
+  remove the crew/fence/cones. The next-build plot moved to between the Banker
   and the Programmer (`PLOT_ANGLE = 120` in `src/scene.js`).
 - **Planned, not built yet:** one animal per platform: TikTok = hyperactive ferret,
   Instagram = peacock, Facebook = owl, YouTube = whale (swims in the water). Before building,
@@ -110,8 +114,9 @@ The owner added these Claude plugins. They connect when a chat starts, so a chat
 Nov 16 won't have them. TubeAlfred's server is allowed in the `whitebucket-studio` environment
 (`mcp.tubealfred.com`); if a tool is missing, say so and carry on without it.
 - **No Posty** (removed Nov 16, 2026, owner's choice): the owner posts videos by hand.
-- **TubeAlfred** (read-only YouTube data. The channel is **@whitebucket09**; its Shorts are titled by
-  post date, not topic. Nov 15 Short = the plane / FAA ground stop video: channel and video stats, comments, transcripts).
+- **TubeAlfred** (read-only YouTube data: channel and video stats, comments, transcripts).
+  Our channel is **@whitebucket09**; its Shorts are titled by post date, not topic
+  (the Nov 15 Short = the plane / FAA ground stop video).
   The Analyst may use it for **YouTube** numbers instead of waiting for the owner, writing them
   to `village/stats.md` like any other line (TikTok, Instagram and Facebook numbers still come
   from the owner). It may also list YouTube comments that say "BIRD"; show the usernames to the

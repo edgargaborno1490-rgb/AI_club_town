@@ -317,6 +317,21 @@
       const parts = builders[a.kind](g);
       scene.add(g);
 
+      // A small wooden name sign in front of each bucket (the floating name only shows while it works).
+      if (!a.hidden) {
+        const c = document.createElement('canvas'); c.width = 512; c.height = 128;
+        const ctx = c.getContext('2d');
+        ctx.fillStyle = '#f6e7c4'; ctx.fillRect(0, 0, 512, 128);
+        ctx.strokeStyle = '#8a5a33'; ctx.lineWidth = 10; ctx.strokeRect(5, 5, 502, 118);
+        words(ctx, a.name, 256, 68, a.name.length > 12 ? 50 : 58, '#3a2a20');
+        const wood = mat(0x8a5a33);
+        const sign = new THREE.Group(); sign.position.set(-1.7, 0, 3.7); sign.rotation.y = 0.25;
+        for (const x of [-0.7, 0.7]) sign.add(box(0.1, 1.0, 0.1, 0x8a5a33, x, 0.5, 0));
+        const board = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.45, 0.07), [wood, wood, wood, wood, new THREE.MeshLambertMaterial({ map: new THREE.CanvasTexture(c) }), wood]);
+        board.position.set(0, 0.85, 0.06); board.castShadow = true; sign.add(board);
+        g.add(sign);
+      }
+
       const person = villager(a.shirt); person.position.set(1.6, 0, 3.9); g.add(person);
       person.visible = !a.hidden;
       const ring = new THREE.Mesh(new THREE.RingGeometry(0.75, 1.05, 32), new THREE.MeshBasicMaterial({ color: RING.idle, transparent: true, opacity: 0.5 }));
@@ -374,12 +389,6 @@
       scene.add(plot);
       return plot;
     }
-    function chipAt(plot, text, y) {
-      const tag = document.createElement('div'); tag.className = 'tag'; tag.dataset.id = text;
-      const chip = document.createElement('div'); chip.className = 'chip next'; chip.textContent = text;
-      tag.appendChild(chip); labels.appendChild(tag);
-      extras.push({ tag, anchor: new THREE.Vector3(plot.position.x, y, plot.position.z) });
-    }
 
     // The Birdhouses: three little houses on poles. The first few birds of the flock sit on them.
     const perches = [];
@@ -399,7 +408,6 @@
         perches.push({ pos: new THREE.Vector3(0, h + 0.08, 0.52).applyMatrix4(g.matrixWorld), yaw: plot.rotation.y + g.rotation.y });
         perches.push({ pos: new THREE.Vector3(0, h + 0.95, 0).applyMatrix4(g.matrixWorld), yaw: plot.rotation.y + g.rotation.y });
       }
-      chipAt(plot, 'Birdhouses (viewer idea)', 4.2);
     }
 
     // The Bird Bath, under construction: a stone bowl on a pedestal, half filled with water,
@@ -428,7 +436,6 @@
         const th = deg * Math.PI / 180;
         perches.push({ pos: new THREE.Vector3(Math.cos(th) * 0.9, 1.5, Math.sin(th) * 0.9).applyMatrix4(plot.matrixWorld), yaw: plot.rotation.y - th });
       }
-      chipAt(plot, 'Bird Bath (building)', 2.6);
     }
 
     // The empty "? NEXT BUILD" plot: each week something new goes here (the followers pick).
@@ -446,7 +453,6 @@
       const wood = mat(0x8a5a33);
       const sign = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.95, 0.08), [wood, wood, wood, wood, new THREE.MeshLambertMaterial({ map: new THREE.CanvasTexture(c) }), wood]);
       sign.position.set(0, 1.6, 0.07); sign.castShadow = true; plot.add(sign);
-      chipAt(plot, 'Next build: you pick', 2.6);
     }
     // Places where birds land: birdhouses, bucket rims, treetops and the grass.
     const spots = [];
