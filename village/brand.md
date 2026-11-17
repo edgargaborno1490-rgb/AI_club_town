@@ -27,8 +27,8 @@ before writing.
 - Cream paper background, dark brown ink line drawings (outlines, no fills), red for key
   words and bad numbers. Big spaced-out headlines, small all-caps labels for sources and dates,
   outlined panels, one caption line at a time.
-- **The bucket guy:** a faceless dark figure with a white bucket on his head. Playful: hops,
-  points, shrugs, cheers, jumps at big numbers. Stands bottom right, walks into some scenes.
+- **No bucket guy** in the daily videos (owner, Nov 17, 2026: "leave him out"). The **pen line** (ink motion) is the
+  character: it circles, underlines, strikes in red, becomes the drawing, and turns into a bird at the island.
 - A few real photos in white paper frames, only free-to-use (NASA, Wikimedia Commons with
   license), with a credit line. Say honestly what a photo shows.
 - **Voice only** (owner, Nov 17, 2026): no background music, no sound effects, no swishes; scripts never plan any.
@@ -43,7 +43,7 @@ Save it as `scripts/YYYY-MM-DD/<slug>.md`. `node tools/check-scripts.js` must pa
 # WhiteBucket Explains: <title as a question or hook>
 
 Topic type: money | science | news | village | island
-Format: 9:16 · paper line with the bucket guy · about 40 s · ~110 words · voice: <the series' voice>
+Format: 9:16 · paper line + ink motion · about 40 s · ~110 words · voice: <the series' voice>
 Post: <date window, or "any time (evergreen)">
 Tone: <one line>
 
@@ -71,7 +71,7 @@ Comment BIRD, and your name goes on a bird on our island. See you tomorrow for a
 ## Section plan
 | # | Narration | On screen |
 |---|---|---|
-| 0 | hook words… | what's drawn, the headline (black + red words), what the bucket guy does |
+| 0 | hook words… | what's drawn, the headline (black + red words), which word it lands on, what the pen line does |
 (row 0 = the hook, then 2–5 rows for the explainer, then one for the island checkup, then one for the
 end card with the "comment BIRD" box)
 The "On screen" column follows the studio's **ink motion** style (owner, Nov 17, 2026): say which word
