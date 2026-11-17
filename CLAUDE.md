@@ -45,7 +45,7 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   2 TubeAlfred searches (`node tools/outliers.js queries`), channel medians for up to 4 videos,
   `village/outliers/<date>.json` → `node tools/outliers.js <date> --write` → `village/outliers.md`
   (videos at 3x+ their channel's usual views). The Chief borrows topics, never titles or footage.
-  TubeAlfred credits are limited (45 left on Nov 16): max 8 calls a run, stop below 15.
+  TubeAlfred credits are limited (38 left on Nov 17): max 8 calls a run, stop below 15.
   Skipped from the video's list: Script (the desks already do it), Retention (needs a Google
   login; useless at our view counts), Comments → Ideas (wait for more comments; TubeAlfred
   comment calls cost 20+ credits).
@@ -158,6 +158,14 @@ Nov 16 won't have them. TubeAlfred's server is allowed in the `whitebucket-studi
 - Nov 16, 2026: followers updated to 44; the follower card became swipeable. The first version
   didn't swipe on the owner's phone (old cached files + pointer events), fixed with touch events and
   the `?v=` cache-busting. If the owner says it still fails, ask iPhone or Android and which browser.
+
+- Nov 17, 2026: YouTube 25 (49 birds). Bird Bath started (viewer @dakotaboyd4809), Birdhouses
+  finished, wooden name signs replaced floating labels, **Aloha Island** became the look (Hawaii-time
+  day/night), island checkup moved to the START of videos, `village/island-news.md` added, and the
+  privacy rule (never show the island's address: it has the owner's name). Tried and dropped: a
+  wood-print photo mockup and an indigo woodblock restyle. New skills: `island-change` (followers,
+  viewer builds, finding comments cheaply, the code-change checklist) and `island-preview`
+  (screenshots, any hour, mockups without touching the live page). TubeAlfred: 38 credits left.
 
 ## Code map (graphify, added Nov 16, 2026)
 If `graphify-out/graph.json` exists (the environment setup script builds it; it is not committed),
