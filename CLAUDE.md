@@ -88,7 +88,7 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   (the plot keeps its own "? NEXT BUILD" board). The Secret Building has no sign.
 - **Aloha Island = the normal look (owner approved, Nov 17, 2026):** palms and flower bushes
   instead of pines, a sandy beach and lagoon, a volcano across the water, tiki torches by each
-  bucket, WhiteBucket waving in the plaza, and the sky follows the real time in Hawaii (UTC-10,
+  bucket (no WhiteBucket figure: the owner found it weird, Nov 17), and the sky follows the real time in Hawaii (UTC-10,
   no daylight saving): morning, day, sunset, night with stars and a moon; a "🌙 Hawaii · 9:00 PM"
   clock sits in the "Today in town" title. `?hour=21` previews another hour; `?classic` shows the
   old island. Code: `src/aloha.js` (+ hooks in `src/scene.js`: `ALOHA`).

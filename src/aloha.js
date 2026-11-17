@@ -1,7 +1,7 @@
 // Aloha Island (Nov 17, 2026, owner's pick): a Hawaiian island whose sky follows the real time in
 // Hawaii: morning, day, sunset and night with stars and tiki torches. Palms and flower bushes
 // replace the pine trees, a sandy beach and a lagoon ring the island, a volcano sits across the
-// water and WhiteBucket himself stands in the plaza.
+// water. (WhiteBucket stood in the plaza for a day; the owner had him removed, Nov 17, 2026.)
 // The normal look since Nov 17, 2026. ?hour=21 previews another time of day; ?classic shows the old island.
 (function (root) {
   const HAWAII_OFFSET = -10; // Hawaii has no daylight saving: always UTC-10
@@ -85,18 +85,6 @@
     volc.traverse(o => { o.castShadow = false; });
     scene.add(volc);
 
-    // WhiteBucket in the plaza: dark figure, white bucket on his head, waving.
-    const wb = new T.Group(); wb.position.set(-3.2, 0, 2.6); wb.rotation.y = 0.35; wb.scale.setScalar(1.6);
-    const ink = mat(0x2b2420), white = mat(0xf7f3ea);
-    wb.add(mesh(new T.CylinderGeometry(0.42, 0.62, 1.5, 14), ink, 0, 0.75, 0));
-    wb.add(mesh(new T.SphereGeometry(0.42, 16, 12), ink, 0, 1.85, 0));
-    wb.add(mesh(new T.CylinderGeometry(0.5, 0.4, 0.62, 18), white, 0, 2.32, 0));
-    wb.add(mesh(new T.CylinderGeometry(0.505, 0.47, 0.12, 18), ink, 0, 2.42, 0));
-    wb.add(mesh(new T.TorusGeometry(0.46, 0.035, 6, 24, Math.PI), ink, 0, 2.6, 0));
-    const armL = mesh(new T.CylinderGeometry(0.1, 0.1, 0.7, 8), ink, -0.55, 1.1, 0); armL.rotation.z = 0.4; wb.add(armL);
-    const wave = new T.Group(); wave.position.set(0.45, 1.35, 0); wb.add(wave);
-    const armR = mesh(new T.CylinderGeometry(0.1, 0.1, 0.7, 8), ink, 0, 0.35, 0); wave.add(armR);
-    scene.add(wb);
 
     // Tiki torches beside every bucket path, lit from sunset to morning.
     const flame = new T.MeshLambertMaterial({ color: 0xffc062, emissive: 0xffa030, emissiveIntensity: 0 });
@@ -154,7 +142,6 @@
       const minute = Math.floor(hour * 60);
       if (minute !== lastMinute) { lastMinute = minute; setTime(hour); }
       if (!reduced) {
-        wave.rotation.z = -2.4 + Math.sin(t * 4) * 0.45;
         puffs.forEach((p, i) => { p.position.y = 19.5 + i * 2.2 + Math.sin(t * 0.6 + i) * 0.4; p.position.x = i * 1.3 + Math.sin(t * 0.3 + i) * 0.5; });
         for (const tc of torches) { const fl = 1 + Math.sin(t * 13 + tc.p) * 0.12 + Math.sin(t * 7.3 + tc.p) * 0.08; tc.f.scale.set(1, fl, 1); tc.light.intensity = L.torch * 1.5 * fl; }
       } else for (const tc of torches) tc.light.intensity = L.torch * 1.5;

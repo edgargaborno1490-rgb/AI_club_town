@@ -27,7 +27,8 @@ Sticking several shots side by side (PIL) works well for "through the day" pictu
 
 ## What worked / what didn't (owner's taste)
 - Liked: **Aloha Island** (palms, beach, volcano, torches, Hawaii-time day/night): became the look.
-  Liked: wooden name signs instead of floating labels; WhiteBucket in the plaza.
+  Liked: wooden name signs instead of floating labels.
+  Didn't like: a 3D WhiteBucket (dark figure) standing in the plaza: "too weird", removed. Keep him in the videos only.
 - Didn't like: a flat "wood art print" photo mockup (he meant a woodblock print), and the
   indigo woodblock 3D restyle ("not good"): recoloring the 3D island doesn't give a hand-drawn
   feel. For a new look, show 2-3 quick options side by side and ask, before building.

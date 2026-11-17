@@ -13,7 +13,6 @@ script slug. Add new items here whenever the island changes.
   lagoon, a volcano across the water and tiki torches by every bucket.
 - **The island follows real Hawaii time:** sunrise in the morning, sunset in the evening, and
   at night stars, a moon and the torches light up. Visit at night and it's night on the island.
-- **WhiteBucket moved in:** he stands in the plaza, waving.
 - **New build: a bird bath**, a YouTube viewer's idea (@dakotaboyd4809 asked "Where is the bird
   bath?"). Workers are building it now; birds already sit on its rim.
 - **The birdhouses are finished** (the first viewer idea): the crew packed up.
