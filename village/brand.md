@@ -74,6 +74,9 @@ Comment BIRD, and your name goes on a bird on our island. See you tomorrow for a
 | 0 | hook words… | what's drawn, the headline (black + red words), what the bucket guy does |
 (row 0 = the hook, then 2–5 rows for the explainer, then one for the island checkup, then one for the
 end card with the "comment BIRD" box)
+The "On screen" column follows the studio's **ink motion** style (owner, Nov 17, 2026): say which word
+the headline letters land on, and what the pen line does in that row (circles / underlines / strikes in red /
+becomes the drawing). In the island row, the pen line turns into a bird and flies into the island.
 
 ## Fact notes
 - Every claim and number, with a source link and an "as of" date.

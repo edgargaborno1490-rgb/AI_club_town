@@ -16,6 +16,9 @@ Short on purpose. Newest decisions first. Update it whenever the owner changes t
   sentence, numbers written as words.
 
 ## Standing orders (from Nov 17, 2026)
+- **Ink motion is the house style** (owner: "super nice, save this style"; speed right): letters fly in and land on
+  the spoken word, a pen line leads every scene (ink stroke), and at the island it turns into a bird. Section plans
+  say what the pen line does (see `brand.md`).
 - **Short dailies: 30–45 s (90–125 words)**, so more people watch to the end. Hook in the first sentence,
   ONE idea, island checkup at the END (1–2 sentences), then the BIRD line and "See you tomorrow".
   Why: the AI Village intro (the island story) got 1,170 views and 20 follows; Leonids got 169 and 1.
