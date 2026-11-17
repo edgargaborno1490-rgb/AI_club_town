@@ -74,8 +74,13 @@
     const lagoon = mesh(new T.CylinderGeometry(30, 30, 0.2, 48), mat(0x5fe0d6), 0, -1.0, 0);
     lagoon.castShadow = false; lagoon.receiveShadow = false; scene.add(lagoon);
 
+    water.scale.set(4, 1, 4); // a much bigger sea, so the volcano and the horizon sit on water
+
     // The volcano across the water, with a lazy puff of smoke and a glowing top at night.
     const volc = new T.Group(); volc.position.set(-55, -1.5, -120); volc.scale.setScalar(1.3);
+    // It sits in the sea on a sandy, rocky shore (the sea is made much bigger below so it doesn't float).
+    volc.add(mesh(new T.CylinderGeometry(23, 25, 1.2, 20), mat(0xe9d39a), 0, 0.2, 0));
+    volc.add(mesh(new T.CylinderGeometry(20.5, 22, 1.6, 14), mat(0x6b6560), 0, 0.6, 0));
     volc.add(mesh(new T.CylinderGeometry(3, 20, 18, 14), mat(0x4f8a4a), 0, 9, 0));
     volc.add(mesh(new T.CylinderGeometry(3.05, 7, 5, 14), mat(0x4a4440), 0, 16.2, 0));
     const lava = new T.MeshLambertMaterial({ color: 0xff6a2a, emissive: 0xff4a10, emissiveIntensity: 0 });
