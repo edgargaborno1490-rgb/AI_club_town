@@ -50,3 +50,6 @@ CLAUDE.md keeps the rules. Add new days at the bottom.
   spotlight closes). The studio made a 10 s test in our paper-and-ink look (the voice is the beat) and a 6 s test where
   the pen line becomes a bird and flies into the island. Owner: "super nice, save this style… use it as a reference".
   It's the house style now (studio skill `ink-motion`, references `video/reference/InkTest.mp4` + `InkBirdTest.mp4`).
+- **Nov 17, 2026 (late night):** no bucket guy in the videos (the pen line is the character); vertical stays the main
+  shape (16:9 extra); **music is back**, but only free tracks the owner picks (YouTube Audio Library), synced to the
+  voice and the pen line (studio `scripts/beats.py`).

@@ -23,8 +23,8 @@ Short on purpose. Newest decisions first. Update it whenever the owner changes t
   ONE idea, island checkup at the END (1–2 sentences), then the BIRD line and "See you tomorrow".
   Why: the AI Village intro (the island story) got 1,170 views and 20 follows; Leonids got 169 and 1.
   The island is what people follow for, the hook is what makes them stay. `check-scripts.js` checks it.
-- **Voice only.** No background music and no sound effects in any video. Scripts never plan music or SFX.
-  (The owner tried six music styles; none fit. Don't suggest music unless the owner asks.)
+- **Music is back** (Nov 17 night): only free tracks the owner picks; the studio syncs voice + pen line to the beat.
+  No sound effects. Vertical stays the main shape; 16:9 is the extra.
 - **Calm pace beats fast cuts.** The owner called a fast beat-cut test "too fast" and liked a calm,
   always-moving style. Keep scripts clear and unhurried (90–125 words for the vertical video).
 - **16:9 version = an extra**, made by the studio's `wide-video` skill when the owner asks (for YouTube and

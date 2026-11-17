@@ -31,7 +31,8 @@ before writing.
   character: it circles, underlines, strikes in red, becomes the drawing, and turns into a bird at the island.
 - A few real photos in white paper frames, only free-to-use (NASA, Wikimedia Commons with
   license), with a credit line. Say honestly what a photo shows.
-- **Voice only** (owner, Nov 17, 2026): no background music, no sound effects, no swishes; scripts never plan any.
+- **Music:** only free tracks the owner picks (from Nov 17, 2026, night); the studio syncs it. No sound effects or swishes;
+  scripts don't pick songs (they may add `Mood: calm / upbeat` under Tone).
   Respectful topics: calm, no jokes. Latest owner decisions: `village/owner-plan.md`.
 
 ## The script (one a day)

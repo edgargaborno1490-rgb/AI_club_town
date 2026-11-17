@@ -67,7 +67,7 @@ what the video shows; it can follow our rules exactly.
   That TikTok became our **ink motion** style (studio skill `ink-motion`): borrow the technique, sync it to the voice.
 - **Owner's taste so far:** liked the calm, always-moving 16:9 style (studio `wide-video` skill) and LOVED the ink motion test ("super nice"). Rejected
   hard beat cuts, and every generated music style (beat, piano, R&B piano, cinematic, hyperpop, house):
-  **videos are voice only now.** Don't offer music again unless the owner asks.
+  then (Nov 17 night) asked for music again: **only free tracks the owner picks**, synced to the beat (studio `scripts/beats.py`).
 
 ## 5. If the owner says build it
 Add it as a village skill, wire it into `village-day` (and `tools/rotation.js` if it's
