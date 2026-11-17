@@ -16,3 +16,6 @@ Example: `- 2026-11-21 | TikTok | What If You Fell Into a Black Hole? | What If 
 Only numbers you can see in the apps. No passwords, logins or account details here.
 
 ## Numbers
+- 2026-11-17 | YouTube | Meet WhiteBucket and His AI Village | AI Village | 1170 | 13 | 20
+- 2026-11-17 | YouTube | Leonids Meteor Shower | What If | 25 | 1 | 1
+- 2026-11-17 | TikTok | Leonids Meteor Shower | What If | 144 | 4 | 0

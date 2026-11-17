@@ -16,7 +16,9 @@ videos and series actually get watched?** It only uses numbers the owner wrote d
    **YouTube only:** if the TubeAlfred tools are available (plugin since Nov 16, 2026), you may
    look up each posted video's public views and likes and add them the same way (date = today).
    TikTok, Instagram and Facebook numbers still come from the owner. Skip it if the tools fail.
-3. `node tools/stats.js --write` (saves `village/analyst-report.md`). Fix or report any
+3. `node tools/stats.js --write` (saves `village/analyst-report.md`). If the owner shared more than
+   views (watch time, % watched, audience, comments), add a dated section on top of
+   `village/analyst-notes.md`: what is working, what is not, what the Chief should do. Fix or report any
    "Lines I could not read".
 4. If the report changed: `git add village/stats.md village/analyst-report.md && git commit -m "Analyst: report for $DATE"`
 5. Done note (pick one):

@@ -12,6 +12,7 @@ description: The village's Chief of Staff - picks today's one new WhiteBucket Ex
    - `../whitebucket-studio/video/IDEAS.md` (the studio's queue: "Up next" and "Evergreen")
    - `village/brand.md` and `village/topics.md` (what the village wrote recently)
    - `village/analyst-report.md` if it exists (which series and videos get the most views)
+   - `village/analyst-notes.md` if it exists (watch time, audience, what is working and what is not; newest first)
    - `village/outliers.md` if it exists (Mondays: topics doing 3x+ their channel's usual views
      elsewhere on YouTube; a good starting point for today's desk, never copy a title)
 3. Pick **one** topic for today's desk:
