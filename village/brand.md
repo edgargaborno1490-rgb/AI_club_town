@@ -55,19 +55,22 @@ Pick: #N
 Runner-up: #M (<why>)
 
 ## Narration (record as one paragraph)
-One paragraph, about 200–235 words: the explainer (~170–190 words), then a short
-**island checkup** (2–4 sentences, ~10–15 s, facts only from town.json: the bird count,
-"some are resting on the island… and some are flying", what was built or is being built,
-e.g. the Secret Building, without saying what it is), then exactly:
+One paragraph, about 200–235 words. **From Nov 17, 2026 (owner's change) the island checkup
+comes FIRST:** open with a short **island checkup** (2–4 sentences, ~10–15 s; up to ~6
+sentences when `village/island-news.md` has a lot of news) with facts only from town.json and
+`village/island-news.md`: the bird count, what's new or being built (e.g. the Secret Building,
+without saying what it is), and **every item under "To announce" in island-news.md**. Then one
+short bridge into the topic (e.g. "Now… today's question.") and the explainer (~150–180
+words), whose first sentence is the topic's hook. End with exactly:
 See you tomorrow for another island update!
-First sentence is the hook. "…" for pauses. Short sentences. Numbers spelled the way
+The checkup's first sentence should hook too (lead with the most exciting island news). "…" for pauses. Short sentences. Numbers spelled the way
 they're said ("one point one million").
 
 ## Section plan
 | # | Narration | On screen |
 |---|---|---|
 | 0 | hook words… | what's drawn, the headline (black + red words), what the bucket guy does |
-(5–7 rows for the explainer, then one for the island checkup and one for the end card)
+(row 0 = the island checkup, then 5–7 rows for the explainer, then one for the end card)
 
 ## Fact notes
 - Every claim and number, with a source link and an "as of" date.

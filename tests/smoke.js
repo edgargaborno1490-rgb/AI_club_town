@@ -63,14 +63,15 @@ function check(cond, msg) { if (!cond) throw new Error(msg); console.log('  ok -
       await page.close();
 
       for (const hour of [12, 21]) {
-        ({ page, errors } = await run(`/?aloha&hour=${hour}`));
+        ({ page, errors } = await run(`/?hour=${hour}`));
         check(errors.length === 0, `Aloha Island at ${hour}:00 has no page errors (${errors.join(' | ')})`);
         check(/Hawaii · \d+:\d\d (AM|PM)/.test(await page.textContent('.hawaii-clock')), `Aloha Island at ${hour}:00 shows the Hawaii clock`);
         if (SHOTS) await page.screenshot({ path: path.join(SHOTS, `aloha-${hour}-${name}.png`) });
         await page.close();
       }
-      ({ page, errors } = await run('/'));
-      check(!(await page.$('.hawaii-clock')), 'the normal island has no Hawaii clock');
+      ({ page, errors } = await run('/?classic'));
+      check(errors.length === 0, `the classic island has no page errors (${errors.join(' | ')})`);
+      check(!(await page.$('.hawaii-clock')), 'the classic island has no Hawaii clock');
       await page.close();
     }
   } catch (e) {

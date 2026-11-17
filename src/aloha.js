@@ -2,7 +2,7 @@
 // Hawaii: morning, day, sunset and night with stars and tiki torches. Palms and flower bushes
 // replace the pine trees, a sandy beach and a lagoon ring the island, a volcano sits across the
 // water and WhiteBucket himself stands in the plaza.
-// Test link while it's new: ?aloha (and ?hour=21 to preview another time of day).
+// The normal look since Nov 17, 2026. ?hour=21 previews another time of day; ?classic shows the old island.
 (function (root) {
   const HAWAII_OFFSET = -10; // Hawaii has no daylight saving: always UTC-10
 
@@ -161,7 +161,8 @@
     };
   }
 
-  const on = () => typeof location !== 'undefined' && new URLSearchParams(location.search).has('aloha');
+  // The normal look since Nov 17, 2026 (owner approved). ?classic shows the old island.
+  const on = () => typeof location === 'undefined' || !new URLSearchParams(location.search).has('classic');
   const Aloha = { on, hawaiiHour, clockText, look, tree, build };
   if (typeof module !== 'undefined' && module.exports) module.exports = Aloha;
   root.Aloha = Aloha;
