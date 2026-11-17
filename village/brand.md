@@ -31,7 +31,8 @@ before writing.
   points, shrugs, cheers, jumps at big numbers. Stands bottom right, walks into some scenes.
 - A few real photos in white paper frames, only free-to-use (NASA, Wikimedia Commons with
   license), with a credit line. Say honestly what a photo shows.
-- Quiet sound: no swishes, no comic sound effects. Respectful topics: calm, no jokes.
+- **Voice only** (owner, Nov 17, 2026): no background music, no sound effects, no swishes; scripts never plan any.
+  Respectful topics: calm, no jokes. Latest owner decisions: `village/owner-plan.md`.
 
 ## The script (one a day)
 Save it as `scripts/YYYY-MM-DD/<slug>.md`. `node tools/check-scripts.js` must pass.

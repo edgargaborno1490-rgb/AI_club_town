@@ -15,6 +15,8 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
 - Push straight to `main` of both repos (owner approved), no pull requests; keep branch
   `claude/laughing-ride-0rw56q` in sync with `main`. `main` often moves during a chat: merge
   `origin/main` before pushing.
+- **The owner's latest plan and standing orders: `village/owner-plan.md`** (the Chief reads it first each run;
+  update it whenever the owner changes the plan).
 - The village always writes **DRAFT**; only the owner approves scripts.
 - Money scripts: educational only, "not financial advice", no stock picks or predictions. Never
   suggest real reported facts about real people are fake.

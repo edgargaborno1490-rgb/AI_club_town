@@ -7,6 +7,7 @@ description: The village's Chief of Staff - picks today's one new WhiteBucket Ex
 
 1. `node tools/town.js start chief "Picking today's topic" --push`
 2. Read:
+   - **`village/owner-plan.md` first** (the owner's latest plan and standing orders; it wins over habits)
    - `node tools/rotation.js` (today's desk: Mon/Wed/Fri How It Works, Tue/Sat What If, Thu/Sun World News)
    - `node tools/taken-topics.js` (everything already made, scripted, or written by the village)
    - `../whitebucket-studio/video/IDEAS.md` (the studio's queue: "Up next" and "Evergreen")

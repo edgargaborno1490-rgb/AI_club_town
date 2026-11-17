@@ -11,3 +11,4 @@ Format: `- YYYY-MM-DD | series | subject | topic`
 - 2026-11-15 | world-news | news | Why every plane in America was grounded (FAA ground stop)
 - 2026-11-17 | what-if | space science | What if the Moon disappeared?
 - 2026-11-17 | whatif | science | What If Megalodon Were Still Alive? (bonus)
+- 2026-11-17 | how-it-works | money | Saving vs investing: how inflation hurts savings (16:9 test video, studio CalmMoneyWide)
