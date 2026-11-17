@@ -3,7 +3,7 @@
 # WhiteBucket Explains: What If the Moon Disappeared?
 
 Topic type: science
-Format: 9:16 · paper line with the bucket guy · about 80 s · ~225 words · voice: Puck (Kokoro am_puck, made by the studio)
+Format: 9:16 · paper line, **no bucket guy / no WhiteBucket anywhere in this video (owner's wish, Nov 17)** · about 78 s · ~220 words · voice: Eric (Kokoro am_eric, made by the studio)
 Post: any time (evergreen; good before the Nov 24 supermoon)
 Tone: curious and calm, a little playful; say "scientists still argue" where the science isn't settled, and end on the reassuring note (the Moon isn't going anywhere).
 
@@ -29,14 +29,14 @@ Our island just turned Hawaiian! Palm trees, flower bushes, a sandy beach, a lag
 | # | Narration | On screen |
 |---|---|---|
 | 0 | Our island just turned Hawaiian! … comment what we should build. | Cover first frame: "NO MOON?" (NO black, MOON? red) over a dashed empty circle where the Moon should be. Then cut to the 3D island (Aloha look: palms, beach, lagoon, volcano, tiki torches; night sky with stars and moon for the "at night" line), birdhouses, wooden name signs, the bird bath with its crew, the "? NEXT BUILD" plot. Counter "49 BIRDS" (red "50" flashes as "one more!"). |
-| 1 | Now… today's question. What if the Moon just disappeared? | Headline "WHAT IF THE" (black) "MOON DISAPPEARED?" (red). A line-drawn Moon pops out of existence, leaving a dashed outline; the bucket guy at home position does a double take, shock pose. |
-| 2 | First, nights get much darker. Some corals wait for moonlight… that signal would be gone. | Night panel: a full-moon night vs a moonless night (ink stars only). Real photo in a white paper frame: coral spawning (Wikimedia Commons, check license; credit line). Label "moonlight = spawning cue". The bucket guy holds up a flashlight. |
+| 1 | Now… today's question. What if the Moon just disappeared? | Headline "WHAT IF THE" (black) "MOON DISAPPEARED?" (red). A line-drawn Moon pops out of existence, leaving a dashed outline. |
+| 2 | First, nights get much darker. Some corals wait for moonlight… that signal would be gone. | Night panel: a full-moon night vs a moonless night (ink stars only). Real photo in a white paper frame: coral spawning (Wikimedia Commons, check license; credit line). Label "moonlight = spawning cue". |
 | 3 | Next, the oceans. The Moon makes most of our tides… about a third of their size. | Outlined panel: beach with a tide line and a small tide pool (crab, sea star), the water line drops; label "TIDES" with a red bar shrinking to "≈ 1/3". Small arrows: big "MOON" pull, smaller "SUN" pull ("sun ≈ half the moon's pull"). |
 | 4 | | Line drawing of a tide pool with a crab and a sea star; the water line drops; the crab shrugs. |
 | 4 | But the biggest change is slow. Earth leans over… the Moon helps hold it steady. | Earth drawn tilted with a dashed axis, angle label "23.4°". Range bar "22.1° – 24.5°" (calm, small rocking). A line-drawn Moon with a "hand" arrow labeled "steadying". Label "nasa". |
-| 5 | Without it, over hundreds of thousands of years… wild seasons and ice ages. | The Moon vanishes; the Earth's axis starts swinging wide, a red arc. Big words "WILD SEASONS" and "ICE AGES" (red). Small label "scientists still argue how far". The bucket guy wobbles with it. |
-| 6 | The good news? The Moon isn't going anywhere. It drifts away just under four centimeters a year. | Real photo in a white paper frame: the full Moon (NASA, public domain; credit "nasa"). Ruler graphic "3.8 cm / year" (red). Optional second photo: the Apollo 11 laser reflector (NASA) with label "measured with lasers". The bucket guy cheers. |
-| 7 | See you tomorrow for another island update! | End card: `ChEnd desk="whatif"` (What If bucket, purple, "?"), birds from town.json on build day (49 on Nov 17), the bucket guy waving, "SEE YOU TOMORROW". |
+| 5 | Without it, over hundreds of thousands of years… wild seasons and ice ages. | The Moon vanishes; the Earth's axis starts swinging wide, a red arc. Big words "WILD SEASONS" and "ICE AGES" (red). Small label "scientists still argue how far". |
+| 6 | The good news? The Moon isn't going anywhere. It drifts away just under four centimeters a year. | Real photo in a white paper frame: the full Moon (NASA, public domain; credit "nasa"). Ruler graphic "3.8 cm / year" (red). Optional second photo: the Apollo 11 laser reflector (NASA) with label "measured with lasers". |
+| 7 | See you tomorrow for another island update! | End card: "SEE YOU TOMORROW" with the What If desk credit (purple bucket icon with "?", "written by the what if bucket · ai club town", birds from town.json on build day, 49 on Nov 17). **No bucket guy on the card** (owner's wish): adapt `ChEnd` or hide its `Guide` for this video. |
 
 ## Fact notes
 

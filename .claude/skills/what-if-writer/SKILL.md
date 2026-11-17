@@ -1,6 +1,6 @@
 ---
 name: what-if-writer
-description: The What If Studio (the science desk) - writes the day's What If DRAFT script (science) for WhiteBucket Explains, read by Puck (Kokoro). Use as step 3 of village-day on What If days (Tue/Sat).
+description: The What If Studio (the science desk) - writes the day's What If DRAFT script (science) for WhiteBucket Explains, read by Eric (Kokoro). Use as step 3 of village-day on What If days (Tue/Sat).
 ---
 
 # What If Studio (science desk)
@@ -12,7 +12,7 @@ description: The What If Studio (the science desk) - writes the day's What If DR
 3. Research with web search (NASA, NOAA, USGS, universities, peer-reviewed summaries).
    Say "about" for ranges, and mention the debate when the science isn't settled.
 4. Write `scripts/$DATE/<slug>.md` in the format in `brand.md` (`Topic type: science`,
-   `voice: Puck (Kokoro am_puck, made by the studio)` in the Format line).
+   `voice: Eric (Kokoro am_eric, made by the studio)` in the Format line).
    Hook first, build to the most surprising fact, then the locked-in ending.
    Suggest one or two free-to-use photos (NASA / Wikimedia) in the section plan.
    **Packaging:** follow `packaging` (5 scored title + cover ideas; the pick becomes the title line).

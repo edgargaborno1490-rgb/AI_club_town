@@ -11,7 +11,7 @@ to the studio. The owner approves it, the voice is added, and the studio builds 
 The town page reads `town.json` from `main`, so every status change is pushed right away.
 
 **Rotation** (`node tools/rotation.js`): Mon/Wed/Fri How It Works (money, George) ·
-Tue/Sat What If (science, Puck) · Thu/Sun World News (Mark on ElevenLabs).
+Tue/Sat What If (science, Eric) · Thu/Sun World News (Mark on ElevenLabs).
 Extras: Saturdays from Nov 21 the weekly "AI Village · Week N"; Wednesdays and Fridays from
 Nov 25 a short Island Clip, only if something on the island changed.
 
@@ -84,7 +84,7 @@ Nov 25 a short Island Clip, only if something on the island changed.
      skill and the script; reply with the title,
      voice, post window and the full narration in a quote block so the owner can copy it;
      then wait. Don't change the Status or build until the owner says APPROVED (and, for Mark
-     or the village host, sends the MP3; for Puck/George make the voice with scripts/tts.py).
+     or the village host, sends the MP3; for Eric/George make the voice with scripts/tts.py).
      After approval follow the daily-video skill (template FaaLine.tsx, real NASA media, 3D island
      checkup at the START, "See you tomorrow" ending): stills to the owner, render, caption, update HANDOFF.md,
      push to main, send the MP4."

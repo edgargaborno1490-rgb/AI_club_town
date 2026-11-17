@@ -32,7 +32,7 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   "🎬 Video: <title>" chat in the studio for that day's draft (it shows the narration and waits
   for the owner's APPROVED).
 - **Rotation** (`node tools/rotation.js`): Mon/Wed/Fri How It Works (money, voice George),
-  Tue/Sat What If (science, Puck), Thu/Sun World News (Mark, ElevenLabs). Saturdays from
+  Tue/Sat What If (science, Eric; Puck until Nov 17, 2026), Thu/Sun World News (Mark, ElevenLabs). Saturdays from
   Nov 21, 2026 also "AI Village · Week N" (village host voice, posted Sunday). Wed/Fri from
   Nov 25 also a short **Island Clip** (15–30 s), only if something on the island changed
   (`island-clip` skill). The owner decided (Nov 15) to keep What If for now; revisit with
@@ -143,7 +143,7 @@ Nov 16 won't have them. TubeAlfred's server is allowed in the `whitebucket-studi
   the intro video ("Meet WhiteBucket and His AI Village") was made and posted on all four platforms.
 - Nov 16, 2026: followers YouTube 20, TikTok 17, Instagram 4, Facebook 3 = 44 (YouTube leads the race). The studio put a
   short island update (44 birds + the 4-platform race) in front of the Leonids video. The owner likes
-  the Kokoro voice Eric and might replace Puck (ask first). Real Mark voice = owner's ElevenLabs recording only.
+  the Kokoro voice Eric; on Nov 17 he made Eric the What If voice (replacing Puck). Real Mark voice = owner's ElevenLabs recording only.
 - Nov 16, 2026 (later): the owner shared a "top 5 Claude skills for YouTube" TikTok (Outliers,
   Packaging, Script, Retention, Comments → Ideas). Built **Packaging** and the weekly **Outliers**
   check (see above); skipped the other three. What worked: watching the video with frame contact

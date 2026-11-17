@@ -12,13 +12,13 @@ before writing.
 - **One video a day, on a rotation** (from Nov 15, 2026; `node tools/rotation.js`):
   Mon/Wed/Fri How It Works · Tue/Sat What If · Thu/Sun World News.
   Plus **AI Village · Week N** every Saturday from Nov 21 (posted Sunday), hosted by the
-  **village host** voice (ElevenLabs, the owner picks and records it; not Mark, Puck or George).
+  **village host** voice (ElevenLabs, the owner picks and records it; not Mark, Eric or George).
   AI Village videos introduce the bucket guy as WhiteBucket (the owner), may run to ~90 s
   (170–240 words), and end with their own line (the weekly update: "See you next Sunday.")
   instead of the daily ending.
   | Series | Desk | Topic type | Voice |
   |---|---|---|---|
-  | What If | What If Studio (`whatif`) | science | **Puck** (Kokoro `am_puck`, free; the studio makes it) |
+  | What If | What If Studio (`whatif`) | science | **Eric** (Kokoro `am_eric`, free; the studio makes it; replaced Puck Nov 17, 2026, owner's pick) |
   | How It Works | How It Works (`howitworks`) | money (mostly) | **George** (Kokoro `bm_george`, free; the studio makes it) |
   | World News | World News (`news`) | news | **Mark** (ElevenLabs, the owner records it) |
 - Write every narration for the ear, whichever voice reads it.

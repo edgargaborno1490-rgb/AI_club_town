@@ -4,7 +4,7 @@
 // Mon/Wed/Fri: How It Works (money) · Tue/Sat: What If · Thu/Sun: World News
 const BY_WEEKDAY = ['news', 'howitworks', 'whatif', 'howitworks', 'news', 'howitworks', 'whatif'];
 const SERIES = { howitworks: 'How It Works', whatif: 'What If', news: 'World News' };
-const VOICE = { howitworks: 'George (Kokoro bm_george, made by the studio)', whatif: 'Puck (Kokoro am_puck, made by the studio)', news: 'Mark (ElevenLabs)' };
+const VOICE = { howitworks: 'George (Kokoro bm_george, made by the studio)', whatif: 'Eric (Kokoro am_eric, made by the studio)', news: 'Mark (ElevenLabs)' };
 
 // Village Update: every Saturday from Nov 21, 2026 (week 1). Returns the week number or null.
 const FIRST_UPDATE = Date.UTC(2026, 10, 21);
