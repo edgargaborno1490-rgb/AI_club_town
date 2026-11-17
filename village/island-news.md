@@ -6,6 +6,9 @@ Programmer sends that script to the studio, move the items to "Announced" with t
 script slug. Add new items here whenever the island changes.
 
 ## To announce
+
+## Announced
+**2026-11-17 · `what-if-moon-disappeared`:**
 - **The island is Hawaiian now (Aloha Island):** palm trees, flower bushes, a sandy beach, a
   lagoon, a volcano across the water and tiki torches by every bucket.
 - **The island follows real Hawaii time:** sunrise in the morning, sunset in the evening, and
@@ -17,5 +20,3 @@ script slug. Add new items here whenever the island changes.
 - **Name signs:** each bucket has a little wooden sign now.
 - **49 birds** (YouTube 25, TikTok 17, Instagram 4, Facebook 3): one more follower and we hit
   **50**. A new empty "? NEXT BUILD" plot is open: comment what we should build next.
-
-## Announced
