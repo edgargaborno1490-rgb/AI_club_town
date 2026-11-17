@@ -37,7 +37,11 @@ Nov 25 a short Island Clip, only if something on the island changed.
    node tools/town.js today
    ```
    Shell variables don't carry over between commands: wherever a skill says `$DATE`,
-   type the date that `today` printed (like `2026-11-15`). Then:
+   type the date that `today` printed (like `2026-11-15`).
+   **Already done today?** If `scripts/$DATE/plan.md` already exists, today's day already ran
+   (the owner or another chat ran it early). Stop here: don't run `new-day` (it would wipe
+   today's log) and don't write a second script. End with one line to the owner.
+   Otherwise:
    ```bash
    mkdir -p scripts/$DATE
    node tools/town.js new-day --push
