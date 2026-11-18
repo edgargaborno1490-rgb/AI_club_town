@@ -2,7 +2,7 @@
   "day": 6,
   "goal": 1000,
   "balance": 0,
-  "updated": "2026-11-18T14:33:06.938Z",
+  "updated": "2026-11-18T14:33:08.924Z",
   "agents": {
     "chief": {
       "status": "done",
@@ -13,8 +13,8 @@
       "task": ""
     },
     "howitworks": {
-      "status": "idle",
-      "task": ""
+      "status": "working",
+      "task": "Writing: Where the 30% Rent Rule Came From"
     },
     "news": {
       "status": "idle",
@@ -41,6 +41,10 @@
     {
       "time": "4:33",
       "text": "Chief of Staff: Today's topic: Where the 30% Rent Rule Came From"
+    },
+    {
+      "time": "4:33",
+      "text": "How It Works started: Writing: Where the 30% Rent Rule Came From"
     }
   ],
   "lastRunDate": "2026-11-18",
