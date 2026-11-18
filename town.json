@@ -2,7 +2,7 @@
   "day": 6,
   "goal": 1000,
   "balance": 0,
-  "updated": "2026-11-18T14:33:41.724Z",
+  "updated": "2026-11-18T14:33:59.538Z",
   "agents": {
     "chief": {
       "status": "done",
@@ -17,8 +17,8 @@
       "task": ""
     },
     "news": {
-      "status": "working",
-      "task": "Fact-checking today's script"
+      "status": "done",
+      "task": ""
     },
     "programmer": {
       "status": "idle",
@@ -53,6 +53,10 @@
     {
       "time": "4:33",
       "text": "World News started: Fact-checking today's script"
+    },
+    {
+      "time": "4:33",
+      "text": "World News: Fact-check done: 5 facts confirmed, 0 fixed."
     }
   ],
   "lastRunDate": "2026-11-18",
