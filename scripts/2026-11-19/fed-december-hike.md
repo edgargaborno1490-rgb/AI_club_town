@@ -21,7 +21,7 @@ Runner-up: #2 (more personal; good for TikTok)
 
 ## Narration (record as one paragraph)
 
-The Fed is getting ready to raise interest rates again… and you'll feel it. In October, prices rose point four percent in one month… faster than expected. To cool prices down, the Fed raises its key rate. As of November nineteenth, nearly all Fed officials expect a quarter-point hike in December. Most credit card rates move with it. So here's your move this week… find the rate on every card you have, and pay down the highest one first. Not financial advice. On our island… forty-nine birds, and the bird bath is still being built. Follow and comment BIRD, and your name goes on a bird on our island. See you tomorrow for another island update!
+The Fed is getting ready to raise interest rates again… and you'll feel it. In October, prices rose point four percent in one month… faster than expected. To cool prices down, the Fed raises its key rate. As of November nineteenth, nearly all Fed officials expect a quarter-point hike in December. Most credit card rates move with it. So here's your move this week… find the rate on every card you have, and pay down the highest one first. On our island… a new bird with a name: I'm Such A Josh! But Josh… you didn't follow yet. You've got twenty-four hours. Follow and comment BIRD, and your name goes on a bird on our island. See you tomorrow for another island update!
 
 ## Section plan
 
@@ -32,8 +32,8 @@ The Fed is getting ready to raise interest rates again… and you'll feel it. In
 | 2 | To cool prices down, the Fed raises its key rate. | A thermometer drawn by the pen line, red at the top; a dial labeled "KEY RATE" turns up a notch as the pen line pushes it. |
 | 3 | As of November nineteenth… quarter-point hike in December. | A calendar page "DEC 8–9"; "+0.25%" lands on "quarter-point"; label "fed minutes · nov 18". (Optional small gauge "markets: ≈95%".) |
 | 4 | Most credit card rates move with it. | A ripple spreads from the dial to a card outline ("card rate ↑"); the pen line underlines it. |
-| 5 | So here's your move this week… pay down the highest one first. Not financial advice. | Three card outlines with rates; the pen line puts a red circle on the highest and a check mark "PAY THIS FIRST"; small "not financial advice" card. |
-| 6 | On our island… forty-nine birds… bird bath is still being built. | Pen line becomes the bird and flies into the 3D island; chips "49 BIRDS" and "BIRD BATH · building". |
+| 5 | So here's your move this week… pay down the highest one first. | Three card outlines with rates; the pen line puts a red circle on the highest and a check mark "PAY THIS FIRST". (Owner, Nov 19: no spoken "not financial advice" line; a tiny "not financial advice" text in a corner is fine.) |
+| 6 | On our island… I'm Such A Josh… you've got twenty-four hours. | Pen line becomes the bird and flies into the 3D island to the bird with the small name tag "@ImsuchaJosh"; a sad-face chip ":( not following yet" and a timer "24 HOURS" ticking. No bird bath mention (owner, Nov 19). |
 | 7 | Follow and comment BIRD… See you tomorrow… | End card with the comment box typing BIRD. End card: desk news (World News bucket), birds from town.json. |
 
 ## Fact notes
@@ -43,8 +43,8 @@ The Fed is getting ready to raise interest rates again… and you'll feel it. In
 - Some officials want more: Governor Christopher Waller said a half-point hike is probably needed; New York Fed President John Williams pushed back. Not in the narration (no guessing). Sources: https://www.cnbc.com/2026/11/18/federal-reserve-governor-christopher-waller.html and https://qz.com/fed-officials-split-aggressive-rate-hikes-december-111826
 - Most credit cards have a variable rate = the prime rate (which follows the Fed's rate) + a margin, so card rates usually rise soon after a Fed hike. As of Nov 19, 2026. Sources: https://www.bankrate.com/finance/credit-cards/how-prime-interest-rate-may-affect-your-monthly-bills/ and https://www.consumerfinance.gov/archive/blog/credit-card-interest-rate-margins-at-all-time-high/
 - 30-year fixed mortgage averaged 7.11% (Freddie Mac, week of Nov 12, 2026; 6.24% a year earlier); other surveys put it higher (Forbes/Mortgage Research Center 7.30% on Nov 19). Context only (cut from the narration for length). As of Nov 19, 2026. Sources: https://freddiemac.gcs-web.com/news-releases/news-release-details/mortgage-rates-decline-fourth-consecutive-week-711 and https://www.forbes.com/advisor/mortgages/mortgage-rates-11-19-26/
-- Level-up step ("pay the highest rate first") is general education about interest costs, framed with "not financial advice".
-- Island: 49 followers (town.json, Nov 19, 2026); "To announce" in `village/island-news.md` is empty; the Bird Bath is still under construction.
+- Level-up step ("pay the highest rate first") is general education about interest costs. Owner (Nov 19): don't say "not financial advice" in this one; keep a tiny on-screen note.
+- Island: trial bird @ImsuchaJosh (commented BIRD, not following yet; `bird trial` 24 h from Nov 19, 2026, 5:35 AM Hawaii). Spoken as "I'm Such A Josh" so George says it right. Owner asked to skip the bird bath and the bird count today.
 - Possible What If follow-up: What if interest rates went up every month for a year? (paused: science/What If is off for now)
 
 ## Sources
