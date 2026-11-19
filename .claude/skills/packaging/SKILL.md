@@ -45,6 +45,7 @@ Runner-up: #2 (number hook; fix the wording to "kept flying" first)
 ```
 
 ## Rules
+- Lean toward titles that make people want to level up ("Your first $1,000 move") while staying true; no hype or promised results. Covers are 16:9 thumbnails from Nov 19, 2026.
 - Use real numbers from the fact notes only. Never invent a number for a title.
 - The Secret Building's `village/outliers.md` (Mondays) shows titles that work for other
   channels. Learn from their *shape*, never copy a title.

@@ -2,6 +2,13 @@
 
 Short on purpose. Newest decisions first. Update it whenever the owner changes the plan.
 
+## 16:9 + level-up motivation (owner, Nov 19, 2026)
+- **Every video is 16:9 now** (1920×1080, the studio's `wide-video` calm style). No vertical version.
+  Scripts stay 90–125 words (about 45–55 s at the calm pace).
+- **Every video motivates people to level up** and do something with their life: facts first, then
+  one small, doable step for this week right before the island checkup. Honest, no hype or promised
+  results; money stays educational ("not financial advice"). See `brand.md` "Level up".
+
 ## All money, four formats (owner, Nov 19, 2026)
 - **No more science videos.** What If is paused; every non-news day is How It Works (money).
   Thu/Sun stay World News.
@@ -38,11 +45,10 @@ Short on purpose. Newest decisions first. Update it whenever the owner changes t
   Why: the AI Village intro (the island story) got 1,170 views and 20 follows; Leonids got 169 and 1.
   The island is what people follow for, the hook is what makes them stay. `check-scripts.js` checks it.
 - **Music is back** (Nov 17 night): only free tracks the owner picks; the studio syncs voice + pen line to the beat.
-  No sound effects. Vertical stays the main shape; 16:9 is the extra.
+  No sound effects. **All videos 16:9 from Nov 19** (was: vertical main, 16:9 extra).
 - **Calm pace beats fast cuts.** The owner called a fast beat-cut test "too fast" and liked a calm,
-  always-moving style. Keep scripts clear and unhurried (90–125 words for the vertical video).
-- **16:9 version = an extra**, made by the studio's `wide-video` skill when the owner asks (for YouTube and
-  TikTok "Full screen"). The village keeps writing one vertical DRAFT a day; no extra script needed.
+  always-moving style. Keep scripts clear and unhurried (90–125 words).
+- **16:9 only** (from Nov 19, 2026): the studio builds every DRAFT with its `wide-video` skill. One DRAFT a day.
 - **Hard words:** the free Kokoro voices mispronounce odd names (Eric said "Megalodon" wrong). Avoid them in
   narration or spell them the way they sound.
 - Everything in CLAUDE.md "Rules" still applies (privacy, DRAFT only, money = educational only).

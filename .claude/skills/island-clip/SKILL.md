@@ -21,7 +21,7 @@ An island that looks the same in every post gets boring, so skipping is normal.
    `scripts/$DATE/island-clip.md` in the `village/brand.md` format with:
    - `# WhiteBucket Explains: Island Clip · <what changed>`
    - `Topic type: island`
-   - Format line: `9:16 · screen recording of the island page · about 20 s · voice: George (Kokoro bm_george, made by the studio)`
+   - Format line: `16:9 · screen recording of the island page · about 20 s · voice: George (Kokoro bm_george, made by the studio)`
      (the owner can also read it in their own voice).
    - Narration 35-80 words: the change in the first sentence, why it matters, one line
      inviting people in ("Comment BIRD and I'll name a bird after you."), end with

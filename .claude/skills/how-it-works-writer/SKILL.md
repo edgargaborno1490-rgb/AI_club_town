@@ -19,7 +19,9 @@ description: The How It Works studio (the money desk) - writes the day's How It 
    - **myth**: one common money belief, said in the hook, then why it is wrong (or half right) with
      one sourced number, then what is true instead.
    - **checklist**: 3 to 5 short steps, one sentence each, numbered on screen. Hook promises the list.
-   Every format: ONE idea, 90-125 words, real sourced numbers with "as of" dates.
+   Every format: ONE idea, 90-125 words, real sourced numbers with "as of" dates, and a **level-up
+   push**: one small step the viewer can take this week, right before the island checkup (`brand.md`).
+   The video is 16:9 (calm wide style), so the section plan describes wide scenes.
 4. Explain **one** idea well, with an everyday example (a paycheck, a grocery bill, a card).
    Educational only: no stock picks, predictions or "buy this". Include a short
    "not financial advice" line near the end.

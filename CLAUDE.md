@@ -23,8 +23,10 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
 - The Banker never asks for or stores bank details, card numbers or passwords; earnings come only
   from `village/earnings.md` (`node tools/ledger.js`).
 - **Music is back** (owner, Nov 17, 2026, night): only free tracks the owner picks (YouTube Audio Library); the studio
-  syncs voice + pen line to the beat. Still no sound effects; scripts don't pick songs. **Vertical 9:16 stays the main
-  shape**; the calm **16:9** is an extra (studio skill `wide-video`).
+  syncs voice + pen line to the beat. Still no sound effects; scripts don't pick songs. **Every video is 16:9** (owner, Nov 19, 2026),
+  built with the studio skill `wide-video`; no vertical version.
+- **Level up** (owner, Nov 19, 2026): every script motivates viewers to level up and do something with their
+  life: facts, then one small doable step for this week, honest (no hype, no promised results). `village/brand.md`.
 - Tests before pushing code: `npm test` and `NODE_PATH=$(npm root -g) node tests/smoke.js`.
 
 ## How it works

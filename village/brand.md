@@ -8,7 +8,16 @@ before writing.
 
 ## The channel
 - **WhiteBucket Explains** on TikTok, Instagram, YouTube and Facebook.
-- **30–45 s** vertical explainers, one topic each (owner's change, Nov 17, 2026: shorter so more people watch to the end).
+- **Every video is 16:9** (1920×1080; owner, Nov 19, 2026: "keep all my videos 16:9"), built with the studio's
+  `wide-video` skill (calm pace). One topic each, 90–125 words (about 45–55 s at the calm pace).
+- **Level up (owner, Nov 19, 2026): every video motivates.** The goal is that viewers walk away wanting
+  to level up and do something with their life. Keep the facts, then turn them into a push:
+  - Frame the viewer as someone who can win ("you can", "here's your move"), never as someone being scolded.
+  - Include **one small, doable step** they could take this week (check a rate, set up an automatic
+    transfer, write a budget, ask for a raise, learn one skill). Put it right before the island checkup.
+  - Real and honest: no hype, no "get rich quick", no promised results, no lifestyle flexing. Small steps
+    that add up are the message. Money stays educational with the "not financial advice" line.
+  - World News too: neutral facts first, then one line on what it means for you and what you can do.
 - **One video a day, on a rotation** (from Nov 15, 2026; `node tools/rotation.js`):
   How It Works (money) every day except Thu/Sun World News, money news only (from Nov 19, 2026; What If science paused).
   **Every video is read by George** (Kokoro `bm_george`, the studio makes it; owner, Nov 19, 2026).
@@ -46,7 +55,7 @@ Save it as `scripts/YYYY-MM-DD/<slug>.md`. `node tools/check-scripts.js` must pa
 # WhiteBucket Explains: <title as a question or hook>
 
 Topic type: money | science | news | village | island
-Format: 9:16 · paper line + ink motion · about 40 s · ~110 words · voice: <the series' voice>
+Format: 16:9 · calm wide style · about 50 s · ~110 words · voice: <the series' voice>
 Post: <date window, or "any time (evergreen)">
 Tone: <one line>
 
@@ -62,7 +71,8 @@ Runner-up: #M (<why>)
 One paragraph, **90–125 words (30–45 s)**. Owner's change, Nov 17, 2026: **hook first, island checkup
 at the END.** In this order:
 1. **Hook** (first sentence): the topic's most surprising line. No island talk, no "hi", no intro.
-2. **Explainer** (~65–85 words): ONE idea, short sentences, the best fact last.
+2. **Explainer** (~65–85 words): ONE idea, short sentences, the best fact last, then **one motivating
+   line with a small step the viewer can take this week** (see "Level up" above).
 3. **Island checkup** (1–2 short sentences, ~15–20 words) with facts only from town.json and
    `village/island-news.md`: the bird count or the biggest island news, plus **every item under
    "To announce"** (keep each to a few words; if there are many, pick the biggest and list the rest
