@@ -26,7 +26,7 @@ Short on purpose. Newest decisions first. Update it whenever the owner changes t
 ## Earlier: Wednesday, Nov 18, 2026 Wednesday, Nov 18, 2026
 - Desk: **How It Works** (money), voice **George**, one vertical DRAFT (9:16) as usual.
   **New format (owner, Nov 17): 30–45 s, 90–125 words.** Hook first, the topic, a 1–2 sentence island
-  checkup at the END, then "Comment BIRD, and your name goes on a bird on our island. See you tomorrow for
+  checkup at the END, then "Follow and comment BIRD, and your name goes on a bird on our island. See you tomorrow for
   another island update!"
 - Island checkup facts: read `town.json` (49 birds on Nov 17: one more = 50) and `village/island-news.md`
   ("To announce" was empty on Nov 17: say the bird bath is still being built, the Secret Building is still

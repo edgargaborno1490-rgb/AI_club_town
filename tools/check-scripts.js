@@ -8,7 +8,7 @@ const path = require('path');
 // From Nov 17, 2026 (owner's change): short dailies (30-45 s). Hook first, the explainer, then a short
 // island checkup at the END, then the BIRD line, then the "See you tomorrow" line.
 const ENDING = 'See you tomorrow for another island update!';
-const BIRD_LINE = 'Comment BIRD, and your name goes on a bird on our island.';
+const BIRD_LINE = 'Follow and comment BIRD, and your name goes on a bird on our island.';
 const DAILY_WORDS = [90, 125]; // about 30-45 s, including the island checkup, BIRD line and ending
 const TYPES = ['money', 'science', 'news', 'village', 'island'];
 const PLATFORMS = ['TikTok', 'Instagram', 'Facebook', 'YouTube'];

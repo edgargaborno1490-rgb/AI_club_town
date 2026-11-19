@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const { checkScript } = require('../tools/check-scripts.js');
 
 const words = n => Array.from({ length: n }, (_, i) => 'word' + i).join(' ');
-const END = 'Comment BIRD, and your name goes on a bird on our island. See you tomorrow for another island update!';
+const END = 'Follow and comment BIRD, and your name goes on a bird on our island. See you tomorrow for another island update!';
 
 const PACK = ['| # | Title | Cover words | Score | Why |', '|---|---|---|---|---|',
   '| 1 | Test topic? | BIG WORDS | 9/10 | clear |', '| 2 | Another one | TWO WORDS | 7/10 | ok |',

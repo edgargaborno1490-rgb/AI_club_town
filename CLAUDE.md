@@ -88,7 +88,7 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   `src/app.js` (touch events for iPhone Safari, pointer events for mouse), `.goal.tucked` / `.tuck` in `styles.css`.
 - **Phones cache the page:** bump `N` in `styles.css?v=N` / `src/*.js?v=N` (index.html) on every CSS/JS change.
 - **Dailies are 30–45 s (90–125 words; owner, Nov 17, 2026):** hook first, the topic, then a 1–2 sentence
-  **island checkup at the END**, then "Comment BIRD, and your name goes on a bird on our island. See you
+  **island checkup at the END**, then "Follow and comment BIRD, and your name goes on a bird on our island. See you
   tomorrow for another island update!" Every item under "To announce" in `village/island-news.md` goes in the next DRAFT's
   checkup; village-day step 5b moves them to "Announced". Add an item whenever the island changes.
 - **Viewer builds:** each week the owner picks one comment idea; it's built on the "? NEXT BUILD" plot

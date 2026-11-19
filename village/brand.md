@@ -78,7 +78,7 @@ at the END.** In this order:
    "To announce"** (keep each to a few words; if there are many, pick the biggest and list the rest
    in the section plan as on-screen chips). E.g. "On our island… forty-nine birds, and the bird bath is almost done."
 4. End with exactly these two sentences:
-Comment BIRD, and your name goes on a bird on our island. See you tomorrow for another island update!
+Follow and comment BIRD, and your name goes on a bird on our island. See you tomorrow for another island update!
 "…" for pauses. Short sentences. Numbers spelled the way they're said ("one point one million").
 
 ## Section plan
