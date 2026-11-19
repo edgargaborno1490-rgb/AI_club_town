@@ -27,6 +27,8 @@ APPROVED: `scripts/2026-11-19/credit-cards-like-youre-6.md` (copy its shape).
 ## Simple beats clever (owner, Nov 19, later: "still kind of confusing, make it simpler")
 - **One easy rule instead of math:** "For every hundred cookies you borrow… he gives you one back. At restaurants…
   three back." Not "500 × 1% = 5, all restaurant = 15". At most ONE number per scene on screen.
+- **Fewer ideas wins:** the owner's final pick had 3 ideas only (interest, rewards, the 22% catch), ~110 words.
+  Drop side details (restaurant tiers) before shortening sentences.
 - Short sentences, one idea each, and say the name of the idea AFTER it: "…That's called rewards."
 - **Only one grown-up number, at the end** ("about twenty-two percent a year"); everything before it is cookies.
 - A "but here's the catch" line in cookie words beats a percent comparison ("waiting too long costs way more
