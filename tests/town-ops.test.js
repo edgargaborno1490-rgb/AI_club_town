@@ -134,6 +134,19 @@ test('birds: add with @, no duplicates, remove, bad names refused', () => {
   assert.throws(() => ops.addBird(base(), 'bad name!'), /username/);
 });
 
+test('trial birds: tiny name for 24 h, kept if they follow, pruned after', () => {
+  const now = new Date('2026-11-19T20:00:00Z');
+  let t = ops.trialBird(base(), 'ImsuchaJosh', now);
+  assert.deepEqual(t.trialBirds, [{ name: '@ImsuchaJosh', until: '2026-11-20T20:00:00.000Z' }]);
+  assert.equal(ops.pruneBirds(t, new Date('2026-11-20T19:59:00Z')).trialBirds.length, 1);
+  assert.equal(ops.pruneBirds(t, new Date('2026-11-20T20:01:00Z')).trialBirds, undefined);
+  const kept = ops.keepBird(t, 'imsuchajosh');
+  assert.deepEqual(kept.birds, ['@imsuchajosh']);
+  assert.deepEqual(kept.trialBirds, []);
+  assert.deepEqual(ops.removeBird(t, 'ImsuchaJosh').trialBirds, []);
+  assert.throws(() => ops.trialBird(base(), 'x y', now), /username/);
+});
+
 test('latest video: title and https link', () => {
   const t = ops.setLatest(base(), 'Black Hole', 'https://www.tiktok.com/@x/video/1');
   assert.deepEqual(t.latest, { title: 'Black Hole', url: 'https://www.tiktok.com/@x/video/1' });

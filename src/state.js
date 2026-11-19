@@ -56,6 +56,13 @@
       .filter(b => typeof b === 'string' && /^@?[A-Za-z0-9._]{2,30}$/.test(b))
       .map(b => (b[0] === '@' ? b : '@' + b))
       .slice(0, 60);
+    // Trial birds: commented BIRD but not following yet; tiny name, hidden once `until` passes.
+    const nowMs = now instanceof Date ? now.getTime() : Date.now();
+    const smallBirds = (Array.isArray(r.trialBirds) ? r.trialBirds : [])
+      .filter(b => isObj(b) && typeof b.name === 'string' && /^@?[A-Za-z0-9._]{2,30}$/.test(b.name) && Date.parse(b.until) > nowMs)
+      .map(b => (b.name[0] === '@' ? b.name : '@' + b.name))
+      .filter(n => !birds.some(x => x.toLowerCase() === n.toLowerCase()))
+      .slice(0, Math.max(0, 60 - birds.length));
     const L = isObj(r.latest) ? r.latest : {};
     const latest = typeof L.title === 'string' && L.title.trim() && /^https:\/\/[^\s"'<>]+$/.test(text(L.url))
       ? { title: L.title.trim().slice(0, 90), url: L.url } : null;
@@ -78,7 +85,8 @@
       platforms,
       leader: leaders.length === 1 ? leaders[0] : null,
       nextMilestone: MILESTONES.find(m => m > f) || null,
-      birds,
+      birds: birds.concat(smallBirds),
+      smallBirds,
       latest,
       updated: typeof r.updated === 'string' ? r.updated : null,
       stalled: stalled && anyWorking,

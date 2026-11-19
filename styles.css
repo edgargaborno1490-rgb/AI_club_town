@@ -25,6 +25,7 @@ body{background:var(--sky-bottom);color:var(--ink);font:14px/1.4 var(--font-body
 .chip{font-family:var(--font-display);font-weight:600;font-size:12.5px;letter-spacing:.01em;padding:3px 10px 3px 8px;border-radius:999px;background:var(--ink);color:#fff;white-space:nowrap;display:flex;gap:6px;align-items:center}
 .chip.next{background:#fff;color:var(--ink);border:2px solid var(--ink);font-size:11.5px;padding:2px 9px}
 .birdtag{font:600 10px var(--font-body);color:var(--ink);background:#ffffffd9;border-radius:999px;padding:1px 6px;white-space:nowrap;z-index:1}
+.birdtag.small{font-size:6px;padding:0 3px;background:#ffffff99;opacity:.85}
 .dot{width:9px;height:9px;border-radius:50%;background:var(--idle);flex:none}
 .tag[data-s="working"] .birdtag{font:600 10px var(--font-body);color:var(--ink);background:#ffffffd9;border-radius:999px;padding:1px 6px;white-space:nowrap;z-index:1}
 .dot{background:var(--work);box-shadow:0 0 0 3px #ff9f1a55}

@@ -582,7 +582,7 @@
       if (flying.length && sitting.length) { const up = pick(sitting); land(pick(flying), t); takeOff(up, t); }
     }
     // Named birds: followers who asked for one get their username on a small tag.
-    function setBirds(n, names) {
+    function setBirds(n, names, small = []) {
       const want = Math.min(Math.max(0, n | 0, names.length), MAX_BIRDS);
       while (birds.length < want) birds.push(bird(birds.length));
       const t = clock.elapsedTime;
@@ -601,7 +601,7 @@
           b.tag = document.createElement('div'); b.tag.className = 'tag birdtag'; b.tag.dataset.id = 'bird';
           labels.appendChild(b.tag);
         }
-        if (b.tag) { b.tag.textContent = name; b.tag.hidden = !name; }
+        if (b.tag) { b.tag.textContent = name; b.tag.hidden = !name; b.tag.classList.toggle('small', small.includes(name)); }
       });
       shown = want;
     }
@@ -697,7 +697,7 @@
           a.btext.textContent = s.task;
           a.btext.parentNode.hidden = !s.task;
         }
-        setBirds(state.followers || 0, state.birds || []);
+        setBirds(state.followers || 0, state.birds || [], state.smallBirds || []);
       },
     };
   }

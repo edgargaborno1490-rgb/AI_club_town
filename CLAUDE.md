@@ -74,6 +74,9 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   treetops, grass, plaza); 5–10 fly (more followers = more in the air), taking turns landing.
 - **Named birds:** viewers who comment "BIRD" get their public username on a bird:
   `node tools/town.js bird add <username> --push` (`bird remove` if asked). Only people who asked.
+  From Nov 19, 2026 videos say "Follow and comment BIRD"; the owner tells us who followed (we can't see it).
+  **Trial bird** (commented BIRD, not following yet; owner's benefit of the doubt): `bird trial <username> [hours=24] --push`
+  shows the name very small and the page hides it when time runs out; `bird keep <username> --push` if they follow.
 - **Milestones** (25, 50, 100, 250, …) are story beats; what they unlock is the owner's pick.
 - **Latest video link** on the card: `node tools/town.js latest "<title>" <https link> --push` (ask the owner).
 - **Look = Aloha Island** (Nov 17): palms, flower bushes, beach, lagoon, volcano, tiki torches, no

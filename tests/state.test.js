@@ -77,6 +77,16 @@ test('followers are read as a whole number, junk becomes 0', () => {
   assert.equal(parseTown({}).followers, 0);
 });
 
+test('trial birds show small until their time runs out', () => {
+  const raw = { birds: ['bob'], trialBirds: [{ name: '@Josh', until: '2026-11-20T20:00:00Z' }, { name: '<x>', until: '2099-01-01T00:00:00Z' }] };
+  const before = parseTown(raw, new Date('2026-11-20T10:00:00Z'));
+  assert.deepEqual(before.birds, ['@bob', '@Josh']);
+  assert.deepEqual(before.smallBirds, ['@Josh']);
+  const after = parseTown(raw, new Date('2026-11-20T21:00:00Z'));
+  assert.deepEqual(after.birds, ['@bob']);
+  assert.deepEqual(after.smallBirds, []);
+});
+
 test('named birds: only safe usernames, with an @, at most 60', () => {
   const s = parseTown({ birds: ['bob', '@x.y_z', '<script>', 'a', 42, ...Array.from({ length: 70 }, (_, i) => 'u' + i)] });
   assert.deepEqual(s.birds.slice(0, 2), ['@bob', '@x.y_z']);

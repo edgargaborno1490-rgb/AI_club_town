@@ -23,6 +23,10 @@ function newDay(town, date) {
   if (t.lastRunDate && t.lastRunDate !== date) t.day = (Number(t.day) || 1) + 1;
   if (!t.day) t.day = 1;
   t.lastRunDate = date;
+  if (Array.isArray(t.trialBirds)) {
+    t.trialBirds = t.trialBirds.filter(b => Date.parse(b.until) > Date.now());
+    if (!t.trialBirds.length) delete t.trialBirds;
+  }
   for (const id of IDS) t.agents[id] = { status: 'idle', task: '' };
   t.log = [];
   return t;
@@ -105,6 +109,31 @@ function removeBird(town, name) {
   const n = birdName(name).toLowerCase();
   const t = copy(town);
   t.birds = (Array.isArray(t.birds) ? t.birds : []).filter(b => b.toLowerCase() !== n);
+  if (Array.isArray(t.trialBirds)) t.trialBirds = t.trialBirds.filter(b => String(b.name).toLowerCase() !== n);
+  return t;
+}
+// Trial birds (owner, Nov 19, 2026): someone commented BIRD but hasn't followed yet. Their name shows
+// very small for `hours` (default 24), then disappears unless the owner says they followed (keepBird).
+function trialBird(town, name, now, hours = 24) {
+  const n = birdName(name);
+  const h = Number(hours);
+  if (!(h > 0 && h <= 24 * 14)) throw new Error(`Not a number of hours: "${hours}"`);
+  const t = removeBird(town, n);
+  t.trialBirds = Array.isArray(t.trialBirds) ? t.trialBirds : [];
+  t.trialBirds.push({ name: n, until: new Date(now.getTime() + h * 3600e3).toISOString() });
+  return t;
+}
+// They followed: the trial bird becomes a normal named bird.
+function keepBird(town, name) {
+  return addBird(removeBird(town, name), name);
+}
+// Drop trial birds whose time ran out (the page hides them on time anyway).
+function pruneBirds(town, now) {
+  const t = copy(town);
+  if (Array.isArray(t.trialBirds)) {
+    t.trialBirds = t.trialBirds.filter(b => Date.parse(b.until) > now.getTime());
+    if (!t.trialBirds.length) delete t.trialBirds;
+  }
   return t;
 }
 
@@ -129,4 +158,4 @@ function closeDay(town, time) {
   return t;
 }
 
-module.exports = { NAMES, IDS, newDay, start, done, log, setBalance, setFollowers, setPlatform, PLATFORM_IDS, addBird, removeBird, setLatest, closeDay };
+module.exports = { NAMES, IDS, newDay, start, done, log, setBalance, setFollowers, setPlatform, PLATFORM_IDS, addBird, removeBird, trialBird, keepBird, pruneBirds, setLatest, closeDay };

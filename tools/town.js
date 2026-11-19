@@ -8,6 +8,8 @@
 //   node tools/town.js followers <youtube|tiktok|instagram|facebook> <n> [--push]
 //   node tools/town.js followers <n> [--push]          (only before per-platform counts exist)
 //   node tools/town.js bird add|remove <username> [--push]   (only followers who asked)
+//   node tools/town.js bird trial <username> [hours=24] [--push]  (commented BIRD, not following yet:
+//                                    tiny name, gone after the hours unless `bird keep <username>`)
 //   node tools/town.js latest "<video title>" <https link> [--push]
 //   node tools/town.js close-day [--push]
 //   node tools/town.js today          (prints the Hawaii date, for folder names)
@@ -51,7 +53,7 @@ function push(message, root = ROOT) {
 
 function main(argv) {
   const wantPush = argv.includes('--push');
-  const [cmd, a, b] = argv.filter(x => x !== '--push');
+  const [cmd, a, b, c] = argv.filter(x => x !== '--push');
   const now = honolulu();
   if (cmd === 'today') { console.log(now.date); return; }
   const town = JSON.parse(fs.readFileSync(FILE, 'utf8'));
@@ -68,7 +70,10 @@ function main(argv) {
     case 'bird':
       if (a === 'add') { next = ops.addBird(town, b); msg = `Village: bird for ${b}`; break; }
       if (a === 'remove') { next = ops.removeBird(town, b); msg = `Village: bird removed`; break; }
-      throw new Error('Use: node tools/town.js bird add|remove <username>');
+      if (a === 'trial') { next = ops.trialBird(town, b, new Date(), c || 24); msg = `Village: trial bird for ${b}`; break; }
+      if (a === 'keep') { next = ops.keepBird(town, b); msg = `Village: ${b} followed, bird kept`; break; }
+      if (a === 'prune') { next = ops.pruneBirds(town, new Date()); msg = 'Village: expired trial birds removed'; break; }
+      throw new Error('Use: node tools/town.js bird add|remove|trial|keep|prune <username> [hours]');
     case 'latest':    next = ops.setLatest(town, a, b); msg = `Village: latest video ${a}`; break;
     case 'close-day': next = ops.closeDay(town, now.time); msg = 'Village: day closed'; break;
     default:
