@@ -4,7 +4,7 @@
 > **whitebucket-studio** = making videos: build/render, voice, music, captions, `video/scripts/`.
 > **AI_club_town** = the island and the village: birds, followers, builds, daily DRAFTs, rotation, stats, earnings.
 > The only link between them: `tools/send-to-studio.js` copies DRAFTs into the studio's `video/scripts/`.
-> A request for the other repo? Say so and suggest a chat there; don't edit that repo from here.
+> Anything else for the other repo: say so and suggest a chat there instead of editing it from here.
 
 **AI Club Town** is the owner's AI village: a 3D island page (GitHub Pages, from `main`) plus Claude
 skills that write one DRAFT video script a day for the channel **WhiteBucket Explains**. The video
