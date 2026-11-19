@@ -1,5 +1,11 @@
 # Project notes for Claude
 
+> **Which repo for what (owner, Nov 19, 2026; kept separate on purpose: merging would move the island page and slow the daily run).**
+> **whitebucket-studio** = making videos: build/render, voice, music, captions, `video/scripts/`.
+> **AI_club_town** = the island and the village: birds, followers, builds, daily DRAFTs, rotation, stats, earnings.
+> The only link between them: `tools/send-to-studio.js` copies DRAFTs into the studio's `video/scripts/`.
+> A request for the other repo? Say so and suggest a chat there; don't edit that repo from here.
+
 **AI Club Town** is the owner's AI village: a 3D island page (GitHub Pages, from `main`) plus Claude
 skills that write one DRAFT video script a day for the channel **WhiteBucket Explains**. The video
 studio is a separate repo, `whitebucket-studio`. The patch business **Kanaktical** (`aloha-armor-forge`)
