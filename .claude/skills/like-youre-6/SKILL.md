@@ -6,7 +6,7 @@ description: Fast checklist for writing or fixing a WhiteBucket Explains money s
 # Explained like you're 6 (owner's way, learned Nov 19, 2026)
 
 Read this first; it saves the back-and-forth. Full rules: `village/brand.md`. Example that the owner
-APPROVED: `scripts/2026-11-19/credit-cards-like-youre-6.md` (copy its shape).
+APPROVED: `scripts/2026-11-19/credit-cards-like-youre-6.md` (the final narration; copy its shape).
 
 ## The narration (what the owner approved)
 1. **Hook:** "How does <thing> work? Explained like you're six." Always the 6-year-old. **No Minecraft** or
@@ -27,8 +27,9 @@ APPROVED: `scripts/2026-11-19/credit-cards-like-youre-6.md` (copy its shape).
 ## Simple beats clever (owner, Nov 19, later: "still kind of confusing, make it simpler")
 - **One easy rule instead of math:** "For every hundred cookies you borrow… he gives you one back. At restaurants…
   three back." Not "500 × 1% = 5, all restaurant = 15". At most ONE number per scene on screen.
-- **Fewer ideas wins:** the owner's final pick had 3 ideas only (interest, rewards, the 22% catch), ~110 words.
-  Drop side details (restaurant tiers) before shortening sentences.
+- **The owner's final pick (Nov 19): the ~136-word version** with "a friend with a cookie jar", 100 → 1 back,
+  "at restaurants… three back", money or a trip, "but here's the catch", then 22%. A shorter ~110-word cut
+  (no restaurants, no catch line) was too bare: he went back to the 136-word one. Simple, but keep the useful bits.
 - Short sentences, one idea each, and say the name of the idea AFTER it: "…That's called rewards."
 - **Only one grown-up number, at the end** ("about twenty-two percent a year"); everything before it is cookies.
 - A "but here's the catch" line in cookie words beats a percent comparison ("waiting too long costs way more
