@@ -14,7 +14,9 @@ description: The World News desk - on news days writes the DRAFT World News scri
    or a big company/market move. One story, explained: what happened, why it matters, what happens next. Use only facts
    confirmed by **two independent reputable sources** (wire services, major newspapers,
    public broadcasters, official agencies). Neutral, no opinions, your own words.
-   Say "as of <Month Day>" once. Close the story with one line on what it means for the viewer
+   **Explain it like the viewer is 6** (owner, Nov 19, 2026; `brand.md`): "The Fed raised rates. Explained like
+   you're 6." One kid picture for what it means, then the real facts "in grown-up words", still neutral.
+   Write the `Explain like:` line under Format. Say "as of <Month Day>" once. Close the story with one line on what it means for the viewer
    and one small thing they can do (level up, `brand.md`), facts stay neutral. Tragedies: facts with care, no graphic detail.
    About real people: only what the sources report, attributed ("reports say…"), no guessing.
    About stocks: what happened, never what to buy or sell or what will happen next.

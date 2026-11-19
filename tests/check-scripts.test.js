@@ -55,7 +55,7 @@ test('fact notes need links and an "as of" date', () => {
 
 test('money scripts must say not financial advice', () => {
   assert.ok(checkScript(script({ type: 'money' })).some(p => /not financial advice/.test(p)));
-  assert.deepEqual(checkScript(script({ type: 'money', extra: 'Note: small "not financial advice" card near the end.' })), []);
+  assert.deepEqual(checkScript(script({ type: 'money', extra: 'Explain like: you\'re 6 · picture: a piggy bank\nNote: small "not financial advice" card near the end.' })), []);
 });
 
 test('a missing caption platform is flagged', () => {
@@ -71,7 +71,7 @@ test('news scripts need 2 different sites for every story group', () => {
   const bad = 'Story A:\n- https://reuters.com/a\n- https://apnews.com/a\n\nStory B:\n- https://bbc.com/b';
   assert.ok(checkScript(script({ type: 'news', sources: bad })).some(p => /Story B/.test(p)));
   const ok = 'Story A:\n- https://reuters.com/a\n- https://apnews.com/a';
-  assert.deepEqual(checkScript(script({ type: 'news', sources: ok })), []);
+  assert.deepEqual(checkScript(script({ type: 'news', sources: ok, extra: 'Explain like: Minecraft · picture: emeralds' })), []);
   assert.ok(checkScript(script({ type: 'news' })).some(p => /Sources/.test(p)));
 });
 
@@ -126,4 +126,17 @@ test('the title line must be the picked packaging title', () => {
 test('village and island scripts do not need packaging', () => {
   const s = script({ type: 'village', narration: 185, end: 'See you next Sunday.', facts: '- x, as of Nov 21, 2026.', drop: 'Packaging' });
   assert.deepEqual(checkScript(s), []);
+});
+
+test('money and news scripts must be explained like the viewer is 6 (owner, Nov 19, 2026)', () => {
+  const fin = 'Note: "not financial advice".';
+  assert.ok(checkScript(script({ type: 'money', extra: fin })).some(p => /Explain like/.test(p)));
+  assert.deepEqual(checkScript(script({ type: 'money', extra: `Explain like: Minecraft · picture: emeralds\n${fin}` })), []);
+  assert.ok(!checkScript(script()).some(p => /Explain like/.test(p))); // science (paused) doesn't need it
+});
+
+test('scripts written before Nov 20, 2026 do not need the Explain like line', () => {
+  const s = script({ type: 'money', extra: 'Note: "not financial advice".' });
+  assert.deepEqual(checkScript(s, '2026-11-19'), []);
+  assert.ok(checkScript(s, '2026-11-20').some(p => /Explain like/.test(p)));
 });

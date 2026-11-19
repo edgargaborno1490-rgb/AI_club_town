@@ -22,12 +22,17 @@ description: The How It Works studio (the money desk) - writes the day's How It 
    Every format: ONE idea, 90-125 words, real sourced numbers with "as of" dates, and a **level-up
    push**: one small step the viewer can take this week, right before the island checkup (`brand.md`).
    The video is 16:9 (calm wide style), so the section plan describes wide scenes.
-4. Explain **one** idea well, with an everyday example (a paycheck, a grocery bill, a card).
+3c. **Explain it like the viewer is 6** (owner, Nov 19, 2026; `brand.md` "Explain like I'm 6"): the hook
+   names the frame ("…explained like you're 6" or "…explained with Minecraft"), one kid picture carries
+   the format (comparison = two kids with the same allowance; real price = the toy that costs more than
+   its sticker; myth = what grown-ups say vs what's true; checklist = 3-5 steps a kid could follow),
+   then "In grown-up words:" one real sourced number. Use the frame the plan names.
+4. Explain **one** idea well, with that one kid picture (allowance, lemonade stand, Minecraft emeralds).
    Educational only: no stock picks, predictions or "buy this". Include a short
    "not financial advice" line near the end.
 5. Write `scripts/$DATE/<slug>.md` in the format in `brand.md` (`Topic type: money`,
    the voice `node tools/rotation.js` prints (George) in the Format line, and
-   `Money format: <comparison | realprice | myth | checklist>` under it).
+   `Money format: <comparison | realprice | myth | checklist>` and `Explain like: …` under it).
    The section plan uses the paper-line look and gives the pen line something to do (no bucket guy).
    **Packaging:** follow `packaging` (5 scored title + cover ideas; the pick becomes the title line).
 6. Run `node tools/check-scripts.js $DATE` and fix everything it lists for your file

@@ -18,6 +18,32 @@ before writing.
   - Real and honest: no hype, no "get rich quick", no promised results, no lifestyle flexing. Small steps
     that add up are the message. Money stays educational with the "not financial advice" line.
   - World News too: neutral facts first, then one line on what it means for you and what you can do.
+- **Explain like I'm 6 (owner, Nov 19, 2026): every video, every desk.** Money explained so simply a
+  six-year-old would get it, for grown-ups who were never taught. Two frames:
+  - **Like you're 6** (the default): "How does a credit card work? Explained like you're 6."
+  - **A game world** ("Credit cards explained with Minecraft"): emeralds = money, a chest = a savings
+    account, a villager trade = a loan, building block by block = compound growth. Use it when the
+    picture truly fits (try about twice a week; the Analyst's numbers decide more or less). Other kid
+    worlds work too: lemonade stand, piggy bank, allowance, trading cards, LEGO.
+  How to write it:
+  - The **hook names the frame**: the question + "explained like you're 6" (or "…with Minecraft").
+  - **One picture, all the way through.** Pick one analogy and stay in it; don't stack three.
+  - Words a first grader knows, short sentences. Say a hard word only after the picture explains it
+    ("…and that extra is called **interest**").
+  - Then **"In grown-up words:"** one real, sourced number with its date (e.g. the average card rate).
+    The analogy must never bend the facts; if it can't stay true, pick another one.
+  - Then the level-up step (for the grown-up watching), the island checkup and the ending, as usual.
+  - Warm, never talking down to the viewer, never "hey kids": the audience is teens and adults.
+    Videos are posted **Not made for kids** (kids' videos lose comments, and the BIRD comments matter).
+  - **Minecraft is only a word, not a look:** say it in titles and narration, but on screen draw our own
+    paper-line blocks, coins and chests. No Minecraft logo, font, textures, characters (Steve, Creeper,
+    the villager face), sounds or game footage. Captions add "Not affiliated with Minecraft or Mojang."
+  - Example (myth day, about the shape only; the real number comes from the fact notes):
+    "How does a credit card work? Explained like you're 6. … Your friend lends you ten cookies. Pay back ten
+    by Friday, and it's free. Wait longer, and every week you owe a few more cookies. That extra is called
+    interest. … In grown-up words: the average card charges about <rate> a year, as of <date>. …"
+  - Write `Explain like: you're 6 | Minecraft | <another kid world> · picture: <the analogy>` under the
+    Format line (`check-scripts.js` checks it for money and news scripts).
 - **One video a day, on a rotation** (from Nov 15, 2026; `node tools/rotation.js`):
   How It Works (money) every day except Thu/Sun World News, money news only (from Nov 19, 2026; What If science paused).
   **Every video is read by George** (Kokoro `bm_george`, the studio makes it; owner, Nov 19, 2026).
@@ -56,6 +82,7 @@ Save it as `scripts/YYYY-MM-DD/<slug>.md`. `node tools/check-scripts.js` must pa
 
 Topic type: money | science | news | village | island
 Format: 16:9 · calm wide style · about 50 s · ~110 words · voice: <the series' voice>
+Explain like: you're 6 | Minecraft | <kid world> · picture: <the one analogy, e.g. borrowing a friend's toy>
 Post: <date window, or "any time (evergreen)">
 Tone: <one line>
 
@@ -70,8 +97,10 @@ Runner-up: #M (<why>)
 ## Narration (record as one paragraph)
 One paragraph, **90–125 words (30–45 s)**. Owner's change, Nov 17, 2026: **hook first, island checkup
 at the END.** In this order:
-1. **Hook** (first sentence): the topic's most surprising line. No island talk, no "hi", no intro.
-2. **Explainer** (~65–85 words): ONE idea, short sentences, the best fact last, then **one motivating
+1. **Hook** (first sentence): the question + the frame ("How does a credit card work? Explained like you're 6.")
+   or the format's hook in kid words. No island talk, no "hi", no intro.
+2. **Explainer** (~65–85 words): ONE idea told with ONE kid picture, first-grade words, then "In grown-up
+   words:" one real sourced number, then **one motivating
    line with a small step the viewer can take this week** (see "Level up" above).
 3. **Island checkup** (1–2 short sentences, ~15–20 words) with facts only from town.json and
    `village/island-news.md`: the bird count or the biggest island news, plus **every item under

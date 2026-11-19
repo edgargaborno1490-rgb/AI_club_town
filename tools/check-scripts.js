@@ -57,7 +57,8 @@ function checkPackaging(body, title) {
   return problems;
 }
 
-function checkScript(text) {
+const ELI6_FROM = '2026-11-20'; // first village day written with "Explain like I'm 6"
+function checkScript(text, date) {
   const problems = [];
   const firstLine = text.split('\n').find(l => l.trim()) || '';
   if (!/^>\s*\*\*Status: DRAFT/.test(firstLine)) problems.push('First line must be "> **Status: DRAFT – needs review.**" (only the owner approves)');
@@ -94,6 +95,8 @@ function checkScript(text) {
     if (!s.Packaging) problems.push('Missing or empty section: Packaging (5 scored title + cover ideas; see the packaging skill)');
     else problems.push(...checkPackaging(s.Packaging, (text.match(/^# WhiteBucket Explains: (.+)$/m) || [])[1]?.trim()));
   }
+  // Owner, Nov 19, 2026: every video is explained like the viewer is 6 (or with Minecraft / another kid world).
+  if (['money', 'news'].includes(type) && !(date && date < ELI6_FROM) && !/^Explain like:\s*\S+/m.test(text)) problems.push('Money and news scripts need an "Explain like: you\'re 6 | Minecraft | <kid world> · picture: <analogy>" line (brand.md)');
   if (type === 'money' && !/not financial advice/i.test(text)) problems.push('Money scripts must include a "not financial advice" line');
   if (type === 'news') {
     if (!s.Sources) problems.push('News scripts need a "## Sources" section grouped by story');
@@ -112,7 +115,7 @@ function checkDay(dir) {
   for (const slug of slugs) {
     const file = path.join(dir, slug + '.md');
     if (!fs.existsSync(file)) { problems.push(`${slug}.md: missing`); continue; }
-    for (const p of checkScript(fs.readFileSync(file, 'utf8'))) problems.push(`${slug}.md: ${p}`);
+    for (const p of checkScript(fs.readFileSync(file, 'utf8'), path.basename(dir))) problems.push(`${slug}.md: ${p}`);
   }
   return problems;
 }

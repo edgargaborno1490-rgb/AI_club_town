@@ -15,6 +15,12 @@ Short on purpose. Update it whenever the owner changes the plan. Past: `village/
   | Sun | World News | money news only |
 - **Voice: George for everything** (the owner is out of ElevenLabs tokens): no Mark, Eric or village host.
   The studio makes the voice, so no MP3 is needed; only APPROVED.
+- **Explain it like I'm 6 (owner, Nov 19, 2026): EVERY video.** The title and the first line say it:
+  "How does a credit card work? Explained like you're 6." or "Credit cards explained with Minecraft."
+  One simple picture carries the whole video (piggy bank, lemonade stand, lending a toy, Minecraft
+  emeralds/chests/villager trades), then one real sourced number "in grown-up words". The day's money
+  format stays (comparison, real price, myth, checklist), told in the kid picture. Rules: `brand.md`
+  "Explain like I'm 6". Every script has an `Explain like:` line (`check-scripts.js` checks it).
 - **Every video is 16:9** (the studio's `wide-video` calm style). 90–125 words (about 45–55 s).
 - **Level up:** every video motivates people to level up and do something with their life. Facts first,
   then ONE small step they can do this week, right before the island checkup. Honest: no hype, no

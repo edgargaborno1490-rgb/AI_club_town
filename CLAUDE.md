@@ -31,6 +31,9 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
 - **Music is back** (owner, Nov 17, 2026, night): only free tracks the owner picks (YouTube Audio Library); the studio
   syncs voice + pen line to the beat. Still no sound effects; scripts don't pick songs. **Every video is 16:9** (owner, Nov 19, 2026),
   built with the studio skill `wide-video`; no vertical version.
+- **Explain like I'm 6** (owner, Nov 19, 2026): every script explains its money idea like the viewer is six
+  ("How does a credit card work? Explained like you're 6" or "…explained with Minecraft"); one kid picture, then one
+  real sourced number "in grown-up words"; `Explain like:` line checked by `check-scripts.js`. `village/brand.md`.
 - **Level up** (owner, Nov 19, 2026): every script motivates viewers to level up and do something with their
   life: facts, then one small doable step for this week, honest (no hype, no promised results). `village/brand.md`.
 - Tests before pushing code: `npm test` and `NODE_PATH=$(npm root -g) node tests/smoke.js`.
