@@ -97,7 +97,6 @@ function checkScript(text, date) {
   }
   // Owner, Nov 19, 2026: every video is explained like the viewer is 6 (owner: "I like the kid better", no Minecraft).
   if (['money', 'news'].includes(type) && !(date && date < ELI6_FROM) && !/^Explain like:\s*you'?re 6\b/im.test(text)) problems.push('Money and news scripts need an "Explain like: you\'re 6 · picture: <analogy>" line (brand.md)');
-  if (type === 'money' && !/not financial advice/i.test(text)) problems.push('Money scripts must include a "not financial advice" line');
   if (type === 'news') {
     if (!s.Sources) problems.push('News scripts need a "## Sources" section grouped by story');
     else problems.push(...checkSourceGroups(s.Sources));

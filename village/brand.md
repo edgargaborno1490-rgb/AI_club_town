@@ -16,7 +16,7 @@ before writing.
   - Include **one small, doable step** they could take this week (check a rate, set up an automatic
     transfer, write a budget, ask for a raise, learn one skill). Put it right before the island checkup.
   - Real and honest: no hype, no "get rich quick", no promised results, no lifestyle flexing. Small steps
-    that add up are the message. Money stays educational with the "not financial advice" line.
+    that add up are the message. Money stays educational (no "not financial advice" line from Nov 19, 2026: the owner dropped it).
   - World News too: neutral facts first, then one line on what it means for you and what you can do.
 - **Explain like I'm 6 (owner, Nov 19, 2026): every video, every desk.** Money explained so simply a
   six-year-old would get it, for grown-ups who were never taught. **Always the "like you're 6" frame**
@@ -126,8 +126,7 @@ becomes the drawing). In the island row, the pen line turns into a bird and flie
 - YouTube: the picked title + one line
 ```
 
-- **Money:** educational only. No stock picks, predictions or "buy this". Include a short
-  "not financial advice" line (spoken, or a note for the on-screen card). Every number dated.
+- **Money:** educational only. No stock picks, predictions or "buy this". Every number dated. No "not financial advice" line, spoken or on screen (owner, Nov 19, 2026).
 - **News:** add `## Sources`, grouped by story (a line like `Nvidia:` then its links), at
   least 2 different reputable sites per story. Your own words, never copied sentences.
 - **Crossovers:** a What If can be "Part 2" of a recent World News story, but only as a

@@ -24,7 +24,7 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
 - **The owner's latest plan and standing orders: `village/owner-plan.md`** (the Chief reads it first each run;
   update it whenever the owner changes the plan).
 - The village always writes **DRAFT**; only the owner approves scripts.
-- Money scripts: educational only, "not financial advice", no stock picks or predictions. Never
+- Money scripts: educational only, no stock picks or predictions; no "not financial advice" line anymore (owner, Nov 19, 2026). Never
   suggest real reported facts about real people are fake.
 - The Banker never asks for or stores bank details, card numbers or passwords; earnings come only
   from `village/earnings.md` (`node tools/ledger.js`).

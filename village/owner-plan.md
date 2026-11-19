@@ -23,7 +23,7 @@ Short on purpose. Update it whenever the owner changes the plan. Past: `village/
 - **Every video is 16:9** (the studio's `wide-video` calm style). 90–125 words (about 45–55 s).
 - **Level up:** every video motivates people to level up and do something with their life. Facts first,
   then ONE small step they can do this week, right before the island checkup. Honest: no hype, no
-  promised results. Money stays educational ("not financial advice", every number sourced + "as of").
+  promised results. Money stays educational (every number sourced + "as of"). **No "not financial advice" line anymore** (owner, Nov 19), spoken or on screen.
 - **Ending (exact):** "Follow and comment BIRD, and your name goes on a bird on our island. See you
   tomorrow for another island update!" (`check-scripts.js` checks it.)
 - **Named birds:** the owner says who followed. Commented but not following = maybe a 24 h trial bird

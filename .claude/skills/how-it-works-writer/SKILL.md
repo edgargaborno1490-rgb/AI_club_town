@@ -28,8 +28,8 @@ description: The How It Works studio (the money desk) - writes the day's How It 
    its sticker; myth = what grown-ups say vs what's true; checklist = 3-5 steps a kid could follow),
    then "In grown-up words:" one real sourced number.
 4. Explain **one** idea well, with that one kid picture (allowance, lemonade stand, cookies, a piggy bank).
-   Educational only: no stock picks, predictions or "buy this". Include a short
-   "not financial advice" line near the end.
+   Educational only: no stock picks, predictions or "buy this". No "not financial advice" line, spoken or on screen
+   (owner, Nov 19, 2026).
 5. Write `scripts/$DATE/<slug>.md` in the format in `brand.md` (`Topic type: money`,
    the voice `node tools/rotation.js` prints (George) in the Format line, and
    `Money format: <comparison | realprice | myth | checklist>` and `Explain like: …` under it).

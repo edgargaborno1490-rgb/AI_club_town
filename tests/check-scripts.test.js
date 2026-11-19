@@ -53,9 +53,8 @@ test('fact notes need links and an "as of" date', () => {
   assert.ok(checkScript(script({ facts: '- A https://a.com/x\n- B https://b.com/y' })).some(p => /as of/.test(p)));
 });
 
-test('money scripts must say not financial advice', () => {
-  assert.ok(checkScript(script({ type: 'money' })).some(p => /not financial advice/.test(p)));
-  assert.deepEqual(checkScript(script({ type: 'money', extra: 'Explain like: you\'re 6 · picture: a piggy bank\nNote: small "not financial advice" card near the end.' })), []);
+test('money scripts no longer need a "not financial advice" line (owner, Nov 19, 2026)', () => {
+  assert.deepEqual(checkScript(script({ type: 'money', extra: 'Explain like: you\'re 6 · picture: a piggy bank' })), []);
 });
 
 test('a missing caption platform is flagged', () => {
