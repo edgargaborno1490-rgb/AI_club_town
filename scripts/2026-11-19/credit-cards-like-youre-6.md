@@ -24,20 +24,19 @@ Runner-up: #3 (the myth angle; same video, a sharper question)
 
 ## Narration (record as one paragraph)
 
-How does a credit card work? Explained like you're six. … Your friend lends you ten cookies. Give back ten by the due date… and it's free. Wait too long, and you owe extra cookies. That's called interest. … A credit card is that friend. In grown-up words: if you don't pay the whole bill, the average card charges about twenty-two percent a year. Not financial advice… but your move this week: find your card's rate on your statement, and pay the full bill if you can. On our island… forty-nine birds, one away from fifty! Follow and comment BIRD, and your name goes on a bird on our island. See you tomorrow for another island update!
+How does a credit card work? Explained like you're six. … Your friend lends you ten cookies. He says: give me ten back next week… or later, you owe me twelve. Give back ten on time… and it's free. Wait too long, and you owe two extra cookies. That's called interest. … A credit card is that friend. In grown-up words: if you don't pay the whole bill, the average card charges about twenty-two percent a year… that's about twelve cookies for every ten, after a year. Your move this week: find your card's rate on your statement. Follow and comment BIRD, and your name goes on a bird on our island. See you tomorrow for another island update!
 
 ## Section plan
 
 | # | Narration | On screen |
 |---|---|---|
 | 0 | How does a credit card work? Explained like you're six. | `// how it works`. Cover words **LIKE YOU'RE 6** (black, "6" in red); letters land on "six". The pen line draws a simple credit card, then circles it. |
-| 1 | Your friend lends you ten cookies. | The pen line becomes a friend holding a cookie jar; ten cookies hop out to the left one by one (counted 1–10 on "ten"). Small label "BORROW". |
-| 2 | Give back ten by the due date… and it's free. | Ten cookies hop back into the jar; a small calendar with a circled date; headline **IT'S FREE** lands on "free". |
-| 3 | Wait too long, and you owe extra cookies. That's called interest. | The calendar pages flip; extra cookies pop on the pile, the extra ones outlined in red. Headline **INTEREST** (red) lands on "interest"; the pen line underlines it. |
-| 4 | A credit card is that friend. In grown-up words: if you don't pay the whole bill, the average card charges about twenty-two percent a year. | The friend with the jar morphs into the credit card from row 0. Number **22% A YEAR** (red) lands on "twenty-two"; label "AVERAGE, CARDS THAT CHARGE INTEREST · FEDERAL RESERVE G.19 · AS OF NOV 6, 2026". |
-| 5 | Not financial advice… but your move this week: find your card's rate on your statement, and pay the full bill if you can. | Small card "NOT FINANCIAL ADVICE". A paper statement; the pen line circles "APR" on it, then draws a check mark next to "PAY FULL BALANCE". Headline **YOUR MOVE** lands on "move". |
-| 6 | On our island… forty-nine birds, one away from fifty! | The pen line turns into a bird and flies into the 3D island; "49 BIRDS · 1 TO GO" chip. |
-| 7 | Follow and comment BIRD, and your name goes on a bird on our island. See you tomorrow for another island update! | End card: comment box typing BIRD, SEE YOU TOMORROW. End card: desk howitworks (How It Works bucket), birds from town.json. |
+| 1 | Your friend lends you ten cookies. He says: give me ten back next week… or later, you owe me twelve. | The pen line becomes a friend holding a cookie jar; ten cookies hop out one by one (counted 1–10 on "ten"). A speech bubble: "10 NEXT WEEK · OR 12 LATER" ("12" in red lands on "twelve"). |
+| 2 | Give back ten on time… and it's free. | Ten cookies hop back into the jar; a small calendar with a circled date; headline **IT'S FREE** lands on "free". |
+| 3 | Wait too long, and you owe two extra cookies. That's called interest. | The calendar pages flip; two extra cookies pop on the pile, outlined in red. Headline **INTEREST** (red) lands on "interest"; the pen line underlines it. |
+| 4 | A credit card is that friend. In grown-up words: if you don't pay the whole bill, the average card charges about twenty-two percent a year… that's about twelve cookies for every ten, after a year. | The friend with the jar morphs into the credit card from row 0. Number **22% A YEAR** (red) lands on "twenty-two"; then "10 → 12 COOKIES · 1 YEAR". Label "AVERAGE, CARDS THAT CHARGE INTEREST · FEDERAL RESERVE G.19 · AS OF NOV 6, 2026". Small on-screen card: "NOT FINANCIAL ADVICE". |
+| 5 | Your move this week: find your card's rate on your statement. | A paper statement; the pen line circles "APR" on it. Headline **YOUR MOVE** lands on "move". |
+| 6 | Follow and comment BIRD, and your name goes on a bird on our island. See you tomorrow for another island update! | No spoken island checkup this time (owner: nothing new on the island). The pen line turns into a bird and flies into the 3D island (short shot, "49 BIRDS" chip), then the end card: comment box typing BIRD, SEE YOU TOMORROW. End card: desk howitworks (How It Works bucket), birds from town.json. |
 
 ## Fact notes
 
@@ -45,6 +44,8 @@ How does a credit card work? Explained like you're six. … Your friend lends yo
 - **"Pay back by the due date and it's free":** most cards give a grace period on purchases: pay the full statement balance by the due date and there's no interest on those purchases. Not required by law, cash advances usually charge interest right away, and paying only part can cost the grace period for the next month too. CFPB, as of Nov 19, 2026: https://www.consumerfinance.gov/ask-cfpb/what-is-a-grace-period-en-47/
 - **"Find your card's rate on your statement":** card statements list the APR (CFPB, "What is APR?"): https://www.consumerfinance.gov/ask-cfpb/what-is-apr-en-47/ (as of Nov 19, 2026).
 - **Island:** 49 followers = 49 birds (YouTube 25, TikTok 17, Instagram 4, Facebook 3), town.json as of Nov 19, 2026. "To announce" in island-news.md is empty.
+- **"Twelve cookies for every ten, after a year":** 10 × 1.22 ≈ 12.2, the 22% average over one year (simple, before compounding). The "not financial advice" line is an on-screen card (row 4).
+- **Owner's edit, Nov 19, 2026:** the friend's "ten next week or twelve later" deal; no island checkup (nothing new on the island).
 - The cookie picture simplifies: real interest grows on the unpaid balance (not on cookies per week), and fees can apply too. The grown-up number keeps it honest.
 
 ## Captions
