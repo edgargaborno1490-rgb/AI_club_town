@@ -24,7 +24,7 @@ description: The How It Works studio (the money desk) - writes the day's How It 
    Educational only: no stock picks, predictions or "buy this". Include a short
    "not financial advice" line near the end.
 5. Write `scripts/$DATE/<slug>.md` in the format in `brand.md` (`Topic type: money`,
-   the voice `node tools/rotation.js` prints (George; Eric on Tue/Sat) in the Format line, and
+   the voice `node tools/rotation.js` prints (George) in the Format line, and
    `Money format: <comparison | realprice | myth | checklist>` under it).
    The section plan uses the paper-line look and gives the pen line something to do (no bucket guy).
    **Packaging:** follow `packaging` (5 scored title + cover ideas; the pick becomes the title line).

@@ -9,7 +9,10 @@ Short on purpose. Newest decisions first. Update it whenever the owner changes t
   Mon **comparison** ("Same $500 a month. Who is richer at 45?") · Tue **real price** ("A $30,000 car:
   the real price") · Wed **myth buster** ("Skipping lattes won't make you rich") · Fri **checklist**
   ("Do these 5 things...") · Sat takes turns through the four. Pick a topic that fits the format.
-- Voices: George Mon/Wed/Fri, Eric Tue/Sat (owner's pick, kept).
+- **Voice: George for everything** (owner, Nov 19): money days, World News, the weekly update and island
+  clips. The owner is out of ElevenLabs tokens, so no Mark, Eric or village host; the studio makes George.
+- **World News = money news only** (owner, Nov 19): the economy, prices, rates, jobs, taxes, housing,
+  big company or market moves explained (never what to buy or sell). No science, politics fights or gossip.
 - Timely idea (Nov 19): mortgage rates jumped to about 7.5% and markets expect a December Fed hike;
   "what the Fed does when it raises rates" (studio IDEAS) fits a myth or real-price day. Source every number.
 

@@ -10,18 +10,19 @@ before writing.
 - **WhiteBucket Explains** on TikTok, Instagram, YouTube and Facebook.
 - **30–45 s** vertical explainers, one topic each (owner's change, Nov 17, 2026: shorter so more people watch to the end).
 - **One video a day, on a rotation** (from Nov 15, 2026; `node tools/rotation.js`):
-  How It Works (money) every day except Thu/Sun World News (from Nov 19, 2026; What If science paused).
+  How It Works (money) every day except Thu/Sun World News, money news only (from Nov 19, 2026; What If science paused).
+  **Every video is read by George** (Kokoro `bm_george`, the studio makes it; owner, Nov 19, 2026).
   Money formats: Mon comparison · Tue real price · Wed myth buster · Fri checklist · Sat takes turns.
-  Plus **AI Village · Week N** every Saturday from Nov 21 (posted Sunday), hosted by the
-  **village host** voice (ElevenLabs, the owner picks and records it; not Mark, Eric or George).
+  Plus **AI Village · Week N** every Saturday from Nov 21 (posted Sunday), read by
+  **George** (was the ElevenLabs village host until Nov 19, 2026).
   AI Village videos introduce the bucket guy as WhiteBucket (the owner), may run to ~90 s
   (170–240 words), and end with their own line (the weekly update: "See you next Sunday.")
   instead of the daily ending.
   | Series | Desk | Topic type | Voice |
   |---|---|---|---|
-  | What If | What If Studio (`whatif`) | science | **Eric** (Kokoro `am_eric`, free; the studio makes it; replaced Puck Nov 17, 2026, owner's pick) |
+  | What If | What If Studio (`whatif`) | science (paused Nov 19, 2026) | Eric (was) |
   | How It Works | How It Works (`howitworks`) | money (mostly) | **George** (Kokoro `bm_george`, free; the studio makes it) |
-  | World News | World News (`news`) | news | **Mark** (ElevenLabs, the owner records it) |
+  | World News | World News (`news`) | money news | **George** (Kokoro `bm_george`; Mark on ElevenLabs until Nov 19, 2026) |
 - Write every narration for the ear, whichever voice reads it.
 
 ## The look the section plan describes ("paper line", locked in)

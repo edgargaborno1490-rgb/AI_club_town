@@ -20,12 +20,10 @@ test('money formats: Mon comparison, Tue real price, Wed myth, Fri checklist, Sa
   for (const k of Object.keys(FORMATS)) assert.ok(FORMATS[k].length > 10);
 });
 
-test('Tuesday and Saturday money days keep Eric, the rest George', () => {
-  const { voiceFor } = require('../tools/rotation.js');
-  assert.match(voiceFor('2026-11-24'), /Eric/);
-  assert.match(voiceFor('2026-11-21'), /Eric/);
-  assert.match(voiceFor('2026-11-23'), /George/);
-  assert.match(voiceFor('2026-11-26'), /Mark/);
+test('George reads everything from Nov 19 (dailies, news, weekly update)', () => {
+  const { voiceFor, HOST_VOICE } = require('../tools/rotation.js');
+  for (const d of ['2026-11-21', '2026-11-23', '2026-11-24', '2026-11-26', '2026-11-29']) assert.match(voiceFor(d), /George/, d);
+  assert.match(HOST_VOICE, /George/);
 });
 
 test('World News on Thursday and Sunday', () => {

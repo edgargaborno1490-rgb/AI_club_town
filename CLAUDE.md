@@ -44,10 +44,10 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   main Claude chat (it has push access to both repos; a fresh session had none). `village-day` lists
   the steps; each run also opens a "🎬 Video: <title>" chat in the studio that waits for APPROVED.
 - **Rotation** (`node tools/rotation.js`), **all money from Nov 19, 2026** (owner: "no more science
-  video, more about money now"): How It Works every day except Thu/Sun World News (Mark, ElevenLabs).
+  video, more about money now"): How It Works every day except Thu/Sun World News (**money news only**).
   Each money day has a **format**: Mon comparison · Tue real price · Wed myth buster · Fri checklist ·
-  Sat takes turns through the four. Voices: George; Eric on Tue/Sat. What If (science) is paused.
-  Saturdays from Nov 21 also "AI Village · Week N" (village host voice, posted Sunday). Wed/Fri from
+  Sat takes turns through the four. **Voice: George for everything** (owner, Nov 19: out of ElevenLabs tokens; no Mark, Eric or village host). What If (science) is paused.
+  Saturdays from Nov 21 also "AI Village · Week N" (George, posted Sunday). Wed/Fri from
   Nov 25 also a 15–30 s **Island Clip**, only if the island changed (`island-clip`).
 - **Rest days:** Hawaii dates in `village/rest-days.md` make `rotation.js` print "REST DAY"; the day
   is only logged. Use this instead of switching off the scheduled task.

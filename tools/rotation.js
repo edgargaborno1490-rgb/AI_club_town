@@ -2,12 +2,12 @@
 // Which desk writes on a given (Hawaii) date. One script a day.
 //   node tools/rotation.js [YYYY-MM-DD]   (defaults to today in Hawaii)
 // All money from Nov 19, 2026 (owner: "no more science video, more about money now"):
-// Mon/Tue/Wed/Fri/Sat How It Works (money), each day a set FORMAT · Thu/Sun World News.
+// Mon/Tue/Wed/Fri/Sat How It Works (money), each day a set FORMAT · Thu/Sun World News (money news only).
+// Every video is George from Nov 19, 2026 (owner: out of ElevenLabs tokens), weekly update and clips too.
 // What If (science) is paused; 'whatif' stays in SERIES/VOICE for old scripts and stats.
 const BY_WEEKDAY = ['news', 'howitworks', 'howitworks', 'howitworks', 'news', 'howitworks', 'howitworks'];
 const SERIES = { howitworks: 'How It Works', whatif: 'What If', news: 'World News' };
-const VOICE = { howitworks: 'George (Kokoro bm_george, made by the studio)', whatif: 'Eric (Kokoro am_eric, made by the studio)', news: 'Mark (ElevenLabs)' };
-const ERIC = VOICE.whatif;
+const VOICE = { howitworks: 'George (Kokoro bm_george, made by the studio)', whatif: 'Eric (Kokoro am_eric, made by the studio)', news: 'George (Kokoro bm_george, made by the studio)' };
 
 // Money formats (the four that get views in money Shorts, owner's pick Nov 19, 2026).
 const FORMATS = {
@@ -28,16 +28,14 @@ function formatFor(date) {
   const n = Math.round((t - FIRST_SATURDAY) / (7 * 864e5));
   return FORMAT_ORDER[((n % 4) + 4) % 4];
 }
-// Tue and Sat keep Eric's voice (owner's pick), the other money days are George.
+// One voice for every daily: George.
 function voiceFor(date) {
-  const desk = deskFor(date);
-  const day = new Date(date + 'T12:00:00Z').getUTCDay();
-  return desk === 'howitworks' && (day === 2 || day === 6) ? ERIC : VOICE[desk];
+  return VOICE[deskFor(date)];
 }
 
 // Village Update: every Saturday from Nov 21, 2026 (week 1). Returns the week number or null.
 const FIRST_UPDATE = Date.UTC(2026, 10, 21);
-const HOST_VOICE = 'Village host (ElevenLabs, the owner picks and records it)';
+const HOST_VOICE = 'George (Kokoro bm_george, made by the studio)';
 function weeklyUpdateWeek(date) {
   deskFor(date);
   const t = Date.parse(date + 'T00:00:00Z');

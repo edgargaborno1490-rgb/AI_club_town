@@ -21,8 +21,9 @@ description: The village's Chief of Staff - picks today's one new WhiteBucket Ex
      (comparison, real price, myth buster, checklist). A timely money item from IDEAS "Up next"
      (like Black Friday or a rate change) first, then an Evergreen 💰 idea. Write the format in the plan.
    - **What If** (science): **paused** (owner, Nov 19, 2026: "no more science video"). Don't pick science.
-   - **World News**: the most important story of the last 48 hours that a general audience
-     cares about (economy, science, world events). Skip gossip and partisan fights.
+   - **World News**: **money news only** (owner, Nov 19, 2026): the most important money story of
+     the last 48 hours for regular people (prices, rates, jobs, taxes, housing, a big company or market
+     move). No science, no gossip, no partisan fights.
    **Swap rule:** on a non-news day you may switch to World News only if a story is
    truly big and will be stale by the next news day. Say why in the plan.
    **Follow-up rule (Part 2):** paused with What If. (Old rule: if the last World News script

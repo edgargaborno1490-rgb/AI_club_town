@@ -22,7 +22,7 @@ Chief, after today's regular script is written and fact-checked.
 3. Write `scripts/$DATE/village-update-week-N.md` in the format in `village/brand.md` with:
    - `# WhiteBucket Explains: AI Village · Week N`
    - `Topic type: village`
-   - Format line: `voice: Village host (ElevenLabs, the owner picks and records it)` and
+   - Format line: `voice: George (Kokoro bm_george, made by the studio)` and
      `about 60–90 s`.
    - Narration, in this order: a hook with the week's most interesting number; what the
      village made (scripts written, videos finished, with their titles); the best moment;
@@ -51,7 +51,7 @@ Chief, after today's regular script is written and fact-checked.
    - Topic: AI Village · Week N
    - Type: village
    - Slug: village-update-week-N
-   - Voice: Village host (ElevenLabs, the owner picks and records it)
+   - Voice: George (Kokoro bm_george, made by the studio)
    - Post: Sunday
    ```
 6. Run `node tools/check-scripts.js $DATE` and fix everything it lists.
