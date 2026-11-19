@@ -14,9 +14,8 @@ APPROVED: `scripts/2026-11-19/credit-cards-like-youre-6.md` (copy its shape).
 2. **One kid picture, with a concrete deal and real numbers:** "Your friend lends you ten cookies. Give ten
    back next week… and it's free. Wait longer, and you owe twelve. Those two extra cookies are called interest."
    The owner likes a deal a kid can follow (a promise, a "thank-you"), named words only after the picture.
-3. **Fill in the "blank" with the REAL answer.** The owner asks "find the real answer". Use real rates in kid
-   units: "Borrow five hundred cookies in a year, and he gives you five back (1%). All restaurant cookies?
-   Fifteen (3%)." Show the math on screen ("500 × 1% = 5").
+3. **Fill in the "blank" with the REAL answer**, in the simplest form: "For every hundred cookies… one back" (1%),
+   "at restaurants… three back" (3%). (The 500 → 5 / 15 math version was too confusing.)
 4. **Cover the parts people actually use** (for cards: rewards tiers 1% everything / 3% restaurants, cash back
    or travel points). Say "can earn": rates differ by card.
 5. **"In grown-up words:"** one sourced number (Fed G.19 card rate ~22%, as of the release date), then the
@@ -24,6 +23,14 @@ APPROVED: `scripts/2026-11-19/credit-cards-like-youre-6.md` (copy its shape).
 6. **Ending:** "Follow and comment BIRD, and your name goes on a bird on our island. See you tomorrow for
    another island update!" If there's **no island news**, the owner may drop the checkup AND the "See you
    tomorrow…" sentence for that script: add `Ending: BIRD line only (...)` under Format (checker allows it).
+
+## Simple beats clever (owner, Nov 19, later: "still kind of confusing, make it simpler")
+- **One easy rule instead of math:** "For every hundred cookies you borrow… he gives you one back. At restaurants…
+  three back." Not "500 × 1% = 5, all restaurant = 15". At most ONE number per scene on screen.
+- Short sentences, one idea each, and say the name of the idea AFTER it: "…That's called rewards."
+- **Only one grown-up number, at the end** ("about twenty-two percent a year"); everything before it is cookies.
+- A "but here's the catch" line in cookie words beats a percent comparison ("waiting too long costs way more
+  cookies than the thank-you gives back").
 
 ## Never (owner removed these on Nov 19, 2026, for every video)
 - No "your move this week" / homework step.
