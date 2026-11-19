@@ -53,3 +53,19 @@ CLAUDE.md keeps the rules. Add new days at the bottom.
 - **Nov 17, 2026 (late night):** no bucket guy in the videos (the pen line is the character); vertical stays the main
   shape (16:9 extra); **music is back**, but only free tracks the owner picks (YouTube Audio Library), synced to the
   voice and the pen line (studio `scripts/beats.py`).
+- **Nov 19, 2026, the new setup** (owner: "for now, this will be our setup"):
+  - **All money:** science (What If) paused. Four money formats that get views in money Shorts rotate by
+    weekday (Mon comparison, Tue real price, Wed myth buster, Fri checklist, Sat takes turns); World
+    News (Thu/Sun) became money news only. Why: research that day (TubeAlfred + web) showed
+    comparisons ("Same $500/month, who's richer at 45?"), real-price breakdowns and myth-busting
+    getting views on small channels, and checklists ("Do these 5 things...", 6.5M) lasting for years.
+  - **George reads everything** (owner out of ElevenLabs tokens): no Mark, Eric or village host.
+  - **Every video 16:9** (the calm `wide-video` style); the owner knows a wide video fills only about a
+    third of the screen in the TikTok/Shorts feed and likes the look anyway.
+  - **Level up:** every script motivates (facts, then one small step for this week; no hype).
+  - **Ending is now "Follow and comment BIRD…"**: a viewer (@ImsuchaJosh) commented BIRD without
+    following. We can't see follower lists, so the owner tells us who followed. New **trial bird**
+    (`town.js bird trial`): tiny name for 24 h, then gone unless they follow (`bird keep`). Josh got the
+    first one (until Nov 19, 2:32 PM Hawaii).
+  - Outliers now runs two money searches (topic + format). TubeAlfred: 26 credits left. Its search
+    returned nothing when filtered to "this week"; plain searches with `shorts: true` worked.

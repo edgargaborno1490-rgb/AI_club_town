@@ -103,7 +103,7 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
 - **Planned, not built:** one animal per platform (TikTok ferret, Instagram peacock, Facebook owl,
   YouTube whale in the water). Ask first: one per follower or per 10? The intro promised "every
   follower becomes a bird", so show any change in a weekly update.
-- Skills for island work: `island-change` (followers, builds, finding comments, code checklist) and
+- Skills for island work: `bird-requests` ("<name> followed", trial birds, remove), `island-change` (followers, builds, finding comments, code checklist) and
   `island-preview` (screenshots at any hour, mockups without touching the live page).
 
 ## Plugins
