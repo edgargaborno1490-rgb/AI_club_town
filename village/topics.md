@@ -13,3 +13,4 @@ Format: `- YYYY-MM-DD | series | subject | topic`
 - 2026-11-17 | whatif | science | What If Megalodon Were Still Alive? (bonus)
 - 2026-11-17 | how-it-works | money | Saving vs investing: how inflation hurts savings (16:9 test video, studio CalmMoneyWide)
 - 2026-11-18 | how-it-works | money | Where the 30% rent rule came from (and how many renters are over it)
+- 2026-11-19 | world-news | news | The Fed is getting ready to raise rates (December hike, minutes Nov 18)
