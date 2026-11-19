@@ -2,7 +2,7 @@
   "day": 7,
   "goal": 1000,
   "balance": 0,
-  "updated": "2026-11-19T21:55:01.136Z",
+  "updated": "2026-11-19T21:55:03.000Z",
   "agents": {
     "chief": {
       "status": "done",
@@ -17,8 +17,8 @@
       "task": ""
     },
     "news": {
-      "status": "working",
-      "task": "Fact-checking the extra script"
+      "status": "done",
+      "task": ""
     },
     "programmer": {
       "status": "done",
@@ -97,6 +97,10 @@
     {
       "time": "11:55",
       "text": "World News started: Fact-checking the extra script"
+    },
+    {
+      "time": "11:55",
+      "text": "World News: Fact-check done: 3 facts confirmed (Fed G.19 22.36%, CFPB grace period, APR on statements), 0 fixed."
     }
   ],
   "lastRunDate": "2026-11-19",
