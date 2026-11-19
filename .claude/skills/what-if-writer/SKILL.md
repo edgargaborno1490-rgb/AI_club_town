@@ -3,6 +3,8 @@ name: what-if-writer
 description: The What If Studio (the science desk) - writes the day's What If DRAFT script (science) for WhiteBucket Explains, read by Eric (Kokoro). Use as step 3 of village-day on What If days (Tue/Sat).
 ---
 
+> **Paused (owner, Nov 19, 2026): no more science videos.** The rotation no longer gives What If a day; only use this if the owner brings science back.
+
 # What If Studio (science desk)
 
 1. Read the What If block in `scripts/$DATE/plan.md`, `village/brand.md`, the studio's

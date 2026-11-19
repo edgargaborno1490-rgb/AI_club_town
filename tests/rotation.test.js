@@ -2,15 +2,30 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const { deskFor } = require('../tools/rotation.js');
 
-test('money on Monday, Wednesday and Friday', () => {
-  assert.equal(deskFor('2026-11-16'), 'howitworks'); // Monday
-  assert.equal(deskFor('2026-11-18'), 'howitworks'); // Wednesday
-  assert.equal(deskFor('2026-11-20'), 'howitworks'); // Friday
+test('money every day except Thursday and Sunday (science paused Nov 19)', () => {
+  for (const d of ['2026-11-16', '2026-11-17', '2026-11-18', '2026-11-20', '2026-11-21']) {
+    assert.equal(deskFor(d), 'howitworks', d);
+  }
 });
 
-test('What If on Tuesday and Saturday', () => {
-  assert.equal(deskFor('2026-11-17'), 'whatif');
-  assert.equal(deskFor('2026-11-21'), 'whatif');
+test('money formats: Mon comparison, Tue real price, Wed myth, Fri checklist, Sat takes turns', () => {
+  const { formatFor, FORMATS } = require('../tools/rotation.js');
+  assert.equal(formatFor('2026-11-23'), 'comparison');
+  assert.equal(formatFor('2026-11-24'), 'realprice');
+  assert.equal(formatFor('2026-11-25'), 'myth');
+  assert.equal(formatFor('2026-11-27'), 'checklist');
+  assert.deepEqual(['2026-11-21', '2026-11-28', '2026-12-05', '2026-12-12', '2026-12-19'].map(formatFor),
+    ['comparison', 'realprice', 'myth', 'checklist', 'comparison']);
+  assert.equal(formatFor('2026-11-26'), null); // news day
+  for (const k of Object.keys(FORMATS)) assert.ok(FORMATS[k].length > 10);
+});
+
+test('Tuesday and Saturday money days keep Eric, the rest George', () => {
+  const { voiceFor } = require('../tools/rotation.js');
+  assert.match(voiceFor('2026-11-24'), /Eric/);
+  assert.match(voiceFor('2026-11-21'), /Eric/);
+  assert.match(voiceFor('2026-11-23'), /George/);
+  assert.match(voiceFor('2026-11-26'), /Mark/);
 });
 
 test('World News on Thursday and Sunday', () => {

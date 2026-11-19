@@ -2,7 +2,18 @@
 
 Short on purpose. Newest decisions first. Update it whenever the owner changes the plan.
 
-## Next run: Wednesday, Nov 18, 2026
+## All money, four formats (owner, Nov 19, 2026)
+- **No more science videos.** What If is paused; every non-news day is How It Works (money).
+  Thu/Sun stay World News.
+- **Rotate the four formats that get views in money Shorts** (`node tools/rotation.js` prints today's):
+  Mon **comparison** ("Same $500 a month. Who is richer at 45?") · Tue **real price** ("A $30,000 car:
+  the real price") · Wed **myth buster** ("Skipping lattes won't make you rich") · Fri **checklist**
+  ("Do these 5 things...") · Sat takes turns through the four. Pick a topic that fits the format.
+- Voices: George Mon/Wed/Fri, Eric Tue/Sat (owner's pick, kept).
+- Timely idea (Nov 19): mortgage rates jumped to about 7.5% and markets expect a December Fed hike;
+  "what the Fed does when it raises rates" (studio IDEAS) fits a myth or real-price day. Source every number.
+
+## Earlier: Wednesday, Nov 18, 2026 Wednesday, Nov 18, 2026
 - Desk: **How It Works** (money), voice **George**, one vertical DRAFT (9:16) as usual.
   **New format (owner, Nov 17): 30–45 s, 90–125 words.** Hook first, the topic, a 1–2 sentence island
   checkup at the END, then "Comment BIRD, and your name goes on a bird on our island. See you tomorrow for

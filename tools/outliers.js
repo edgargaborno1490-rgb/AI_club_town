@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Weekly Outliers check: which videos in our niches are doing far better than
 // their own channel usually does? Those topics are worth our own take.
-//   node tools/outliers.js queries [YYYY-MM-DD]   this week's two searches (money + science)
+//   node tools/outliers.js queries [YYYY-MM-DD]   this week's two searches (money topic + money format)
 //   node tools/outliers.js [YYYY-MM-DD] [--write] read village/outliers/<date>.json,
 //                                                 print (and with --write save) village/outliers.md
 // The Secret Building fills the JSON from TubeAlfred (public YouTube numbers only).
@@ -13,12 +13,13 @@ const MIN_RATIO = 3; // 3x the channel's usual views = an outlier
 const PER_DESK = 5;
 const DESKS = { howitworks: 'How It Works (money)', whatif: 'What If (science)', news: 'World News' };
 
-// One money and one science search per week, rotating so we look somewhere new each Monday.
+// Two money searches per week (science paused Nov 19, 2026): a topic search and a format search
+// (the 'whatif' slot now holds money-format searches), rotating so we look somewhere new each Monday.
 const QUERIES = {
   howitworks: ['how money works explained', 'why is everything so expensive', 'credit card interest explained',
     'how taxes actually work', 'how banks make money', 'how the stock market works for beginners'],
-  whatif: ['what if science explained', 'space facts explained', 'what would happen if earth',
-    'science explained in 60 seconds', 'weird ocean facts', 'how the human body works'],
+  whatif: ['same salary who is richer', 'real cost of buying a car', 'money myths debunked',
+    'things to do with your first paycheck', 'real cost of credit card minimum payment', 'money habits checklist'],
 };
 
 function weekIndex(date) {
@@ -91,7 +92,7 @@ if (require.main === module) {
     const today = () => require('./town.js').honolulu().date;
     if (args[0] === 'queries') {
       const q = queriesFor(args[1] || today());
-      console.log(`money (howitworks): ${q.howitworks}\nscience (whatif): ${q.whatif}`);
+      console.log(`money topic: ${q.howitworks}\nmoney format: ${q.whatif}`);
       process.exit(0);
     }
     const date = args.find(a => /^\d{4}-/.test(a)) || today();

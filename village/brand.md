@@ -10,7 +10,8 @@ before writing.
 - **WhiteBucket Explains** on TikTok, Instagram, YouTube and Facebook.
 - **30–45 s** vertical explainers, one topic each (owner's change, Nov 17, 2026: shorter so more people watch to the end).
 - **One video a day, on a rotation** (from Nov 15, 2026; `node tools/rotation.js`):
-  Mon/Wed/Fri How It Works · Tue/Sat What If · Thu/Sun World News.
+  How It Works (money) every day except Thu/Sun World News (from Nov 19, 2026; What If science paused).
+  Money formats: Mon comparison · Tue real price · Wed myth buster · Fri checklist · Sat takes turns.
   Plus **AI Village · Week N** every Saturday from Nov 21 (posted Sunday), hosted by the
   **village host** voice (ElevenLabs, the owner picks and records it; not Mark, Eric or George).
   AI Village videos introduce the bucket guy as WhiteBucket (the owner), may run to ~90 s

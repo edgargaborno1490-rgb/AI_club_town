@@ -43,11 +43,12 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
 - **Daily run:** a scheduled task runs the `village-day` skill at 4:30 AM Hawaii time in the owner's
   main Claude chat (it has push access to both repos; a fresh session had none). `village-day` lists
   the steps; each run also opens a "🎬 Video: <title>" chat in the studio that waits for APPROVED.
-- **Rotation** (`node tools/rotation.js`): Mon/Wed/Fri How It Works (money, George), Tue/Sat What If
-  (science, Eric), Thu/Sun World News (Mark, ElevenLabs). Saturdays from Nov 21 also "AI Village ·
-  Week N" (village host voice, posted Sunday). Wed/Fri from Nov 25 also a 15–30 s **Island Clip**,
-  only if the island changed (`island-clip`). What If stays for now; the 2-money-to-1-science test
-  ends mid-December (revisit with the Analyst's numbers).
+- **Rotation** (`node tools/rotation.js`), **all money from Nov 19, 2026** (owner: "no more science
+  video, more about money now"): How It Works every day except Thu/Sun World News (Mark, ElevenLabs).
+  Each money day has a **format**: Mon comparison · Tue real price · Wed myth buster · Fri checklist ·
+  Sat takes turns through the four. Voices: George; Eric on Tue/Sat. What If (science) is paused.
+  Saturdays from Nov 21 also "AI Village · Week N" (village host voice, posted Sunday). Wed/Fri from
+  Nov 25 also a 15–30 s **Island Clip**, only if the island changed (`island-clip`).
 - **Rest days:** Hawaii dates in `village/rest-days.md` make `rotation.js` print "REST DAY"; the day
   is only logged. Use this instead of switching off the scheduled task.
 - **Packaging** (skill `packaging`): each money/science/news script has `## Packaging`: 5 title +

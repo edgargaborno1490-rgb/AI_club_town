@@ -1,6 +1,6 @@
 ---
 name: outliers
-description: The Secret Building's weekly Outliers check - looks up public YouTube numbers (TubeAlfred) for money and science videos that got far more views than their channel usually gets, and writes village/outliers.md for the Chief. Use in village-day on Mondays from Nov 23, 2026 when tools/rotation.js says "also Outliers check", or when the owner asks for outliers.
+description: The Secret Building's weekly Outliers check - looks up public YouTube numbers (TubeAlfred) for money videos (science paused Nov 19, 2026) that got far more views than their channel usually gets, and writes village/outliers.md for the Chief. Use in village-day on Mondays from Nov 23, 2026 when tools/rotation.js says "also Outliers check", or when the owner asks for outliers.
 ---
 
 # Outliers (weekly, Secret Building)
@@ -17,7 +17,7 @@ you have, and add `"skipped": "TubeAlfred credits low (N left), owner may top up
 got nothing. Never call the comments tools here (20+ credits each).
 
 1. `node tools/town.js start analyst "Looking at what's working on YouTube" --push`
-2. `node tools/outliers.js queries $DATE` prints this week's money and science searches.
+2. `node tools/outliers.js queries $DATE` prints this week's two money searches (a topic and a format: comparison, real price, myth, checklist).
 3. For each search (2 calls): `youtube_search_query` with `query`, `upload_date: "month"`,
    `sort: "popularity"`, `type: "video"`. Keep English videos a general audience would
    watch: skip school lectures, exam prep, trading courses, "stock picks", kids' content,
@@ -28,8 +28,8 @@ got nothing. Never call the comments tools here (20+ credits each).
    page (leave out the video itself). Use only `*_int` numbers; never guess one. If a lookup
    fails, leave `channelMedian` out (the report lists it as "not compared").
 5. For each outlier write a one-line **Our take**: how WhiteBucket could explain the same
-   *topic* in its own way, on the right desk (money → howitworks, science → whatif,
-   news → news). Educational only; no stock picks or predictions.
+   *topic* in its own way, on the right desk (money → howitworks, news → news;
+   science is paused). Educational only; no stock picks or predictions.
 6. Save `village/outliers/$DATE.json`:
    ```json
    { "date": "$DATE", "queries": ["…", "…"], "creditsLeft": 38,

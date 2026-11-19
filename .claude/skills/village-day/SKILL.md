@@ -10,8 +10,10 @@ Each day the village writes **one** DRAFT script for **WhiteBucket Explains** an
 to the studio. The owner approves it, the voice is added, and the studio builds the video.
 The town page reads `town.json` from `main`, so every status change is pushed right away.
 
-**Rotation** (`node tools/rotation.js`): Mon/Wed/Fri How It Works (money, George) ·
-Tue/Sat What If (science, Eric) · Thu/Sun World News (Mark on ElevenLabs).
+**Rotation** (`node tools/rotation.js`, all money from Nov 19, 2026): How It Works (money) every
+day except Thu/Sun World News (Mark on ElevenLabs). Money formats: Mon comparison · Tue real price
+(Eric) · Wed myth buster · Fri checklist · Sat takes turns (Eric). George on Mon/Wed/Fri.
+What If (science) is paused.
 Extras: Saturdays from Nov 21 the weekly "AI Village · Week N"; Wednesdays and Fridays from
 Nov 25 a short Island Clip, only if something on the island changed.
 
@@ -63,7 +65,7 @@ Nov 25 a short Island Clip, only if something on the island changed.
    the TubeAlfred tools are missing; the day goes on.
 2. **Chief of Staff** (`chief`): follow `chief-of-staff`. Picks today's topic and desk.
 3. **Today's writer** (only one): How It Works → `how-it-works-writer`;
-   What If → `what-if-writer`; World News → part A of `world-news-writer`.
+   What If → `what-if-writer` (paused); World News → part A of `world-news-writer`.
    The writer also follows `packaging` (5 scored title + cover ideas in the script).
 4. **World News desk** (`news`): on days it didn't write, follow part B of
    `world-news-writer` (fact-check today's script).

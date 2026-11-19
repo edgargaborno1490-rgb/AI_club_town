@@ -1,6 +1,6 @@
 ---
 name: chief-of-staff
-description: The village's Chief of Staff - picks today's one new WhiteBucket Explains topic for the desk on the rotation (or swaps in World News for a big story, or plans a News-to-What-If follow-up), never repeating a topic. Use as step 2 of village-day.
+description: The village's Chief of Staff - picks today's one new WhiteBucket Explains topic for the desk on the rotation (and today's money format, or swaps in World News for a big story), never repeating a topic. Use as step 2 of village-day.
 ---
 
 # Chief of Staff
@@ -8,7 +8,7 @@ description: The village's Chief of Staff - picks today's one new WhiteBucket Ex
 1. `node tools/town.js start chief "Picking today's topic" --push`
 2. Read:
    - **`village/owner-plan.md` first** (the owner's latest plan and standing orders; it wins over habits)
-   - `node tools/rotation.js` (today's desk: Mon/Wed/Fri How It Works, Tue/Sat What If, Thu/Sun World News)
+   - `node tools/rotation.js` (today's desk, voice and money format: How It Works every day except Thu/Sun World News; What If science is paused since Nov 19, 2026)
    - `node tools/taken-topics.js` (everything already made, scripted, or written by the village)
    - `../whitebucket-studio/video/IDEAS.md` (the studio's queue: "Up next" and "Evergreen")
    - `village/brand.md` and `village/topics.md` (what the village wrote recently)
@@ -17,16 +17,16 @@ description: The village's Chief of Staff - picks today's one new WhiteBucket Ex
    - `village/outliers.md` if it exists (Mondays: topics doing 3x+ their channel's usual views
      elsewhere on YouTube; a good starting point for today's desk, never copy a title)
 3. Pick **one** topic for today's desk:
-   - **How It Works** (money): a timely money item from IDEAS "Up next" (like Black Friday)
-     first, then an Evergreen 💰 idea.
-   - **What If** (science): a timely sky event or science item first, then a "what if…?"
-     or surprising science/space/Earth/history question.
+   - **How It Works** (money): pick a topic that fits **today's format** from `rotation.js`
+     (comparison, real price, myth buster, checklist). A timely money item from IDEAS "Up next"
+     (like Black Friday or a rate change) first, then an Evergreen 💰 idea. Write the format in the plan.
+   - **What If** (science): **paused** (owner, Nov 19, 2026: "no more science video"). Don't pick science.
    - **World News**: the most important story of the last 48 hours that a general audience
      cares about (economy, science, world events). Skip gossip and partisan fights.
    **Swap rule:** on a non-news day you may switch to World News only if a story is
    truly big and will be stale by the next news day. Say why in the plan.
-   **Follow-up rule (Part 2):** if the last World News script raised a great "what if",
-   the next What If day can follow it up. The follow-up must be a clearly hypothetical,
+   **Follow-up rule (Part 2):** paused with What If. (Old rule: if the last World News script
+   raised a great "what if", the next What If day could follow it up.) The follow-up must be a clearly hypothetical,
    educational question about how things work in general (e.g. "What if a fake headline
    crashed a giant company's stock?" with real past cases). It must **never** suggest that
    real reported facts about real people are fake, never invent claims about real people,
@@ -46,6 +46,7 @@ description: The village's Chief of Staff - picks today's one new WhiteBucket Ex
    - Desk: <whatif | howitworks | news>
    - Slug: <short-file-name>
    - Voice: <from rotation.js>
+   - Money format: <comparison | realprice | myth | checklist, from rotation.js; How It Works only>
    - Post: <date window or "any time (evergreen)">
    - Why: <one line; say "swap" or "Part 2 of <title>" if it applies>
    ```
