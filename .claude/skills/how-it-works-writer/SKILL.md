@@ -22,7 +22,7 @@ description: The How It Works studio (the money desk) - writes the day's How It 
    Every format: ONE idea, 90-150 words, real sourced numbers with "as of" dates, and **no "your move
    this week" step** (owner, Nov 19, 2026; `brand.md`).
    The video is 16:9 (calm wide style), so the section plan describes wide scenes.
-3c. **Explain it like the viewer is 6** (owner, Nov 19, 2026; `brand.md` "Explain like I'm 6"): the hook
+3c. **Read the `like-youre-6` skill** (the owner's approved shape, Nov 19). **Explain it like the viewer is 6** (owner, Nov 19, 2026; `brand.md` "Explain like I'm 6"): the hook
    names the frame ("…explained like you're 6"; always the 6-year-old, no Minecraft), one kid picture carries
    the format (comparison = two kids with the same allowance; real price = the toy that costs more than
    its sticker; myth = what grown-ups say vs what's true; checklist = 3-5 steps a kid could follow),

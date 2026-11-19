@@ -33,7 +33,8 @@ Live page: https://edgargaborno1490-rgb.github.io/AI_club_town/ (`?demo` plays s
   built with the studio skill `wide-video`; no vertical version.
 - **Explain like I'm 6** (owner, Nov 19, 2026): every script explains its money idea like the viewer is six
   ("How does a credit card work? Explained like you're 6"; always the 6-year-old, no Minecraft); one kid picture, then one
-  real sourced number "in grown-up words"; `Explain like:` line checked by `check-scripts.js`. `village/brand.md`.
+  real sourced number "in grown-up words"; `Explain like:` line checked by `check-scripts.js`. `village/brand.md`;
+  the owner's approved way + process shortcuts: skill **`like-youre-6`** (read it instead of old chats).
 - **Level up** (owner, Nov 19, 2026): every script makes money feel simple and doable, honest (no hype, no promised
   results). **No "your move this week" step** in any video (owner, Nov 19, 2026). `village/brand.md`.
 - Tests before pushing code: `npm test` and `NODE_PATH=$(npm root -g) node tests/smoke.js`.
