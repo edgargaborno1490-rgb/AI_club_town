@@ -37,7 +37,7 @@ test('daily narration must be 90-125 words (30-45 s)', () => {
 });
 
 test('daily narration must ask viewers to comment BIRD right before the ending', () => {
-  assert.ok(checkScript(script({ end: 'See you tomorrow for another island update!' })).some(p => /Comment BIRD/.test(p)));
+  assert.ok(checkScript(script({ end: 'See you tomorrow for another island update!' })).some(p => /comment BIRD/i.test(p)));
 });
 
 test('narration must end with the locked-in line', () => {
