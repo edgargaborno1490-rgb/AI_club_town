@@ -10,14 +10,13 @@ before writing.
 - **WhiteBucket Explains** on TikTok, Instagram, YouTube and Facebook.
 - **Every video is 16:9** (1920×1080; owner, Nov 19, 2026: "keep all my videos 16:9"), built with the studio's
   `wide-video` skill (calm pace). One topic each, 90–150 words (about 45–65 s at the calm pace; owner, Nov 19, 2026: up to a minute is fine, never over 1:30).
-- **Level up (owner, Nov 19, 2026): every video motivates.** The goal is that viewers walk away wanting
-  to level up and do something with their life. Keep the facts, then turn them into a push:
-  - Frame the viewer as someone who can win ("you can", "here's your move"), never as someone being scolded.
-  - Include **one small, doable step** they could take this week (check a rate, set up an automatic
-    transfer, write a budget, ask for a raise, learn one skill). Put it right before the island checkup.
-  - Real and honest: no hype, no "get rich quick", no promised results, no lifestyle flexing. Small steps
-    that add up are the message. Money stays educational (no "not financial advice" line from Nov 19, 2026: the owner dropped it).
-  - World News too: neutral facts first, then one line on what it means for you and what you can do.
+- **Level up (owner, Nov 19, 2026): every video motivates** by making money feel simple and doable:
+  frame the viewer as someone who can win, never as someone being scolded. Real and honest: no hype, no
+  "get rich quick", no promised results, no lifestyle flexing. Money stays educational (no "not financial
+  advice" line from Nov 19, 2026: the owner dropped it).
+  - **No "your move this week" step** (owner, Nov 19, 2026: "remove it from every video"). Don't add a
+    to-do line, a "here's your move" line or a homework step; the explainer ends on the grown-up number.
+  - World News too: neutral facts first, then one line on what it means for you.
 - **Explain like I'm 6 (owner, Nov 19, 2026): every video, every desk.** Money explained so simply a
   six-year-old would get it, for grown-ups who were never taught. **Always the "like you're 6" frame**
   (owner, Nov 19: "I like the kid better, 6 years old"; Minecraft / game frames are dropped):
@@ -30,7 +29,7 @@ before writing.
     ("…and that extra is called **interest**").
   - Then **"In grown-up words:"** one real, sourced number with its date (e.g. the average card rate).
     The analogy must never bend the facts; if it can't stay true, pick another one.
-  - Then the level-up step (for the grown-up watching), the island checkup and the ending, as usual.
+  - Then the island checkup and the ending, as usual (no "your move" step).
   - Warm, never talking down to the viewer, never "hey kids": the audience is teens and adults.
     Videos are posted **Not made for kids** (kids' videos lose comments, and the BIRD comments matter).
   - No video-game frames or game art (no Minecraft, Roblox and the like); draw our own simple things.
@@ -96,8 +95,7 @@ at the END.** In this order:
 1. **Hook** (first sentence): the question + the frame ("How does a credit card work? Explained like you're 6.")
    or the format's hook in kid words. No island talk, no "hi", no intro.
 2. **Explainer** (~65–85 words): ONE idea told with ONE kid picture, first-grade words, then "In grown-up
-   words:" one real sourced number, then **one motivating
-   line with a small step the viewer can take this week** (see "Level up" above).
+   words:" one real sourced number. **No "your move this week" step** (owner, Nov 19, 2026).
 3. **Island checkup** (1–2 short sentences, ~15–20 words) with facts only from town.json and
    `village/island-news.md`: the bird count or the biggest island news, plus **every item under
    "To announce"** (keep each to a few words; if there are many, pick the biggest and list the rest

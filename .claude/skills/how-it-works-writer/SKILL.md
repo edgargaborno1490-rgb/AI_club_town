@@ -19,8 +19,8 @@ description: The How It Works studio (the money desk) - writes the day's How It 
    - **myth**: one common money belief, said in the hook, then why it is wrong (or half right) with
      one sourced number, then what is true instead.
    - **checklist**: 3 to 5 short steps, one sentence each, numbered on screen. Hook promises the list.
-   Every format: ONE idea, 90-150 words, real sourced numbers with "as of" dates, and a **level-up
-   push**: one small step the viewer can take this week, right before the island checkup (`brand.md`).
+   Every format: ONE idea, 90-150 words, real sourced numbers with "as of" dates, and **no "your move
+   this week" step** (owner, Nov 19, 2026; `brand.md`).
    The video is 16:9 (calm wide style), so the section plan describes wide scenes.
 3c. **Explain it like the viewer is 6** (owner, Nov 19, 2026; `brand.md` "Explain like I'm 6"): the hook
    names the frame ("…explained like you're 6"; always the 6-year-old, no Minecraft), one kid picture carries

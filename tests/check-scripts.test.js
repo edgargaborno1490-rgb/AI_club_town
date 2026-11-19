@@ -140,3 +140,9 @@ test('scripts written before Nov 20, 2026 do not need the Explain like line', ()
   assert.deepEqual(checkScript(s, '2026-11-19'), []);
   assert.ok(checkScript(s, '2026-11-20').some(p => /Explain like/.test(p)));
 });
+
+test('a script with no island update may end on the BIRD line alone (owner, Nov 19, 2026)', () => {
+  const bird = 'Follow and comment BIRD, and your name goes on a bird on our island.';
+  assert.deepEqual(checkScript(script({ end: bird, extra: 'Ending: BIRD line only (no island update)' })), []);
+  assert.ok(checkScript(script({ end: bird })).some(p => /See you tomorrow/.test(p)));
+});

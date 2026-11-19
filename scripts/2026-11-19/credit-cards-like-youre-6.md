@@ -6,6 +6,7 @@ Topic type: money
 Format: 16:9 · calm wide style · about 60 s · ~150 words · voice: George (Kokoro bm_george, made by the studio)
 Explain like: you're 6 · picture: borrowing cookies from a friend's cookie jar
 Money format: myth
+Ending: BIRD line only (owner, Nov 19, 2026: no island update today, so no "See you tomorrow for another island update")
 Post: any time (evergreen)
 Tone: warm and simple, like a big sibling explaining it; never talking down. Mood: calm
 
@@ -24,7 +25,7 @@ Runner-up: #3 (the myth angle; same video, a sharper question)
 
 ## Narration (record as one paragraph)
 
-How does a credit card work? Explained like you're six. … Your friend lends you ten cookies. Give ten back next week… and it's free. Wait longer, and you owe twelve. Those two extra cookies are called interest. … Now the fun part. Every time you borrow, your friend saves a few cookies for you, as a thank-you. Those are rewards. Most cookies earn one percent. Restaurant cookies can earn three percent. Borrow five hundred cookies in a year, and he gives you five back. All restaurant cookies? Fifteen. You can take them as cash back… or as travel points for a trip. … A credit card is that friend. In grown-up words: carry a balance, and the average card charges about twenty-two percent a year… way more than the rewards. Follow and comment BIRD, and your name goes on a bird on our island. See you tomorrow for another island update!
+How does a credit card work? Explained like you're six. … Your friend lends you ten cookies. Give ten back next week… and it's free. Wait longer, and you owe twelve. Those two extra cookies are called interest. … Now the fun part. Every time you borrow, your friend saves a few cookies for you, as a thank-you. Those are rewards. Most cookies earn one percent. Restaurant cookies can earn three percent. Borrow five hundred cookies in a year, and he gives you five back. All restaurant cookies? Fifteen. You can take them as cash back… or as travel points for a trip. … A credit card is that friend. In grown-up words: carry a balance, and the average card charges about twenty-two percent a year… way more than the rewards. Follow and comment BIRD, and your name goes on a bird on our island.
 
 ## Section plan
 
@@ -38,7 +39,7 @@ How does a credit card work? Explained like you're six. … Your friend lends yo
 | 5 | Borrow five hundred cookies in a year, and he gives you five back. All restaurant cookies? Fifteen. | A counter runs up to "500 COOKIES" while a calendar ticks through 12 months; the gift box opens: 5 cookies on "five"; then swap to the restaurant jar: 15 cookies pop out on "Fifteen". Small math chip "500 × 1% = 5 · 500 × 3% = 15". |
 | 6 | You can take them as cash back… or as travel points for a trip. | The gift box splits two ways: coins into a wallet ("CASH BACK") and a little ink airplane ("TRAVEL POINTS"); the pen line flies with the plane. |
 | 7 | A credit card is that friend. In grown-up words: carry a balance, and the average card charges about twenty-two percent a year… way more than the rewards. | The friend with the jar morphs into the credit card from row 0. Number **22% A YEAR** (red) lands on "twenty-two"; a balance scale: the heavy red 22% side drops, the small "REWARDS 1–3%" side rises, on "way more". Label "AVERAGE, CARDS THAT CHARGE INTEREST · FEDERAL RESERVE G.19 · AS OF NOV 6, 2026". |
-| 8 | Follow and comment BIRD, and your name goes on a bird on our island. See you tomorrow for another island update! | No spoken island checkup this time (owner: nothing new on the island). The pen line turns into a bird and flies into the 3D island (short shot, "49 BIRDS" chip), then the end card: comment box typing BIRD, SEE YOU TOMORROW. End card: desk howitworks (How It Works bucket), birds from town.json. |
+| 8 | Follow and comment BIRD, and your name goes on a bird on our island. | No island checkup and no "See you tomorrow" this time (owner: no island update today). The pen line turns into a bird and flies into the 3D island (short shot, "49 BIRDS" chip), then the end card: comment box typing BIRD (no SEE YOU TOMORROW text). End card: desk howitworks (How It Works bucket), birds from town.json. |
 
 ## Fact notes
 
@@ -49,12 +50,12 @@ How does a credit card work? Explained like you're six. … Your friend lends yo
 - **Cash back or travel points:** points cards earn points per dollar, redeemable for statement credit, gift cards or travel (Chase, "What are credit card points", as of Nov 19, 2026): https://www.chase.com/personal/credit-cards/education/rewards-benefits/what-are-credit-card-points-and-how-do-they-work
 - **"Way more than the rewards":** the CFPB found people who carry a balance often pay far more in interest and fees than they earn in rewards (Credit Card Rewards issue spotlight, May 2024, as of Nov 19, 2026): https://www.consumerfinance.gov/data-research/research-reports/issue-spotlight-credit-card-rewards/ . 22% a year vs 1–3% back.
 - **Island:** 49 followers = 49 birds (town.json as of Nov 19, 2026); not spoken this time.
-- **Owner's edits, Nov 19, 2026:** "ten back next week, or twelve" deal; rewards as the friend's thank-you (1% everything, 3% restaurants, cash back or travel points, the real answer for 500); no island checkup; no "your move this week" step; no "not financial advice" line; about one minute is fine.
+- **Owner's edits, Nov 19, 2026:** "ten back next week, or twelve" deal; rewards as the friend's thank-you (1% everything, 3% restaurants, cash back or travel points, the real answer for 500); no island checkup; no "your move this week" step; no "not financial advice" line; ends on the BIRD line (no "See you tomorrow", no island update); about one minute is fine.
 - The cookie picture simplifies: real interest grows on the unpaid balance, and fees can apply too. The grown-up number keeps it honest.
 
 ## Captions
 
-- TikTok: How does a credit card work? Explained like you're 6. 🍪 Borrow ten cookies, give back ten on time = free. Wait too long = extra cookies (interest). #moneytok #creditcards #explainedlikeyoure6 #personalfinance #learnontiktok New island update every day: see you tomorrow!
+- TikTok: How does a credit card work? Explained like you're 6. 🍪 Borrow ten cookies, give back ten on time = free. Wait too long = extra cookies (interest). #moneytok #creditcards #explainedlikeyoure6 #personalfinance #learnontiktok
 - Instagram: Credit cards, explained like you're 6. 🍪 On time = free. Late = extra cookies (about 22% a year on average, Fed, Nov 2026). On time all year? Thank-you cookies: 1% back on most things, 3% at restaurants, as cash back or travel points. Comment BIRD to get your name on a bird on our AI island! #creditcards #moneytips #personalfinance #explainlikeim5 #financialliteracy
 - Facebook: How does a credit card work? Here it is, explained like you're 6, with cookies. 🍪 Comment BIRD and your name goes on a bird on our AI island. #creditcards #moneytips #personalfinance
 - YouTube: How Credit Cards Work, Explained Like You're 6 🍪 #shorts — borrowing cookies, interest, and the thank-you cookies (rewards).

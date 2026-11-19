@@ -77,7 +77,10 @@ function checkScript(text, date) {
     if (n < lo || n > hi) problems.push(`Narration has ${n} words (needs ${lo}-${hi})`);
     if (!['village', 'island'].includes(type)) {
       const nar = s.Narration.trim();
-      if (!nar.endsWith(ENDING)) problems.push(`Narration must end with exactly "${ENDING}"`);
+      // Owner, Nov 19, 2026: a script with no island update may end on the BIRD line alone
+      // (it says so with a line "Ending: BIRD line only").
+      if (/^Ending:\s*BIRD line only/im.test(text)) { if (!nar.endsWith(BIRD_LINE)) problems.push(`Narration must end with exactly "${BIRD_LINE}" (Ending: BIRD line only)`); }
+      else if (!nar.endsWith(ENDING)) problems.push(`Narration must end with exactly "${ENDING}"`);
       else if (!nar.slice(0, -ENDING.length).trim().endsWith(BIRD_LINE)) problems.push(`Narration must say "${BIRD_LINE}" right before "${ENDING}"`);
     }
   }

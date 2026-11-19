@@ -48,7 +48,7 @@ Runner-up: #2 (number hook; fix the wording to "kept flying" first)
 - **Explain like I'm 6 (owner, Nov 19, 2026):** at least 3 of the 5 ideas carry the frame, and the pick
   should too: "How Credit Cards Work, Explained Like You're 6", "Interest Explained Like You're 6". Cover words can be
   the frame itself ("LIKE YOU'RE 6"). Never make it sound like a video for children; no game frames or game art.
-- Lean toward titles that make people want to level up ("Your first $1,000 move") while staying true; no hype or promised results. Covers are 16:9 thumbnails from Nov 19, 2026.
+- Lean toward titles that make people want to level up ("Credit Cards, Explained Like You're 6") while staying true; no hype or promised results. Covers are 16:9 thumbnails from Nov 19, 2026.
 - Use real numbers from the fact notes only. Never invent a number for a title.
 - The Secret Building's `village/outliers.md` (Mondays) shows titles that work for other
   channels. Learn from their *shape*, never copy a title.

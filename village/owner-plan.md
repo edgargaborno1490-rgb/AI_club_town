@@ -21,9 +21,8 @@ Short on purpose. Update it whenever the owner changes the plan. Past: `village/
   format stays (comparison, real price, myth, checklist), told in the kid picture. Rules: `brand.md`
   "Explain like I'm 6". Every script has an `Explain like:` line (`check-scripts.js` checks it).
 - **Every video is 16:9** (the studio's `wide-video` calm style). 90–150 words (up to about a minute; owner, Nov 19: "a minute is good enough", never over 1:30).
-- **Level up:** every video motivates people to level up and do something with their life. Facts first,
-  then ONE small step they can do this week, right before the island checkup. Honest: no hype, no
-  promised results. Money stays educational (every number sourced + "as of"). **No "not financial advice" line anymore** (owner, Nov 19), spoken or on screen.
+- **Level up:** every video makes money feel simple and doable. Honest: no hype, no promised results.
+  **No "your move this week" step in any video** (owner, Nov 19: "remove it from every video"). Money stays educational (every number sourced + "as of"). **No "not financial advice" line anymore** (owner, Nov 19), spoken or on screen.
 - **Ending (exact):** "Follow and comment BIRD, and your name goes on a bird on our island. See you
   tomorrow for another island update!" (`check-scripts.js` checks it.)
 - **Named birds:** the owner says who followed. Commented but not following = maybe a 24 h trial bird
