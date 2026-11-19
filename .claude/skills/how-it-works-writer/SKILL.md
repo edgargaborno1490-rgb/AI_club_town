@@ -23,11 +23,11 @@ description: The How It Works studio (the money desk) - writes the day's How It 
    push**: one small step the viewer can take this week, right before the island checkup (`brand.md`).
    The video is 16:9 (calm wide style), so the section plan describes wide scenes.
 3c. **Explain it like the viewer is 6** (owner, Nov 19, 2026; `brand.md` "Explain like I'm 6"): the hook
-   names the frame ("…explained like you're 6" or "…explained with Minecraft"), one kid picture carries
+   names the frame ("…explained like you're 6"; always the 6-year-old, no Minecraft), one kid picture carries
    the format (comparison = two kids with the same allowance; real price = the toy that costs more than
    its sticker; myth = what grown-ups say vs what's true; checklist = 3-5 steps a kid could follow),
-   then "In grown-up words:" one real sourced number. Use the frame the plan names.
-4. Explain **one** idea well, with that one kid picture (allowance, lemonade stand, Minecraft emeralds).
+   then "In grown-up words:" one real sourced number.
+4. Explain **one** idea well, with that one kid picture (allowance, lemonade stand, cookies, a piggy bank).
    Educational only: no stock picks, predictions or "buy this". Include a short
    "not financial advice" line near the end.
 5. Write `scripts/$DATE/<slug>.md` in the format in `brand.md` (`Topic type: money`,

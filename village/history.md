@@ -54,7 +54,8 @@ CLAUDE.md keeps the rules. Add new days at the bottom.
   shape (16:9 extra); **music is back**, but only free tracks the owner picks (YouTube Audio Library), synced to the
   voice and the pen line (studio `scripts/beats.py`).
 - **Nov 19, 2026, "explain it like I'm 6"** (owner): every video now explains its money idea like the viewer is six
-  ("How does a credit card work? Explained like you're 6" or "…explained with Minecraft"). Starts with the Nov 20 DRAFT.
+  ("How does a credit card work? Explained like you're 6"). Starts with the Nov 20 DRAFT. Minecraft was offered
+  too; same day the owner chose: "I like the kid better, 6 years old", so always the 6-year-old.
 - **Nov 19, 2026, the new setup** (owner: "for now, this will be our setup"):
   - **All money:** science (What If) paused. Four money formats that get views in money Shorts rotate by
     weekday (Mon comparison, Tue real price, Wed myth buster, Fri checklist, Sat takes turns); World

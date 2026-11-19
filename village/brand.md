@@ -19,14 +19,12 @@ before writing.
     that add up are the message. Money stays educational with the "not financial advice" line.
   - World News too: neutral facts first, then one line on what it means for you and what you can do.
 - **Explain like I'm 6 (owner, Nov 19, 2026): every video, every desk.** Money explained so simply a
-  six-year-old would get it, for grown-ups who were never taught. Two frames:
-  - **Like you're 6** (the default): "How does a credit card work? Explained like you're 6."
-  - **A game world** ("Credit cards explained with Minecraft"): emeralds = money, a chest = a savings
-    account, a villager trade = a loan, building block by block = compound growth. Use it when the
-    picture truly fits (try about twice a week; the Analyst's numbers decide more or less). Other kid
-    worlds work too: lemonade stand, piggy bank, allowance, trading cards, LEGO.
+  six-year-old would get it, for grown-ups who were never taught. **Always the "like you're 6" frame**
+  (owner, Nov 19: "I like the kid better, 6 years old"; Minecraft / game frames are dropped):
+  "How does a credit card work? Explained like you're 6." The picture comes from a six-year-old's
+  world: cookies, an allowance, a piggy bank, a lemonade stand, lending a toy, a sticker chart.
   How to write it:
-  - The **hook names the frame**: the question + "explained like you're 6" (or "…with Minecraft").
+  - The **hook names the frame**: the question + "explained like you're 6".
   - **One picture, all the way through.** Pick one analogy and stay in it; don't stack three.
   - Words a first grader knows, short sentences. Say a hard word only after the picture explains it
     ("…and that extra is called **interest**").
@@ -35,14 +33,12 @@ before writing.
   - Then the level-up step (for the grown-up watching), the island checkup and the ending, as usual.
   - Warm, never talking down to the viewer, never "hey kids": the audience is teens and adults.
     Videos are posted **Not made for kids** (kids' videos lose comments, and the BIRD comments matter).
-  - **Minecraft is only a word, not a look:** say it in titles and narration, but on screen draw our own
-    paper-line blocks, coins and chests. No Minecraft logo, font, textures, characters (Steve, Creeper,
-    the villager face), sounds or game footage. Captions add "Not affiliated with Minecraft or Mojang."
+  - No video-game frames or game art (no Minecraft, Roblox and the like); draw our own simple things.
   - Example (myth day, about the shape only; the real number comes from the fact notes):
     "How does a credit card work? Explained like you're 6. … Your friend lends you ten cookies. Pay back ten
     by Friday, and it's free. Wait longer, and every week you owe a few more cookies. That extra is called
     interest. … In grown-up words: the average card charges about <rate> a year, as of <date>. …"
-  - Write `Explain like: you're 6 | Minecraft | <another kid world> · picture: <the analogy>` under the
+  - Write `Explain like: you're 6 · picture: <the analogy>` under the
     Format line (`check-scripts.js` checks it for money and news scripts).
 - **One video a day, on a rotation** (from Nov 15, 2026; `node tools/rotation.js`):
   How It Works (money) every day except Thu/Sun World News, money news only (from Nov 19, 2026; What If science paused).
@@ -82,7 +78,7 @@ Save it as `scripts/YYYY-MM-DD/<slug>.md`. `node tools/check-scripts.js` must pa
 
 Topic type: money | science | news | village | island
 Format: 16:9 · calm wide style · about 50 s · ~110 words · voice: <the series' voice>
-Explain like: you're 6 | Minecraft | <kid world> · picture: <the one analogy, e.g. borrowing a friend's toy>
+Explain like: you're 6 · picture: <the one analogy, e.g. borrowing a friend's toy>
 Post: <date window, or "any time (evergreen)">
 Tone: <one line>
 

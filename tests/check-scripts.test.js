@@ -71,7 +71,7 @@ test('news scripts need 2 different sites for every story group', () => {
   const bad = 'Story A:\n- https://reuters.com/a\n- https://apnews.com/a\n\nStory B:\n- https://bbc.com/b';
   assert.ok(checkScript(script({ type: 'news', sources: bad })).some(p => /Story B/.test(p)));
   const ok = 'Story A:\n- https://reuters.com/a\n- https://apnews.com/a';
-  assert.deepEqual(checkScript(script({ type: 'news', sources: ok, extra: 'Explain like: Minecraft · picture: emeralds' })), []);
+  assert.deepEqual(checkScript(script({ type: 'news', sources: ok, extra: 'Explain like: you\'re 6 · picture: cookies' })), []);
   assert.ok(checkScript(script({ type: 'news' })).some(p => /Sources/.test(p)));
 });
 
@@ -131,7 +131,8 @@ test('village and island scripts do not need packaging', () => {
 test('money and news scripts must be explained like the viewer is 6 (owner, Nov 19, 2026)', () => {
   const fin = 'Note: "not financial advice".';
   assert.ok(checkScript(script({ type: 'money', extra: fin })).some(p => /Explain like/.test(p)));
-  assert.deepEqual(checkScript(script({ type: 'money', extra: `Explain like: Minecraft · picture: emeralds\n${fin}` })), []);
+  assert.deepEqual(checkScript(script({ type: 'money', extra: `Explain like: you're 6 · picture: a piggy bank\n${fin}` })), []);
+  assert.ok(checkScript(script({ type: 'money', extra: `Explain like: Minecraft · picture: emeralds\n${fin}` })).some(p => /Explain like/.test(p)));
   assert.ok(!checkScript(script()).some(p => /Explain like/.test(p))); // science (paused) doesn't need it
 });
 

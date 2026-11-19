@@ -25,8 +25,7 @@ description: The village's Chief of Staff - picks today's one new WhiteBucket Ex
      the last 48 hours for regular people (prices, rates, jobs, taxes, housing, a big company or market
      move). No science, no gossip, no partisan fights.
    **Explain like I'm 6** (owner, Nov 19, 2026): every topic gets a kid frame. Pick topics a simple
-   picture can explain, and name the frame + picture in the plan (default "you're 6"; Minecraft about
-   twice a week when it fits, more if the Analyst shows it wins; `brand.md`).
+   picture can explain, and name the picture in the plan (always "you're 6", no Minecraft or game frames; `brand.md`).
    **Swap rule:** on a non-news day you may switch to World News only if a story is
    truly big and will be stale by the next news day. Say why in the plan.
    **Follow-up rule (Part 2):** paused with What If. (Old rule: if the last World News script
@@ -51,7 +50,7 @@ description: The village's Chief of Staff - picks today's one new WhiteBucket Ex
    - Slug: <short-file-name>
    - Voice: <from rotation.js>
    - Money format: <comparison | realprice | myth | checklist, from rotation.js; How It Works only>
-   - Explain like: <you're 6 | Minecraft | another kid world> · picture: <the one analogy>
+   - Explain like: you're 6 · picture: <the one analogy>
    - Post: <date window or "any time (evergreen)">
    - Why: <one line; say "swap" or "Part 2 of <title>" if it applies>
    ```
