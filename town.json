@@ -2,7 +2,7 @@
   "day": 7,
   "goal": 1000,
   "balance": 0,
-  "updated": "2026-11-19T21:54:12.931Z",
+  "updated": "2026-11-19T21:54:54.899Z",
   "agents": {
     "chief": {
       "status": "done",
@@ -13,8 +13,8 @@
       "task": ""
     },
     "howitworks": {
-      "status": "working",
-      "task": "Writing: How Credit Cards Work, Explained Like You're 6"
+      "status": "done",
+      "task": ""
     },
     "news": {
       "status": "done",
@@ -89,6 +89,10 @@
     {
       "time": "11:54",
       "text": "How It Works started: Writing: How Credit Cards Work, Explained Like You're 6"
+    },
+    {
+      "time": "11:54",
+      "text": "How It Works: DRAFT ready: How Credit Cards Work, Explained Like You're 6"
     }
   ],
   "lastRunDate": "2026-11-19",
