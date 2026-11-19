@@ -31,7 +31,7 @@ test('the script must start as DRAFT', () => {
   assert.ok(checkScript(script({ status: '> **Status: APPROVED**' })).some(p => /DRAFT/.test(p)));
 });
 
-test('daily narration must be 90-125 words (30-45 s)', () => {
+test('daily narration must be 90-160 words (up to about a minute)', () => {
   assert.ok(checkScript(script({ narration: 60 })).some(p => /Narration has/.test(p)));
   assert.ok(checkScript(script({ narration: 190 })).some(p => /Narration has/.test(p)));
 });

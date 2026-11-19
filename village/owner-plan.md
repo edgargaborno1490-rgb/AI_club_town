@@ -20,7 +20,7 @@ Short on purpose. Update it whenever the owner changes the plan. Past: `village/
   One simple picture carries the whole video (piggy bank, lemonade stand, lending a toy, cookies), then one real sourced number "in grown-up words". The day's money
   format stays (comparison, real price, myth, checklist), told in the kid picture. Rules: `brand.md`
   "Explain like I'm 6". Every script has an `Explain like:` line (`check-scripts.js` checks it).
-- **Every video is 16:9** (the studio's `wide-video` calm style). 90–125 words (about 45–55 s).
+- **Every video is 16:9** (the studio's `wide-video` calm style). 90–150 words (up to about a minute; owner, Nov 19: "a minute is good enough", never over 1:30).
 - **Level up:** every video motivates people to level up and do something with their life. Facts first,
   then ONE small step they can do this week, right before the island checkup. Honest: no hype, no
   promised results. Money stays educational (every number sourced + "as of"). **No "not financial advice" line anymore** (owner, Nov 19), spoken or on screen.

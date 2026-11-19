@@ -9,7 +9,7 @@ before writing.
 ## The channel
 - **WhiteBucket Explains** on TikTok, Instagram, YouTube and Facebook.
 - **Every video is 16:9** (1920×1080; owner, Nov 19, 2026: "keep all my videos 16:9"), built with the studio's
-  `wide-video` skill (calm pace). One topic each, 90–125 words (about 45–55 s at the calm pace).
+  `wide-video` skill (calm pace). One topic each, 90–150 words (about 45–65 s at the calm pace; owner, Nov 19, 2026: up to a minute is fine, never over 1:30).
 - **Level up (owner, Nov 19, 2026): every video motivates.** The goal is that viewers walk away wanting
   to level up and do something with their life. Keep the facts, then turn them into a push:
   - Frame the viewer as someone who can win ("you can", "here's your move"), never as someone being scolded.
@@ -91,7 +91,7 @@ Pick: #N
 Runner-up: #M (<why>)
 
 ## Narration (record as one paragraph)
-One paragraph, **90–125 words (30–45 s)**. Owner's change, Nov 17, 2026: **hook first, island checkup
+One paragraph, **90–150 words (up to about a minute)**. Owner's change, Nov 17, 2026: **hook first, island checkup
 at the END.** In this order:
 1. **Hook** (first sentence): the question + the frame ("How does a credit card work? Explained like you're 6.")
    or the format's hook in kid words. No island talk, no "hi", no intro.

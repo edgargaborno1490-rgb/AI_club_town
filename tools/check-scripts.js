@@ -9,7 +9,7 @@ const path = require('path');
 // island checkup at the END, then the BIRD line, then the "See you tomorrow" line.
 const ENDING = 'See you tomorrow for another island update!';
 const BIRD_LINE = 'Follow and comment BIRD, and your name goes on a bird on our island.';
-const DAILY_WORDS = [90, 125]; // about 30-45 s, including the island checkup, BIRD line and ending
+const DAILY_WORDS = [90, 160]; // up to about a minute (owner, Nov 19, 2026: "a minute is good enough", always under 1:30)
 const TYPES = ['money', 'science', 'news', 'village', 'island'];
 const PLATFORMS = ['TikTok', 'Instagram', 'Facebook', 'YouTube'];
 
