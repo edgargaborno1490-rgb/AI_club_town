@@ -2,7 +2,7 @@
   "day": 7,
   "goal": 1000,
   "balance": 0,
-  "updated": "2026-11-19T21:55:15.482Z",
+  "updated": "2026-11-19T21:55:21.030Z",
   "agents": {
     "chief": {
       "status": "done",
@@ -109,6 +109,10 @@
     {
       "time": "11:55",
       "text": "Programmer: DRAFT sent to the studio: How Credit Cards Work, Explained Like You're 6."
+    },
+    {
+      "time": "11:55",
+      "text": "Extra DRAFT (owner asked at 11:53 AM): How Credit Cards Work, Explained Like You're 6 (George), the first explained-like-you're-6 video."
     }
   ],
   "lastRunDate": "2026-11-19",
