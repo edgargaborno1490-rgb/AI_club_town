@@ -2,7 +2,7 @@
   "day": 8,
   "goal": 1000,
   "balance": 0,
-  "updated": "2026-11-20T14:42:11.002Z",
+  "updated": "2026-11-20T14:42:12.905Z",
   "agents": {
     "chief": {
       "status": "done",
@@ -13,8 +13,8 @@
       "task": ""
     },
     "howitworks": {
-      "status": "idle",
-      "task": ""
+      "status": "working",
+      "task": "Writing: How to Build a Rainy-Day Fund, Explained Like You're 6"
     },
     "news": {
       "status": "idle",
@@ -41,6 +41,10 @@
     {
       "time": "4:42",
       "text": "Chief of Staff: Today's topic: How to Build a Rainy-Day Fund, Explained Like You're 6"
+    },
+    {
+      "time": "4:42",
+      "text": "How It Works started: Writing: How to Build a Rainy-Day Fund, Explained Like You're 6"
     }
   ],
   "lastRunDate": "2026-11-20",
