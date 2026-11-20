@@ -15,3 +15,4 @@ Format: `- YYYY-MM-DD | series | subject | topic`
 - 2026-11-18 | how-it-works | money | Where the 30% rent rule came from (and how many renters are over it)
 - 2026-11-19 | world-news | news | The Fed is getting ready to raise rates (December hike, minutes Nov 18)
 - 2026-11-19 | how-it-works | money | How credit cards work, explained like you're 6 (extra, first ELI6)
+- 2026-11-20 | how-it-works | money | How to build a rainy-day fund, explained like you're 6 (checklist)
